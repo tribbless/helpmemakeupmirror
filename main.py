@@ -26,11 +26,18 @@ from PyQt5.QtGui import *
 from home import Home
 from face_capture import Face_Capture
 from menu import Menu
+
 from personal_color import Personal_Color
+from select_thema import Select_Thema
 from select_face_thema_base import Select_face_thema_Base
 from select_face_thema_capture import Select_face_thema_Capture
-from select_thema import Select_Thema
+
 from select_face_eyebrow import Select_face_Eyebrow
+from select_face_eyeshadow import Select_face_Eyeshadow
+from select_face_eyeliner import Select_face_Eyeliner
+from select_face_blusher import Select_face_Blusher
+from select_face_lip import Select_face_Lip
+
 
 class MAIN_StackedWidget(QWidget):
     def __init__(self):
@@ -50,20 +57,33 @@ class MAIN_StackedWidget(QWidget):
         self.face_capture = Face_Capture()
         self.menu = Menu()
         self.personal_color = Personal_Color()
+        self.select_thema = Select_Thema()
         self.select_face_thema_base = Select_face_thema_Base()
         self.select_face_thema_capture = Select_face_thema_Capture()
-        self.select_thema = Select_Thema()
+
         self.select_face_eyebrow = Select_face_Eyebrow()
+        self.select_face_eyeshadow = Select_face_Eyeshadow()
+        self.select_face_eyeliner = Select_face_Eyeliner()
+        self.select_face_blusher = Select_face_Blusher()
+        self.select_face_lip = Select_face_Lip()
+
 
 
         self.stk_w.addWidget(self.home)
         self.stk_w.addWidget(self.face_capture)
         self.stk_w.addWidget(self.menu)
         self.stk_w.addWidget(self.personal_color)
+        self.stk_w.addWidget(self.select_thema)
         self.stk_w.addWidget(self.select_face_thema_base)
         self.stk_w.addWidget(self.select_face_thema_capture)
-        self.stk_w.addWidget(self.select_thema)
+
         self.stk_w.addWidget(self.select_face_eyebrow)
+        self.stk_w.addWidget(self.select_face_eyeshadow)
+        self.stk_w.addWidget(self.select_face_eyeliner)
+        self.stk_w.addWidget(self.select_face_blusher)
+        self.stk_w.addWidget(self.select_face_lip)
+
+
 
         widget_laytout.addWidget(self.stk_w)
         self.setLayout(widget_laytout)
@@ -80,6 +100,11 @@ class MAIN_StackedWidget(QWidget):
         self.personal_color.pushButton_GoThema.clicked.connect(self.goToBaseMakeUp_Thema)
         self.select_face_thema_base.pushButton_GoSelectFaceCapture.clicked.connect(self.goToSelectFaceCapture)
         self.select_face_thema_capture.pushButton_GoThemaOrEyebrowAR.clicked.connect(self.goToThemaOrEyebrowAR)
+
+        self.select_face_eyebrow.pushButton_GoEyeshadowAR.clicked.connect(self.goToEyshadowAR)
+        self.select_face_eyeshadow.pushButton_GoEyelinerAR.clicked.connect(self.goToEyelinerAR)
+        self.select_face_eyeliner.pushButton_GoBlusherAR.clicked.connect(self.goToBlusherAR)
+        self.select_face_blusher.pushButton_GoLipAR.clicked.connect(self.goToLipAR)
 
 
         ## 화면전환 PREVIOUS
@@ -110,6 +135,21 @@ class MAIN_StackedWidget(QWidget):
             self.stk_w.setCurrentWidget(self.select_face_eyebrow)
         else:
             self.stk_w.setCurrentWidget(self.select_thema)
+
+    def goToEyshadowAR(self):
+        self.stk_w.setCurrentWidget(self.select_face_eyeshadow)
+
+    def goToEyelinerAR(self):
+        self.stk_w.setCurrentWidget(self.select_face_eyeliner)
+
+    def goToBlusherAR(self):
+        self.stk_w.setCurrentWidget(self.select_face_blusher)
+
+    def goToLipAR(self):
+        self.stk_w.setCurrentWidget(self.select_face_lip)
+
+
+
 
 
 
