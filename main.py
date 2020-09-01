@@ -16,7 +16,7 @@
 
 # 4. frame (본격적인 화장 시작)
 #  -> 눈썹프레임 - 아이새됴우프레임 - 아이라이너 프레임 - 블러셔 프레임 - 립(프레임은 없음)
-# 5. 가상화장한 얼굴 - 실제 화장한 얼굴 비교
+# 5. 가상화장한 얼굴 - 실제 화장한 얼굴 비교 ~~ Home
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import *
@@ -97,7 +97,7 @@ class MAIN_StackedWidget(QWidget):
         self.menu.pushButton_GoSelectFace.clicked.connect(self.goToBaseMakeUp_Face)
         self.menu.pushButton_GoSelectThema.clicked.connect(self.goToBaseMakeUp_Thema)
 
-        self.personal_color.pushButton_GoThema.clicked.connect(self.goToBaseMakeUp_Thema)
+        self.personal_color.pushButton_GoThema.clicked.connect(self.goToSelectBase_Thema)
         self.select_face_thema_base.pushButton_GoSelectFaceCapture.clicked.connect(self.goToSelectFaceCapture)
         self.select_face_thema_capture.pushButton_GoThemaOrEyebrowAR.clicked.connect(self.goToThemaOrEyebrowAR)
 
@@ -108,7 +108,21 @@ class MAIN_StackedWidget(QWidget):
 
 
         ## 화면전환 PREVIOUS
+        self.face_capture.pushButton_GoHome.clicked.connect(self.goToHome)
+        self.menu.pushButton_GoFaceCapture.clicked.connect(self.goToFaceCapture)
+        self.select_face_thema_base.pushButton_GoMenuOrColor.clicked.connect(self.goToMenuOrColor)
+        self.select_face_thema_capture.pushButton_GoSelectBase.clicked.connect(self.goToSelectBase)
 
+        self.select_face_eyebrow.pushButton_GoSlectFaceCapture.clicked.connect(self.goToSelectFaceCapture)
+        self.select_face_eyeshadow.pushButton_GoEyebrowAR.clicked.connect(self.goToEyebrowAR)
+        self.select_face_eyeliner.pushButton_GoEyeshadowAR.clicked.connect(self.goToEyshadowAR)
+        self.select_face_blusher.pushButton_GoEyelinerAR.clicked.connect(self.goToEyelinerAR)
+        self.select_face_lip.pushButton_GoBlusherAR.clicked.connect(self.goToBlusherAR)
+
+        self.personal_color.pushButton_GoMenu.clicked.connect(self.goToMenu)
+        self.select_thema.pushButton_GoSelectCapture.clicked.connect(self.goToSelectFaceCapture)
+
+    ## 화면전환 NEXT & PREVIOUS
     def goToFaceCapture(self):
         self.stk_w.setCurrentWidget(self.face_capture)
 
@@ -116,14 +130,21 @@ class MAIN_StackedWidget(QWidget):
         self.stk_w.setCurrentWidget(self.menu)
 
     def goToPersonalColor(self):
+        self.menu.btn = "personal_color"
+        self.select_face_thema_base.pushButton_GoMenuOrColor.setText("BACK")
         self.stk_w.setCurrentWidget(self.personal_color)
 
     def goToBaseMakeUp_Face(self):
         self.menu.btn = "select_face"
+        self.select_face_thema_base.pushButton_GoMenuOrColor.setText("MENU")
         self.stk_w.setCurrentWidget(self.select_face_thema_base)
 
     def goToBaseMakeUp_Thema(self):
         self.menu.btn = "select_thema"
+        self.select_face_thema_base.pushButton_GoMenuOrColor.setText("MENU")
+        self.stk_w.setCurrentWidget(self.select_face_thema_base)
+
+    def goToSelectBase_Thema(self):
         self.stk_w.setCurrentWidget(self.select_face_thema_base)
 
     def goToSelectFaceCapture(self):
@@ -147,6 +168,25 @@ class MAIN_StackedWidget(QWidget):
 
     def goToLipAR(self):
         self.stk_w.setCurrentWidget(self.select_face_lip)
+
+
+    ## 화면전환 PREVIOUS
+    def goToHome(self):
+        self.stk_w.setCurrentWidget(self.home)
+
+    def goToSelectBase(self):
+        self.stk_w.setCurrentWidget(self.select_face_thema_base)
+
+    def goToMenuOrColor(self):
+        print(self.menu.btn)
+        if(self.menu.btn=="personal_color"):
+            self.stk_w.setCurrentWidget(self.personal_color)
+        else:
+            self.stk_w.setCurrentWidget(self.menu)
+
+    def goToEyebrowAR(self):
+        self.stk_w.setCurrentWidget(self.select_face_eyebrow)
+
 
 
 

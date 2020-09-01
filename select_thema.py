@@ -9,7 +9,7 @@ class Select_Thema(QWidget):
         super(Select_Thema, self).__init__()
 
         self.label_thema = QtWidgets.QLabel(self)
-        self.label_thema.setGeometry(QtCore.QRect(10, 20, 271, 61))
+        self.label_thema.setGeometry(QtCore.QRect(140, 20, 271, 61))
         self.label_thema.setObjectName("label_thema")
         font = QtGui.QFont()
         font.setPointSize(18)
@@ -24,3 +24,12 @@ class Select_Thema(QWidget):
         self.pushButton_GoFrame.setFont(font)
         self.pushButton_GoFrame.setText("FRAME")
         self.pushButton_GoFrame.setObjectName("pushButton_GoFrame")
+
+        self.pushButton_GoSelectCapture = QtWidgets.QPushButton(self)
+        self.pushButton_GoSelectCapture.setGeometry(QtCore.QRect(10, 10, 101, 101))
+        font = QtGui.QFont()
+        font.setFamily("AlternateGothic2 BT")
+        font.setPointSize(20)
+        self.pushButton_GoSelectCapture.setFont(font)
+        self.pushButton_GoSelectCapture.setText("BACK")
+        self.pushButton_GoSelectCapture.setObjectName("pushButton_GoSelectCapture")

@@ -17,12 +17,12 @@ class Select_face_Lip(QWidget):
     def __init__(self):
         super(Select_face_Lip, self).__init__()
         self.label_lipAR = QtWidgets.QLabel(self)
-        self.label_lipAR.setGeometry(QtCore.QRect(10, 20, 321, 61))
+        self.label_lipAR.setGeometry(QtCore.QRect(140, 20, 321, 61))
         self.label_lipAR.setObjectName("label_lipAR")
         font = QtGui.QFont()
         font.setPointSize(18)
         self.label_lipAR.setFont(font)
-        self.label_lipAR.setText("selcect_face_lip화면")
+        self.label_lipAR.setText("selcect_face\nlip화면")
 
 
         self.pushButton_GoFrame = QtWidgets.QPushButton(self)
@@ -33,3 +33,12 @@ class Select_face_Lip(QWidget):
         self.pushButton_GoFrame.setFont(font)
         self.pushButton_GoFrame.setText("FRAME")
         self.pushButton_GoFrame.setObjectName("pushButton_GoFrame")
+
+        self.pushButton_GoBlusherAR = QtWidgets.QPushButton(self)
+        self.pushButton_GoBlusherAR.setGeometry(QtCore.QRect(10, 10, 101, 101))
+        font = QtGui.QFont()
+        font.setFamily("AlternateGothic2 BT")
+        font.setPointSize(20)
+        self.pushButton_GoBlusherAR.setFont(font)
+        self.pushButton_GoBlusherAR.setText("BACK")
+        self.pushButton_GoBlusherAR.setObjectName("pushButton_GoBlusherAR")

@@ -18,12 +18,12 @@ class Select_face_Blusher(QWidget):
         super(Select_face_Blusher, self).__init__()
 
         self.label_blusherAR = QtWidgets.QLabel(self)
-        self.label_blusherAR.setGeometry(QtCore.QRect(10, 10, 381, 61))
+        self.label_blusherAR.setGeometry(QtCore.QRect(140, 10, 381, 61))
         self.label_blusherAR.setObjectName("label_blusherAR")
         font = QtGui.QFont()
         font.setPointSize(18)
         self.label_blusherAR.setFont(font)
-        self.label_blusherAR.setText("selcect_face_blusher화면")
+        self.label_blusherAR.setText("selcect_face\nblusher화면")
 
 
         self.pushButton_GoLipAR = QtWidgets.QPushButton(self)
@@ -34,3 +34,12 @@ class Select_face_Blusher(QWidget):
         self.pushButton_GoLipAR.setFont(font)
         self.pushButton_GoLipAR.setText("NEXT")
         self.pushButton_GoLipAR.setObjectName("pushButton_GoLipAR")
+
+        self.pushButton_GoEyelinerAR = QtWidgets.QPushButton(self)
+        self.pushButton_GoEyelinerAR.setGeometry(QtCore.QRect(10, 10, 101, 101))
+        font = QtGui.QFont()
+        font.setFamily("AlternateGothic2 BT")
+        font.setPointSize(20)
+        self.pushButton_GoEyelinerAR.setFont(font)
+        self.pushButton_GoEyelinerAR.setText("BACK")
+        self.pushButton_GoEyelinerAR.setObjectName("pushButton_GoEyelinerAR")

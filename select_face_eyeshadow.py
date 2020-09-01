@@ -18,12 +18,12 @@ class Select_face_Eyeshadow(QWidget):
         super(Select_face_Eyeshadow, self).__init__()
 
         self.label_eyeshadowAR = QtWidgets.QLabel(self)
-        self.label_eyeshadowAR.setGeometry(QtCore.QRect(10, 10, 421, 61))
+        self.label_eyeshadowAR.setGeometry(QtCore.QRect(140, 10, 421, 61))
         self.label_eyeshadowAR.setObjectName("label_eyeshadowAR")
         font = QtGui.QFont()
         font.setPointSize(18)
         self.label_eyeshadowAR.setFont(font)
-        self.label_eyeshadowAR.setText("selcect_face_eyeshadow화면")
+        self.label_eyeshadowAR.setText("selcect_face\neyeshadow화면")
 
 
         self.pushButton_GoEyelinerAR = QtWidgets.QPushButton(self)
@@ -34,3 +34,12 @@ class Select_face_Eyeshadow(QWidget):
         self.pushButton_GoEyelinerAR.setFont(font)
         self.pushButton_GoEyelinerAR.setText("NEXT")
         self.pushButton_GoEyelinerAR.setObjectName("pushButton_GoEyelinerAR")
+
+        self.pushButton_GoEyebrowAR = QtWidgets.QPushButton(self)
+        self.pushButton_GoEyebrowAR.setGeometry(QtCore.QRect(10, 10, 101, 101))
+        font = QtGui.QFont()
+        font.setFamily("AlternateGothic2 BT")
+        font.setPointSize(20)
+        self.pushButton_GoEyebrowAR.setFont(font)
+        self.pushButton_GoEyebrowAR.setText("BACK")
+        self.pushButton_GoEyebrowAR.setObjectName("pushButton_GoEyebrowAR")

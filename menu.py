@@ -9,7 +9,7 @@ class Menu(QWidget):
         super(Menu, self).__init__()
 
         self.label_menu = QtWidgets.QLabel(self)
-        self.label_menu.setGeometry(QtCore.QRect(10, 10, 181, 61))
+        self.label_menu.setGeometry(QtCore.QRect(190, 10, 181, 61))
         self.label_menu.setObjectName("label_menu")
         font = QtGui.QFont()
         font.setPointSize(20)
@@ -45,3 +45,12 @@ class Menu(QWidget):
         self.pushButton_GoPersonalColor.setFont(font)
         self.pushButton_GoPersonalColor.setText("PERSONAL COLOR")
         self.pushButton_GoPersonalColor.setObjectName("pushButton_GoPersonalColor")
+
+        self.pushButton_GoFaceCapture = QtWidgets.QPushButton(self)
+        self.pushButton_GoFaceCapture.setGeometry(QtCore.QRect(10, 10, 101, 101))
+        font = QtGui.QFont()
+        font.setFamily("AlternateGothic2 BT")
+        font.setPointSize(20)
+        self.pushButton_GoFaceCapture.setFont(font)
+        self.pushButton_GoFaceCapture.setText("BACK")
+        self.pushButton_GoFaceCapture.setObjectName("pushButton_GoFaceCapture")
