@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 
-class Home(QWidget): ## Before label
+class Home(QWidget):
 
     def __init__(self):
         super(Home, self).__init__()

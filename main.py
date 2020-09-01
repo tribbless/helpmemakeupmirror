@@ -38,6 +38,15 @@ from select_face_eyeliner import Select_face_Eyeliner
 from select_face_blusher import Select_face_Blusher
 from select_face_lip import Select_face_Lip
 
+from frame_eyebrow import Frame_Eyebrow
+from frame_eyeshadow import Frame_Eyeshadow
+from frame_eyeliner import Frame_Eyeliner
+from frame_blusher import Frame_Blusher
+from frame_lip import Frame_Lip
+
+from RealFace_ARFace_compare import RealFace_ARFace_Compare
+
+##### python -m PyQt5.uic.pyuic -x ex_02.ui -o ex_02.py
 
 class MAIN_StackedWidget(QWidget):
     def __init__(self):
@@ -67,6 +76,14 @@ class MAIN_StackedWidget(QWidget):
         self.select_face_blusher = Select_face_Blusher()
         self.select_face_lip = Select_face_Lip()
 
+        self.frame_eyebrow = Frame_Eyebrow()
+        self.frame_eyeshadow = Frame_Eyeshadow()
+        self.frame_eyeliner = Frame_Eyeliner()
+        self.frame_blusher = Frame_Blusher()
+        self.frame_lip = Frame_Lip()
+
+        self.Real_AR_Face_compare = RealFace_ARFace_Compare()
+
 
 
         self.stk_w.addWidget(self.home)
@@ -82,6 +99,14 @@ class MAIN_StackedWidget(QWidget):
         self.stk_w.addWidget(self.select_face_eyeliner)
         self.stk_w.addWidget(self.select_face_blusher)
         self.stk_w.addWidget(self.select_face_lip)
+
+        self.stk_w.addWidget(self.frame_eyebrow)
+        self.stk_w.addWidget(self.frame_eyeshadow)
+        self.stk_w.addWidget(self.frame_eyeliner)
+        self.stk_w.addWidget(self.frame_blusher)
+        self.stk_w.addWidget(self.frame_lip)
+
+        self.stk_w.addWidget(self.Real_AR_Face_compare)
 
 
 
@@ -100,11 +125,23 @@ class MAIN_StackedWidget(QWidget):
         self.personal_color.pushButton_GoThema.clicked.connect(self.goToSelectBase_Thema)
         self.select_face_thema_base.pushButton_GoSelectFaceCapture.clicked.connect(self.goToSelectFaceCapture)
         self.select_face_thema_capture.pushButton_GoThemaOrEyebrowAR.clicked.connect(self.goToThemaOrEyebrowAR)
+        self.select_thema.pushButton_GoFrame.clicked.connect(self.goToFrameEyebrow)
 
         self.select_face_eyebrow.pushButton_GoEyeshadowAR.clicked.connect(self.goToEyshadowAR)
         self.select_face_eyeshadow.pushButton_GoEyelinerAR.clicked.connect(self.goToEyelinerAR)
         self.select_face_eyeliner.pushButton_GoBlusherAR.clicked.connect(self.goToBlusherAR)
         self.select_face_blusher.pushButton_GoLipAR.clicked.connect(self.goToLipAR)
+        self.select_face_lip.pushButton_GoFrame.clicked.connect(self.goToFrameEyebrow)
+
+        self.frame_eyebrow.pushButton_GoFrameEyesahdow.clicked.connect(self.goToFrameEyeshadow)
+        self.frame_eyeshadow.pushButton_GoFrameEyeliner.clicked.connect(self.goToFrameEyeliner)
+        self.frame_eyeliner.pushButton_GoBlusher.clicked.connect(self.goToFrameBlusher)
+        self.frame_blusher.pushButton_GoLip.clicked.connect(self.goToFrameLip)
+        self.frame_lip.pushButton_GoCompare.clicked.connect(self.goToCompare)
+
+        self.Real_AR_Face_compare.pushButton_GoHome.clicked.connect(self.goToHome)
+
+
 
 
         ## 화면전환 PREVIOUS
@@ -121,6 +158,16 @@ class MAIN_StackedWidget(QWidget):
 
         self.personal_color.pushButton_GoMenu.clicked.connect(self.goToMenu)
         self.select_thema.pushButton_GoSelectCapture.clicked.connect(self.goToSelectFaceCapture)
+
+        self.frame_eyebrow.pushButton_GoAROrThema.clicked.connect(self.goToAROrThema)
+        self.frame_eyeshadow.pushButton_GoFrameEyebrow.clicked.connect(self.goToFrameEyebrow)
+        self.frame_eyeliner.pushButton_GoEyesahdow.clicked.connect(self.goToFrameEyeshadow)
+        self.frame_blusher.pushButton_GoEyeliner.clicked.connect(self.goToFrameEyeliner)
+        self.frame_lip.pushButton_GoBlusher.clicked.connect(self.goToFrameBlusher)
+
+        self.Real_AR_Face_compare.pushButton_GoFrameLip.clicked.connect(self.goToFrameLip)
+
+
 
     ## 화면전환 NEXT & PREVIOUS
     def goToFaceCapture(self):
@@ -169,6 +216,24 @@ class MAIN_StackedWidget(QWidget):
     def goToLipAR(self):
         self.stk_w.setCurrentWidget(self.select_face_lip)
 
+    def goToFrameEyebrow(self):
+        self.stk_w.setCurrentWidget(self.frame_eyebrow)
+
+    def goToFrameEyeshadow(self):
+        self.stk_w.setCurrentWidget(self.frame_eyeshadow)
+
+    def goToFrameEyeliner(self):
+        self.stk_w.setCurrentWidget(self.frame_eyeliner)
+
+    def goToFrameBlusher(self):
+        self.stk_w.setCurrentWidget(self.frame_blusher)
+
+    def goToFrameLip(self):
+        self.stk_w.setCurrentWidget(self.frame_lip)
+
+    def goToCompare(self):
+        self.stk_w.setCurrentWidget(self.Real_AR_Face_compare)
+
 
     ## 화면전환 PREVIOUS
     def goToHome(self):
@@ -186,6 +251,14 @@ class MAIN_StackedWidget(QWidget):
 
     def goToEyebrowAR(self):
         self.stk_w.setCurrentWidget(self.select_face_eyebrow)
+
+    def goToAROrThema(self):
+        print(self.menu.btn)
+        if(self.menu.btn=="select_face"):
+            self.stk_w.setCurrentWidget(self.select_face_lip)
+        else:
+            self.stk_w.setCurrentWidget(self.select_thema)
+
 
 
 
