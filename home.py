@@ -23,10 +23,34 @@ class Home(QWidget):
         font = QtGui.QFont()
         font.setFamily("AlternateGothic2 BT")
         font.setPointSize(28)
-        self.pushButton_GoFaceCatprue.setText("Face Capture")
+        self.pushButton_GoFaceCatprue.setText("Face Detector \n\n CAPTURE YOUR FACE")
         self.pushButton_GoFaceCatprue.setFont(font)
         self.pushButton_GoFaceCatprue.setObjectName("pushButton_GoFaceCatprue")
-
+        # ui test
+        self.pushButton_GoFaceCatprue.setStyleSheet("/* Rectangle 16 */\n"
+                                                    "position: absolute;\n"
+                                                    "width: 665.67px;\n"
+                                                    "height: 632.68px;\n"
+                                                    "\n"
+                                                    "background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+                                                    "  stop: 0 #B5A4E7, \n"
+                                                    "  stop: 1.0 #F3C3D6);\n"
+                                                    "\n"
+                                                    "/* CAPTURE YOUR FACE */\n"
+                                                    "position: absolute;\n"
+                                                    "top:50%;\n"
+                                                    "left:50%;\n"
+                                                    "width: 396px;\n"
+                                                    "height: 80px;\n"
+                                                    "\n"
+                                                    "font-family: Consolas;\n"
+                                                    "font-style: normal;\n"
+                                                    "font-weight: 700;\n"
+                                                    "font-size: 20px;\n"
+                                                    "line-height: 22px;\n"
+                                                    "\n"
+                                                    "color: #FFFFFF;\n"
+                                                    "border: 1px solid #FFFFFF;")
 
         '''
                 hbox = QHBoxLayout()

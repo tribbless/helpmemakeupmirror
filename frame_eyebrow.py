@@ -2,7 +2,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
-
+from PyQt5.QtGui import QBrush
 class Frame_Eyebrow(QWidget):
 
     def __init__(self):
@@ -18,13 +18,15 @@ class Frame_Eyebrow(QWidget):
 
         #이미지
         self.label_manual_background = QtWidgets.QLabel(self)
-        self.label_manual_background.setGeometry(QtCore.QRect(5, 520, 526, 255))
         self.label_manual_background.setObjectName("label_manual_background")
-        font = QtGui.QFont()
-        font.setPointSize(18)
+        palette = QtGui.QPalette()
+        palette.setColor(QtGui.QPalette.Text, QtCore.Qt.white)
+        self.label_manual_background.setPalette(palette)
+        font = QtGui.QFont("Times", 15)
         self.label_manual_background.setFont(font)
-        self.label_manual_background.setStyleSheet('background:yellow')
-        self.label_manual_background.setText("나는 이미지")
+        self.label_manual_background.setStyleSheet("border-image: url(image/frameBack.png);")
+        self.label_manual_background.setText("긴 얼굴형에는 가로로 어쩌꾸 저쩌구를 한다.")
+        self.label_manual_background.setGeometry(QtCore.QRect(5, 520, 526, 255))
 
         '''  이미지에 맞게 label사이즈 및 위치 조절해야함~~~   : 설명쓰는 공간~~
         self.label_manual = QtWidgets.QLabel(self)
@@ -44,8 +46,9 @@ class Frame_Eyebrow(QWidget):
         font.setFamily("AlternateGothic2 BT")
         font.setPointSize(20)
         self.pushButton_GoFrameEyesahdow.setFont(font)
-        self.pushButton_GoFrameEyesahdow.setText("NEXT")
+        self.pushButton_GoFrameEyesahdow.setText("eyeshadow")
         self.pushButton_GoFrameEyesahdow.setObjectName("pushButton_GoFrameEyesahdow")
+        self.pushButton_GoFrameEyesahdow.setStyleSheet("background:rgb(144,144,144);");
 
         self.pushButton_GoAROrThema = QtWidgets.QPushButton(self)
         self.pushButton_GoAROrThema.setGeometry(QtCore.QRect(10, 10, 130, 40))
@@ -55,3 +58,4 @@ class Frame_Eyebrow(QWidget):
         self.pushButton_GoAROrThema.setFont(font)
         self.pushButton_GoAROrThema.setText("BACK")
         self.pushButton_GoAROrThema.setObjectName("pushButton_GoAROrThema")
+        self.pushButton_GoAROrThema.setStyleSheet("background:rgb(144,144,144);");

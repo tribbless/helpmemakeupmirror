@@ -16,15 +16,17 @@ class Frame_Eyeshadow(QWidget):
         self.label_frameEyeshadow.setFont(font)
         self.label_frameEyeshadow.setText("frame_eyeshadow")
 
-        #이미지
+        # 이미지
         self.label_manual_background = QtWidgets.QLabel(self)
-        self.label_manual_background.setGeometry(QtCore.QRect(5, 520, 526, 255))
         self.label_manual_background.setObjectName("label_manual_background")
-        font = QtGui.QFont()
-        font.setPointSize(18)
+        palette = QtGui.QPalette()
+        palette.setColor(QtGui.QPalette.Text, QtCore.Qt.white)
+        self.label_manual_background.setPalette(palette)
+        font = QtGui.QFont("Times", 15)
         self.label_manual_background.setFont(font)
-        self.label_manual_background.setStyleSheet('background:yellow')
-        self.label_manual_background.setText("나는 이미지")
+        self.label_manual_background.setStyleSheet("border-image: url(image/frameBack.png);")
+        self.label_manual_background.setText("긴 얼굴형에는 가로로 어쩌꾸 저쩌구를 한다.")
+        self.label_manual_background.setGeometry(QtCore.QRect(5, 520, 526, 255))
 
         '''  이미지에 맞게 label사이즈 및 위치 조절해야함~~~   : 설명쓰는 공간~~
         self.label_manual = QtWidgets.QLabel(self)
@@ -43,8 +45,9 @@ class Frame_Eyeshadow(QWidget):
         font.setFamily("AlternateGothic2 BT")
         font.setPointSize(20)
         self.pushButton_GoFrameEyeliner.setFont(font)
-        self.pushButton_GoFrameEyeliner.setText("NEXT")
+        self.pushButton_GoFrameEyeliner.setText("eye liner")
         self.pushButton_GoFrameEyeliner.setObjectName("pushButton_GoFrameEyeliner")
+        self.pushButton_GoFrameEyeliner.setStyleSheet("background:rgb(144,144,144);");
 
         self.pushButton_GoFrameEyebrow = QtWidgets.QPushButton(self)
         self.pushButton_GoFrameEyebrow.setGeometry(QtCore.QRect(10, 10, 130,40))
@@ -52,5 +55,6 @@ class Frame_Eyeshadow(QWidget):
         font.setFamily("AlternateGothic2 BT")
         font.setPointSize(20)
         self.pushButton_GoFrameEyebrow.setFont(font)
-        self.pushButton_GoFrameEyebrow.setText("BACK")
+        self.pushButton_GoFrameEyebrow.setText("eyebrow")
         self.pushButton_GoFrameEyebrow.setObjectName("pushButton_GoFrameEyebrow")
+        self.pushButton_GoFrameEyebrow.setStyleSheet("background:rgb(144,144,144);");

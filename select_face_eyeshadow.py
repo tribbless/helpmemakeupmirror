@@ -25,15 +25,17 @@ class Select_face_Eyeshadow(QWidget):
         self.label_eyeshadowAR.setFont(font)
         self.label_eyeshadowAR.setText("face_eyeshadow")
 
-        #이미지
+        # 이미지
         self.label_select = QtWidgets.QLabel(self)
-        self.label_select.setGeometry(QtCore.QRect(5, 490, 526, 280))
         self.label_select.setObjectName("label_select")
-        font = QtGui.QFont()
-        font.setPointSize(18)
+        palette = QtGui.QPalette()
+        palette.setColor(QtGui.QPalette.Text, QtCore.Qt.white)
+        self.label_select.setPalette(palette)
+        font = QtGui.QFont("Times", 15)
         self.label_select.setFont(font)
-        self.label_select.setStyleSheet('background:yellow')
-        self.label_select.setText("나는 이미지")
+        self.label_select.setStyleSheet("border-image: url(image/selectAR.png);")
+        self.label_select.setText("30%")
+        self.label_select.setGeometry(QtCore.QRect(5, 490, 526, 280))
 
 
         self.pushButton_GoEyelinerAR = QtWidgets.QPushButton(self)
