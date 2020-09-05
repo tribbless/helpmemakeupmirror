@@ -16,6 +16,18 @@ class Personal_Color(QWidget):
         self.label_personalColor.setFont(font)
         self.label_personalColor.setText("personal color화면")
 
+        #이미지
+        self.label_manual_background = QtWidgets.QLabel(self)
+        self.label_manual_background.setObjectName("label_manual_background")
+        palette = QtGui.QPalette()
+        palette.setColor(QtGui.QPalette.Text, QtCore.Qt.white)
+        self.label_manual_background.setPalette(palette)
+        font = QtGui.QFont("Times", 15)
+        self.label_manual_background.setFont(font)
+        self.label_manual_background.setStyleSheet("border-image: url(image/frameBack.png);")
+        self.label_manual_background.setText("SPRING WARM")
+        self.label_manual_background.setGeometry(QtCore.QRect(5, 520, 526, 255))
+
         self.pushButton_GoThema = QtWidgets.QPushButton(self)
         self.pushButton_GoThema.setGeometry(QtCore.QRect(401, 10, 130, 40))
         font = QtGui.QFont()

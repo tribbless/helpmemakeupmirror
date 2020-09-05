@@ -15,17 +15,29 @@ class Menu(QWidget):
         font.setPointSize(20)
         self.label_title.setFont(font)
         self.label_title.setText("HELP ME MAKE UP MIRROR")
+        self.label_title.setStyleSheet("/* Rectangle 16 */\n"
+                                                    "/* HELP ME MAKEUP MIRROR   */\n"
+                                                    "position: absolute;\n"
+                                                    "width: 516px;\n"
+                                                    "height: 45px;\n"
+                                                    "\n"
+                                                    "font-family: Monaco;\n"
+                                                    "font-style: normal;\n"
+                                                    "font-weight: 300;\n"
+                                                    "font-size: 25px;\n"
+                                                    "line-height: 25px;\n"
+                                                    "\n"
+                                                    "color: #B7B7B7;\n")
+
 
         ##메뉴이미지
         self.label_menu = QtWidgets.QLabel(self)
-        self.label_menu.setGeometry(QtCore.QRect(80, 200, 375, 375))
         self.label_menu.setObjectName("label_menu")
-        font = QtGui.QFont()
-        font.setPointSize(20)
-        self.label_menu.setFont(font)
-        self.label_menu.setStyleSheet('background:yellow')
-        self.label_menu.setText("나는 메뉴이미지")
-
+        self.label_menu.resize(300, 300)
+        pixmap = QPixmap("image/menu1.png")
+        pixmap = pixmap.scaledToWidth(375)
+        self.label_menu.setPixmap(QPixmap(pixmap))
+        self.label_menu.setGeometry(QtCore.QRect(80, 200, 375, 375))
 
 
         self.pushButton_GoSelectFace = QtWidgets.QPushButton(self)
