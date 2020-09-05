@@ -30,7 +30,7 @@
      </font>
     </property>
     <property name="text">
-     <string>NEXT</string>
+     <string>RESULT</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_2">

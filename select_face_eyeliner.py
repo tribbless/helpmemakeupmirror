@@ -18,16 +18,26 @@ class Select_face_Eyeliner(QWidget):
         super(Select_face_Eyeliner, self).__init__()
 
         self.label_eyelinerAR = QtWidgets.QLabel(self)
-        self.label_eyelinerAR.setGeometry(QtCore.QRect(140, 10, 371, 61))
+        self.label_eyelinerAR.setGeometry(QtCore.QRect(160, 10, 241, 40))
         self.label_eyelinerAR.setObjectName("label_eyelinerAR")
         font = QtGui.QFont()
         font.setPointSize(18)
         self.label_eyelinerAR.setFont(font)
-        self.label_eyelinerAR.setText("selcect_face\neyeliner화면")
+        self.label_eyelinerAR.setText("face_eyeliner")
+
+        #이미지
+        self.label_select = QtWidgets.QLabel(self)
+        self.label_select.setGeometry(QtCore.QRect(5, 490, 526, 280))
+        self.label_select.setObjectName("label_select")
+        font = QtGui.QFont()
+        font.setPointSize(18)
+        self.label_select.setFont(font)
+        self.label_select.setStyleSheet('background:yellow')
+        self.label_select.setText("나는 이미지")
 
 
         self.pushButton_GoBlusherAR = QtWidgets.QPushButton(self)
-        self.pushButton_GoBlusherAR.setGeometry(QtCore.QRect(430, 10, 101, 101))
+        self.pushButton_GoBlusherAR.setGeometry(QtCore.QRect(401, 10, 130, 40))
         font = QtGui.QFont()
         font.setFamily("AlternateGothic2 BT")
         font.setPointSize(20)
@@ -36,7 +46,7 @@ class Select_face_Eyeliner(QWidget):
         self.pushButton_GoBlusherAR.setObjectName("pushButton_GoBlusherAR")
 
         self.pushButton_GoEyeshadowAR = QtWidgets.QPushButton(self)
-        self.pushButton_GoEyeshadowAR.setGeometry(QtCore.QRect(10, 10, 101, 101))
+        self.pushButton_GoEyeshadowAR.setGeometry(QtCore.QRect(10, 10, 130, 40))
         font = QtGui.QFont()
         font.setFamily("AlternateGothic2 BT")
         font.setPointSize(20)

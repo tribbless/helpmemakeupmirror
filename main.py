@@ -58,7 +58,9 @@ class MAIN_StackedWidget(QWidget):
         ## 나중에 jetson nano 화면을 회전해야함.
         ## 나중에 버튼위치 및 크기를 2배씩 곱해야함
         # self.resize(1122, 1587) # 원본 미러 크기
-        self.resize(561, 793.5)  # 원본 미러 크기에서 나누기 2함
+        #self.resize(561, 793.5)  # 원본 미러 크기에서 나누기 2함
+        self.resize(561,793)
+
         widget_laytout = QHBoxLayout()
 
 

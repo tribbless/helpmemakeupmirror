@@ -18,7 +18,7 @@ class Select_face_thema_Capture(QWidget): ## Before label
 
         ## 이 버튼은 Thema or Eyebrow AR 로 갑니다.
         self.pushButton_GoThemaOrEyebrowAR = QtWidgets.QPushButton(self)
-        self.pushButton_GoThemaOrEyebrowAR.setGeometry(QtCore.QRect(430, 10, 101, 101))
+        self.pushButton_GoThemaOrEyebrowAR.setGeometry(QtCore.QRect(401, 10, 130, 40))
         font = QtGui.QFont()
         font.setFamily("AlternateGothic2 BT")
         font.setPointSize(20)
@@ -27,7 +27,7 @@ class Select_face_thema_Capture(QWidget): ## Before label
         self.pushButton_GoThemaOrEyebrowAR.setObjectName("pushButton_GoThemaOrEyebrowAR")
 
         self.pushButton_GoSelectBase = QtWidgets.QPushButton(self)
-        self.pushButton_GoSelectBase.setGeometry(QtCore.QRect(10, 10, 101, 101))
+        self.pushButton_GoSelectBase.setGeometry(QtCore.QRect(10, 10, 130, 40))
         font = QtGui.QFont()
         font.setFamily("AlternateGothic2 BT")
         font.setPointSize(20)

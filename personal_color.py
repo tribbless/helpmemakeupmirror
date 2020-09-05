@@ -17,7 +17,7 @@ class Personal_Color(QWidget):
         self.label_personalColor.setText("personal color화면")
 
         self.pushButton_GoThema = QtWidgets.QPushButton(self)
-        self.pushButton_GoThema.setGeometry(QtCore.QRect(430, 10, 101, 101))
+        self.pushButton_GoThema.setGeometry(QtCore.QRect(401, 10, 130, 40))
         font = QtGui.QFont()
         font.setFamily("AlternateGothic2 BT")
         font.setPointSize(20)
@@ -26,7 +26,7 @@ class Personal_Color(QWidget):
         self.pushButton_GoThema.setObjectName("pushButton_GoThema")
 
         self.pushButton_GoMenu = QtWidgets.QPushButton(self)
-        self.pushButton_GoMenu.setGeometry(QtCore.QRect(10, 10, 101, 101))
+        self.pushButton_GoMenu.setGeometry(QtCore.QRect(10, 10, 130, 40))
         font = QtGui.QFont()
         font.setFamily("AlternateGothic2 BT")
         font.setPointSize(20)

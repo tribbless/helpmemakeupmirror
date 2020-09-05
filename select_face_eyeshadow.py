@@ -18,16 +18,26 @@ class Select_face_Eyeshadow(QWidget):
         super(Select_face_Eyeshadow, self).__init__()
 
         self.label_eyeshadowAR = QtWidgets.QLabel(self)
-        self.label_eyeshadowAR.setGeometry(QtCore.QRect(140, 10, 421, 61))
+        self.label_eyeshadowAR.setGeometry(QtCore.QRect(160, 10, 241, 40))
         self.label_eyeshadowAR.setObjectName("label_eyeshadowAR")
         font = QtGui.QFont()
         font.setPointSize(18)
         self.label_eyeshadowAR.setFont(font)
-        self.label_eyeshadowAR.setText("selcect_face\neyeshadow화면")
+        self.label_eyeshadowAR.setText("face_eyeshadow")
+
+        #이미지
+        self.label_select = QtWidgets.QLabel(self)
+        self.label_select.setGeometry(QtCore.QRect(5, 490, 526, 280))
+        self.label_select.setObjectName("label_select")
+        font = QtGui.QFont()
+        font.setPointSize(18)
+        self.label_select.setFont(font)
+        self.label_select.setStyleSheet('background:yellow')
+        self.label_select.setText("나는 이미지")
 
 
         self.pushButton_GoEyelinerAR = QtWidgets.QPushButton(self)
-        self.pushButton_GoEyelinerAR.setGeometry(QtCore.QRect(430, 10, 101, 101))
+        self.pushButton_GoEyelinerAR.setGeometry(QtCore.QRect(401, 10, 130, 40))
         font = QtGui.QFont()
         font.setFamily("AlternateGothic2 BT")
         font.setPointSize(20)
@@ -36,7 +46,7 @@ class Select_face_Eyeshadow(QWidget):
         self.pushButton_GoEyelinerAR.setObjectName("pushButton_GoEyelinerAR")
 
         self.pushButton_GoEyebrowAR = QtWidgets.QPushButton(self)
-        self.pushButton_GoEyebrowAR.setGeometry(QtCore.QRect(10, 10, 101, 101))
+        self.pushButton_GoEyebrowAR.setGeometry(QtCore.QRect(10, 10, 130, 40))
         font = QtGui.QFont()
         font.setFamily("AlternateGothic2 BT")
         font.setPointSize(20)

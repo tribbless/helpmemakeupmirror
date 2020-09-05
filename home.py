@@ -26,3 +26,27 @@ class Home(QWidget):
         self.pushButton_GoFaceCatprue.setText("Face Capture")
         self.pushButton_GoFaceCatprue.setFont(font)
         self.pushButton_GoFaceCatprue.setObjectName("pushButton_GoFaceCatprue")
+
+
+        '''
+                hbox = QHBoxLayout()
+        hbox.addStretch(1)
+        hbox.addWidget(self.label_2)
+        hbox.addStretch(1)
+        hbox.addWidget(self.pushButton_4)
+        hbox.addStretch(1)
+
+        vbox = QVBoxLayout()
+        vbox.addStretch(3)
+        vbox.addLayout(hbox)
+        vbox.addStretch(1)
+
+        self.setLayout(vbox)
+        
+        self.label_2.setMaximumSize(301,81)
+        
+        self.pushButton_4.setStyleSheet('QPushButton{background-color: rgba(0, 0, 0, 0.0)}')
+        
+        
+        
+        '''

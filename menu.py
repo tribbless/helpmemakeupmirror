@@ -8,18 +8,28 @@ class Menu(QWidget):
     def __init__(self):
         super(Menu, self).__init__()
 
+        self.label_title = QtWidgets.QLabel(self)
+        self.label_title.setGeometry(QtCore.QRect(50, 140, 461, 61))
+        self.label_title.setObjectName("label_title")
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        self.label_title.setFont(font)
+        self.label_title.setText("HELP ME MAKE UP MIRROR")
+
+        ##메뉴이미지
         self.label_menu = QtWidgets.QLabel(self)
-        self.label_menu.setGeometry(QtCore.QRect(190, 10, 181, 61))
+        self.label_menu.setGeometry(QtCore.QRect(80, 200, 375, 375))
         self.label_menu.setObjectName("label_menu")
         font = QtGui.QFont()
         font.setPointSize(20)
         self.label_menu.setFont(font)
-        self.label_menu.setText("menu화면")
+        self.label_menu.setStyleSheet('background:yellow')
+        self.label_menu.setText("나는 메뉴이미지")
 
 
 
         self.pushButton_GoSelectFace = QtWidgets.QPushButton(self)
-        self.pushButton_GoSelectFace.setGeometry(QtCore.QRect(130, 210, 300, 100))
+        self.pushButton_GoSelectFace.setGeometry(QtCore.QRect(10, 590, 231, 41))
         font = QtGui.QFont()
         font.setFamily("AlternateGothic2 BT")
         font.setPointSize(22)
@@ -29,7 +39,7 @@ class Menu(QWidget):
 
 
         self.pushButton_GoSelectThema = QtWidgets.QPushButton(self)
-        self.pushButton_GoSelectThema.setGeometry(QtCore.QRect(130, 310, 300, 100))
+        self.pushButton_GoSelectThema.setGeometry(QtCore.QRect(10, 629, 231, 51))
         font = QtGui.QFont()
         font.setFamily("AlternateGothic2 BT")
         font.setPointSize(22)
@@ -38,7 +48,7 @@ class Menu(QWidget):
         self.pushButton_GoSelectThema.setObjectName("pushButton_GoSelectThema")
 
         self.pushButton_GoPersonalColor = QtWidgets.QPushButton(self)
-        self.pushButton_GoPersonalColor.setGeometry(QtCore.QRect(130, 410, 300, 100))
+        self.pushButton_GoPersonalColor.setGeometry(QtCore.QRect(10, 680, 231, 51))
         font = QtGui.QFont()
         font.setFamily("AlternateGothic2 BT")
         font.setPointSize(22)
@@ -47,10 +57,11 @@ class Menu(QWidget):
         self.pushButton_GoPersonalColor.setObjectName("pushButton_GoPersonalColor")
 
         self.pushButton_GoFaceCapture = QtWidgets.QPushButton(self)
-        self.pushButton_GoFaceCapture.setGeometry(QtCore.QRect(10, 10, 101, 101))
+        self.pushButton_GoFaceCapture.setGeometry(QtCore.QRect(10, 10, 130, 40))
         font = QtGui.QFont()
         font.setFamily("AlternateGothic2 BT")
         font.setPointSize(20)
         self.pushButton_GoFaceCapture.setFont(font)
         self.pushButton_GoFaceCapture.setText("BACK")
         self.pushButton_GoFaceCapture.setObjectName("pushButton_GoFaceCapture")
+
