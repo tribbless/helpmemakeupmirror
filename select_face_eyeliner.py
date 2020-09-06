@@ -61,6 +61,14 @@ class Select_face_Eyeliner(QWidget):
         self.slider.setMinimum(0)
         self.slider.setMaximum(100)
         self.slider.valueChanged.connect(self.changeValue)
+        self.slider.setStyleSheet('QSlider::groove:horizontal { border-radius: 1px; height: 5px;margin: 0px;background-color: rgb(52, 59, 72);}'
+                                  'QSlider::groove:horizontal:hover {background-color: rgb(55, 62, 76);}'
+                                  'QSlider::handle:horizontal {background-color: white;border: none;height: 16px;width: 16px;margin: -8px 0;border-radius: 8px;padding: -8px 0px;}' 
+                                  #'QSlider::handle:horizontal:hover {background-color: rgb(188,170,231);}'
+                                  'QSlider::handle:horizontal:pressed {background-color: white;}'
+                                  'QSlider::add-page:qlineargradient {background: rgb(227,218,243);border-top-right-radius: 9px;border-bottom-right-radius: 9px;border-top-left-radius: 0px;border-bottom-left-radius: 0px;}'
+                                  'QSlider::sub-page:qlineargradient {background: white;border-top-right-radius: 0px;border-bottom-right-radius: 0px;'
+                                  'border-top-left-radius: 9px;border-bottom-left-radius: 9px;}')
 
         self.label_slider =QtWidgets.QLabel(self)
         self.label_slider.setGeometry(QtCore.QRect(425, 502, 60, 30))
