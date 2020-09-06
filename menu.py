@@ -41,32 +41,23 @@ class Menu(QWidget):
 
 
         self.pushButton_GoSelectFace = QtWidgets.QPushButton(self)
-        self.pushButton_GoSelectFace.setGeometry(QtCore.QRect(10, 590, 231, 41))
-        font = QtGui.QFont()
-        font.setFamily("AlternateGothic2 BT")
-        font.setPointSize(22)
-        self.pushButton_GoSelectFace.setFont(font)
-        self.pushButton_GoSelectFace.setText("SELECT BY FACE")
+        self.pushButton_GoSelectFace.setGeometry(QtCore.QRect(100, 215, 335, 130))
+        self.pushButton_GoSelectFace.setStyleSheet('background-color: transparent; '
+                                                   'border-top-left-radius : 125px; border-top-right-radius:125px')
         self.pushButton_GoSelectFace.setObjectName("pushButton_GoSelectFace")
 
-
         self.pushButton_GoSelectThema = QtWidgets.QPushButton(self)
-        self.pushButton_GoSelectThema.setGeometry(QtCore.QRect(10, 629, 231, 51))
-        font = QtGui.QFont()
-        font.setFamily("AlternateGothic2 BT")
-        font.setPointSize(22)
-        self.pushButton_GoSelectThema.setFont(font)
-        self.pushButton_GoSelectThema.setText("SELECT BY THEMA")
+        self.pushButton_GoSelectThema.setGeometry(QtCore.QRect(100, 345, 335, 88))
+        self.pushButton_GoSelectThema.setStyleSheet('background-color: transparent;')
         self.pushButton_GoSelectThema.setObjectName("pushButton_GoSelectThema")
 
+
         self.pushButton_GoPersonalColor = QtWidgets.QPushButton(self)
-        self.pushButton_GoPersonalColor.setGeometry(QtCore.QRect(10, 680, 231, 51))
-        font = QtGui.QFont()
-        font.setFamily("AlternateGothic2 BT")
-        font.setPointSize(22)
-        self.pushButton_GoPersonalColor.setFont(font)
-        self.pushButton_GoPersonalColor.setText("PERSONAL COLOR")
+        self.pushButton_GoPersonalColor.setGeometry(QtCore.QRect(100, 433, 335, 130))
+        self.pushButton_GoPersonalColor.setStyleSheet('background-color: transparent; '
+                                                      'border-bottom-left-radius : 125px; border-bottom-right-radius : 125px')
         self.pushButton_GoPersonalColor.setObjectName("pushButton_GoPersonalColor")
+
 
         self.pushButton_GoFaceCapture = QtWidgets.QPushButton(self)
         self.pushButton_GoFaceCapture.setGeometry(QtCore.QRect(10, 10, 130, 40))

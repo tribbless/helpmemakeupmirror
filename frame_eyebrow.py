@@ -25,19 +25,27 @@ class Frame_Eyebrow(QWidget):
         font = QtGui.QFont("Times", 15)
         self.label_manual_background.setFont(font)
         self.label_manual_background.setStyleSheet("border-image: url(image/frameBack.png);")
-        self.label_manual_background.setText("긴 얼굴형에는 가로로 어쩌꾸 저쩌구를 한다.")
+        #self.label_manual_background.setText("긴 얼굴형에는 가로로 어쩌꾸 저쩌구를 한다.")
         self.label_manual_background.setGeometry(QtCore.QRect(5, 520, 526, 255))
 
-        '''  이미지에 맞게 label사이즈 및 위치 조절해야함~~~   : 설명쓰는 공간~~
+        '''# 이미지에 맞게 label사이즈 및 위치 조절해야함~~~   : 설명쓰는 공간~~
         self.label_manual = QtWidgets.QLabel(self)
         self.label_manual.setGeometry(QtCore.QRect(40, 540, 451, 161))
         self.label_manual.setObjectName("label_manual")
         font = QtGui.QFont()
+        #font.setColor(QtGui.QPalette.Text, QtCore.Qt.white)
         font.setPointSize(14)
         self.label_manual.setFont(font)
-        self.label_manual.setStyleSheet('background-color: transparent')
+        #self.label_manual.setStyleSheet('QLabel{background-color: rgba(0, 0, 0, 0.0)}')
+        self.label_manual.setStyleSheet('background-color: transparent; color: white')
         self.label_manual.setText("긴 얼굴형에는 가로로 어쩌꾸 저쩌구를 한다.\n어쩌구저쩌구\n룰루랄라 ^^이렇게 하면 됩니다 ^^")
         '''
+
+        ## 이동 버튼
+        self.pushButton_GoMenu = QtWidgets.QPushButton(self)
+        self.pushButton_GoMenu.setGeometry(QtCore.QRect(5, 716, 527, 48))
+        self.pushButton_GoMenu.setStyleSheet('background-color: transparent;')
+        self.pushButton_GoMenu.setObjectName("pushButton_GoMenu")
 
 
         self.pushButton_GoFrameEyesahdow = QtWidgets.QPushButton(self)
@@ -48,7 +56,7 @@ class Frame_Eyebrow(QWidget):
         self.pushButton_GoFrameEyesahdow.setFont(font)
         self.pushButton_GoFrameEyesahdow.setText("eyeshadow")
         self.pushButton_GoFrameEyesahdow.setObjectName("pushButton_GoFrameEyesahdow")
-        self.pushButton_GoFrameEyesahdow.setStyleSheet("background:rgb(144,144,144);");
+        self.pushButton_GoFrameEyesahdow.setStyleSheet("background:rgb(144,144,144);")
 
         self.pushButton_GoAROrThema = QtWidgets.QPushButton(self)
         self.pushButton_GoAROrThema.setGeometry(QtCore.QRect(10, 10, 130, 40))
@@ -58,4 +66,4 @@ class Frame_Eyebrow(QWidget):
         self.pushButton_GoAROrThema.setFont(font)
         self.pushButton_GoAROrThema.setText("BACK")
         self.pushButton_GoAROrThema.setObjectName("pushButton_GoAROrThema")
-        self.pushButton_GoAROrThema.setStyleSheet("background:rgb(144,144,144);");
+        self.pushButton_GoAROrThema.setStyleSheet("background:rgb(144,144,144);")

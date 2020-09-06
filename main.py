@@ -169,6 +169,22 @@ class MAIN_StackedWidget(QWidget):
 
         self.Real_AR_Face_compare.pushButton_GoFrameLip.clicked.connect(self.goToFrameLip)
 
+        ## 메뉴로 이동
+        self.select_thema.pushButton_GoMenu.clicked.connect(self.goToMenu)
+        self.personal_color.pushButton_GoMenu2.clicked.connect(self.goToMenu)
+
+        self.frame_eyebrow.pushButton_GoMenu.clicked.connect(self.goToMenu)
+        self.frame_eyeshadow.pushButton_GoMenu.clicked.connect(self.goToMenu)
+        self.frame_eyeliner.pushButton_GoMenu.clicked.connect(self.goToMenu)
+        self.frame_blusher.pushButton_GoMenu.clicked.connect(self.goToMenu)
+        self.frame_lip.pushButton_GoMenu.clicked.connect(self.goToMenu)
+
+        self.select_face_eyebrow.pushButton_GoMenu.clicked.connect(self.goToMenu)
+        self.select_face_eyeshadow.pushButton_GoMenu.clicked.connect(self.goToMenu)
+        self.select_face_eyeliner.pushButton_GoMenu.clicked.connect(self.goToMenu)
+        self.select_face_blusher.pushButton_GoMenu.clicked.connect(self.goToMenu)
+        self.select_face_lip.pushButton_GoMenu.clicked.connect(self.goToMenu)
+
 
 
     ## 화면전환 NEXT & PREVIOUS

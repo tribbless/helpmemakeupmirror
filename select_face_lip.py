@@ -33,8 +33,33 @@ class Select_face_Lip(QWidget):
         font = QtGui.QFont("Times", 15)
         self.label_select.setFont(font)
         self.label_select.setStyleSheet("border-image: url(image/selectAR.png);")
-        self.label_select.setText("30%")
+        #self.label_select.setText("30%")
         self.label_select.setGeometry(QtCore.QRect(5, 490, 526, 280))
+
+        ## eyebrow 선택 버튼
+        self.pushButton_FirstOption = QtWidgets.QPushButton(self)
+        self.pushButton_FirstOption.setGeometry(QtCore.QRect(5, 552, 168, 156))
+        self.pushButton_FirstOption.setStyleSheet('background-color: transparent;')
+        self.pushButton_FirstOption.setObjectName("pushButton_FirstOption")
+        self.pushButton_FirstOption.clicked.connect(self.Apply_FirstOption)
+
+        self.pushButton_TwoOption = QtWidgets.QPushButton(self)
+        self.pushButton_TwoOption.setGeometry(QtCore.QRect(185, 552, 168, 156))
+        self.pushButton_TwoOption.setStyleSheet('background-color: transparent;')
+        self.pushButton_TwoOption.setObjectName("pushButton_TwoOption")
+        self.pushButton_TwoOption.clicked.connect(self.Apply_TwoOption)
+
+        self.pushButton_ThirdOption = QtWidgets.QPushButton(self)
+        self.pushButton_ThirdOption.setGeometry(QtCore.QRect(363, 552, 168, 156))
+        self.pushButton_ThirdOption.setStyleSheet('background-color: transparent;')
+        self.pushButton_ThirdOption.setObjectName("pushButton_ThirdOption")
+        self.pushButton_ThirdOption.clicked.connect(self.Apply_ThirdOption)
+
+        ## 이동 버튼
+        self.pushButton_GoMenu = QtWidgets.QPushButton(self)
+        self.pushButton_GoMenu.setGeometry(QtCore.QRect(5, 725, 527, 56))
+        self.pushButton_GoMenu.setStyleSheet('background-color: transparent;')
+        self.pushButton_GoMenu.setObjectName("pushButton_GoMenu")
 
 
         self.pushButton_GoFrame = QtWidgets.QPushButton(self)
@@ -54,3 +79,12 @@ class Select_face_Lip(QWidget):
         self.pushButton_GoBlusherAR.setFont(font)
         self.pushButton_GoBlusherAR.setText("BACK")
         self.pushButton_GoBlusherAR.setObjectName("pushButton_GoBlusherAR")
+
+    def Apply_FirstOption(self):
+        print("first option clicked")
+    def Apply_TwoOption(self):
+        print("two option clicked")
+    def Apply_ThirdOption(self):
+        print("third option clicked")
+
+

@@ -28,6 +28,12 @@ class Personal_Color(QWidget):
         self.label_manual_background.setText("SPRING WARM")
         self.label_manual_background.setGeometry(QtCore.QRect(5, 520, 526, 255))
 
+        ## 이동 버튼
+        self.pushButton_GoMenu2 = QtWidgets.QPushButton(self)
+        self.pushButton_GoMenu2.setGeometry(QtCore.QRect(5, 716, 527, 48))
+        self.pushButton_GoMenu2.setStyleSheet('background-color: transparent;')
+        self.pushButton_GoMenu2.setObjectName("pushButton_GoMenu2")
+
         self.pushButton_GoThema = QtWidgets.QPushButton(self)
         self.pushButton_GoThema.setGeometry(QtCore.QRect(401, 10, 130, 40))
         font = QtGui.QFont()

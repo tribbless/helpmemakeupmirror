@@ -75,7 +75,7 @@
      <rect>
       <x>20</x>
       <y>550</y>
-      <width>170</width>
+      <width>168</width>
       <height>160</height>
      </rect>
     </property>
@@ -86,9 +86,9 @@
    <widget class="QPushButton" name="pushButton_4">
     <property name="geometry">
      <rect>
-      <x>195</x>
+      <x>196</x>
       <y>550</y>
-      <width>83</width>
+      <width>82</width>
       <height>78</height>
      </rect>
     </property>
@@ -101,7 +101,7 @@
      <rect>
       <x>282</x>
       <y>550</y>
-      <width>83</width>
+      <width>82</width>
       <height>78</height>
      </rect>
     </property>
@@ -112,9 +112,9 @@
    <widget class="QPushButton" name="pushButton_6">
     <property name="geometry">
      <rect>
-      <x>195</x>
+      <x>196</x>
       <y>632</y>
-      <width>83</width>
+      <width>82</width>
       <height>78</height>
      </rect>
     </property>
@@ -127,7 +127,7 @@
      <rect>
       <x>282</x>
       <y>632</y>
-      <width>83</width>
+      <width>82</width>
       <height>78</height>
      </rect>
     </property>
@@ -140,8 +140,8 @@
      <rect>
       <x>370</x>
       <y>550</y>
-      <width>170</width>
-      <height>160</height>
+      <width>168</width>
+      <height>50</height>
      </rect>
     </property>
     <property name="text">
@@ -203,6 +203,32 @@
     </property>
     <property name="text">
      <string>THEMA</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_9">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>605</y>
+      <width>168</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>PushButton</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_10">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>660</y>
+      <width>168</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>PushButton</string>
     </property>
    </widget>
   </widget>

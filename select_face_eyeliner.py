@@ -34,8 +34,49 @@ class Select_face_Eyeliner(QWidget):
         font = QtGui.QFont("Times", 15)
         self.label_select.setFont(font)
         self.label_select.setStyleSheet("border-image: url(image/selectAR.png);")
-        self.label_select.setText("30%")
+        #self.label_select.setText("30%")
         self.label_select.setGeometry(QtCore.QRect(5, 490, 526, 280))
+
+        ## eyebrow 선택 버튼
+        self.pushButton_FirstOption = QtWidgets.QPushButton(self)
+        self.pushButton_FirstOption.setGeometry(QtCore.QRect(5, 552, 168, 156))
+        self.pushButton_FirstOption.setStyleSheet('background-color: transparent;')
+        self.pushButton_FirstOption.setObjectName("pushButton_FirstOption")
+        self.pushButton_FirstOption.clicked.connect(self.Apply_FirstOption)
+
+        self.pushButton_TwoOption = QtWidgets.QPushButton(self)
+        self.pushButton_TwoOption.setGeometry(QtCore.QRect(185, 552, 168, 156))
+        self.pushButton_TwoOption.setStyleSheet('background-color: transparent;')
+        self.pushButton_TwoOption.setObjectName("pushButton_TwoOption")
+        self.pushButton_TwoOption.clicked.connect(self.Apply_TwoOption)
+
+        self.pushButton_ThirdOption = QtWidgets.QPushButton(self)
+        self.pushButton_ThirdOption.setGeometry(QtCore.QRect(363, 552, 168, 156))
+        self.pushButton_ThirdOption.setStyleSheet('background-color: transparent;')
+        self.pushButton_ThirdOption.setObjectName("pushButton_ThirdOption")
+        self.pushButton_ThirdOption.clicked.connect(self.Apply_ThirdOption)
+
+        self.slider = QSlider(Qt.Horizontal, self)
+        self.slider.setGeometry(QtCore.QRect(73, 507, 332, 30))
+        self.slider.setMinimum(0)
+        self.slider.setMaximum(100)
+        self.slider.valueChanged.connect(self.changeValue)
+
+        self.label_slider =QtWidgets.QLabel(self)
+        self.label_slider.setGeometry(QtCore.QRect(425, 502, 60, 30))
+        font = QtGui.QFont()
+        font.setFamily("Segoe MDL2 Assets")
+        font.setPointSize(15)
+        self.label_slider.setFont(font)
+        self.label_slider.setAlignment(Qt.AlignCenter)
+        self.label_slider.setText("0%")
+        self.label_slider.setStyleSheet('color:white;')
+
+        ## 이동 버튼
+        self.pushButton_GoMenu = QtWidgets.QPushButton(self)
+        self.pushButton_GoMenu.setGeometry(QtCore.QRect(5, 725, 527, 56))
+        self.pushButton_GoMenu.setStyleSheet('background-color: transparent;')
+        self.pushButton_GoMenu.setObjectName("pushButton_GoMenu")
 
 
         self.pushButton_GoBlusherAR = QtWidgets.QPushButton(self)
@@ -55,3 +96,15 @@ class Select_face_Eyeliner(QWidget):
         self.pushButton_GoEyeshadowAR.setFont(font)
         self.pushButton_GoEyeshadowAR.setText("BACK")
         self.pushButton_GoEyeshadowAR.setObjectName("pushButton_GoEyeshadowAR")
+
+    def Apply_FirstOption(self):
+        print("first option clicked")
+    def Apply_TwoOption(self):
+        print("two option clicked")
+    def Apply_ThirdOption(self):
+        print("third option clicked")
+
+    def changeValue(self):
+        size = str(self.slider.value())
+        #size = size + "%"
+        self.label_slider.setText(size+"%")

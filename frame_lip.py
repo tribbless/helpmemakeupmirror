@@ -38,6 +38,11 @@ class Frame_Lip(QWidget):
         self.label_manual.setStyleSheet('background-color: transparent')
         self.label_manual.setText("긴 얼굴형에는 가로로 어쩌꾸 저쩌구를 한다.\n어쩌구저쩌구\n룰루랄라 ^^이렇게 하면 됩니다 ^^")
         '''
+        ## 이동 버튼
+        self.pushButton_GoMenu = QtWidgets.QPushButton(self)
+        self.pushButton_GoMenu.setGeometry(QtCore.QRect(5, 716, 527, 48))
+        self.pushButton_GoMenu.setStyleSheet('background-color: transparent;')
+        self.pushButton_GoMenu.setObjectName("pushButton_GoMenu")
 
 
         self.pushButton_GoCompare = QtWidgets.QPushButton(self)
