@@ -20,7 +20,7 @@ class Select_Thema(QWidget):
         # 얼굴사진
         self.label_face = QtWidgets.QLabel(self)
         self.label_face.setGeometry(QtCore.QRect(120, 70, 315, 420))
-        self.label_face.setObjectName("label_eyebrowAR")
+        self.label_face.setObjectName("label_face")
         self.label_face.setText("FACE IMAGE")
         self.label_face.setAlignment(Qt.AlignCenter)
         self.label_face.setStyleSheet('background-color:white;')

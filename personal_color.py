@@ -20,7 +20,7 @@ class Personal_Color(QWidget):
         # 얼굴사진
         self.label_face = QtWidgets.QLabel(self)
         self.label_face.setGeometry(QtCore.QRect(120, 70, 315, 420))
-        self.label_face.setObjectName("label_eyebrowAR")
+        self.label_face.setObjectName("label_face")
         self.label_face.setText("FACE IMAGE")
         self.label_face.setAlignment(Qt.AlignCenter)
         self.label_face.setStyleSheet('background-color:white;')
@@ -37,12 +37,7 @@ class Personal_Color(QWidget):
         self.label_manual_background.setText("SPRING WARM")
         self.label_manual_background.setGeometry(QtCore.QRect(5, 520, 526, 255))
 
-        ## 이동 버튼
-        self.pushButton_GoMenu2 = QtWidgets.QPushButton(self)
-        self.pushButton_GoMenu2.setGeometry(QtCore.QRect(5, 716, 527, 48))
-        self.pushButton_GoMenu2.setStyleSheet('background-color: transparent;')
-        self.pushButton_GoMenu2.setObjectName("pushButton_GoMenu2")
-
+        # 이동 버튼
         self.pushButton_GoThema = QtWidgets.QPushButton(self)
         self.pushButton_GoThema.setGeometry(QtCore.QRect(401, 10, 130, 40))
         font = QtGui.QFont()

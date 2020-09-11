@@ -20,7 +20,7 @@ class Frame_Lip(QWidget):
         #얼굴사진
         self.label_face = QtWidgets.QLabel(self)
         self.label_face.setGeometry(QtCore.QRect(105, 70, 330, 440))
-        self.label_face.setObjectName("label_eyebrowAR")
+        self.label_face.setObjectName("label_face")
         self.label_face.setText("FACE IMAGE")
         self.label_face.setAlignment(Qt.AlignCenter)
         self.label_face.setStyleSheet('background-color:white;')

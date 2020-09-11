@@ -9,12 +9,13 @@ class Select_face_thema_Base(QWidget):
         super(Select_face_thema_Base, self).__init__()
 
         self.label_base = QtWidgets.QLabel(self)
-        self.label_base.setGeometry(QtCore.QRect(140, 20, 431, 61))
+        self.label_base.setGeometry(QtCore.QRect(140, 10, 261, 40))
         self.label_base.setObjectName("label_base")
         font = QtGui.QFont()
-        font.setPointSize(16)
+        font.setPointSize(18)
         self.label_base.setFont(font)
-        self.label_base.setText("select_face&thema\nBase Make Up 화면")
+        self.label_base.setAlignment(Qt.AlignCenter)
+        self.label_base.setText("Base MakeUp")
 
         self.pushButton_GoSelectFaceCapture = QtWidgets.QPushButton(self)
         self.pushButton_GoSelectFaceCapture.setGeometry(QtCore.QRect(401, 10, 130, 40))
