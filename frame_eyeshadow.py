@@ -9,7 +9,7 @@ class Frame_Eyeshadow(QWidget):
         super(Frame_Eyeshadow, self).__init__()
 
         self.label_frameEyeshadow = QtWidgets.QLabel(self)
-        self.label_frameEyeshadow.setGeometry(QtCore.QRect(140, 10, 261, 40))
+        self.label_frameEyeshadow.setGeometry(QtCore.QRect(130, 10, 271, 40))
         self.label_frameEyeshadow.setObjectName("label_frameEyeshadow")
         font = QtGui.QFont()
         font.setPointSize(18)
@@ -65,7 +65,7 @@ class Frame_Eyeshadow(QWidget):
         self.pushButton_GoFrameEyeliner.setStyleSheet("background:rgb(144,144,144);");
 
         self.pushButton_GoFrameEyebrow = QtWidgets.QPushButton(self)
-        self.pushButton_GoFrameEyebrow.setGeometry(QtCore.QRect(10, 10, 130,40))
+        self.pushButton_GoFrameEyebrow.setGeometry(QtCore.QRect(0, 10, 130,40))
         font = QtGui.QFont()
         font.setFamily("AlternateGothic2 BT")
         font.setPointSize(20)

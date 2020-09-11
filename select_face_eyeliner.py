@@ -18,7 +18,7 @@ class Select_face_Eyeliner(QWidget):
         super(Select_face_Eyeliner, self).__init__()
 
         self.label_eyelinerAR = QtWidgets.QLabel(self)
-        self.label_eyelinerAR.setGeometry(QtCore.QRect(140, 10, 261, 40))
+        self.label_eyelinerAR.setGeometry(QtCore.QRect(130, 10, 271, 40))
         self.label_eyelinerAR.setObjectName("label_eyelinerAR")
         font = QtGui.QFont()
         font.setPointSize(18)
@@ -106,7 +106,7 @@ class Select_face_Eyeliner(QWidget):
         self.pushButton_GoBlusherAR.setObjectName("pushButton_GoBlusherAR")
 
         self.pushButton_GoEyeshadowAR = QtWidgets.QPushButton(self)
-        self.pushButton_GoEyeshadowAR.setGeometry(QtCore.QRect(10, 10, 130, 40))
+        self.pushButton_GoEyeshadowAR.setGeometry(QtCore.QRect(0, 10, 130, 40))
         font = QtGui.QFont()
         font.setFamily("AlternateGothic2 BT")
         font.setPointSize(20)

@@ -18,7 +18,7 @@ class Select_face_Eyeshadow(QWidget):
         super(Select_face_Eyeshadow, self).__init__()
 
         self.label_eyeshadowAR = QtWidgets.QLabel(self)
-        self.label_eyeshadowAR.setGeometry(QtCore.QRect(140, 10, 261, 40))
+        self.label_eyeshadowAR.setGeometry(QtCore.QRect(130, 10, 271, 40))
         self.label_eyeshadowAR.setObjectName("label_eyeshadowAR")
         font = QtGui.QFont()
         font.setPointSize(18)
@@ -106,7 +106,7 @@ class Select_face_Eyeshadow(QWidget):
         self.pushButton_GoEyelinerAR.setObjectName("pushButton_GoEyelinerAR")
 
         self.pushButton_GoEyebrowAR = QtWidgets.QPushButton(self)
-        self.pushButton_GoEyebrowAR.setGeometry(QtCore.QRect(10, 10, 130, 40))
+        self.pushButton_GoEyebrowAR.setGeometry(QtCore.QRect(0, 10, 130, 40))
         font = QtGui.QFont()
         font.setFamily("AlternateGothic2 BT")
         font.setPointSize(20)

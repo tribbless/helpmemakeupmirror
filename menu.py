@@ -60,7 +60,7 @@ class Menu(QWidget):
 
 
         self.pushButton_GoFaceCapture = QtWidgets.QPushButton(self)
-        self.pushButton_GoFaceCapture.setGeometry(QtCore.QRect(10, 10, 130, 40))
+        self.pushButton_GoFaceCapture.setGeometry(QtCore.QRect(0, 10, 130, 40))
         font = QtGui.QFont()
         font.setFamily("AlternateGothic2 BT")
         font.setPointSize(20)

@@ -9,7 +9,7 @@ class Frame_Eyeliner(QWidget):
         super(Frame_Eyeliner, self).__init__()
 
         self.label_frameEyeliner = QtWidgets.QLabel(self)
-        self.label_frameEyeliner.setGeometry(QtCore.QRect(140, 10, 261, 40))
+        self.label_frameEyeliner.setGeometry(QtCore.QRect(130, 10, 271, 40))
         self.label_frameEyeliner.setObjectName("label_frameEyeliner")
         font = QtGui.QFont()
         font.setPointSize(18)
@@ -67,7 +67,7 @@ class Frame_Eyeliner(QWidget):
         self.pushButton_GoBlusher.setStyleSheet("background:rgb(144,144,144);");
 
         self.pushButton_GoEyesahdow = QtWidgets.QPushButton(self)
-        self.pushButton_GoEyesahdow.setGeometry(QtCore.QRect(10, 10, 130,40))
+        self.pushButton_GoEyesahdow.setGeometry(QtCore.QRect(0, 10, 130,40))
         font = QtGui.QFont()
         font.setFamily("AlternateGothic2 BT")
         font.setPointSize(20)

@@ -9,7 +9,7 @@ class Personal_Color(QWidget):
         super(Personal_Color, self).__init__()
 
         self.label_personalColor = QtWidgets.QLabel(self)
-        self.label_personalColor.setGeometry(QtCore.QRect(140, 10, 261, 40))
+        self.label_personalColor.setGeometry(QtCore.QRect(130, 10, 271, 40))
         self.label_personalColor.setObjectName("label_personalColor")
         font = QtGui.QFont()
         font.setPointSize(18)
@@ -48,7 +48,7 @@ class Personal_Color(QWidget):
         self.pushButton_GoThema.setObjectName("pushButton_GoThema")
 
         self.pushButton_GoMenu = QtWidgets.QPushButton(self)
-        self.pushButton_GoMenu.setGeometry(QtCore.QRect(10, 10, 130, 40))
+        self.pushButton_GoMenu.setGeometry(QtCore.QRect(0, 10, 130, 40))
         font = QtGui.QFont()
         font.setFamily("AlternateGothic2 BT")
         font.setPointSize(20)

@@ -74,7 +74,7 @@ class RealFace_ARFace_Compare(QWidget):
         self.pushButton_GoHome.setObjectName("pushButton_GoHome")
 
         self.pushButton_GoFrameLip = QtWidgets.QPushButton(self)
-        self.pushButton_GoFrameLip.setGeometry(QtCore.QRect(10, 10, 130, 40))
+        self.pushButton_GoFrameLip.setGeometry(QtCore.QRect(0, 10, 130, 40))
         font = QtGui.QFont()
         font.setFamily("AlternateGothic2 BT")
         font.setPointSize(20)

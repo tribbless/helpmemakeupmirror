@@ -55,7 +55,7 @@ class Face_Capture(QWidget):
         self.pushButton_GoMenu.setObjectName("pushButton_GoMenu")
 
         self.pushButton_GoHome = QtWidgets.QPushButton(self)
-        self.pushButton_GoHome.setGeometry(QtCore.QRect(10, 10, 130, 40))
+        self.pushButton_GoHome.setGeometry(QtCore.QRect(0, 10, 130, 40))
         font = QtGui.QFont()
         font.setFamily("AlternateGothic2 BT")
         font.setPointSize(20)

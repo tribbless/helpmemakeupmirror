@@ -9,7 +9,7 @@ class Select_face_thema_Capture(QWidget): ## Before label
         super(Select_face_thema_Capture, self).__init__()
 
         self.label_selectCapture = QtWidgets.QLabel(self)
-        self.label_selectCapture.setGeometry(QtCore.QRect(140, 10, 261, 40))
+        self.label_selectCapture.setGeometry(QtCore.QRect(130, 10, 271, 40))
         self.label_selectCapture.setObjectName("label_selectCapture")
         font = QtGui.QFont()
         font.setPointSize(18)
@@ -75,7 +75,7 @@ class Select_face_thema_Capture(QWidget): ## Before label
         self.pushButton_GoThemaOrEyebrowAR.setObjectName("pushButton_GoThemaOrEyebrowAR")
 
         self.pushButton_GoSelectBase = QtWidgets.QPushButton(self)
-        self.pushButton_GoSelectBase.setGeometry(QtCore.QRect(10, 10, 130, 40))
+        self.pushButton_GoSelectBase.setGeometry(QtCore.QRect(0, 10, 130, 40))
         font = QtGui.QFont()
         font.setFamily("AlternateGothic2 BT")
         font.setPointSize(20)

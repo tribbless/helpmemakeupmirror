@@ -3,21 +3,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 
-#모양버튼
-#색깔버튼
-#합쳐서 4가지 버튼해야하나..흠.. 아니면 모양선택-> 색깔선택 후 완료버튼을 누르는겨..
-#둘다 선택안햇으면 메시지박스로 선택하라고 안내메시지 주는겨..
 
-#모양과 색깔을 선택하면 그 정보+얼굴 사진을 눈썹.py에 있는 class(?)에게 주는겨
-#class는 return 이미지 주는겨~~~~~
-
-
-
-## 고민중(아직 구현no)
-# 1. 스크롤바를 둠. 만약에 만약에 스크롤을 한다면..음..배경색에 하얀색부분(xx) 그라데이션으로하고. 버튼 뒷배경을 그냥..png로 해야할듯하군..
-# 2. 이것도 next버튼을 추가함 (원리는 ==) 영역을 음..버튼있는 그곳에만!!!! - 문제는 세개를 다 채우지 못하면..끙..이상할것같다..매우...^^..
-# 3. 생각해보니 무슨버튼의 그런 모양은 배경색에서 추가할건지 버튼에 추가할건지도! 알아야겟군요..!
-# 4. 아니면 그냥 이동하는 버튼은 뭐.. 따로 만들고 어딘가에..(스크롤바 옆에??) 세가지 경우만 설정하거나..흠......ㅓ니라너이런
 
 class Select_face_Eyebrow(QWidget):
 
@@ -25,7 +11,7 @@ class Select_face_Eyebrow(QWidget):
         super(Select_face_Eyebrow, self).__init__()
 
         self.label_eyebrowAR = QtWidgets.QLabel(self)
-        self.label_eyebrowAR.setGeometry(QtCore.QRect(140, 10, 261, 40))
+        self.label_eyebrowAR.setGeometry(QtCore.QRect(130, 10, 271, 40))
         self.label_eyebrowAR.setObjectName("label_eyebrowAR")
         font = QtGui.QFont()
         font.setPointSize(18)
@@ -115,7 +101,7 @@ class Select_face_Eyebrow(QWidget):
         self.pushButton_GoEyeshadowAR.setObjectName("pushButton_GoEyeshadowAR")
 
         self.pushButton_GoSlectFaceCapture = QtWidgets.QPushButton(self)
-        self.pushButton_GoSlectFaceCapture.setGeometry(QtCore.QRect(10, 10, 130, 40))
+        self.pushButton_GoSlectFaceCapture.setGeometry(QtCore.QRect(0, 10, 130, 40))
         font = QtGui.QFont()
         font.setFamily("AlternateGothic2 BT")
         font.setPointSize(20)

@@ -9,7 +9,7 @@ class Select_face_Blusher(QWidget):
         super(Select_face_Blusher, self).__init__()
 
         self.label_blusherAR = QtWidgets.QLabel(self)
-        self.label_blusherAR.setGeometry(QtCore.QRect(140, 10, 261, 40))
+        self.label_blusherAR.setGeometry(QtCore.QRect(130, 10, 271, 40))
         self.label_blusherAR.setObjectName("label_blusherAR")
         font = QtGui.QFont()
         font.setPointSize(18)
@@ -97,7 +97,7 @@ class Select_face_Blusher(QWidget):
         self.pushButton_GoLipAR.setObjectName("pushButton_GoLipAR")
 
         self.pushButton_GoEyelinerAR = QtWidgets.QPushButton(self)
-        self.pushButton_GoEyelinerAR.setGeometry(QtCore.QRect(10, 10, 130, 40))
+        self.pushButton_GoEyelinerAR.setGeometry(QtCore.QRect(0, 10, 130, 40))
         font = QtGui.QFont()
         font.setFamily("AlternateGothic2 BT")
         font.setPointSize(20)

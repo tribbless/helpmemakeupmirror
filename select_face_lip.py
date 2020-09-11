@@ -17,7 +17,7 @@ class Select_face_Lip(QWidget):
     def __init__(self):
         super(Select_face_Lip, self).__init__()
         self.label_lipAR = QtWidgets.QLabel(self)
-        self.label_lipAR.setGeometry(QtCore.QRect(140, 10, 261, 40))
+        self.label_lipAR.setGeometry(QtCore.QRect(130, 10, 271, 40))
         self.label_lipAR.setObjectName("label_lipAR")
         font = QtGui.QFont()
         font.setPointSize(18)
@@ -81,7 +81,7 @@ class Select_face_Lip(QWidget):
         self.pushButton_GoFrame.setObjectName("pushButton_GoFrame")
 
         self.pushButton_GoBlusherAR = QtWidgets.QPushButton(self)
-        self.pushButton_GoBlusherAR.setGeometry(QtCore.QRect(10, 10, 130, 40))
+        self.pushButton_GoBlusherAR.setGeometry(QtCore.QRect(0, 10, 130, 40))
         font = QtGui.QFont()
         font.setFamily("AlternateGothic2 BT")
         font.setPointSize(20)

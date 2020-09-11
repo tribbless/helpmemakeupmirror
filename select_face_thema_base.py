@@ -9,7 +9,7 @@ class Select_face_thema_Base(QWidget):
         super(Select_face_thema_Base, self).__init__()
 
         self.label_base = QtWidgets.QLabel(self)
-        self.label_base.setGeometry(QtCore.QRect(140, 10, 261, 40))
+        self.label_base.setGeometry(QtCore.QRect(130, 10, 271, 40))
         self.label_base.setObjectName("label_base")
         font = QtGui.QFont()
         font.setPointSize(18)
@@ -28,7 +28,7 @@ class Select_face_thema_Base(QWidget):
 
 
         self.pushButton_GoMenuOrColor = QtWidgets.QPushButton(self)
-        self.pushButton_GoMenuOrColor.setGeometry(QtCore.QRect(10, 10, 130, 40))
+        self.pushButton_GoMenuOrColor.setGeometry(QtCore.QRect(0, 10, 130, 40))
         font = QtGui.QFont()
         font.setFamily("AlternateGothic2 BT")
         font.setPointSize(20)

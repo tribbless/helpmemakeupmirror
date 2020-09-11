@@ -9,7 +9,7 @@ class Frame_Blusher(QWidget):
         super(Frame_Blusher, self).__init__()
 
         self.label_frameBlusher = QtWidgets.QLabel(self)
-        self.label_frameBlusher.setGeometry(QtCore.QRect(140, 10, 261, 40))
+        self.label_frameBlusher.setGeometry(QtCore.QRect(130, 10, 271, 40))
         self.label_frameBlusher.setObjectName("label_frameBlusher")
         font = QtGui.QFont()
         font.setPointSize(18)
@@ -65,7 +65,7 @@ class Frame_Blusher(QWidget):
         self.pushButton_GoLip.setStyleSheet("background:rgb(144,144,144);");
 
         self.pushButton_GoEyeliner = QtWidgets.QPushButton(self)
-        self.pushButton_GoEyeliner.setGeometry(QtCore.QRect(10, 10, 130, 40))
+        self.pushButton_GoEyeliner.setGeometry(QtCore.QRect(0, 10, 130, 40))
         font = QtGui.QFont()
         font.setFamily("AlternateGothic2 BT")
         font.setPointSize(20)

@@ -9,7 +9,7 @@ class Frame_Lip(QWidget):
         super(Frame_Lip, self).__init__()
 
         self.label_frameLip = QtWidgets.QLabel(self)
-        self.label_frameLip.setGeometry(QtCore.QRect(140, 10, 261, 40))
+        self.label_frameLip.setGeometry(QtCore.QRect(130, 10, 271, 40))
         self.label_frameLip.setObjectName("label_frameLip")
         font = QtGui.QFont()
         font.setPointSize(18)
@@ -65,7 +65,7 @@ class Frame_Lip(QWidget):
         self.pushButton_GoCompare.setStyleSheet("background:rgb(144,144,144);");
 
         self.pushButton_GoBlusher = QtWidgets.QPushButton(self)
-        self.pushButton_GoBlusher.setGeometry(QtCore.QRect(10, 10, 130,40))
+        self.pushButton_GoBlusher.setGeometry(QtCore.QRect(0, 10, 130,40))
         font = QtGui.QFont()
         font.setFamily("AlternateGothic2 BT")
         font.setPointSize(20)
