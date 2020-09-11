@@ -12,18 +12,34 @@ from PyQt5.QtGui import *
 #class는 return 이미지 주는겨~~~~~
 
 
+
+## 고민중(아직 구현no)
+# 1. 스크롤바를 둠. 만약에 만약에 스크롤을 한다면..음..배경색에 하얀색부분(xx) 그라데이션으로하고. 버튼 뒷배경을 그냥..png로 해야할듯하군..
+# 2. 이것도 next버튼을 추가함 (원리는 ==) 영역을 음..버튼있는 그곳에만!!!! - 문제는 세개를 다 채우지 못하면..끙..이상할것같다..매우...^^..
+# 3. 생각해보니 무슨버튼의 그런 모양은 배경색에서 추가할건지 버튼에 추가할건지도! 알아야겟군요..!
+# 4. 아니면 그냥 이동하는 버튼은 뭐.. 따로 만들고 어딘가에..(스크롤바 옆에??) 세가지 경우만 설정하거나..흠......ㅓ니라너이런
+
 class Select_face_Eyebrow(QWidget):
 
     def __init__(self):
         super(Select_face_Eyebrow, self).__init__()
 
         self.label_eyebrowAR = QtWidgets.QLabel(self)
-        self.label_eyebrowAR.setGeometry(QtCore.QRect(160, 10, 241, 40))
+        self.label_eyebrowAR.setGeometry(QtCore.QRect(140, 10, 261, 40))
         self.label_eyebrowAR.setObjectName("label_eyebrowAR")
         font = QtGui.QFont()
         font.setPointSize(18)
         self.label_eyebrowAR.setFont(font)
+        self.label_eyebrowAR.setAlignment(Qt.AlignCenter)
         self.label_eyebrowAR.setText("face_eyebrow")
+
+        #얼굴사진
+        self.label_face = QtWidgets.QLabel(self)
+        self.label_face.setGeometry(QtCore.QRect(120, 70, 300, 400))
+        self.label_face.setObjectName("label_eyebrowAR")
+        self.label_face.setText("FACE IMAGE")
+        self.label_face.setAlignment(Qt.AlignCenter)
+        self.label_face.setStyleSheet('background-color:white;')
 
         #이미지
         self.label_select = QtWidgets.QLabel(self)
@@ -82,6 +98,7 @@ class Select_face_Eyebrow(QWidget):
         self.label_slider.setText("0%")
         self.label_slider.setStyleSheet('color:white;')
 
+
         ## 이동 버튼
         self.pushButton_GoMenu = QtWidgets.QPushButton(self)
         self.pushButton_GoMenu.setGeometry(QtCore.QRect(5, 725, 527, 56))
@@ -106,14 +123,23 @@ class Select_face_Eyebrow(QWidget):
         self.pushButton_GoSlectFaceCapture.setText("BACK")
         self.pushButton_GoSlectFaceCapture.setObjectName("pushButton_GoSlectFaceCapture")
 
-    def Apply_FirstOption(self):
+    def Apply_FirstOption(self): ## 원상복구버튼
+        self.slider.hide()
+        self.label_slider.hide() # 투명도 바 숨기기
         print("first option clicked")
     def Apply_TwoOption(self):
+        self.slider.setValue(0) # 투명도 바 초기값으로 셋팅
+        self.slider.show()  # 투명도 바 나타내기
+        self.label_slider.show()
         print("two option clicked")
     def Apply_ThirdOption(self):
+        self.slider.setValue(0) # 투명도 바 초기값으로 셋팅
+        self.slider.show()  # 투명도 바 나타내기
+        self.label_slider.show()
         print("third option clicked")
 
     def changeValue(self):
         size = str(self.slider.value())
-        #size = size + "%"
         self.label_slider.setText(size+"%")
+
+

@@ -9,12 +9,21 @@ class Personal_Color(QWidget):
         super(Personal_Color, self).__init__()
 
         self.label_personalColor = QtWidgets.QLabel(self)
-        self.label_personalColor.setGeometry(QtCore.QRect(140, 20, 281, 61))
+        self.label_personalColor.setGeometry(QtCore.QRect(140, 10, 261, 40))
         self.label_personalColor.setObjectName("label_personalColor")
         font = QtGui.QFont()
-        font.setPointSize(20)
+        font.setPointSize(18)
         self.label_personalColor.setFont(font)
-        self.label_personalColor.setText("personal color화면")
+        self.label_personalColor.setAlignment(Qt.AlignCenter)
+        self.label_personalColor.setText("personal color")
+
+        # 얼굴사진
+        self.label_face = QtWidgets.QLabel(self)
+        self.label_face.setGeometry(QtCore.QRect(120, 70, 315, 420))
+        self.label_face.setObjectName("label_eyebrowAR")
+        self.label_face.setText("FACE IMAGE")
+        self.label_face.setAlignment(Qt.AlignCenter)
+        self.label_face.setStyleSheet('background-color:white;')
 
         #이미지
         self.label_manual_background = QtWidgets.QLabel(self)

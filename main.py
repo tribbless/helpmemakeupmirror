@@ -129,7 +129,7 @@ class MAIN_StackedWidget(QWidget):
         self.select_face_thema_capture.pushButton_GoThemaOrEyebrowAR.clicked.connect(self.goToThemaOrEyebrowAR)
         self.select_thema.pushButton_GoFrame.clicked.connect(self.goToFrameEyebrow)
 
-        self.select_face_eyebrow.pushButton_GoEyeshadowAR.clicked.connect(self.goToEyshadowAR)
+        self.select_face_eyebrow.pushButton_GoEyeshadowAR.clicked.connect(self.goToEyeshadowAR)
         self.select_face_eyeshadow.pushButton_GoEyelinerAR.clicked.connect(self.goToEyelinerAR)
         self.select_face_eyeliner.pushButton_GoBlusherAR.clicked.connect(self.goToBlusherAR)
         self.select_face_blusher.pushButton_GoLipAR.clicked.connect(self.goToLipAR)
@@ -154,7 +154,7 @@ class MAIN_StackedWidget(QWidget):
 
         self.select_face_eyebrow.pushButton_GoSlectFaceCapture.clicked.connect(self.goToSelectFaceCapture)
         self.select_face_eyeshadow.pushButton_GoEyebrowAR.clicked.connect(self.goToEyebrowAR)
-        self.select_face_eyeliner.pushButton_GoEyeshadowAR.clicked.connect(self.goToEyshadowAR)
+        self.select_face_eyeliner.pushButton_GoEyeshadowAR.clicked.connect(self.goToEyeshadowAR)
         self.select_face_blusher.pushButton_GoEyelinerAR.clicked.connect(self.goToEyelinerAR)
         self.select_face_lip.pushButton_GoBlusherAR.clicked.connect(self.goToBlusherAR)
 
@@ -218,17 +218,25 @@ class MAIN_StackedWidget(QWidget):
     def goToThemaOrEyebrowAR(self):
         print(self.menu.btn)
         if(self.menu.btn=="select_face"):
+            self.select_face_eyebrow.slider.hide() # 투명도 바 숨기기
+            self.select_face_eyebrow.label_slider.hide()
             self.stk_w.setCurrentWidget(self.select_face_eyebrow)
         else:
             self.stk_w.setCurrentWidget(self.select_thema)
 
-    def goToEyshadowAR(self):
+    def goToEyeshadowAR(self):
+        self.select_face_eyeshadow.slider.hide()  # 투명도 바 숨기기
+        self.select_face_eyeshadow.label_slider.hide()
         self.stk_w.setCurrentWidget(self.select_face_eyeshadow)
 
     def goToEyelinerAR(self):
+        self.select_face_eyeliner.slider.hide()  # 투명도 바 숨기기
+        self.select_face_eyeliner.label_slider.hide()
         self.stk_w.setCurrentWidget(self.select_face_eyeliner)
 
     def goToBlusherAR(self):
+        self.select_face_blusher.slider.hide()  # 투명도 바 숨기기
+        self.select_face_blusher.label_slider.hide()
         self.stk_w.setCurrentWidget(self.select_face_blusher)
 
     def goToLipAR(self):
@@ -268,6 +276,8 @@ class MAIN_StackedWidget(QWidget):
             self.stk_w.setCurrentWidget(self.menu)
 
     def goToEyebrowAR(self):
+        self.select_face_eyebrow.slider.hide()  # 투명도 바 숨기기
+        self.select_face_eyebrow.label_slider.hide()
         self.stk_w.setCurrentWidget(self.select_face_eyebrow)
 
     def goToAROrThema(self):

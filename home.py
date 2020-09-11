@@ -19,7 +19,7 @@ class Home(QWidget):
 
         ## go to main button
         self.pushButton_GoFaceCatprue = QtWidgets.QPushButton(self)
-        self.pushButton_GoFaceCatprue.setGeometry(QtCore.QRect(140, 230, 271, 261))
+        self.pushButton_GoFaceCatprue.setGeometry(QtCore.QRect(100, 210, 331, 331))
         font = QtGui.QFont()
         font.setFamily("AlternateGothic2 BT")
         font.setPointSize(28)
@@ -52,25 +52,4 @@ class Home(QWidget):
                                                     "color: #FFFFFF;\n"
                                                     "border: 1px solid #FFFFFF;")
 
-        '''
-                hbox = QHBoxLayout()
-        hbox.addStretch(1)
-        hbox.addWidget(self.label_2)
-        hbox.addStretch(1)
-        hbox.addWidget(self.pushButton_4)
-        hbox.addStretch(1)
 
-        vbox = QVBoxLayout()
-        vbox.addStretch(3)
-        vbox.addLayout(hbox)
-        vbox.addStretch(1)
-
-        self.setLayout(vbox)
-        
-        self.label_2.setMaximumSize(301,81)
-        
-        self.pushButton_4.setStyleSheet('QPushButton{background-color: rgba(0, 0, 0, 0.0)}')
-        
-        
-        
-        '''

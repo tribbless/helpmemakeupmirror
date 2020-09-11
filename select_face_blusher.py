@@ -18,12 +18,21 @@ class Select_face_Blusher(QWidget):
         super(Select_face_Blusher, self).__init__()
 
         self.label_blusherAR = QtWidgets.QLabel(self)
-        self.label_blusherAR.setGeometry(QtCore.QRect(160, 10, 241, 40))
+        self.label_blusherAR.setGeometry(QtCore.QRect(140, 10, 261, 40))
         self.label_blusherAR.setObjectName("label_blusherAR")
         font = QtGui.QFont()
         font.setPointSize(18)
         self.label_blusherAR.setFont(font)
+        self.label_blusherAR.setAlignment(Qt.AlignCenter)
         self.label_blusherAR.setText("face_blusher")
+
+        #얼굴사진
+        self.label_face = QtWidgets.QLabel(self)
+        self.label_face.setGeometry(QtCore.QRect(120, 70, 300, 400))
+        self.label_face.setObjectName("label_eyebrowAR")
+        self.label_face.setText("FACE IMAGE")
+        self.label_face.setAlignment(Qt.AlignCenter)
+        self.label_face.setStyleSheet('background-color:white;')
 
         # 이미지
         self.label_select = QtWidgets.QLabel(self)
@@ -105,14 +114,21 @@ class Select_face_Blusher(QWidget):
         self.pushButton_GoEyelinerAR.setText("BACK")
         self.pushButton_GoEyelinerAR.setObjectName("pushButton_GoEyelinerAR")
 
-    def Apply_FirstOption(self):
+    def Apply_FirstOption(self): ## 원상복구버튼
+        self.slider.hide()
+        self.label_slider.hide() # 투명도 바 숨기기
         print("first option clicked")
     def Apply_TwoOption(self):
+        self.slider.setValue(0) # 투명도 바 초기값으로 셋팅
+        self.slider.show()  # 투명도 바 나타내기
+        self.label_slider.show()
         print("two option clicked")
     def Apply_ThirdOption(self):
+        self.slider.setValue(0) # 투명도 바 초기값으로 셋팅
+        self.slider.show()  # 투명도 바 나타내기
+        self.label_slider.show()
         print("third option clicked")
 
     def changeValue(self):
         size = str(self.slider.value())
-        #size = size + "%"
         self.label_slider.setText(size+"%")

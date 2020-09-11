@@ -12,7 +12,7 @@ class Select_face_thema_Capture(QWidget): ## Before label
         self.label_selectCapture.setGeometry(QtCore.QRect(140, 20, 431, 61))
         self.label_selectCapture.setObjectName("label_selectCapture")
         font = QtGui.QFont()
-        font.setPointSize(18)
+        font.setPointSize(16)
         self.label_selectCapture.setFont(font)
         self.label_selectCapture.setText("select_face&thema\nFace Capture 화면")
 

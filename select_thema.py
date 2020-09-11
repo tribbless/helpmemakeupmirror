@@ -17,6 +17,14 @@ class Select_Thema(QWidget):
         self.label_select.setPixmap(QPixmap(pixmap))
         self.label_select.setGeometry(QtCore.QRect(5, 510, 526, 260))
 
+        # 얼굴사진
+        self.label_face = QtWidgets.QLabel(self)
+        self.label_face.setGeometry(QtCore.QRect(120, 70, 315, 420))
+        self.label_face.setObjectName("label_eyebrowAR")
+        self.label_face.setText("FACE IMAGE")
+        self.label_face.setAlignment(Qt.AlignCenter)
+        self.label_face.setStyleSheet('background-color:white;')
+
         ## 테마 선택 버튼
         self.pushButton_UserThema = QtWidgets.QPushButton(self)
         self.pushButton_UserThema.setGeometry(QtCore.QRect(23, 551, 160, 146))

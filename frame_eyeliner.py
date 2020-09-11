@@ -9,12 +9,21 @@ class Frame_Eyeliner(QWidget):
         super(Frame_Eyeliner, self).__init__()
 
         self.label_frameEyeliner = QtWidgets.QLabel(self)
-        self.label_frameEyeliner.setGeometry(QtCore.QRect(160, 10, 241, 40))
+        self.label_frameEyeliner.setGeometry(QtCore.QRect(140, 10, 261, 40))
         self.label_frameEyeliner.setObjectName("label_frameEyeliner")
         font = QtGui.QFont()
         font.setPointSize(18)
         self.label_frameEyeliner.setFont(font)
+        self.label_frameEyeliner.setAlignment(Qt.AlignCenter)
         self.label_frameEyeliner.setText("frame_eyeliner")
+
+        #얼굴사진
+        self.label_face = QtWidgets.QLabel(self)
+        self.label_face.setGeometry(QtCore.QRect(105, 70, 330, 440))
+        self.label_face.setObjectName("label_eyebrowAR")
+        self.label_face.setText("FACE IMAGE")
+        self.label_face.setAlignment(Qt.AlignCenter)
+        self.label_face.setStyleSheet('background-color:white;')
 
         #이미지
         self.label_manual_background = QtWidgets.QLabel(self)
@@ -26,7 +35,7 @@ class Frame_Eyeliner(QWidget):
         self.label_manual_background.setFont(font)
         self.label_manual_background.setStyleSheet("border-image: url(image/frameBack.png);")
         self.label_manual_background.setText("긴 얼굴형에는 가로로 어쩌꾸 저쩌구를 한다.")
-        self.label_manual_background.setGeometry(QtCore.QRect(5, 520, 526, 255))
+        self.label_manual_background.setGeometry(QtCore.QRect(5, 540, 526, 235))
 
 
 
@@ -43,7 +52,7 @@ class Frame_Eyeliner(QWidget):
 
         ## 이동 버튼
         self.pushButton_GoMenu = QtWidgets.QPushButton(self)
-        self.pushButton_GoMenu.setGeometry(QtCore.QRect(5, 716, 527, 48))
+        self.pushButton_GoMenu.setGeometry(QtCore.QRect(5, 721, 527, 43))
         self.pushButton_GoMenu.setStyleSheet('background-color: transparent;')
         self.pushButton_GoMenu.setObjectName("pushButton_GoMenu")
 

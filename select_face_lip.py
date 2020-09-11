@@ -17,12 +17,21 @@ class Select_face_Lip(QWidget):
     def __init__(self):
         super(Select_face_Lip, self).__init__()
         self.label_lipAR = QtWidgets.QLabel(self)
-        self.label_lipAR.setGeometry(QtCore.QRect(160, 10, 241, 40))
+        self.label_lipAR.setGeometry(QtCore.QRect(140, 10, 261, 40))
         self.label_lipAR.setObjectName("label_lipAR")
         font = QtGui.QFont()
         font.setPointSize(18)
         self.label_lipAR.setFont(font)
+        self.label_lipAR.setAlignment(Qt.AlignCenter)
         self.label_lipAR.setText("face_lip")
+
+        #얼굴사진
+        self.label_face = QtWidgets.QLabel(self)
+        self.label_face.setGeometry(QtCore.QRect(120, 70, 300, 400))
+        self.label_face.setObjectName("label_eyebrowAR")
+        self.label_face.setText("FACE IMAGE")
+        self.label_face.setAlignment(Qt.AlignCenter)
+        self.label_face.setStyleSheet('background-color:white;')
 
         # 이미지
         self.label_select = QtWidgets.QLabel(self)
