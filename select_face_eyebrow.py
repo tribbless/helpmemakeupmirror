@@ -3,6 +3,16 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 
+# 전페이지에서 이제... 원본이미지(pix값)를 전달하겠지. 그 값을 self.originalFace로 저장을 함
+# 가상화장한 얼굴은 self.makeFace로 저장함.
+# 투명도+가상화장한 얼굴은 self.makeTFace (T가 투명)
+## eyeybrowVR에 class두개만듬. 하나는 가상화장(종류,색상,원본이미지) : return 화장한 이미지 / 하나는 투명도(투명도값,원본이미지,가상화장한이미지) : return 화장한 이미지
+# return 화장한 이미지
+#
+## red_img2 = QtGui.QImage(red_img, red_img.shape[1], red_img.shape[0], red_img.shape[1] * 3,
+#                          QtGui.QImage.Format_RGB888).rgbSwapped()
+#  red_pix = QtGui.QPixmap(red_img2)
+#  self.label2.setPixmap(QtGui.QPixmap(red_pix))
 
 
 class Select_face_Eyebrow(QWidget):
@@ -10,36 +20,73 @@ class Select_face_Eyebrow(QWidget):
     def __init__(self):
         super(Select_face_Eyebrow, self).__init__()
 
-        self.label_eyebrowAR = QtWidgets.QLabel(self)
-        self.label_eyebrowAR.setGeometry(QtCore.QRect(130, 10, 271, 40))
-        self.label_eyebrowAR.setObjectName("label_eyebrowAR")
-        font = QtGui.QFont()
-        font.setPointSize(18)
-        self.label_eyebrowAR.setFont(font)
-        self.label_eyebrowAR.setAlignment(Qt.AlignCenter)
-        self.label_eyebrowAR.setText("face_eyebrow")
-
-        #얼굴사진
+        # 얼굴 사진
         self.label_face = QtWidgets.QLabel(self)
-        self.label_face.setGeometry(QtCore.QRect(120, 70, 300, 400))
+        self.label_face.setGeometry(QtCore.QRect(112, 10, 312, 416))
         self.label_face.setObjectName("label_face")
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        self.label_face.setFont(font)
         self.label_face.setText("FACE IMAGE")
         self.label_face.setAlignment(Qt.AlignCenter)
         self.label_face.setStyleSheet('background-color:white;')
 
-        #이미지
-        self.label_select = QtWidgets.QLabel(self)
-        self.label_select.setObjectName("label_select")
-        palette = QtGui.QPalette()
-        palette.setColor(QtGui.QPalette.Text, QtCore.Qt.white)
-        self.label_select.setPalette(palette)
-        font = QtGui.QFont("Times", 15)
-        self.label_select.setFont(font)
-        self.label_select.setStyleSheet("border-image: url(image/selectAR.png);")
-        #self.label_select.setText("30%")
-        self.label_select.setGeometry(QtCore.QRect(5, 490, 526, 280))
+        # subject
+        self.label_subject = QtWidgets.QLabel(self)
+        self.label_subject.setGeometry(QtCore.QRect(112, 437, 312, 30))
+        self.label_subject.setObjectName("label_subject")
+        font = QtGui.QFont()
+        font.setPointSize(15)
+        self.label_subject.setFont(font)
+        self.label_subject.setAlignment(Qt.AlignCenter)
+        self.label_subject.setText("eye brow")
+        self.label_subject.setStyleSheet('color: #737373')
+
+        # eyebrow option background image
+        self.label_background_Option = QtWidgets.QLabel(self)
+        self.label_background_Option.setGeometry(QtCore.QRect(0, 477, 536, 230))
+        self.label_background_Option.setObjectName("label_background_Option")
+        font = QtGui.QFont()
+        font.setPointSize(18)
+        self.label_background_Option.setFont(font)
+        self.label_background_Option.setAlignment(Qt.AlignCenter)
+        self.label_background_Option.setText("eyebrow option background image")
+        self.label_background_Option.setStyleSheet('background-color: #B5A4E7;')
+        #self.label_background_Option.setStyleSheet("border-image: url(image/selectAR.png);")
+
+        # 이동 버튼 (prev/next)
+        self.pushButton_GoSubMenu = QtWidgets.QPushButton(self)
+        self.pushButton_GoSubMenu.setGeometry(QtCore.QRect(0, 437, 112, 30))
+        self.pushButton_GoSubMenu.setObjectName("pushButton_GoSubMenu")
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        self.pushButton_GoSubMenu.setFont(font)
+        self.pushButton_GoSubMenu.setText("< menu")
+        self.pushButton_GoSubMenu.setStyleSheet('color: white; background-color:#B1B1B1; border:0px;')
+
+        self.pushButton_GoEyeshadowAR = QtWidgets.QPushButton(self)
+        self.pushButton_GoEyeshadowAR.setGeometry(QtCore.QRect(424, 437, 112, 30))
+        self.pushButton_GoEyeshadowAR.setObjectName("pushButton_GoEyeshadowAR")
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        self.pushButton_GoEyeshadowAR.setFont(font)
+        self.pushButton_GoEyeshadowAR.setText("shadow >")
+        self.pushButton_GoEyeshadowAR.setStyleSheet('color: white; background-color:#B1B1B1; border:0px;')
+
+        # 하단 로고
+        self.label_HelpMe_Logo = QtWidgets.QLabel(self)
+        self.label_HelpMe_Logo.setGeometry(QtCore.QRect(0, 707, 536, 61))
+        self.label_HelpMe_Logo.setObjectName("label_HelpMe_Logo")
+        font = QtGui.QFont()
+        font.setPointSize(15)
+        self.label_HelpMe_Logo.setFont(font)
+        self.label_HelpMe_Logo.setAlignment(Qt.AlignCenter)
+        self.label_HelpMe_Logo.setText("헬미 로고")
+        self.label_HelpMe_Logo.setStyleSheet('color:white; background-color:black')
 
 
+
+        '''
         ## eyebrow 선택 버튼
         self.pushButton_FirstOption = QtWidgets.QPushButton(self)
         self.pushButton_FirstOption.setGeometry(QtCore.QRect(5, 552, 168, 156))
@@ -83,31 +130,10 @@ class Select_face_Eyebrow(QWidget):
         self.label_slider.setAlignment(Qt.AlignCenter)
         self.label_slider.setText("0%")
         self.label_slider.setStyleSheet('color:white;')
+        '''
 
 
-        ## 이동 버튼
-        self.pushButton_GoMenu = QtWidgets.QPushButton(self)
-        self.pushButton_GoMenu.setGeometry(QtCore.QRect(5, 725, 527, 56))
-        self.pushButton_GoMenu.setStyleSheet('background-color: transparent;')
-        self.pushButton_GoMenu.setObjectName("pushButton_GoMenu")
 
-        self.pushButton_GoEyeshadowAR = QtWidgets.QPushButton(self)
-        self.pushButton_GoEyeshadowAR.setGeometry(QtCore.QRect(401, 10, 130, 40))
-        font = QtGui.QFont()
-        font.setFamily("AlternateGothic2 BT")
-        font.setPointSize(20)
-        self.pushButton_GoEyeshadowAR.setFont(font)
-        self.pushButton_GoEyeshadowAR.setText("NEXT")
-        self.pushButton_GoEyeshadowAR.setObjectName("pushButton_GoEyeshadowAR")
-
-        self.pushButton_GoSlectFaceCapture = QtWidgets.QPushButton(self)
-        self.pushButton_GoSlectFaceCapture.setGeometry(QtCore.QRect(0, 10, 130, 40))
-        font = QtGui.QFont()
-        font.setFamily("AlternateGothic2 BT")
-        font.setPointSize(20)
-        self.pushButton_GoSlectFaceCapture.setFont(font)
-        self.pushButton_GoSlectFaceCapture.setText("BACK")
-        self.pushButton_GoSlectFaceCapture.setObjectName("pushButton_GoSlectFaceCapture")
 
     def Apply_FirstOption(self): ## 원상복구버튼
         self.slider.hide()

@@ -8,23 +8,63 @@ class Select_Thema(QWidget):
     def __init__(self):
         super(Select_Thema, self).__init__()
 
-
-        self.label_select = QtWidgets.QLabel(self)
-        self.label_select.setObjectName("label_thema")
-        self.label_select.resize(900, 300)
-        pixmap = QPixmap("image/thema1.png")
-        pixmap = pixmap.scaledToWidth(530)
-        self.label_select.setPixmap(QPixmap(pixmap))
-        self.label_select.setGeometry(QtCore.QRect(5, 510, 526, 260))
-
-        # 얼굴사진
+        # 얼굴 사진
         self.label_face = QtWidgets.QLabel(self)
-        self.label_face.setGeometry(QtCore.QRect(120, 70, 315, 420))
+        self.label_face.setGeometry(QtCore.QRect(112, 20, 312, 416))
         self.label_face.setObjectName("label_face")
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        self.label_face.setFont(font)
         self.label_face.setText("FACE IMAGE")
         self.label_face.setAlignment(Qt.AlignCenter)
         self.label_face.setStyleSheet('background-color:white;')
 
+        # TEHMA option background image
+        self.label_background_Option = QtWidgets.QLabel(self)
+        self.label_background_Option.setGeometry(QtCore.QRect(0, 507, 536, 200))
+        self.label_background_Option.setObjectName("label_background_Option")
+        font = QtGui.QFont()
+        font.setPointSize(18)
+        self.label_background_Option.setFont(font)
+        self.label_background_Option.setAlignment(Qt.AlignCenter)
+        self.label_background_Option.setText("thema option background image")
+        self.label_background_Option.setStyleSheet('background-color: #B5A4E7;')
+        #pixmap = QPixmap("image/thema1.png")
+        #pixmap = pixmap.scaledToWidth(530)
+        #self.label_background_Option.setPixmap(QPixmap(pixmap))
+        #self.label_background_Option.setStyleSheet("border-image: url(image/selectAR.png);")
+
+        # 이동 버튼 (prev/next)
+        self.pushButton_GoSubMenu = QtWidgets.QPushButton(self)
+        self.pushButton_GoSubMenu.setGeometry(QtCore.QRect(0, 457, 92, 30))
+        self.pushButton_GoSubMenu.setObjectName("pushButton_GoSubMenu")
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        self.pushButton_GoSubMenu.setFont(font)
+        self.pushButton_GoSubMenu.setText("< prev")
+        self.pushButton_GoSubMenu.setStyleSheet('color: white; background-color:#B1B1B1; border:0px;')
+
+        self.pushButton_GoEyebrowFrame = QtWidgets.QPushButton(self)
+        self.pushButton_GoEyebrowFrame.setGeometry(QtCore.QRect(444, 457, 92, 30))
+        self.pushButton_GoEyebrowFrame.setObjectName("pushButton_GoEyebrowFrame")
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        self.pushButton_GoEyebrowFrame.setFont(font)
+        self.pushButton_GoEyebrowFrame.setText("next >")
+        self.pushButton_GoEyebrowFrame.setStyleSheet('color: white; background-color:#B1B1B1; border:0px;')
+
+        # 하단 로고
+        self.label_HelpMe_Logo = QtWidgets.QLabel(self)
+        self.label_HelpMe_Logo.setGeometry(QtCore.QRect(0, 707, 536, 61))
+        self.label_HelpMe_Logo.setObjectName("label_HelpMe_Logo")
+        font = QtGui.QFont()
+        font.setPointSize(15)
+        self.label_HelpMe_Logo.setFont(font)
+        self.label_HelpMe_Logo.setAlignment(Qt.AlignCenter)
+        self.label_HelpMe_Logo.setText("헬미 로고")
+        self.label_HelpMe_Logo.setStyleSheet('color:white; background-color:black')
+
+        ''''
         ## 테마 선택 버튼
         self.pushButton_UserThema = QtWidgets.QPushButton(self)
         self.pushButton_UserThema.setGeometry(QtCore.QRect(23, 551, 160, 146))
@@ -79,27 +119,10 @@ class Select_Thema(QWidget):
         self.pushButton_GoMenu.setGeometry(QtCore.QRect(5, 711, 527, 52))
         self.pushButton_GoMenu.setStyleSheet('background-color: transparent;')
         self.pushButton_GoMenu.setObjectName("pushButton_GoMenu")
+        '''
 
 
 
-        self.pushButton_GoFrame = QtWidgets.QPushButton(self)
-        self.pushButton_GoFrame.setGeometry(QtCore.QRect(401, 10, 130, 40))
-        font = QtGui.QFont()
-        font.setFamily("AlternateGothic2 BT")
-        font.setPointSize(20)
-        self.pushButton_GoFrame.setFont(font)
-        self.pushButton_GoFrame.setText("FRAME")
-        self.pushButton_GoFrame.setObjectName("pushButton_GoFrame")
-
-
-        self.pushButton_GoSelectCapture = QtWidgets.QPushButton(self)
-        self.pushButton_GoSelectCapture.setGeometry(QtCore.QRect(0, 10, 130, 40))
-        font = QtGui.QFont()
-        font.setFamily("AlternateGothic2 BT")
-        font.setPointSize(20)
-        self.pushButton_GoSelectCapture.setFont(font)
-        self.pushButton_GoSelectCapture.setText("BACK")
-        self.pushButton_GoSelectCapture.setObjectName("pushButton_GoSelectCapture")
 
 
     def Apply_UserThema(self):

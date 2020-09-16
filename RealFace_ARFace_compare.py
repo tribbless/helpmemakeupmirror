@@ -10,7 +10,7 @@ class RealFace_ARFace_Compare(QWidget):
 
         # 텍스트
         self.label_AR = QtWidgets.QLabel(self)
-        self.label_AR.setGeometry(QtCore.QRect(10, 80, 246, 80))
+        self.label_AR.setGeometry(QtCore.QRect(0, 96, 261, 50))
         self.label_AR.setObjectName("label_AR")
         font = QtGui.QFont()
         font.setPointSize(12)
@@ -19,7 +19,7 @@ class RealFace_ARFace_Compare(QWidget):
         self.label_AR.setText("가상 메이크업")
 
         self.label_REAL = QtWidgets.QLabel(self)
-        self.label_REAL.setGeometry(QtCore.QRect(280, 80, 246, 80))
+        self.label_REAL.setGeometry(QtCore.QRect(275, 96, 261, 50))
         self.label_REAL.setObjectName("label_REAL")
         font = QtGui.QFont()
         font.setPointSize(12)
@@ -29,55 +29,61 @@ class RealFace_ARFace_Compare(QWidget):
 
         # 메이크업 비교
         self.label_faceAR = QtWidgets.QLabel(self)
-        self.label_faceAR.setGeometry(QtCore.QRect(10, 140, 246, 328))
+        self.label_faceAR.setGeometry(QtCore.QRect(0, 146, 261, 352))
         self.label_faceAR.setObjectName("label_faceAR")
         self.label_faceAR.setStyleSheet('background-color:white')
 
         self.label_faceREAL = QtWidgets.QLabel(self)
-        self.label_faceREAL.setGeometry(QtCore.QRect(280, 140, 246, 328))
+        self.label_faceREAL.setGeometry(QtCore.QRect(275, 146, 261, 352))
         self.label_faceREAL.setObjectName("label_faceREAL")
         self.label_faceREAL.setStyleSheet("background-color: transparent;" 
                                           "border-style: dashed;"
                                           "border-width: 3px;"
                                           "border-color: rgb(183,166,231);")
 
-        # 이미지
-        self.label_manual_background = QtWidgets.QLabel(self)
-        self.label_manual_background.setObjectName("label_manual_background")
-        palette = QtGui.QPalette()
-        palette.setColor(QtGui.QPalette.Text, QtCore.Qt.white)
-        self.label_manual_background.setPalette(palette)
-        font = QtGui.QFont("Times", 15)
-        self.label_manual_background.setFont(font)
-        self.label_manual_background.setStyleSheet("border-image: url(image/frameBack.png);")
-        #self.label_manual_background.setText("긴 얼굴형에는 가로로 어쩌꾸 저쩌구를 한다.")
-        self.label_manual_background.setGeometry(QtCore.QRect(5, 540, 526, 235))
-
-        '''# 이미지에 맞게 label사이즈 및 위치 조절해야함~~~   : 설명쓰는 공간~~
-        self.label_manual = QtWidgets.QLabel(self)
-        self.label_manual.setGeometry(QtCore.QRect(40, 540, 451, 161))
-        self.label_manual.setObjectName("label_manual")
+        # 홈 버튼 background image
+        self.label_background_Home = QtWidgets.QLabel(self)
+        self.label_background_Home.setGeometry(QtCore.QRect(52, 548, 230, 110))
+        self.label_background_Home.setObjectName("label_background_Home")
         font = QtGui.QFont()
-        #font.setColor(QtGui.QPalette.Text, QtCore.Qt.white)
-        font.setPointSize(14)
-        self.label_manual.setFont(font)
-        #self.label_manual.setStyleSheet('QLabel{background-color: rgba(0, 0, 0, 0.0)}')
-        self.label_manual.setStyleSheet('background-color: transparent; color: white')
-        self.label_manual.setText("긴 얼굴형에는 가로로 어쩌꾸 저쩌구를 한다.\n어쩌구저쩌구\n룰루랄라 ^^이렇게 하면 됩니다 ^^")
-        '''
+        font.setPointSize(18)
+        self.label_background_Home.setFont(font)
+        self.label_background_Home.setAlignment(Qt.AlignCenter)
+        self.label_background_Home.setText("HOME")
+        self.label_background_Home.setStyleSheet('background-color:#B5A4E7')
 
-
-        # 이동 버튼
+        # 홈 버튼
         self.pushButton_GoHome = QtWidgets.QPushButton(self)
-        self.pushButton_GoHome.setGeometry(QtCore.QRect(5, 721, 527, 43))
-        self.pushButton_GoHome.setStyleSheet('background-color: transparent;')
-        self.pushButton_GoHome.setObjectName("pushButton_GoHome")
-
-        self.pushButton_GoFrameLip = QtWidgets.QPushButton(self)
-        self.pushButton_GoFrameLip.setGeometry(QtCore.QRect(0, 10, 130, 40))
+        self.pushButton_GoHome.setGeometry(QtCore.QRect(0, 548, 50, 110))
+        self.pushButton_GoHome.setObjectName("GoHome")
         font = QtGui.QFont()
         font.setFamily("AlternateGothic2 BT")
-        font.setPointSize(20)
-        self.pushButton_GoFrameLip.setFont(font)
-        self.pushButton_GoFrameLip.setText("BACK")
-        self.pushButton_GoFrameLip.setObjectName("pushButton_GoFrameLip")
+        font.setPointSize(15)
+        self.pushButton_GoHome.setFont(font)
+        self.pushButton_GoHome.setText("HOME")
+
+        # 공유 버튼 background image
+        self.label_background_Share = QtWidgets.QLabel(self)
+        self.label_background_Share.setGeometry(QtCore.QRect(292, 548, 192, 110))
+        self.label_background_Share.setObjectName("label_background_Share")
+        font = QtGui.QFont()
+        font.setPointSize(18)
+        self.label_background_Share.setFont(font)
+        self.label_background_Share.setAlignment(Qt.AlignCenter)
+        self.label_background_Share.setText("SHARE")
+        self.label_background_Share.setStyleSheet('background-color:#B5A4E7')
+
+        # 하단 로고
+        self.label_HelpMe_Logo = QtWidgets.QLabel(self)
+        self.label_HelpMe_Logo.setGeometry(QtCore.QRect(0, 707, 536, 61))
+        self.label_HelpMe_Logo.setObjectName("label_HelpMe_Logo")
+        font = QtGui.QFont()
+        font.setPointSize(15)
+        self.label_HelpMe_Logo.setFont(font)
+        self.label_HelpMe_Logo.setAlignment(Qt.AlignCenter)
+        self.label_HelpMe_Logo.setText("헬미 로고")
+        self.label_HelpMe_Logo.setStyleSheet('color:white; background-color:black')
+
+
+
+

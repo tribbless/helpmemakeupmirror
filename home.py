@@ -2,32 +2,35 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
-
+## <메모> 536 X 768 / 13 X 13
 class Home(QWidget):
 
     def __init__(self):
         super(Home, self).__init__()
 
-        ## 어떤화면인지 알리기 위한 label (나중에 삭제)
-        self.label_home = QtWidgets.QLabel(self)
-        self.label_home.setGeometry(QtCore.QRect(10, 10, 171, 61))
-        self.label_home.setObjectName("label_home")
+
+        self.label_title = QtWidgets.QLabel(self)
+        self.label_title.setGeometry(QtCore.QRect(97, 172, 342, 50))
+        self.label_title.setObjectName("label_title")
         font = QtGui.QFont()
-        font.setPointSize(20)
-        self.label_home.setFont(font)
-        self.label_home.setText("home화면")
+        font.setPointSize(15)
+        self.label_title.setFont(font)
+        self.label_title.setAlignment(Qt.AlignCenter)
+        self.label_title.setText("HELP ME MAKE UP MIRROR")
+
+
 
         ## go to main button
-        self.pushButton_GoFaceCatprue = QtWidgets.QPushButton(self)
-        self.pushButton_GoFaceCatprue.setGeometry(QtCore.QRect(100, 210, 331, 331))
+        self.pushButton_GoMainMenu = QtWidgets.QPushButton(self)
+        self.pushButton_GoMainMenu.setGeometry(QtCore.QRect(97, 222, 342, 324))
         font = QtGui.QFont()
         font.setFamily("AlternateGothic2 BT")
         font.setPointSize(28)
-        self.pushButton_GoFaceCatprue.setText("Face Detector \n\n CAPTURE YOUR FACE")
-        self.pushButton_GoFaceCatprue.setFont(font)
-        self.pushButton_GoFaceCatprue.setObjectName("pushButton_GoFaceCatprue")
+        self.pushButton_GoMainMenu.setText("Face Detector \n\n CAPTURE YOUR FACE")
+        self.pushButton_GoMainMenu.setFont(font)
+        self.pushButton_GoMainMenu.setObjectName("pushButton_GoMainMenu")
         # ui test
-        self.pushButton_GoFaceCatprue.setStyleSheet("/* Rectangle 16 */\n"
+        self.pushButton_GoMainMenu.setStyleSheet("/* Rectangle 16 */\n"
                                                     "position: absolute;\n"
                                                     "width: 665.67px;\n"
                                                     "height: 632.68px;\n"
@@ -51,5 +54,6 @@ class Home(QWidget):
                                                     "\n"
                                                     "color: #FFFFFF;\n"
                                                     "border: 1px solid #FFFFFF;")
+
 
 

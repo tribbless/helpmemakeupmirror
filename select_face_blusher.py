@@ -8,36 +8,74 @@ class Select_face_Blusher(QWidget):
     def __init__(self):
         super(Select_face_Blusher, self).__init__()
 
-        self.label_blusherAR = QtWidgets.QLabel(self)
-        self.label_blusherAR.setGeometry(QtCore.QRect(130, 10, 271, 40))
-        self.label_blusherAR.setObjectName("label_blusherAR")
-        font = QtGui.QFont()
-        font.setPointSize(18)
-        self.label_blusherAR.setFont(font)
-        self.label_blusherAR.setAlignment(Qt.AlignCenter)
-        self.label_blusherAR.setText("face_blusher")
-
-        #얼굴사진
+        # 얼굴 사진
         self.label_face = QtWidgets.QLabel(self)
-        self.label_face.setGeometry(QtCore.QRect(120, 70, 300, 400))
+        self.label_face.setGeometry(QtCore.QRect(112, 10, 312, 416))
         self.label_face.setObjectName("label_face")
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        self.label_face.setFont(font)
         self.label_face.setText("FACE IMAGE")
         self.label_face.setAlignment(Qt.AlignCenter)
         self.label_face.setStyleSheet('background-color:white;')
 
-        # 이미지
-        self.label_select = QtWidgets.QLabel(self)
-        self.label_select.setObjectName("label_select")
-        palette = QtGui.QPalette()
-        palette.setColor(QtGui.QPalette.Text, QtCore.Qt.white)
-        self.label_select.setPalette(palette)
-        font = QtGui.QFont("Times", 15)
-        self.label_select.setFont(font)
-        self.label_select.setStyleSheet("border-image: url(image/selectAR.png);")
-        #self.label_select.setText("30%")
-        self.label_select.setGeometry(QtCore.QRect(5, 490, 526, 280))
+        # subject
+        self.label_subject = QtWidgets.QLabel(self)
+        self.label_subject.setGeometry(QtCore.QRect(112, 437, 312, 30))
+        self.label_subject.setObjectName("label_subject")
+        font = QtGui.QFont()
+        font.setPointSize(15)
+        self.label_subject.setFont(font)
+        self.label_subject.setAlignment(Qt.AlignCenter)
+        self.label_subject.setText("blusher")
+        self.label_subject.setStyleSheet('color: #737373')
 
-        ## eyebrow 선택 버튼
+        # blusher option background image
+        self.label_background_Option = QtWidgets.QLabel(self)
+        self.label_background_Option.setGeometry(QtCore.QRect(0, 477, 536, 230))
+        self.label_background_Option.setObjectName("label_background_Option")
+        font = QtGui.QFont()
+        font.setPointSize(18)
+        self.label_background_Option.setFont(font)
+        self.label_background_Option.setAlignment(Qt.AlignCenter)
+        self.label_background_Option.setText("blusher option background image")
+        self.label_background_Option.setStyleSheet('background-color: #B5A4E7;')
+        # self.label_background_Option.setStyleSheet("border-image: url(image/selectAR.png);")
+
+
+        # 이동 버튼 (prev/next)
+        self.pushButton_GoEyelinerAR = QtWidgets.QPushButton(self)
+        self.pushButton_GoEyelinerAR.setGeometry(QtCore.QRect(0, 437, 112, 30))
+        self.pushButton_GoEyelinerAR.setObjectName("pushButton_GoEyelinerAR")
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        self.pushButton_GoEyelinerAR.setFont(font)
+        self.pushButton_GoEyelinerAR.setText("< eyeliner")
+        self.pushButton_GoEyelinerAR.setStyleSheet('color: white; background-color:#B1B1B1; border:0px;')
+
+
+        self.pushButton_GoLipAR = QtWidgets.QPushButton(self)
+        self.pushButton_GoLipAR.setGeometry(QtCore.QRect(424, 437, 112, 30))
+        self.pushButton_GoLipAR.setObjectName("pushButton_GoLipAR")
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        self.pushButton_GoLipAR.setFont(font)
+        self.pushButton_GoLipAR.setText("lip >")
+        self.pushButton_GoLipAR.setStyleSheet('color: white; background-color:#B1B1B1; border:0px;')
+
+        # 하단 로고
+        self.label_HelpMe_Logo = QtWidgets.QLabel(self)
+        self.label_HelpMe_Logo.setGeometry(QtCore.QRect(0, 707, 536, 61))
+        self.label_HelpMe_Logo.setObjectName("label_HelpMe_Logo")
+        font = QtGui.QFont()
+        font.setPointSize(15)
+        self.label_HelpMe_Logo.setFont(font)
+        self.label_HelpMe_Logo.setAlignment(Qt.AlignCenter)
+        self.label_HelpMe_Logo.setText("헬미 로고")
+        self.label_HelpMe_Logo.setStyleSheet('color:white; background-color:black')
+
+        '''
+        
         self.pushButton_FirstOption = QtWidgets.QPushButton(self)
         self.pushButton_FirstOption.setGeometry(QtCore.QRect(5, 552, 168, 156))
         self.pushButton_FirstOption.setStyleSheet('background-color: transparent;')
@@ -85,25 +123,9 @@ class Select_face_Blusher(QWidget):
         self.pushButton_GoMenu.setGeometry(QtCore.QRect(5, 725, 527, 56))
         self.pushButton_GoMenu.setStyleSheet('background-color: transparent;')
         self.pushButton_GoMenu.setObjectName("pushButton_GoMenu")
+        '''
 
 
-        self.pushButton_GoLipAR = QtWidgets.QPushButton(self)
-        self.pushButton_GoLipAR.setGeometry(QtCore.QRect(401, 10, 130, 40))
-        font = QtGui.QFont()
-        font.setFamily("AlternateGothic2 BT")
-        font.setPointSize(20)
-        self.pushButton_GoLipAR.setFont(font)
-        self.pushButton_GoLipAR.setText("NEXT")
-        self.pushButton_GoLipAR.setObjectName("pushButton_GoLipAR")
-
-        self.pushButton_GoEyelinerAR = QtWidgets.QPushButton(self)
-        self.pushButton_GoEyelinerAR.setGeometry(QtCore.QRect(0, 10, 130, 40))
-        font = QtGui.QFont()
-        font.setFamily("AlternateGothic2 BT")
-        font.setPointSize(20)
-        self.pushButton_GoEyelinerAR.setFont(font)
-        self.pushButton_GoEyelinerAR.setText("BACK")
-        self.pushButton_GoEyelinerAR.setObjectName("pushButton_GoEyelinerAR")
 
     def Apply_FirstOption(self): ## 원상복구버튼
         self.slider.hide()

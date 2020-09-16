@@ -1,42 +1,58 @@
 ##  순서
 
-# 0. home
-# 1. face_capture (쌩얼인 상태) : 얼굴형 분석
-# 2. menu -> [select by face, select by thema, personal color]
+'''
+0. 홈 [home.py]
+1. 메인메뉴 [main_menu.py]
+ -> personal color
+ -> base makeup video
+ -> color makeup
 
-# 3-0. select by face & select by thema 클릭 시
-#      -> base makeup 동영상
-#      -> face_capture(base메이크업한 상태)
-# 3-1. select by face ~~ frame
-#  -> eyebrow - eyeshadow - eyeliner - blusher - lip
-# 3-2. select by thema
-#  테마 스타일 선택 ~~ frame
-# 3-3. personal color
-#  색상 추천  ~~ select by thema
+2.
+ 2-1)쌩얼 캡쳐 [bareFace_capture.py] ~ 퍼스널 컬러
+ 2-2)베이스 메이크업 [base_makeup_video.py] ~ 메이크업 캡쳐
+ 2-3)메이크업 캡쳐 [makeupFace_capture.py] ~ 서브메뉴
 
-# 4. frame (본격적인 화장 시작)
-#  -> 눈썹프레임 - 아이새됴우프레임 - 아이라이너 프레임 - 블러셔 프레임 - 립(프레임은 없음)
-# 5. 가상화장한 얼굴 - 실제 화장한 얼굴 비교 ~~ Home
+3. 퍼스널 컬러 [personal_color.py] ~ 쌩얼 캡쳐
+
+4. 서브 메뉴
+ -> SELECT BY FACE
+ -> SELECT BY THEMA
+
+5.
+ 5-1) SELECT BY FACE [select_face_*.py]~ 프레임
+ 눈썹, 아이새도우, 아이라이너, 블러셔, 립 총 5가지 화면
+ 5-2)SELECT BY THEMA [select_thema.py] ~ 프레임
+
+6. FRAME [frame_*.py] ~ 비교화면
+  눈썹, 아이새됴우, 아이라이너, 블러셔, 립 총 5가지 화면.
+
+7. 비교화면 [RealFace_ARFace_compare.py] ~ 홈
+홈버튼(홈버튼)과 공유버튼이 있다.
+'''
 import sys
+
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 
 from home import Home
-from face_capture import Face_Capture
-from menu import Menu
+from main_menu import Main_Menu
 
+from bareFace_capture import BareFace_Capture
+from base_makeup_video import Base_Makeup_Video
+from makeupFace_capture import MakeupFace_Capture
 from personal_color import Personal_Color
-from select_thema import Select_Thema
-from select_face_thema_base import Select_face_thema_Base
-from select_face_thema_capture import Select_face_thema_Capture
 
+from sub_menu import Sub_Menu
+
+from select_thema import Select_Thema
 from select_face_eyebrow import Select_face_Eyebrow
 from select_face_eyeshadow import Select_face_Eyeshadow
 from select_face_eyeliner import Select_face_Eyeliner
 from select_face_blusher import Select_face_Blusher
 from select_face_lip import Select_face_Lip
+
 
 from frame_eyebrow import Frame_Eyebrow
 from frame_eyeshadow import Frame_Eyeshadow
@@ -47,30 +63,53 @@ from frame_lip import Frame_Lip
 from RealFace_ARFace_compare import RealFace_ARFace_Compare
 
 ##### python -m PyQt5.uic.pyuic -x ex_02.ui -o ex_02.py
+## 헬미로고는 베이스메이크업 로고 기준으로 함.!!!!!
+
 
 class MAIN_StackedWidget(QWidget):
     def __init__(self):
         QWidget.__init__(self, flags=Qt.Widget)
         self.stk_w = QStackedWidget(self)
         self.setupUi()
+        timer1 = QtCore.QTimer(self, interval=1000, timeout=self.showDateTime) ## 1000이 1초
+        timer1.start()
+        self.showDateTime()
+
+    def showDateTime(self):
+        date = QtCore.QDate.currentDate()
+        time = QtCore.QTime.currentTime()
+        textDate = date.toString(Qt.ISODate)
+        textTime = time.toString("HH:mm")
+        text2 = time.toString("AP")
+
+        if text2=="오전":
+            textTime=textTime+" AM"
+        else:
+            textTime=textTime+" PM"
+        self.label_DateTime.setText(textDate+"\n"+textTime)
+
     def setupUi(self):
         self.setWindowTitle("Help Me MakUp Mirror")
+        self.resize(562, 794)
         ## 나중에 jetson nano 화면을 회전해야함.
         ## 나중에 버튼위치 및 크기를 2배씩 곱해야함
         #self.resize(1122, 1587) # 원본 미러 크기
-        #self.resize(561, 793.5)  # 원본 미러 크기에서 나누기 2함
-        self.resize(561,793)
+
+
 
         widget_laytout = QHBoxLayout()
 
 
         self.home = Home()
-        self.face_capture = Face_Capture()
-        self.menu = Menu()
+        self.main_menu = Main_Menu()
+        self.bareFace_capture = BareFace_Capture()
+        self.base_makeup_video = Base_Makeup_Video()
+        self.makeupFace_capture = MakeupFace_Capture()
         self.personal_color = Personal_Color()
+
+        self.sub_menu = Sub_Menu()
+
         self.select_thema = Select_Thema()
-        self.select_face_thema_base = Select_face_thema_Base()
-        self.select_face_thema_capture = Select_face_thema_Capture()
 
         self.select_face_eyebrow = Select_face_Eyebrow()
         self.select_face_eyeshadow = Select_face_Eyeshadow()
@@ -89,12 +128,15 @@ class MAIN_StackedWidget(QWidget):
 
 
         self.stk_w.addWidget(self.home)
-        self.stk_w.addWidget(self.face_capture)
-        self.stk_w.addWidget(self.menu)
+        self.stk_w.addWidget(self.main_menu)
+        self.stk_w.addWidget(self.bareFace_capture)
+        self.stk_w.addWidget(self.base_makeup_video)
+        self.stk_w.addWidget(self.makeupFace_capture)
         self.stk_w.addWidget(self.personal_color)
+
+        self.stk_w.addWidget(self.sub_menu)
+
         self.stk_w.addWidget(self.select_thema)
-        self.stk_w.addWidget(self.select_face_thema_base)
-        self.stk_w.addWidget(self.select_face_thema_capture)
 
         self.stk_w.addWidget(self.select_face_eyebrow)
         self.stk_w.addWidget(self.select_face_eyeshadow)
@@ -110,188 +152,195 @@ class MAIN_StackedWidget(QWidget):
 
         self.stk_w.addWidget(self.Real_AR_Face_compare)
 
-
-
         widget_laytout.addWidget(self.stk_w)
+
         self.setLayout(widget_laytout)
 
 
+
         ## 화면전환 NEXT
-        self.home.pushButton_GoFaceCatprue.clicked.connect(self.goToFaceCapture)
-        self.face_capture.pushButton_GoMenu.clicked.connect(self.goToMenu)
 
-        self.menu.pushButton_GoPersonalColor.clicked.connect(self.goToPersonalColor)
-        self.menu.pushButton_GoSelectFace.clicked.connect(self.goToBaseMakeUp_Face)
-        self.menu.pushButton_GoSelectThema.clicked.connect(self.goToBaseMakeUp_Thema)
+        self.home.pushButton_GoMainMenu.clicked.connect(self.goToMainMenu)
+        self.main_menu.pushButton_GoPersonalColor.clicked.connect(self.goToBareFaceCapture)
+        self.main_menu.pushButton_GoBaseMakeupVideo.clicked.connect(self.goToBaseMakeupVideo)
+        self.main_menu.pushButton_GoColorMakeup.clicked.connect(self.goToMakeupFaceCapture)
 
-        self.personal_color.pushButton_GoThema.clicked.connect(self.goToSelectBase_Thema)
-        self.select_face_thema_base.pushButton_GoSelectFaceCapture.clicked.connect(self.goToSelectFaceCapture)
-        self.select_face_thema_capture.pushButton_GoThemaOrEyebrowAR.clicked.connect(self.goToThemaOrEyebrowAR)
-        self.select_thema.pushButton_GoFrame.clicked.connect(self.goToFrameEyebrow)
+        self.bareFace_capture.pushButton_GoPersonalColor.clicked.connect(self.goToPersonalColor)
+        self.personal_color.pushButton_GoMainMenu.clicked.connect(self.goToMainMenu)
+        self.base_makeup_video.pushButton_GoColorMakeup.clicked.connect(self.goToMakeupFaceCapture)
+        self.makeupFace_capture.pushButton_GoSubMenu.clicked.connect(self.goToSubMenu)
+        self.sub_menu.pushButton_GoSelectThema.clicked.connect(self.goToThema)
+        self.select_thema.pushButton_GoEyebrowFrame.clicked.connect(self.goToEyebrowFrame)
 
+        self.sub_menu.pushButton_GoSelectFace.clicked.connect(self.goToEyebrowAR)
         self.select_face_eyebrow.pushButton_GoEyeshadowAR.clicked.connect(self.goToEyeshadowAR)
         self.select_face_eyeshadow.pushButton_GoEyelinerAR.clicked.connect(self.goToEyelinerAR)
         self.select_face_eyeliner.pushButton_GoBlusherAR.clicked.connect(self.goToBlusherAR)
         self.select_face_blusher.pushButton_GoLipAR.clicked.connect(self.goToLipAR)
-        self.select_face_lip.pushButton_GoFrame.clicked.connect(self.goToFrameEyebrow)
+        self.select_face_lip.pushButton_GoEyebrowFrame.clicked.connect(self.goToEyebrowFrame)
 
-        self.frame_eyebrow.pushButton_GoFrameEyesahdow.clicked.connect(self.goToFrameEyeshadow)
-        self.frame_eyeshadow.pushButton_GoFrameEyeliner.clicked.connect(self.goToFrameEyeliner)
-        self.frame_eyeliner.pushButton_GoBlusher.clicked.connect(self.goToFrameBlusher)
-        self.frame_blusher.pushButton_GoLip.clicked.connect(self.goToFrameLip)
+        self.frame_eyebrow.pushButton_GoEyesahdowFrame.clicked.connect(self.goToEyeshadowFrame)
+        self.frame_eyeshadow.pushButton_GoEyelinerFrame.clicked.connect(self.goToEyelinerFrame)
+        self.frame_eyeliner.pushButton_GoBlusherFrame.clicked.connect(self.goToBlusherFrame)
+        self.frame_blusher.pushButton_GoLipFrame.clicked.connect(self.goToLipFrame)
         self.frame_lip.pushButton_GoCompare.clicked.connect(self.goToCompare)
 
-        self.Real_AR_Face_compare.pushButton_GoHome.clicked.connect(self.goToHome)
-
-
-
-
         ## 화면전환 PREVIOUS
-        self.face_capture.pushButton_GoHome.clicked.connect(self.goToHome)
-        self.menu.pushButton_GoFaceCapture.clicked.connect(self.goToFaceCapture)
-        self.select_face_thema_base.pushButton_GoMenuOrColor.clicked.connect(self.goToMenuOrColor)
-        self.select_face_thema_capture.pushButton_GoSelectBase.clicked.connect(self.goToSelectBase)
-
-        self.select_face_eyebrow.pushButton_GoSlectFaceCapture.clicked.connect(self.goToSelectFaceCapture)
+        self.select_thema.pushButton_GoSubMenu.clicked.connect(self.goToSubMenu)
+        self.select_face_eyebrow.pushButton_GoSubMenu.clicked.connect(self.goToSubMenu)
         self.select_face_eyeshadow.pushButton_GoEyebrowAR.clicked.connect(self.goToEyebrowAR)
         self.select_face_eyeliner.pushButton_GoEyeshadowAR.clicked.connect(self.goToEyeshadowAR)
         self.select_face_blusher.pushButton_GoEyelinerAR.clicked.connect(self.goToEyelinerAR)
         self.select_face_lip.pushButton_GoBlusherAR.clicked.connect(self.goToBlusherAR)
 
-        self.personal_color.pushButton_GoMenu.clicked.connect(self.goToMenu)
-        self.select_thema.pushButton_GoSelectCapture.clicked.connect(self.goToSelectFaceCapture)
+        self.frame_eyebrow.pushButton_GoARorThema.clicked.connect(self.goToLipARorTHEMA)
+        self.frame_eyeshadow.pushButton_GoEyebrowFrame.clicked.connect(self.goToEyebrowFrame)
+        self.frame_eyeliner.pushButton_GoEyeshadowFrame.clicked.connect(self.goToEyeshadowFrame)
+        self.frame_blusher.pushButton_GoEyelinerFrame.clicked.connect(self.goToEyelinerFrame)
+        self.frame_lip.pushButton_GoBlusherFrame.clicked.connect(self.goToBlusherFrame)
 
-        self.frame_eyebrow.pushButton_GoAROrThema.clicked.connect(self.goToAROrThema)
-        self.frame_eyeshadow.pushButton_GoFrameEyebrow.clicked.connect(self.goToFrameEyebrow)
-        self.frame_eyeliner.pushButton_GoEyesahdow.clicked.connect(self.goToFrameEyeshadow)
-        self.frame_blusher.pushButton_GoEyeliner.clicked.connect(self.goToFrameEyeliner)
-        self.frame_lip.pushButton_GoBlusher.clicked.connect(self.goToFrameBlusher)
+        self.Real_AR_Face_compare.pushButton_GoHome.clicked.connect(self.goToHome)
 
-        self.Real_AR_Face_compare.pushButton_GoFrameLip.clicked.connect(self.goToFrameLip)
 
-        ## 메뉴로 이동
-        self.select_thema.pushButton_GoMenu.clicked.connect(self.goToMenu)
 
-        self.frame_eyebrow.pushButton_GoMenu.clicked.connect(self.goToMenu)
-        self.frame_eyeshadow.pushButton_GoMenu.clicked.connect(self.goToMenu)
-        self.frame_eyeliner.pushButton_GoMenu.clicked.connect(self.goToMenu)
-        self.frame_blusher.pushButton_GoMenu.clicked.connect(self.goToMenu)
-        self.frame_lip.pushButton_GoMenu.clicked.connect(self.goToMenu)
+        ## 시간/날짜
+        self.label_DateTime = QtWidgets.QLabel(self)
+        self.label_DateTime.setGeometry(QtCore.QRect(10, 0, 110, 60))
+        self.label_DateTime.setObjectName("label_DateTime")
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.label_DateTime.setFont(font)
+        self.label_DateTime.setText("")
 
-        self.select_face_eyebrow.pushButton_GoMenu.clicked.connect(self.goToMenu)
-        self.select_face_eyeshadow.pushButton_GoMenu.clicked.connect(self.goToMenu)
-        self.select_face_eyeliner.pushButton_GoMenu.clicked.connect(self.goToMenu)
-        self.select_face_blusher.pushButton_GoMenu.clicked.connect(self.goToMenu)
-        self.select_face_lip.pushButton_GoMenu.clicked.connect(self.goToMenu)
+        ''' 구분용
+        self.label = QtWidgets.QLabel(self)
+        # self.label_DateTime.setGeometry(QtCore.QRect(10, 0, 110, 70)) # 오리지널
+        self.label.setGeometry(QtCore.QRect(120, 0, 70, 13))
+        self.label.setObjectName("label")
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.label.setFont(font)
+        self.label.setText("")
+        self.label.setStyleSheet('background-color:gray')
 
-        self.select_face_thema_capture.pushButton_GoMenu.clicked.connect(self.goToMenu)
+        self.label = QtWidgets.QLabel(self)
+        #self.label_DateTime.setGeometry(QtCore.QRect(10, 0, 110, 70)) # 오리지널
+        self.label.setGeometry(QtCore.QRect(0, 70, 13, 70))
+        self.label.setObjectName("label")
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.label.setFont(font)
+        self.label.setText("")
+        self.label.setStyleSheet('background-color:gray')
+
+        self.label = QtWidgets.QLabel(self)
+        #self.label_DateTime.setGeometry(QtCore.QRect(10, 0, 110, 70)) # 오리지널
+        self.label.setGeometry(QtCore.QRect(0, 781, 70, 13)) # 총 높이가.. 794! 다행히 맞군.
+        self.label.setObjectName("label")
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.label.setFont(font)
+        self.label.setText("")
+        self.label.setStyleSheet('background-color:gray')
+
+        self.label = QtWidgets.QLabel(self)
+        #self.label_DateTime.setGeometry(QtCore.QRect(10, 0, 110, 70)) # 오리지널
+        self.label.setGeometry(QtCore.QRect(549, 0, 13, 70))
+        self.label.setObjectName("label")
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.label.setFont(font)
+        self.label.setText("")
+        self.label.setStyleSheet('background-color:gray')
+
+
+        self.label = QtWidgets.QLabel(self)
+        #self.label_DateTime.setGeometry(QtCore.QRect(10, 0, 110, 70)) # 오리지널
+        self.label.setGeometry(QtCore.QRect(0, 680, 13, 70))
+        self.label.setObjectName("label")
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.label.setFont(font)
+        self.label.setText("")
+        self.label.setStyleSheet('background-color:gray')
+
+        self.label = QtWidgets.QLabel(self)
+        # self.label_DateTime.setGeometry(QtCore.QRect(10, 0, 110, 70)) # 오리지널
+        self.label.setGeometry(QtCore.QRect(500, 781, 62, 13 ))
+        self.label.setObjectName("label")
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.label.setFont(font)
+        self.label.setText("")
+        self.label.setStyleSheet('background-color:gray')
+
+        self.label = QtWidgets.QLabel(self)
+        # self.label_DateTime.setGeometry(QtCore.QRect(10, 0, 110, 70)) # 오리지널
+        self.label.setGeometry(QtCore.QRect(549, 680, 13, 70))
+        self.label.setObjectName("label")
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.label.setFont(font)
+        self.label.setText("")
+        self.label.setStyleSheet('background-color:gray')
+        '''
+
+
 
 
 
     ## 화면전환 NEXT & PREVIOUS
-    def goToFaceCapture(self):
-        self.stk_w.setCurrentWidget(self.face_capture)
-
-    def goToMenu(self):
-        self.stk_w.setCurrentWidget(self.menu)
-
+    def goToMainMenu(self):
+        self.stk_w.setCurrentWidget(self.main_menu)
+    def goToBareFaceCapture(self):
+        self.stk_w.setCurrentWidget(self.bareFace_capture)
+    def goToBaseMakeupVideo(self):
+        self.stk_w.setCurrentWidget(self.base_makeup_video)
+    def goToMakeupFaceCapture(self):
+        self.stk_w.setCurrentWidget(self.makeupFace_capture)
     def goToPersonalColor(self):
-        self.menu.btn = "personal_color"
-        self.select_face_thema_base.pushButton_GoMenuOrColor.setText("BACK")
         self.stk_w.setCurrentWidget(self.personal_color)
-
-    def goToBaseMakeUp_Face(self):
-        self.menu.btn = "select_face"
-        self.select_face_thema_base.pushButton_GoMenuOrColor.setText("MENU")
-        self.stk_w.setCurrentWidget(self.select_face_thema_base)
-
-    def goToBaseMakeUp_Thema(self):
-        self.menu.btn = "select_thema"
-        self.select_face_thema_base.pushButton_GoMenuOrColor.setText("MENU")
-        self.stk_w.setCurrentWidget(self.select_face_thema_base)
-
-    def goToSelectBase_Thema(self):
-        self.stk_w.setCurrentWidget(self.select_face_thema_base)
-
-    def goToSelectFaceCapture(self):
-        self.stk_w.setCurrentWidget(self.select_face_thema_capture)
-
-    def goToThemaOrEyebrowAR(self):
-        print(self.menu.btn)
-        if(self.menu.btn=="select_face"):
-            self.select_face_eyebrow.slider.hide() # 투명도 바 숨기기
-            self.select_face_eyebrow.label_slider.hide()
-            self.stk_w.setCurrentWidget(self.select_face_eyebrow)
-        else:
-            self.stk_w.setCurrentWidget(self.select_thema)
-
+    def goToSubMenu(self):
+        self.stk_w.setCurrentWidget(self.sub_menu)
+    def goToThema(self):
+        self.sub_menu.btn = "select_thema" # Frame에서 back버튼 시 활용
+        self.stk_w.setCurrentWidget(self.select_thema)
+    def goToEyebrowAR(self):
+        self.sub_menu.btn = "select_face" # Frame에서 back버튼 시 활용
+        self.stk_w.setCurrentWidget(self.select_face_eyebrow)
     def goToEyeshadowAR(self):
-        self.select_face_eyeshadow.slider.hide()  # 투명도 바 숨기기
-        self.select_face_eyeshadow.label_slider.hide()
         self.stk_w.setCurrentWidget(self.select_face_eyeshadow)
-
     def goToEyelinerAR(self):
-        self.select_face_eyeliner.slider.hide()  # 투명도 바 숨기기
-        self.select_face_eyeliner.label_slider.hide()
         self.stk_w.setCurrentWidget(self.select_face_eyeliner)
-
     def goToBlusherAR(self):
-        self.select_face_blusher.slider.hide()  # 투명도 바 숨기기
-        self.select_face_blusher.label_slider.hide()
         self.stk_w.setCurrentWidget(self.select_face_blusher)
-
     def goToLipAR(self):
         self.stk_w.setCurrentWidget(self.select_face_lip)
 
-    def goToFrameEyebrow(self):
+    def goToLipARorTHEMA(self):
+        if (self.sub_menu.btn == "select_face"):
+            #self.select_face_eyebrow.slider.hide()  # 투명도 바 숨기기
+            #self.select_face_eyebrow.label_slider.hide()
+            self.stk_w.setCurrentWidget(self.select_face_lip)
+        else:
+            self.stk_w.setCurrentWidget(self.select_thema)
+
+    def goToEyebrowFrame(self):
         self.stk_w.setCurrentWidget(self.frame_eyebrow)
-
-    def goToFrameEyeshadow(self):
+    def goToEyeshadowFrame(self):
         self.stk_w.setCurrentWidget(self.frame_eyeshadow)
-
-    def goToFrameEyeliner(self):
+    def goToEyelinerFrame(self):
         self.stk_w.setCurrentWidget(self.frame_eyeliner)
-
-    def goToFrameBlusher(self):
+    def goToBlusherFrame(self):
         self.stk_w.setCurrentWidget(self.frame_blusher)
-
-    def goToFrameLip(self):
+    def goToLipFrame(self):
         self.stk_w.setCurrentWidget(self.frame_lip)
 
     def goToCompare(self):
         self.stk_w.setCurrentWidget(self.Real_AR_Face_compare)
 
-
-    ## 화면전환 PREVIOUS
     def goToHome(self):
         self.stk_w.setCurrentWidget(self.home)
-
-    def goToSelectBase(self):
-        self.stk_w.setCurrentWidget(self.select_face_thema_base)
-
-    def goToMenuOrColor(self):
-        print(self.menu.btn)
-        if(self.menu.btn=="personal_color"):
-            self.stk_w.setCurrentWidget(self.personal_color)
-        else:
-            self.stk_w.setCurrentWidget(self.menu)
-
-    def goToEyebrowAR(self):
-        self.select_face_eyebrow.slider.hide()  # 투명도 바 숨기기
-        self.select_face_eyebrow.label_slider.hide()
-        self.stk_w.setCurrentWidget(self.select_face_eyebrow)
-
-    def goToAROrThema(self):
-        print(self.menu.btn)
-        if(self.menu.btn=="select_face"):
-            self.stk_w.setCurrentWidget(self.select_face_lip)
-        else:
-            self.stk_w.setCurrentWidget(self.select_thema)
-
-
-
-
-
 
 
 
