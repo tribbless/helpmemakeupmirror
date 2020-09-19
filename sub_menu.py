@@ -16,8 +16,8 @@ class Sub_Menu(QWidget):
         font.setPointSize(20)
         self.label_SubMenu.setFont(font)
         self.label_SubMenu.setAlignment(Qt.AlignCenter)
-        self.label_SubMenu.setStyleSheet('background-color: #B5A4E7;')
-        self.label_SubMenu.setText("메뉴 이미지")
+        self.label_SubMenu.setStyleSheet("border-image: url(image/btn_select.png);")
+        #self.label_SubMenu.setText("메뉴 이미지")
 
 
 
@@ -51,8 +51,8 @@ class Sub_Menu(QWidget):
         font.setPointSize(15)
         self.label_HelpMe_Logo.setFont(font)
         self.label_HelpMe_Logo.setAlignment(Qt.AlignCenter)
-        self.label_HelpMe_Logo.setText("헬미 로고")
-        self.label_HelpMe_Logo.setStyleSheet('color:white; background-color:black')
+        #self.label_HelpMe_Logo.setText("헬미 로고")
+        self.label_HelpMe_Logo.setStyleSheet("border-image: url(image/logo_text.png);")
 
 
         ## 혹시 몰라 지우지 않았습니다.

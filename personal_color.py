@@ -28,9 +28,9 @@ class Personal_Color(QWidget):
         self.label_background_manual.setFont(font)
         self.label_background_manual.setAlignment(Qt.AlignCenter)
         self.label_background_manual.setText("SPRING WARM..")
-        self.label_background_manual.setStyleSheet('background-color:#B5A4E7')
+        self.label_background_manual.setStyleSheet("border-image: url(image/personal_background_btn_.png);")
 
-        # 이동 버튼(->메인 메뉴)
+        # 이동 버튼(->메인 메뉴) >>투명하게 해주기
         self.pushButton_GoMainMenu = QtWidgets.QPushButton(self)
         self.pushButton_GoMainMenu.setGeometry(QtCore.QRect(450, 350, 77, 112))
         font = QtGui.QFont()
@@ -48,6 +48,6 @@ class Personal_Color(QWidget):
         font.setPointSize(15)
         self.label_HelpMe_Logo.setFont(font)
         self.label_HelpMe_Logo.setAlignment(Qt.AlignCenter)
-        self.label_HelpMe_Logo.setText("헬미 로고")
-        self.label_HelpMe_Logo.setStyleSheet('color:white; background-color:black')
+        #self.label_HelpMe_Logo.setText("헬미 로고")
+        self.label_HelpMe_Logo.setStyleSheet("border-image: url(image/logo_text.png);")
 

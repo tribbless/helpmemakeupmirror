@@ -30,6 +30,8 @@ class BareFace_Capture(QWidget):
         self.label_manual.setAlignment(Qt.AlignCenter)
         self.label_manual.setStyleSheet('color: #7B7B7B;')
 
+
+
         # 캡쳐 버튼 background image
         self.label_background_Capture = QtWidgets.QLabel(self)
         self.label_background_Capture.setGeometry(QtCore.QRect(52, 560, 230, 110))
@@ -38,8 +40,8 @@ class BareFace_Capture(QWidget):
         font.setPointSize(18)
         self.label_background_Capture.setFont(font)
         self.label_background_Capture.setAlignment(Qt.AlignCenter)
-        self.label_background_Capture.setText("CAPTURE")
-        self.label_background_Capture.setStyleSheet('background-color:#B5A4E7')
+        #self.label_background_Capture.setText("CAPTURE")
+        self.label_background_Capture.setStyleSheet("border-image: url(image/btn_capture.png);")
 
         # 캡쳐 버튼
         '''pushButton'''
@@ -52,8 +54,8 @@ class BareFace_Capture(QWidget):
         font.setPointSize(15)
         self.label_background_GoPersonalColor.setFont(font)
         self.label_background_GoPersonalColor.setAlignment(Qt.AlignCenter)
-        self.label_background_GoPersonalColor.setText("CHECK\nYOUR\nTYPE")
-        self.label_background_GoPersonalColor.setStyleSheet('background-color:#B5A4E7')
+        #self.label_background_GoPersonalColor.setText("CHECK\nYOUR\nTYPE")
+        self.label_background_GoPersonalColor.setStyleSheet("border-image: url(image/btn_check_your_type.png);")
 
         # 이동 버튼 (->퍼스널 컬러)
         self.pushButton_GoPersonalColor = QtWidgets.QPushButton(self)
@@ -74,8 +76,8 @@ class BareFace_Capture(QWidget):
         font.setPointSize(15)
         self.label_HelpMe_Logo.setFont(font)
         self.label_HelpMe_Logo.setAlignment(Qt.AlignCenter)
-        self.label_HelpMe_Logo.setText("헬미 로고")
-        self.label_HelpMe_Logo.setStyleSheet('color:white; background-color:black')
+        #self.label_HelpMe_Logo.setText("헬미 로고")
+        self.label_HelpMe_Logo.setStyleSheet("border-image: url(image/logo_text.png);")
 
 
 

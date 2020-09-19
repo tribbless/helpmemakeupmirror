@@ -18,16 +18,14 @@ class Main_Menu(QWidget):
         self.label_title.setAlignment(Qt.AlignCenter)
         self.label_title.setText("HELP ME MAKE UP MIRROR")
 
-        # 메뉴 background image
+        ##메뉴이미지
         self.label_background_MainMenu = QtWidgets.QLabel(self)
-        self.label_background_MainMenu.setGeometry(QtCore.QRect(97, 222, 342, 324))
-        self.label_background_MainMenu.setObjectName("label_background_MainMenu")
-        font = QtGui.QFont()
-        font.setPointSize(20)
-        self.label_background_MainMenu.setFont(font)
-        self.label_background_MainMenu.setAlignment(Qt.AlignCenter)
-        self.label_background_MainMenu.setStyleSheet('background-color: #B5A4E7;')
-        self.label_background_MainMenu.setText("메뉴 이미지")
+        self.label_background_MainMenu.setObjectName("label_menu")
+        self.label_background_MainMenu.resize(300, 300)
+        pixmap = QPixmap("image/menu1.png")
+        pixmap = pixmap.scaledToWidth(375)
+        self.label_background_MainMenu.setPixmap(QPixmap(pixmap))
+        self.label_background_MainMenu.setGeometry(QtCore.QRect(80, 200, 375, 375))
 
         # 이동 버튼(->퍼스널 컬러, 베이스 메이크업 비디오, 컬러 메이크업)
         self.pushButton_GoPersonalColor = QtWidgets.QPushButton(self)

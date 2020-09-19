@@ -39,8 +39,8 @@ class Frame_Eyeshadow(QWidget):
         self.label_background_Manual.setFont(font)
         self.label_background_Manual.setAlignment(Qt.AlignCenter)
         self.label_background_Manual.setText("eyeshadow manual background image")
-        self.label_background_Manual.setStyleSheet('background-color: #B5A4E7;')
-        #self.label_background_Manual.setStyleSheet("border-image: url(image/frameBack.png);")
+        #self.label_background_Manual.setStyleSheet('background-color: #B5A4E7;')
+        self.label_background_Manual.setStyleSheet("border-image: url(image/background.png);")
 
 
         # 이동 버튼 (prev/next)
@@ -70,8 +70,8 @@ class Frame_Eyeshadow(QWidget):
         font.setPointSize(15)
         self.label_HelpMe_Logo.setFont(font)
         self.label_HelpMe_Logo.setAlignment(Qt.AlignCenter)
-        self.label_HelpMe_Logo.setText("헬미 로고")
-        self.label_HelpMe_Logo.setStyleSheet('color:white; background-color:black')
+        #self.label_HelpMe_Logo.setText("헬미 로고")
+        self.label_HelpMe_Logo.setStyleSheet("border-image: url(image/logo_text.png);")
 
 
 

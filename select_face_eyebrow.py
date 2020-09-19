@@ -51,8 +51,8 @@ class Select_face_Eyebrow(QWidget):
         self.label_background_Option.setFont(font)
         self.label_background_Option.setAlignment(Qt.AlignCenter)
         self.label_background_Option.setText("eyebrow option background image")
-        self.label_background_Option.setStyleSheet('background-color: #B5A4E7;')
-        #self.label_background_Option.setStyleSheet("border-image: url(image/selectAR.png);")
+        #self.label_background_Option.setStyleSheet('background-color: #B5A4E7;')
+        self.label_background_Option.setStyleSheet("border-image: url(image/background.png);")
 
         # 이동 버튼 (prev/next)
         self.pushButton_GoSubMenu = QtWidgets.QPushButton(self)
@@ -81,8 +81,8 @@ class Select_face_Eyebrow(QWidget):
         font.setPointSize(15)
         self.label_HelpMe_Logo.setFont(font)
         self.label_HelpMe_Logo.setAlignment(Qt.AlignCenter)
-        self.label_HelpMe_Logo.setText("헬미 로고")
-        self.label_HelpMe_Logo.setStyleSheet('color:white; background-color:black')
+        #self.label_HelpMe_Logo.setText("헬미 로고")
+        self.label_HelpMe_Logo.setStyleSheet("border-image: url(image/logo_text.png);")
 
 
 
