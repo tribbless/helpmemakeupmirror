@@ -49,8 +49,8 @@ class RealFace_ARFace_Compare(QWidget):
         font.setPointSize(18)
         self.label_background_Home.setFont(font)
         self.label_background_Home.setAlignment(Qt.AlignCenter)
-        self.label_background_Home.setText("HOME")
-        self.label_background_Home.setStyleSheet('background-color:#B5A4E7')
+        #self.label_background_Home.setText("HOME")
+        self.label_background_Home.setStyleSheet("border-image: url(image/btn_home.png);")
 
         # 홈 버튼
         self.pushButton_GoHome = QtWidgets.QPushButton(self)
@@ -70,8 +70,8 @@ class RealFace_ARFace_Compare(QWidget):
         font.setPointSize(18)
         self.label_background_Share.setFont(font)
         self.label_background_Share.setAlignment(Qt.AlignCenter)
-        self.label_background_Share.setText("SHARE")
-        self.label_background_Share.setStyleSheet('background-color:#B5A4E7')
+        #self.label_background_Share.setText("SHARE")
+        self.label_background_Share.setStyleSheet("border-image: url(image/btn_share.png);")
 
         # 하단 로고
         self.label_HelpMe_Logo = QtWidgets.QLabel(self)
@@ -81,8 +81,8 @@ class RealFace_ARFace_Compare(QWidget):
         font.setPointSize(15)
         self.label_HelpMe_Logo.setFont(font)
         self.label_HelpMe_Logo.setAlignment(Qt.AlignCenter)
-        self.label_HelpMe_Logo.setText("헬미 로고")
-        self.label_HelpMe_Logo.setStyleSheet('color:white; background-color:black')
+        #self.label_HelpMe_Logo.setText("헬미 로고")
+        self.label_HelpMe_Logo.setStyleSheet("border-image: url(image/logo_text.png);")
 
 
 

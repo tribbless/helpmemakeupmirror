@@ -27,8 +27,8 @@ class Select_Thema(QWidget):
         font.setPointSize(18)
         self.label_background_Option.setFont(font)
         self.label_background_Option.setAlignment(Qt.AlignCenter)
-        self.label_background_Option.setText("thema option background image")
-        self.label_background_Option.setStyleSheet('background-color: #B5A4E7;')
+        #self.label_background_Option.setText("thema option background image")
+        self.label_background_Option.setStyleSheet("border-image: url(image/btn_thema.png);")
         #pixmap = QPixmap("image/thema1.png")
         #pixmap = pixmap.scaledToWidth(530)
         #self.label_background_Option.setPixmap(QPixmap(pixmap))
@@ -61,8 +61,8 @@ class Select_Thema(QWidget):
         font.setPointSize(15)
         self.label_HelpMe_Logo.setFont(font)
         self.label_HelpMe_Logo.setAlignment(Qt.AlignCenter)
-        self.label_HelpMe_Logo.setText("헬미 로고")
-        self.label_HelpMe_Logo.setStyleSheet('color:white; background-color:black')
+        #self.label_HelpMe_Logo.setText("헬미 로고")
+        self.label_HelpMe_Logo.setStyleSheet("border-image: url(image/logo_text.png);")
 
         ''''
         ## 테마 선택 버튼

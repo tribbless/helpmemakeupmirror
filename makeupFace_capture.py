@@ -38,8 +38,8 @@ class MakeupFace_Capture(QWidget):
         font.setPointSize(18)
         self.label_background_Capture.setFont(font)
         self.label_background_Capture.setAlignment(Qt.AlignCenter)
-        self.label_background_Capture.setText("CAPTURE")
-        self.label_background_Capture.setStyleSheet('background-color:#B5A4E7')
+        #self.label_background_Capture.setText("CAPTURE")
+        self.label_background_Capture.setStyleSheet("border-image: url(image/btn_capture.png);")
 
         # 캡쳐 버튼
         '''pushButton'''
@@ -53,8 +53,8 @@ class MakeupFace_Capture(QWidget):
         font.setPointSize(18)
         self.label_background_GoSubMenu.setFont(font)
         self.label_background_GoSubMenu.setAlignment(Qt.AlignCenter)
-        self.label_background_GoSubMenu.setText("SAVE")
-        self.label_background_GoSubMenu.setStyleSheet('background-color:#B5A4E7')
+        #self.label_background_GoSubMenu.setText("SAVE")
+        self.label_background_GoSubMenu.setStyleSheet("border-image: url(image/btn_save2.png);")
 
         # 이동 버튼 (->서브메뉴)
         self.pushButton_GoSubMenu = QtWidgets.QPushButton(self)
@@ -74,6 +74,6 @@ class MakeupFace_Capture(QWidget):
         font.setPointSize(15)
         self.label_HelpMe_Logo.setFont(font)
         self.label_HelpMe_Logo.setAlignment(Qt.AlignCenter)
-        self.label_HelpMe_Logo.setText("헬미 로고")
-        self.label_HelpMe_Logo.setStyleSheet('color:white; background-color:black')
+        #self.label_HelpMe_Logo.setText("헬미 로고")
+        self.label_HelpMe_Logo.setStyleSheet("border-image: url(image/logo_text.png);")
 

@@ -29,7 +29,29 @@ class Base_Makeup_Video(QWidget):
         self.label_background_GoColorMakeup.setFont(font)
         self.label_background_GoColorMakeup.setAlignment(Qt.AlignCenter)
         self.label_background_GoColorMakeup.setText("COLOR MAKE UP")
-        self.label_background_GoColorMakeup.setStyleSheet('background-color:#B5A4E7')
+        self.label_background_GoColorMakeup.setStyleSheet("/* Rectangle 16 */\n"
+                                      "position: absolute;\n"
+                                      "width: 240px;\n"
+                                      "height: 65px;\n"
+                                      "\n"
+                                      "background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+                                      "  stop: 0 #B5A4E7, \n"
+                                      "  stop: 1.0 #F3C3D6);\n"
+                                      "\n"
+                                      "/* CAPTURE YOUR FACE */\n"
+                                      "position: absolute;\n"
+                                      "width: 396px;\n"
+                                      "height: 80px;\n"
+                                      "\n"
+                                      "font-family: Segoe MDL2 Assets;\n"
+                                      "font-style: normal;\n"
+                                      "font-weight: 700;\n"
+                                      "font-size: 20px;\n"
+                                      "line-height: 22px;\n"
+                                      "\n"
+                                      "color: #FFFFFF;\n"
+                                      "border: 1px solid #FFFFFF;")
+
 
         # 이동 버튼(->캡쳐화면으로)
         self.pushButton_GoColorMakeup = QtWidgets.QPushButton(self)
@@ -49,7 +71,7 @@ class Base_Makeup_Video(QWidget):
         font.setPointSize(15)
         self.label_HelpMe_Logo.setFont(font)
         self.label_HelpMe_Logo.setAlignment(Qt.AlignCenter)
-        self.label_HelpMe_Logo.setText("헬미 로고")
-        self.label_HelpMe_Logo.setStyleSheet('color:white; background-color:black')
+        #self.label_HelpMe_Logo.setText("헬미 로고")
+        self.label_HelpMe_Logo.setStyleSheet("border-image: url(image/logo_text.png);")
 
 
