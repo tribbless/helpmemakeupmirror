@@ -45,45 +45,45 @@ class RealFace_ARFace_Compare(QWidget):
         self.label_background_Home = QtWidgets.QLabel(self)
         self.label_background_Home.setGeometry(QtCore.QRect(65, 548, 230, 110))
         self.label_background_Home.setObjectName("label_background_Home")
-        font = QtGui.QFont()
-        font.setPointSize(18)
-        self.label_background_Home.setFont(font)
-        self.label_background_Home.setAlignment(Qt.AlignCenter)
-        #self.label_background_Home.setText("HOME")
         self.label_background_Home.setStyleSheet("border-image: url(image/btn_home.png);")
 
         # 홈 버튼
         self.pushButton_GoHome = QtWidgets.QPushButton(self)
-        self.pushButton_GoHome.setGeometry(QtCore.QRect(13, 548, 50, 110))
-        self.pushButton_GoHome.setObjectName("GoHome")
-        font = QtGui.QFont()
-        font.setFamily("AlternateGothic2 BT")
-        font.setPointSize(15)
-        self.pushButton_GoHome.setFont(font)
-        self.pushButton_GoHome.setText("HOME")
+        self.pushButton_GoHome.setGeometry(QtCore.QRect(65, 548, 230, 110))
+        self.pushButton_GoHome.setStyleSheet("background-color: transparent;")
+        self.pushButton_GoHome.setObjectName("pushButton_GoHome")
+
 
         # 공유 버튼 background image
         self.label_background_Share = QtWidgets.QLabel(self)
         self.label_background_Share.setGeometry(QtCore.QRect(305, 548, 192, 110))
         self.label_background_Share.setObjectName("label_background_Share")
-        font = QtGui.QFont()
-        font.setPointSize(18)
-        self.label_background_Share.setFont(font)
-        self.label_background_Share.setAlignment(Qt.AlignCenter)
-        #self.label_background_Share.setText("SHARE")
         self.label_background_Share.setStyleSheet("border-image: url(image/btn_share.png);")
+
+        # 공유 버튼
+        self.pushButton_Share = QtWidgets.QPushButton(self)
+        self.pushButton_Share.setGeometry(QtCore.QRect(305, 548, 192, 110))
+        self.pushButton_Share.setStyleSheet("background-color: transparent;")
+        self.pushButton_Share.setObjectName("pushButton_Share")
+        self.pushButton_Share.clicked.connect(self.ShareImage)
+
+        # 이동 버튼 (previous)
+        self.pushButton_GoLipFrame = QtWidgets.QPushButton(self)
+        self.pushButton_GoLipFrame.setGeometry(QtCore.QRect(15, 5, 40, 40))
+        self.pushButton_GoLipFrame.setObjectName("pushButton_GoLipFrame")
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        font.setBold(True)
+        self.pushButton_GoLipFrame.setFont(font)
+        self.pushButton_GoLipFrame.setText("<")
+        self.pushButton_GoLipFrame.setStyleSheet('background-color:blue;')
 
         # 하단 로고
         self.label_HelpMe_Logo = QtWidgets.QLabel(self)
-        self.label_HelpMe_Logo.setGeometry(QtCore.QRect(0, 733, 562, 61))
+        self.label_HelpMe_Logo.setGeometry(QtCore.QRect(0, 754, 562, 40))
         self.label_HelpMe_Logo.setObjectName("label_HelpMe_Logo")
-        font = QtGui.QFont()
-        font.setPointSize(15)
-        self.label_HelpMe_Logo.setFont(font)
-        self.label_HelpMe_Logo.setAlignment(Qt.AlignCenter)
-        #self.label_HelpMe_Logo.setText("헬미 로고")
         self.label_HelpMe_Logo.setStyleSheet("border-image: url(image/logo_text.png);")
 
-
-
+    def ShareImage(self):
+        print("이미지 공유하기")
 

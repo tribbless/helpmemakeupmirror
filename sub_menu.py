@@ -12,46 +12,40 @@ class Sub_Menu(QWidget):
         self.label_SubMenu = QtWidgets.QLabel(self)
         self.label_SubMenu.setGeometry(QtCore.QRect(110, 222, 342, 324))
         self.label_SubMenu.setObjectName("label_SubMenu")
-        font = QtGui.QFont()
-        font.setPointSize(20)
-        self.label_SubMenu.setFont(font)
-        self.label_SubMenu.setAlignment(Qt.AlignCenter)
         self.label_SubMenu.setStyleSheet("border-image: url(image/btn_select.png);")
-        #self.label_SubMenu.setText("메뉴 이미지")
-
 
 
         # 이동 버튼 (->가상화장, 테마)
         self.pushButton_GoSelectFace = QtWidgets.QPushButton(self)
-        self.pushButton_GoSelectFace.setGeometry(QtCore.QRect(110, 600, 342, 50))
-        #self.pushButton_GoSelectFace.setStyleSheet('background-color: transparent; '
-        #                                           'border-top-left-radius : 125px; border-top-right-radius:125px')
+        self.pushButton_GoSelectFace.setGeometry(QtCore.QRect(126, 236, 311, 142))
+        #self.pushButton_GoSelectFace.setStyleSheet("border-style: dashed; border-width: 1px; border-color: red;")
+        self.pushButton_GoSelectFace.setStyleSheet('background-color: transparent;'
+                                                   'border-top-left-radius :142px; border-top-right-radius:142px')
         self.pushButton_GoSelectFace.setObjectName("pushButton_GoSelectFace")
-        font = QtGui.QFont()
-        font.setPointSize(20)
-        self.pushButton_GoSelectFace.setFont(font)
-        self.pushButton_GoSelectFace.setText("SELECT BY FACE")
+
 
 
         self.pushButton_GoSelectThema = QtWidgets.QPushButton(self)
-        self.pushButton_GoSelectThema.setGeometry(QtCore.QRect(110, 650, 342, 50))
-        #self.pushButton_GoSelectThema.setStyleSheet('background-color: transparent; '
-        #                                              'border-bottom-left-radius : 125px; border-bottom-right-radius : 125px')
+        self.pushButton_GoSelectThema.setGeometry(QtCore.QRect(126, 390, 311, 142))
+        self.pushButton_GoSelectThema.setStyleSheet('background-color: transparent;'
+                                                    'border-bottom-left-radius:142px; border-bottom-right-radius:142px')
         self.pushButton_GoSelectThema.setObjectName("pushButton_GoSelectThema")
+
+        # 이동 버튼 (previous)
+        self.pushButton_GoMakeupFaceCapture = QtWidgets.QPushButton(self)
+        self.pushButton_GoMakeupFaceCapture.setGeometry(QtCore.QRect(15, 5, 40, 40))
+        self.pushButton_GoMakeupFaceCapture.setObjectName("pushButton_GoMakeupFaceCapture")
         font = QtGui.QFont()
-        font.setPointSize(20)
-        self.pushButton_GoSelectThema.setFont(font)
-        self.pushButton_GoSelectThema.setText("SELECT BY THEMA")
+        font.setPointSize(14)
+        font.setBold(True)
+        self.pushButton_GoMakeupFaceCapture.setFont(font)
+        self.pushButton_GoMakeupFaceCapture.setText("<")
+        self.pushButton_GoMakeupFaceCapture.setStyleSheet('background-color:blue;')
 
         # 하단 로고
         self.label_HelpMe_Logo = QtWidgets.QLabel(self)
-        self.label_HelpMe_Logo.setGeometry(QtCore.QRect(0, 733, 562, 61))
+        self.label_HelpMe_Logo.setGeometry(QtCore.QRect(0, 754, 562, 40))
         self.label_HelpMe_Logo.setObjectName("label_HelpMe_Logo")
-        font = QtGui.QFont()
-        font.setPointSize(15)
-        self.label_HelpMe_Logo.setFont(font)
-        self.label_HelpMe_Logo.setAlignment(Qt.AlignCenter)
-        #self.label_HelpMe_Logo.setText("헬미 로고")
         self.label_HelpMe_Logo.setStyleSheet("border-image: url(image/logo_text.png);")
 
 

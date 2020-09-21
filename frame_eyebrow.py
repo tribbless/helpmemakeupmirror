@@ -10,7 +10,7 @@ class Frame_Eyebrow(QWidget):
 
         # 프레임 씌어진 얼굴 모습
         self.label_face = QtWidgets.QLabel(self)
-        self.label_face.setGeometry(QtCore.QRect(104, 38, 354, 472))
+        self.label_face.setGeometry(QtCore.QRect(104, 85, 354, 472))
         self.label_face.setObjectName("label_face")
         font = QtGui.QFont()
         font.setPointSize(20)
@@ -21,7 +21,7 @@ class Frame_Eyebrow(QWidget):
 
         # subject
         self.label_subject = QtWidgets.QLabel(self)
-        self.label_subject.setGeometry(QtCore.QRect(125, 520, 312, 30))
+        self.label_subject.setGeometry(QtCore.QRect(125, 567, 312, 30))
         self.label_subject.setObjectName("label_subject")
         font = QtGui.QFont()
         font.setPointSize(15)
@@ -32,20 +32,19 @@ class Frame_Eyebrow(QWidget):
 
         # eyebrow manual background image
         self.label_background_Manual = QtWidgets.QLabel(self)
-        self.label_background_Manual.setGeometry(QtCore.QRect(13, 560, 536, 147))
+        self.label_background_Manual.setGeometry(QtCore.QRect(13, 607, 536, 147))
         self.label_background_Manual.setObjectName("label_background_Manual")
         font = QtGui.QFont()
         font.setPointSize(18)
         self.label_background_Manual.setFont(font)
         self.label_background_Manual.setAlignment(Qt.AlignCenter)
         self.label_background_Manual.setText("eyebrow manual background image")
-        #self.label_background_Manual.setStyleSheet('background-color: #B5A4E7;')
-        self.label_background_Manual.setStyleSheet("border-image: url(image/background.png);")
+        self.label_background_Manual.setStyleSheet("border-image: url(image/background.png); color: white;")
 
 
         # 이동 버튼 (prev/next)
         self.pushButton_GoARorThema = QtWidgets.QPushButton(self)
-        self.pushButton_GoARorThema.setGeometry(QtCore.QRect(13, 520, 112, 30))
+        self.pushButton_GoARorThema.setGeometry(QtCore.QRect(13, 567, 112, 30))
         self.pushButton_GoARorThema.setObjectName("pushButton_GoEyelinerAR")
         font = QtGui.QFont()
         font.setPointSize(14)
@@ -54,7 +53,7 @@ class Frame_Eyebrow(QWidget):
         self.pushButton_GoARorThema.setStyleSheet('color: white; background-color:#B1B1B1; border:0px;')
 
         self.pushButton_GoEyesahdowFrame = QtWidgets.QPushButton(self)
-        self.pushButton_GoEyesahdowFrame.setGeometry(QtCore.QRect(437, 520, 112, 30))
+        self.pushButton_GoEyesahdowFrame.setGeometry(QtCore.QRect(437, 567, 112, 30))
         self.pushButton_GoEyesahdowFrame.setObjectName("pushButton_GoEyesahdowFrame")
         font = QtGui.QFont()
         font.setPointSize(14)
@@ -64,36 +63,7 @@ class Frame_Eyebrow(QWidget):
 
         # 하단 로고
         self.label_HelpMe_Logo = QtWidgets.QLabel(self)
-        self.label_HelpMe_Logo.setGeometry(QtCore.QRect(0, 733, 562, 61))
+        self.label_HelpMe_Logo.setGeometry(QtCore.QRect(0, 754, 562, 40))
         self.label_HelpMe_Logo.setObjectName("label_HelpMe_Logo")
-        font = QtGui.QFont()
-        font.setPointSize(15)
-        self.label_HelpMe_Logo.setFont(font)
-        self.label_HelpMe_Logo.setAlignment(Qt.AlignCenter)
-        #self.label_HelpMe_Logo.setText("헬미 로고")
         self.label_HelpMe_Logo.setStyleSheet("border-image: url(image/logo_text.png);")
-
-
-
-
-
-        '''# 이미지에 맞게 label사이즈 및 위치 조절해야함~~~   : 설명쓰는 공간~~
-        self.label_manual = QtWidgets.QLabel(self)
-        self.label_manual.setGeometry(QtCore.QRect(40, 540, 451, 161))
-        self.label_manual.setObjectName("label_manual")
-        font = QtGui.QFont()
-        #font.setColor(QtGui.QPalette.Text, QtCore.Qt.white)
-        font.setPointSize(14)
-        self.label_manual.setFont(font)
-        #self.label_manual.setStyleSheet('QLabel{background-color: rgba(0, 0, 0, 0.0)}')
-        self.label_manual.setStyleSheet('background-color: transparent; color: white')
-        self.label_manual.setText("긴 얼굴형에는 가로로 어쩌꾸 저쩌구를 한다.\n어쩌구저쩌구\n룰루랄라 ^^이렇게 하면 됩니다 ^^")
-        
-
-        ## 이동 버튼
-        self.pushButton_GoMenu = QtWidgets.QPushButton(self)
-        self.pushButton_GoMenu.setGeometry(QtCore.QRect(5, 721, 527, 43))
-        self.pushButton_GoMenu.setStyleSheet('background-color: transparent;')
-        self.pushButton_GoMenu.setObjectName("pushButton_GoMenu")
-        '''
 

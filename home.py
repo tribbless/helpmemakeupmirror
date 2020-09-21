@@ -28,5 +28,3 @@ class Home(QWidget):
         self.pushButton_GoMainMenu.setStyleSheet("border-image: url(image/logo_image.png);")
 
 
-
-

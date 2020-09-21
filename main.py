@@ -169,7 +169,7 @@ class MAIN_StackedWidget(QWidget):
 
         self.bareFace_capture.pushButton_GoPersonalColor.clicked.connect(self.goToPersonalColor)
         self.personal_color.pushButton_GoMainMenu.clicked.connect(self.goToMainMenu)
-        self.base_makeup_video.pushButton_GoColorMakeup.clicked.connect(self.goToMakeupFaceCapture)
+        self.base_makeup_video.pushButton_GoColorMakeup.clicked.connect(self.goToMakeupFaceCapture_Later)
         self.makeupFace_capture.pushButton_GoSubMenu.clicked.connect(self.goToSubMenu)
         self.sub_menu.pushButton_GoSelectThema.clicked.connect(self.goToThema)
         self.select_thema.pushButton_GoEyebrowFrame.clicked.connect(self.goToEyebrowFrame)
@@ -188,6 +188,13 @@ class MAIN_StackedWidget(QWidget):
         self.frame_lip.pushButton_GoCompare.clicked.connect(self.goToCompare)
 
         ## 화면전환 PREVIOUS
+        self.main_menu.pushButton_GoHome.clicked.connect(self.goToHome)
+        self.bareFace_capture.pushButton_GoMainMenu.clicked.connect(self.goToMainMenu)
+        self.personal_color.pushButton_GoBareFaceCapture.clicked.connect(self.goToBareFaceCapture)
+        self.base_makeup_video.pushButton_GoMainMenu.clicked.connect(self.goToMainMenu)
+        self.makeupFace_capture.pushButton_GoMainMENUorVideo.clicked.connect(self.goToMainMENUorVideo)
+        self.sub_menu.pushButton_GoMakeupFaceCapture.clicked.connect(self.goToMakeupFaceCapture_Later)
+
         self.select_thema.pushButton_GoSubMenu.clicked.connect(self.goToSubMenu)
         self.select_face_eyebrow.pushButton_GoSubMenu.clicked.connect(self.goToSubMenu)
         self.select_face_eyeshadow.pushButton_GoEyebrowAR.clicked.connect(self.goToEyebrowAR)
@@ -202,109 +209,65 @@ class MAIN_StackedWidget(QWidget):
         self.frame_lip.pushButton_GoBlusherFrame.clicked.connect(self.goToBlusherFrame)
 
         self.Real_AR_Face_compare.pushButton_GoHome.clicked.connect(self.goToHome)
+        self.Real_AR_Face_compare.pushButton_GoLipFrame.clicked.connect(self.goToLipFrame)
 
+        '''고정값'''
+        ## 상단 타이틀바 background
+        self.label_background_TitleBar = QtWidgets.QLabel(self)
+        self.label_background_TitleBar.setGeometry(QtCore.QRect(0, 0, 562, 50))
+        self.label_background_TitleBar.setObjectName("label_background_TitleBar")
+        self.label_background_TitleBar.setStyleSheet("border-image: url(image/background.png);")
+        self.label_background_TitleBar.lower()
+        self.label_background_TitleBar.hide()
 
 
         ## 시간/날짜
         self.label_DateTime = QtWidgets.QLabel(self)
-        self.label_DateTime.setGeometry(QtCore.QRect(10, 0, 110, 60))
+        self.label_DateTime.setGeometry(QtCore.QRect(285, 0, 110, 50))
         self.label_DateTime.setObjectName("label_DateTime")
         font = QtGui.QFont()
         font.setPointSize(11)
         self.label_DateTime.setFont(font)
         self.label_DateTime.setText("")
-
+        self.label_DateTime.setAlignment(Qt.AlignCenter)
         self.label_DateTime.hide()
 
-        ''' 구분용
-        self.label = QtWidgets.QLabel(self)
-        # self.label_DateTime.setGeometry(QtCore.QRect(10, 0, 110, 70)) # 오리지널
-        self.label.setGeometry(QtCore.QRect(120, 0, 70, 13))
-        self.label.setObjectName("label")
-        font = QtGui.QFont()
-        font.setPointSize(11)
-        self.label.setFont(font)
-        self.label.setText("")
-        self.label.setStyleSheet('background-color:gray')
+        ## 온도
 
-        self.label = QtWidgets.QLabel(self)
-        #self.label_DateTime.setGeometry(QtCore.QRect(10, 0, 110, 70)) # 오리지널
-        self.label.setGeometry(QtCore.QRect(0, 70, 13, 70))
-        self.label.setObjectName("label")
-        font = QtGui.QFont()
-        font.setPointSize(11)
-        self.label.setFont(font)
-        self.label.setText("")
-        self.label.setStyleSheet('background-color:gray')
+        ## 날씨 아이콘
 
-        self.label = QtWidgets.QLabel(self)
-        #self.label_DateTime.setGeometry(QtCore.QRect(10, 0, 110, 70)) # 오리지널
-        self.label.setGeometry(QtCore.QRect(0, 781, 70, 13)) # 총 높이가.. 794! 다행히 맞군.
-        self.label.setObjectName("label")
-        font = QtGui.QFont()
-        font.setPointSize(11)
-        self.label.setFont(font)
-        self.label.setText("")
-        self.label.setStyleSheet('background-color:gray')
+        ## 날씨 버튼
 
-        self.label = QtWidgets.QLabel(self)
-        #self.label_DateTime.setGeometry(QtCore.QRect(10, 0, 110, 70)) # 오리지널
-        self.label.setGeometry(QtCore.QRect(549, 0, 13, 70))
-        self.label.setObjectName("label")
-        font = QtGui.QFont()
-        font.setPointSize(11)
-        self.label.setFont(font)
-        self.label.setText("")
-        self.label.setStyleSheet('background-color:gray')
+        ## 메뉴 버튼 background
 
-
-        self.label = QtWidgets.QLabel(self)
-        #self.label_DateTime.setGeometry(QtCore.QRect(10, 0, 110, 70)) # 오리지널
-        self.label.setGeometry(QtCore.QRect(0, 680, 13, 70))
-        self.label.setObjectName("label")
-        font = QtGui.QFont()
-        font.setPointSize(11)
-        self.label.setFont(font)
-        self.label.setText("")
-        self.label.setStyleSheet('background-color:gray')
-
-        self.label = QtWidgets.QLabel(self)
-        # self.label_DateTime.setGeometry(QtCore.QRect(10, 0, 110, 70)) # 오리지널
-        self.label.setGeometry(QtCore.QRect(500, 781, 62, 13 ))
-        self.label.setObjectName("label")
-        font = QtGui.QFont()
-        font.setPointSize(11)
-        self.label.setFont(font)
-        self.label.setText("")
-        self.label.setStyleSheet('background-color:gray')
-
-        self.label = QtWidgets.QLabel(self)
-        # self.label_DateTime.setGeometry(QtCore.QRect(10, 0, 110, 70)) # 오리지널
-        self.label.setGeometry(QtCore.QRect(549, 680, 13, 70))
-        self.label.setObjectName("label")
-        font = QtGui.QFont()
-        font.setPointSize(11)
-        self.label.setFont(font)
-        self.label.setText("")
-        self.label.setStyleSheet('background-color:gray')
-        '''
-
+        ## 메뉴 버튼
 
 
 
 
     ## 화면전환 NEXT & PREVIOUS
     def goToMainMenu(self):
+        self.label_background_TitleBar.show()
         self.label_DateTime.show()
         self.stk_w.setCurrentWidget(self.main_menu)
     def goToBareFaceCapture(self):
         self.stk_w.setCurrentWidget(self.bareFace_capture)
     def goToBaseMakeupVideo(self):
+        self.main_menu.btn = "video"
         self.stk_w.setCurrentWidget(self.base_makeup_video)
     def goToMakeupFaceCapture(self):
+        self.main_menu.btn = "MakeupFaceCapture"
+        self.stk_w.setCurrentWidget(self.makeupFace_capture)
+    def goToMakeupFaceCapture_Later(self):
         self.stk_w.setCurrentWidget(self.makeupFace_capture)
     def goToPersonalColor(self):
         self.stk_w.setCurrentWidget(self.personal_color)
+    def goToMainMENUorVideo(self):
+        print(self.main_menu.btn)
+        if (self.main_menu.btn == "video"):
+            self.stk_w.setCurrentWidget(self.base_makeup_video)
+        else:
+            self.stk_w.setCurrentWidget(self.main_menu)
     def goToSubMenu(self):
         self.stk_w.setCurrentWidget(self.sub_menu)
     def goToThema(self):
@@ -345,6 +308,7 @@ class MAIN_StackedWidget(QWidget):
         self.stk_w.setCurrentWidget(self.Real_AR_Face_compare)
 
     def goToHome(self):
+        self.label_background_TitleBar.hide()
         self.label_DateTime.hide()
         self.stk_w.setCurrentWidget(self.home)
 

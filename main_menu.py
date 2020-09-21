@@ -29,37 +29,33 @@ class Main_Menu(QWidget):
 
         # 이동 버튼(->퍼스널 컬러, 베이스 메이크업 비디오, 컬러 메이크업)
         self.pushButton_GoPersonalColor = QtWidgets.QPushButton(self)
-        self.pushButton_GoPersonalColor.setGeometry(QtCore.QRect(97, 600, 342, 50))
-        #self.pushButton_GoPersonalColor.setStyleSheet('background-color: #B5A4E7; '
-        #                                           'border-top-left-radius : 50px; border-top-right-radius:50px')
+        self.pushButton_GoPersonalColor.setGeometry(QtCore.QRect(113, 216, 334, 127))
+        self.pushButton_GoPersonalColor.setStyleSheet('background-color: transparent;'
+                                                      'border-top-left-radius : 127px; border-top-right-radius:127px')
         self.pushButton_GoPersonalColor.setObjectName("pushButton_GoPersonalColor")
-        font = QtGui.QFont()
-        font.setPointSize(20)
-        self.pushButton_GoPersonalColor.setFont(font)
-        self.pushButton_GoPersonalColor.setText("PERSONAL COLOR")
 
 
         self.pushButton_GoBaseMakeupVideo = QtWidgets.QPushButton(self)
-        self.pushButton_GoBaseMakeupVideo.setGeometry(QtCore.QRect(97, 650, 342, 50))
-        #self.pushButton_GoBaseMakeupVideo.setStyleSheet('background-color: #B5A4E7;')
+        self.pushButton_GoBaseMakeupVideo.setGeometry(QtCore.QRect(113, 344, 334, 90))
+        self.pushButton_GoBaseMakeupVideo.setStyleSheet('background-color: transparent;')
         self.pushButton_GoBaseMakeupVideo.setObjectName("pushButton_GoBaseMakeupVideo")
-        font = QtGui.QFont()
-        font.setPointSize(20)
-        self.pushButton_GoBaseMakeupVideo.setFont(font)
-        self.pushButton_GoBaseMakeupVideo.setText("BASE MAKEUP VIDEO")
 
 
         self.pushButton_GoColorMakeup = QtWidgets.QPushButton(self)
-        self.pushButton_GoColorMakeup.setGeometry(QtCore.QRect(97, 700, 342, 50))
-        #self.pushButton_GoColorMakeup.setStyleSheet('background-color: #B5A4E7; '
-        #                                              'border-bottom-left-radius : 50px; border-bottom-right-radius : 50px')
+        self.pushButton_GoColorMakeup.setGeometry(QtCore.QRect(115, 435, 330, 125))
+        self.pushButton_GoColorMakeup.setStyleSheet('background-color: transparent;'
+                                                    'border-bottom-left-radius : 125px; border-bottom-right-radius : 125px')
         self.pushButton_GoColorMakeup.setObjectName("pushButton_GoColorMakeup")
+
+
+        # 이동 버튼 (previous)
+        self.pushButton_GoHome = QtWidgets.QPushButton(self)
+        self.pushButton_GoHome.setGeometry(QtCore.QRect(15, 5, 40, 40))
+        self.pushButton_GoHome.setObjectName("pushButton_GoHome")
         font = QtGui.QFont()
-        font.setPointSize(20)
-        self.pushButton_GoColorMakeup.setFont(font)
-        self.pushButton_GoColorMakeup.setText("COLOR MAKEUP")
-
-
-
-        ## 메모 : 125px / 높이 차례대로 130 88 130
+        font.setPointSize(14)
+        font.setBold(True)
+        self.pushButton_GoHome.setFont(font)
+        self.pushButton_GoHome.setText("<")
+        self.pushButton_GoHome.setStyleSheet('background-color:blue;')
 

@@ -11,7 +11,7 @@ class Select_face_Eyeshadow(QWidget):
 
         # 얼굴 사진
         self.label_face = QtWidgets.QLabel(self)
-        self.label_face.setGeometry(QtCore.QRect(125, 10, 312, 416))
+        self.label_face.setGeometry(QtCore.QRect(125, 57, 312, 416))
         self.label_face.setObjectName("label_face")
         font = QtGui.QFont()
         font.setPointSize(20)
@@ -22,7 +22,7 @@ class Select_face_Eyeshadow(QWidget):
 
         # subject
         self.label_subject = QtWidgets.QLabel(self)
-        self.label_subject.setGeometry(QtCore.QRect(125, 437, 312, 30))
+        self.label_subject.setGeometry(QtCore.QRect(125, 484, 312, 30))
         self.label_subject.setObjectName("label_subject")
         font = QtGui.QFont()
         font.setPointSize(15)
@@ -33,7 +33,7 @@ class Select_face_Eyeshadow(QWidget):
 
         # eyeshadow option background image
         self.label_background_Option = QtWidgets.QLabel(self)
-        self.label_background_Option.setGeometry(QtCore.QRect(13, 477, 536, 230))
+        self.label_background_Option.setGeometry(QtCore.QRect(13, 524, 536, 230))
         self.label_background_Option.setObjectName("label_background_Option")
         font = QtGui.QFont()
         font.setPointSize(18)
@@ -45,7 +45,7 @@ class Select_face_Eyeshadow(QWidget):
 
         # 이동 버튼 (prev/next)
         self.pushButton_GoEyebrowAR = QtWidgets.QPushButton(self)
-        self.pushButton_GoEyebrowAR.setGeometry(QtCore.QRect(13, 437, 112, 30))
+        self.pushButton_GoEyebrowAR.setGeometry(QtCore.QRect(13, 484, 112, 30))
         self.pushButton_GoEyebrowAR.setObjectName("pushButton_GoEyebrowAR")
         font = QtGui.QFont()
         font.setPointSize(14)
@@ -55,7 +55,7 @@ class Select_face_Eyeshadow(QWidget):
 
 
         self.pushButton_GoEyelinerAR = QtWidgets.QPushButton(self)
-        self.pushButton_GoEyelinerAR.setGeometry(QtCore.QRect(437, 437, 112, 30))
+        self.pushButton_GoEyelinerAR.setGeometry(QtCore.QRect(437, 484, 112, 30))
         self.pushButton_GoEyelinerAR.setObjectName("pushButton_GoEyelinerAR")
         font = QtGui.QFont()
         font.setPointSize(14)
@@ -65,13 +65,8 @@ class Select_face_Eyeshadow(QWidget):
 
         # 하단 로고
         self.label_HelpMe_Logo = QtWidgets.QLabel(self)
-        self.label_HelpMe_Logo.setGeometry(QtCore.QRect(0, 733, 562, 61))
+        self.label_HelpMe_Logo.setGeometry(QtCore.QRect(0, 754, 562, 40))
         self.label_HelpMe_Logo.setObjectName("label_HelpMe_Logo")
-        font = QtGui.QFont()
-        font.setPointSize(15)
-        self.label_HelpMe_Logo.setFont(font)
-        self.label_HelpMe_Logo.setAlignment(Qt.AlignCenter)
-        self.label_HelpMe_Logo.setText("헬미 로고")
         self.label_HelpMe_Logo.setStyleSheet("border-image: url(image/logo_text.png);")
 
 
