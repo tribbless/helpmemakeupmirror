@@ -10,7 +10,7 @@ class MakeupFace_Capture(QWidget):
 
         # 얼굴
         self.label_face = QtWidgets.QLabel(self)
-        self.label_face.setGeometry(QtCore.QRect(109, 40, 318, 424))  ## 3:4 비율!
+        self.label_face.setGeometry(QtCore.QRect(122, 40, 318, 424))  ## 3:4 비율!
         self.label_face.setObjectName("label_face")
         font = QtGui.QFont()
         font.setPointSize(20)
@@ -21,7 +21,7 @@ class MakeupFace_Capture(QWidget):
 
         # 텍스트
         self.label_manual = QtWidgets.QLabel(self)
-        self.label_manual.setGeometry(QtCore.QRect(99, 464, 338, 70))
+        self.label_manual.setGeometry(QtCore.QRect(112, 464, 338, 70))
         self.label_manual.setObjectName("label_manual")
         font = QtGui.QFont()
         font.setPointSize(12)
@@ -32,7 +32,7 @@ class MakeupFace_Capture(QWidget):
 
         # 캡쳐 버튼 background image
         self.label_background_Capture = QtWidgets.QLabel(self)
-        self.label_background_Capture.setGeometry(QtCore.QRect(52, 560, 230, 110))
+        self.label_background_Capture.setGeometry(QtCore.QRect(65, 560, 230, 110))
         self.label_background_Capture.setObjectName("label_background_Capture")
         font = QtGui.QFont()
         font.setPointSize(18)
@@ -47,7 +47,7 @@ class MakeupFace_Capture(QWidget):
 
         # 이동 버튼 background image
         self.label_background_GoSubMenu = QtWidgets.QLabel(self)
-        self.label_background_GoSubMenu.setGeometry(QtCore.QRect(292, 560, 192, 110))
+        self.label_background_GoSubMenu.setGeometry(QtCore.QRect(305, 560, 192, 110))
         self.label_background_GoSubMenu.setObjectName("label_background_GoSubMenu")
         font = QtGui.QFont()
         font.setPointSize(18)
@@ -58,7 +58,7 @@ class MakeupFace_Capture(QWidget):
 
         # 이동 버튼 (->서브메뉴)
         self.pushButton_GoSubMenu = QtWidgets.QPushButton(self)
-        self.pushButton_GoSubMenu.setGeometry(QtCore.QRect(494, 560, 40, 110))
+        self.pushButton_GoSubMenu.setGeometry(QtCore.QRect(507, 560, 40, 110))
         font = QtGui.QFont()
         font.setFamily("AlternateGothic2 BT")
         font.setPointSize(13)
@@ -68,7 +68,7 @@ class MakeupFace_Capture(QWidget):
 
         # 하단 로고
         self.label_HelpMe_Logo = QtWidgets.QLabel(self)
-        self.label_HelpMe_Logo.setGeometry(QtCore.QRect(0, 707, 536, 61))
+        self.label_HelpMe_Logo.setGeometry(QtCore.QRect(0, 733, 562, 61))
         self.label_HelpMe_Logo.setObjectName("label_HelpMe_Logo")
         font = QtGui.QFont()
         font.setPointSize(15)

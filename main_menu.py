@@ -10,7 +10,7 @@ class Main_Menu(QWidget):
 
 
         self.label_title = QtWidgets.QLabel(self)
-        self.label_title.setGeometry(QtCore.QRect(87, 112, 362, 50))
+        self.label_title.setGeometry(QtCore.QRect(100, 112, 362, 50))
         self.label_title.setObjectName("label_title")
         font = QtGui.QFont()
         font.setPointSize(15)
@@ -25,7 +25,7 @@ class Main_Menu(QWidget):
         pixmap = QPixmap("image/menu1.png")
         pixmap = pixmap.scaledToWidth(375)
         self.label_background_MainMenu.setPixmap(QPixmap(pixmap))
-        self.label_background_MainMenu.setGeometry(QtCore.QRect(80, 200, 375, 375))
+        self.label_background_MainMenu.setGeometry(QtCore.QRect(93, 200, 375, 375))
 
         # 이동 버튼(->퍼스널 컬러, 베이스 메이크업 비디오, 컬러 메이크업)
         self.pushButton_GoPersonalColor = QtWidgets.QPushButton(self)

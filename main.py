@@ -153,6 +153,8 @@ class MAIN_StackedWidget(QWidget):
         self.stk_w.addWidget(self.Real_AR_Face_compare)
 
         widget_laytout.addWidget(self.stk_w)
+        widget_laytout.setContentsMargins(0,0,0,0)
+
 
         self.setLayout(widget_laytout)
 
@@ -211,6 +213,8 @@ class MAIN_StackedWidget(QWidget):
         font.setPointSize(11)
         self.label_DateTime.setFont(font)
         self.label_DateTime.setText("")
+
+        self.label_DateTime.hide()
 
         ''' 구분용
         self.label = QtWidgets.QLabel(self)
@@ -291,6 +295,7 @@ class MAIN_StackedWidget(QWidget):
 
     ## 화면전환 NEXT & PREVIOUS
     def goToMainMenu(self):
+        self.label_DateTime.show()
         self.stk_w.setCurrentWidget(self.main_menu)
     def goToBareFaceCapture(self):
         self.stk_w.setCurrentWidget(self.bareFace_capture)
@@ -340,6 +345,7 @@ class MAIN_StackedWidget(QWidget):
         self.stk_w.setCurrentWidget(self.Real_AR_Face_compare)
 
     def goToHome(self):
+        self.label_DateTime.hide()
         self.stk_w.setCurrentWidget(self.home)
 
 

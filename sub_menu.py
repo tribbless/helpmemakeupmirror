@@ -10,7 +10,7 @@ class Sub_Menu(QWidget):
 
         # 메뉴 background image
         self.label_SubMenu = QtWidgets.QLabel(self)
-        self.label_SubMenu.setGeometry(QtCore.QRect(97, 222, 342, 324))
+        self.label_SubMenu.setGeometry(QtCore.QRect(110, 222, 342, 324))
         self.label_SubMenu.setObjectName("label_SubMenu")
         font = QtGui.QFont()
         font.setPointSize(20)
@@ -23,7 +23,7 @@ class Sub_Menu(QWidget):
 
         # 이동 버튼 (->가상화장, 테마)
         self.pushButton_GoSelectFace = QtWidgets.QPushButton(self)
-        self.pushButton_GoSelectFace.setGeometry(QtCore.QRect(97, 600, 342, 50))
+        self.pushButton_GoSelectFace.setGeometry(QtCore.QRect(110, 600, 342, 50))
         #self.pushButton_GoSelectFace.setStyleSheet('background-color: transparent; '
         #                                           'border-top-left-radius : 125px; border-top-right-radius:125px')
         self.pushButton_GoSelectFace.setObjectName("pushButton_GoSelectFace")
@@ -34,7 +34,7 @@ class Sub_Menu(QWidget):
 
 
         self.pushButton_GoSelectThema = QtWidgets.QPushButton(self)
-        self.pushButton_GoSelectThema.setGeometry(QtCore.QRect(97, 650, 342, 50))
+        self.pushButton_GoSelectThema.setGeometry(QtCore.QRect(110, 650, 342, 50))
         #self.pushButton_GoSelectThema.setStyleSheet('background-color: transparent; '
         #                                              'border-bottom-left-radius : 125px; border-bottom-right-radius : 125px')
         self.pushButton_GoSelectThema.setObjectName("pushButton_GoSelectThema")
@@ -45,7 +45,7 @@ class Sub_Menu(QWidget):
 
         # 하단 로고
         self.label_HelpMe_Logo = QtWidgets.QLabel(self)
-        self.label_HelpMe_Logo.setGeometry(QtCore.QRect(0, 707, 536, 61))
+        self.label_HelpMe_Logo.setGeometry(QtCore.QRect(0, 733, 562, 61))
         self.label_HelpMe_Logo.setObjectName("label_HelpMe_Logo")
         font = QtGui.QFont()
         font.setPointSize(15)

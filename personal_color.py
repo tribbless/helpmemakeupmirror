@@ -10,7 +10,7 @@ class Personal_Color(QWidget):
 
         # 쌩얼 얼굴 사진
         self.label_face = QtWidgets.QLabel(self)
-        self.label_face.setGeometry(QtCore.QRect(100, 30, 336, 448)) ## 3:4 비율!
+        self.label_face.setGeometry(QtCore.QRect(113, 30, 336, 448)) ## 3:4 비율!
         self.label_face.setObjectName("label_face")
         font = QtGui.QFont()
         font.setPointSize(20)
@@ -21,7 +21,7 @@ class Personal_Color(QWidget):
 
         # 퍼스널 컬러 정보 background image
         self.label_background_manual = QtWidgets.QLabel(self)
-        self.label_background_manual.setGeometry(QtCore.QRect(11, 497, 514, 210))
+        self.label_background_manual.setGeometry(QtCore.QRect(24, 497, 514, 210))
         self.label_background_manual.setObjectName("label_background_manual")
         font = QtGui.QFont()
         font.setPointSize(18)
@@ -32,7 +32,7 @@ class Personal_Color(QWidget):
 
         # 이동 버튼(->메인 메뉴) >>투명하게 해주기
         self.pushButton_GoMainMenu = QtWidgets.QPushButton(self)
-        self.pushButton_GoMainMenu.setGeometry(QtCore.QRect(450, 350, 77, 112))
+        self.pushButton_GoMainMenu.setGeometry(QtCore.QRect(463, 350, 77, 112))
         font = QtGui.QFont()
         font.setFamily("AlternateGothic2 BT")
         font.setPointSize(20)
@@ -42,7 +42,7 @@ class Personal_Color(QWidget):
 
         # 하단 로고
         self.label_HelpMe_Logo = QtWidgets.QLabel(self)
-        self.label_HelpMe_Logo.setGeometry(QtCore.QRect(0, 707, 536, 61))
+        self.label_HelpMe_Logo.setGeometry(QtCore.QRect(0, 733, 562, 61))
         self.label_HelpMe_Logo.setObjectName("label_HelpMe_Logo")
         font = QtGui.QFont()
         font.setPointSize(15)

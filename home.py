@@ -10,7 +10,7 @@ class Home(QWidget):
 
 
         self.label_title = QtWidgets.QLabel(self)
-        self.label_title.setGeometry(QtCore.QRect(97, 102, 342, 50))
+        self.label_title.setGeometry(QtCore.QRect(110, 102, 342, 50))
         self.label_title.setObjectName("label_title")
         font = QtGui.QFont()
         font.setPointSize(15)
@@ -22,7 +22,7 @@ class Home(QWidget):
 
         ## go to main button
         self.pushButton_GoMainMenu = QtWidgets.QPushButton(self)
-        self.pushButton_GoMainMenu.setGeometry(QtCore.QRect(0, 150 , 550, 550))
+        self.pushButton_GoMainMenu.setGeometry(QtCore.QRect(0, 150 , 562, 550))
         self.pushButton_GoMainMenu.setObjectName("pushButton_GoMainMenu")
         # ui test
         self.pushButton_GoMainMenu.setStyleSheet("border-image: url(image/logo_image.png);")

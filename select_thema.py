@@ -10,7 +10,7 @@ class Select_Thema(QWidget):
 
         # 얼굴 사진
         self.label_face = QtWidgets.QLabel(self)
-        self.label_face.setGeometry(QtCore.QRect(112, 20, 312, 416))
+        self.label_face.setGeometry(QtCore.QRect(125, 20, 312, 416))
         self.label_face.setObjectName("label_face")
         font = QtGui.QFont()
         font.setPointSize(20)
@@ -21,7 +21,7 @@ class Select_Thema(QWidget):
 
         # TEHMA option background image
         self.label_background_Option = QtWidgets.QLabel(self)
-        self.label_background_Option.setGeometry(QtCore.QRect(0, 507, 536, 200))
+        self.label_background_Option.setGeometry(QtCore.QRect(13, 507, 536, 200))
         self.label_background_Option.setObjectName("label_background_Option")
         font = QtGui.QFont()
         font.setPointSize(18)
@@ -36,7 +36,7 @@ class Select_Thema(QWidget):
 
         # 이동 버튼 (prev/next)
         self.pushButton_GoSubMenu = QtWidgets.QPushButton(self)
-        self.pushButton_GoSubMenu.setGeometry(QtCore.QRect(0, 457, 92, 30))
+        self.pushButton_GoSubMenu.setGeometry(QtCore.QRect(13, 457, 92, 30))
         self.pushButton_GoSubMenu.setObjectName("pushButton_GoSubMenu")
         font = QtGui.QFont()
         font.setPointSize(14)
@@ -45,7 +45,7 @@ class Select_Thema(QWidget):
         self.pushButton_GoSubMenu.setStyleSheet('color: white; background-color:#B1B1B1; border:0px;')
 
         self.pushButton_GoEyebrowFrame = QtWidgets.QPushButton(self)
-        self.pushButton_GoEyebrowFrame.setGeometry(QtCore.QRect(444, 457, 92, 30))
+        self.pushButton_GoEyebrowFrame.setGeometry(QtCore.QRect(457, 457, 92, 30))
         self.pushButton_GoEyebrowFrame.setObjectName("pushButton_GoEyebrowFrame")
         font = QtGui.QFont()
         font.setPointSize(14)
@@ -55,7 +55,7 @@ class Select_Thema(QWidget):
 
         # 하단 로고
         self.label_HelpMe_Logo = QtWidgets.QLabel(self)
-        self.label_HelpMe_Logo.setGeometry(QtCore.QRect(0, 707, 536, 61))
+        self.label_HelpMe_Logo.setGeometry(QtCore.QRect(0, 733, 562, 61))
         self.label_HelpMe_Logo.setObjectName("label_HelpMe_Logo")
         font = QtGui.QFont()
         font.setPointSize(15)
