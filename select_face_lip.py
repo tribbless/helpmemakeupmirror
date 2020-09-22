@@ -66,3 +66,100 @@ class Select_face_Lip(QWidget):
 
         self.label_HelpMe_Logo.setStyleSheet("border-image: url(image/logo_text.png);")
 
+        ## 선택화면 안 요소..
+
+
+        ##
+        self.scrollArea = QScrollArea(self)
+        self.scrollArea.setGeometry(13, 580, 536, 174)
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollArea.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
+        self.scrollArea.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        self.scrollArea.setStyleSheet('background-color: transparent; border: 0px;')
+
+
+        ## 색상 버튼
+        self.pushButton_ResetColor = QtWidgets.QPushButton(self)
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        self.pushButton_ResetColor.setMinimumSize(172, 150)
+        self.pushButton_ResetColor.setText("color reset")
+        self.pushButton_ResetColor.setFont(font)
+        self.pushButton_ResetColor.setStyleSheet('background-color:white;')
+        self.pushButton_ResetColor.setObjectName("pushButton_ResetColor")
+        self.pushButton_ResetColor.clicked.connect(self.Apply_ResetColor)
+
+        self.pushButton_Red = QtWidgets.QPushButton(self)
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        self.pushButton_Red.setMinimumSize(172, 150)
+        self.pushButton_Red.setText("red")
+        self.pushButton_Red.setFont(font)
+        self.pushButton_Red.setStyleSheet('background-color:white;')
+        self.pushButton_Red.setObjectName("pushButton_Red")
+        self.pushButton_Red.clicked.connect(self.Apply_Red)
+
+        self.pushButton_Pink = QtWidgets.QPushButton(self)
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        self.pushButton_Pink.setMinimumSize(172, 150)
+        self.pushButton_Pink.setText("pink")
+        self.pushButton_Pink.setFont(font)
+        self.pushButton_Pink.setStyleSheet('background-color:white;')
+        self.pushButton_Pink.setObjectName("pushButton_Pink")
+        self.pushButton_Pink.clicked.connect(self.Apply_Pink)
+
+        self.pushButton_Orange = QtWidgets.QPushButton(self)
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        self.pushButton_Orange.setMinimumSize(172, 150)
+        self.pushButton_Orange.setText("orange")
+        self.pushButton_Orange.setFont(font)
+        self.pushButton_Orange.setStyleSheet('background-color:white;')
+        self.pushButton_Orange.setObjectName("pushButton_Orange")
+        self.pushButton_Orange.clicked.connect(self.Apply_Orange)
+
+
+        ## 레이아웃
+        widget = QWidget(self.scrollArea)
+        scrollLayout = QHBoxLayout(widget)
+        scrollLayout.setContentsMargins(0,0,0,0)
+        scrollLayout.addWidget(self.pushButton_ResetColor)
+        scrollLayout.setSpacing(10)
+        scrollLayout.addWidget(self.pushButton_Red)
+        scrollLayout.setSpacing(10)
+        scrollLayout.addWidget(self.pushButton_Pink)
+        scrollLayout.setSpacing(10)
+        scrollLayout.addWidget(self.pushButton_Orange)
+        widget.setLayout(scrollLayout)
+        self.scrollArea.setWidget(widget)
+
+    def Apply_ResetColor(self):
+        print("color reset clicked")
+        self.pushButton_ResetColor.setStyleSheet('background-color:black;color:white;')
+        self.pushButton_Red.setStyleSheet('background-color:white;')
+        self.pushButton_Pink.setStyleSheet('background-color:white;')
+        self.pushButton_Orange.setStyleSheet('background-color:white;')
+
+    def Apply_Red(self):
+        print("red clicked")
+        self.pushButton_Red.setStyleSheet('background-color:black;color:white;')
+        self.pushButton_ResetColor.setStyleSheet('background-color:white;')
+        self.pushButton_Pink.setStyleSheet('background-color:white;')
+        self.pushButton_Orange.setStyleSheet('background-color:white;')
+
+    def Apply_Pink(self):
+        print("pink clicked")
+        self.pushButton_Pink.setStyleSheet('background-color:black;color:white;')
+        self.pushButton_ResetColor.setStyleSheet('background-color:white;')
+        self.pushButton_Red.setStyleSheet('background-color:white;')
+        self.pushButton_Orange.setStyleSheet('background-color:white;')
+
+    def Apply_Orange(self):
+        print("orange clicked")
+        self.pushButton_Orange.setStyleSheet('background-color:black;color:white;')
+        self.pushButton_ResetColor.setStyleSheet('background-color:white;')
+        self.pushButton_Red.setStyleSheet('background-color:white;')
+        self.pushButton_Pink.setStyleSheet('background-color:white;')
+
+

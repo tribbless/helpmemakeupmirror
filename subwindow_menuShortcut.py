@@ -12,8 +12,7 @@ class SubWindow_MenuShortcut(QDialog): #QDialog
     def initUI(self):
         self.setWindowTitle('MENU')
         self.resize(340,280)
-        self.setStyleSheet('background-color:white;')
-
+        #self.setStyleSheet('background-color:white;')
 
         layout = QVBoxLayout()
 
@@ -94,7 +93,7 @@ class SubWindow_MenuShortcut(QDialog): #QDialog
 
         layout.addLayout(hbox1)
         layout.addLayout(hbox2)
-        layout.addWidget(self.pushButton_GoExit,alignment=Qt.AlignCenter)
+        layout.addWidget(self.pushButton_GoExit,alignment=Qt.AlignRight)
 
         self.setLayout(layout)
 

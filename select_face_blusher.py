@@ -3,6 +3,105 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 
+class Shape(QWidget):
+    def __init__(self):
+        super().__init__()
+
+        self.pushButton_ResetAll = QtWidgets.QPushButton(self)
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        self.pushButton_ResetAll.setMinimumSize(172, 150)
+        self.pushButton_ResetAll.setText("all reset")
+        self.pushButton_ResetAll.setFont(font)
+        self.pushButton_ResetAll.setStyleSheet('background-color:white;')
+        self.pushButton_ResetAll.setObjectName("pushButton_ResetALl")
+
+        self.pushButton_Round = QtWidgets.QPushButton(self)
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        self.pushButton_Round.setMinimumSize(172, 150)
+        self.pushButton_Round.setText("round")
+        self.pushButton_Round.setFont(font)
+        self.pushButton_Round.setStyleSheet('background-color:white;')
+        self.pushButton_Round.setObjectName("pushButton_Round")
+
+        self.pushButton_Oblong = QtWidgets.QPushButton(self)
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        self.pushButton_Oblong.setMinimumSize(172, 150)
+        self.pushButton_Oblong.setText("oblong")
+        self.pushButton_Oblong.setFont(font)
+        self.pushButton_Oblong.setStyleSheet('background-color:white;')
+        self.pushButton_Oblong.setObjectName("pushButton_Oblong")
+
+        self.pushButton_Square = QtWidgets.QPushButton(self)
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        self.pushButton_Square.setMinimumSize(172, 150)
+        self.pushButton_Square.setText("square")
+        self.pushButton_Square.setFont(font)
+        self.pushButton_Square.setStyleSheet('background-color:white;')
+        self.pushButton_Square.setObjectName("pushButton_Square")
+
+
+        layout = QHBoxLayout()
+        layout.setContentsMargins(0,0,0,0)
+        layout.addWidget(self.pushButton_ResetAll)
+        layout.setSpacing(10)
+        layout.addWidget(self.pushButton_Round)
+        layout.setSpacing(10)
+        layout.addWidget(self.pushButton_Oblong)
+        layout.setSpacing(10)
+        layout.addWidget(self.pushButton_Square)
+
+        self.setLayout(layout)
+
+class Color(QWidget):
+    def __init__(self):
+        super().__init__()
+
+        self.pushButton_ResetColor = QtWidgets.QPushButton(self)
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        #self.pushButton_ResetColor.setMinimumSize(172, 150)
+        self.pushButton_ResetColor.setMaximumSize(172, 150)
+        self.pushButton_ResetColor.setText("color reset")
+        self.pushButton_ResetColor.setFont(font)
+        self.pushButton_ResetColor.setStyleSheet('background-color:white;')
+        self.pushButton_ResetColor.setObjectName("pushButton_ResetColor")
+
+        self.pushButton_Pink = QtWidgets.QPushButton(self)
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        #self.pushButton_Pink.setMinimumSize(172, 150)
+        self.pushButton_Pink.setMaximumSize(172, 150)
+        self.pushButton_Pink.setText("pink")
+        self.pushButton_Pink.setFont(font)
+        self.pushButton_Pink.setStyleSheet('background-color:white;')
+        self.pushButton_Pink.setObjectName("pushButton_Pink")
+
+        self.pushButton_Orange = QtWidgets.QPushButton(self)
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        #self.pushButton_Orange.setMinimumSize(172, 150)
+        self.pushButton_Orange.setMaximumSize(172, 150)
+        self.pushButton_Orange.setText("orange")
+        self.pushButton_Orange.setFont(font)
+        self.pushButton_Orange.setStyleSheet('background-color:white;')
+        self.pushButton_Orange.setObjectName("pushButton_Orange")
+
+
+        layout = QHBoxLayout()
+        layout.setContentsMargins(0,0,0,0)
+        layout.addWidget(self.pushButton_ResetColor)
+        layout.setSpacing(10)
+        layout.addWidget(self.pushButton_Pink)
+        layout.setSpacing(10)
+        layout.addWidget(self.pushButton_Orange)
+
+        self.setLayout(layout)
+
+
 class Select_face_Blusher(QWidget):
 
     def __init__(self):
@@ -63,3 +162,160 @@ class Select_face_Blusher(QWidget):
         self.label_HelpMe_Logo.setObjectName("label_HelpMe_Logo")
         self.label_HelpMe_Logo.setStyleSheet("border-image: url(image/logo_text.png);")
 
+        ## 선택화면 안 요소..
+        # 모양화면으로 back 버튼
+        self.pushButton_GoBack = QtWidgets.QPushButton(self)
+        self.pushButton_GoBack.setGeometry(QtCore.QRect(44, 537, 30, 30))
+        self.pushButton_GoBack.setObjectName("pushButton_GoBack")
+        self.pushButton_GoBack.setStyleSheet("border-image: url(image/btn_triangle.png);")
+        self.pushButton_GoBack.clicked.connect(self.backClicked)
+        self.pushButton_GoBack.hide()
+
+        self.slider = QSlider(Qt.Horizontal, self)
+        self.slider.setGeometry(QtCore.QRect(105, 537, 352, 30))  # 73, 537, 332, 30
+        self.slider.setMinimum(0)
+        self.slider.setMaximum(100)
+        self.slider.valueChanged.connect(self.changeValue)
+        self.slider.setStyleSheet(
+            'QSlider::groove:horizontal { border-radius: 1px; height: 5px;margin: 0px;background-color: rgb(52, 59, 72);}'
+            'QSlider::groove:horizontal:hover {background-color: rgb(55, 62, 76);}'
+            'QSlider::handle:horizontal {background-color: white;border: none;height: 16px;width: 16px;margin: -8px 0;border-radius: 8px;padding: -8px 0px;}'
+            # 'QSlider::handle:horizontal:hover {background-color: rgb(188,170,231);}'
+            'QSlider::handle:horizontal:pressed {background-color: white;}'
+            'QSlider::add-page:qlineargradient {background: rgb(227,218,243);border-top-right-radius: 9px;border-bottom-right-radius: 9px;border-top-left-radius: 0px;border-bottom-left-radius: 0px;}'
+            'QSlider::sub-page:qlineargradient {background: white;border-top-right-radius: 0px;border-bottom-right-radius: 0px;'
+            'border-top-left-radius: 9px;border-bottom-left-radius: 9px;}')
+        self.slider.hide()
+
+        self.label_slider = QtWidgets.QLabel(self)
+        self.label_slider.setGeometry(QtCore.QRect(467, 537, 72, 30))  # 415, 532, 60, 30
+        font = QtGui.QFont()
+        font.setFamily("Segoe MDL2 Assets")
+        font.setPointSize(15)
+        self.label_slider.setFont(font)
+        self.label_slider.setAlignment(Qt.AlignCenter)
+        self.label_slider.setText("0%")
+        self.label_slider.setStyleSheet('color:white;')
+        self.label_slider.hide()
+
+        ##
+        self.scrollArea = QScrollArea(self)
+        self.scrollArea.setGeometry(13, 580, 536, 174)
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollArea.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
+        self.scrollArea.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        self.scrollArea.setStyleSheet('background-color: transparent; border: 0px;')
+        '''
+        widget = QWidget(self.scrollArea)
+        widget_laytout = QHBoxLayout(widget)
+
+        self.stk_w2 = QStackedWidget(self)
+        self.shape = Shape()
+        self.color = Color()
+        self.stk_w2.addWidget(self.shape)
+        self.stk_w2.addWidget(self.color)
+        #self.scrollArea.setWidget(self.stk_w2)
+
+        widget_laytout.addWidget(self.stk_w2)
+        widget_laytout.setContentsMargins(0, 0, 0, 0)
+        self.setLayout(widget_laytout)
+
+        widget.setLayout(widget_laytout)
+        self.scrollArea.setWidget(widget)
+        '''
+        self.stk_w2 = QStackedWidget(self)
+        self.shape = Shape()
+        self.color = Color()
+        self.stk_w2.addWidget(self.shape)
+        self.stk_w2.addWidget(self.color)
+        self.scrollArea.setWidget(self.stk_w2)
+
+
+        #print(self.color.pushButton_ResetColor.height())
+        #print(self.color.pushButton_ResetColor.width())
+
+        ## 모양 버튼 클릭
+        self.shape.pushButton_ResetAll.clicked.connect(self.Apply_ResetAll)
+        self.shape.pushButton_Round.clicked.connect(self.Apply_Round)
+        self.shape.pushButton_Oblong.clicked.connect(self.Apply_Oblong)
+        self.shape.pushButton_Square.clicked.connect(self.Apply_Square)
+
+        ## 색상 버튼 클릭
+        self.color.pushButton_ResetColor.clicked.connect(self.Apply_ResetColor)
+        self.color.pushButton_Pink.clicked.connect(self.Apply_Pink)
+        self.color.pushButton_Orange.clicked.connect(self.Apply_Orange)
+
+    def Apply_ResetAll(self):
+        print("all reset clicked")
+        self.shape.pushButton_ResetAll.setStyleSheet('background-color:black;color:white;')
+        self.shape.pushButton_Round.setStyleSheet('background-color:white;')
+        self.shape.pushButton_Oblong.setStyleSheet('background-color:white;')
+        self.shape.pushButton_Square.setStyleSheet('background-color:white;')
+        #print(self.shape.pushButton_ResetAll.height())
+        #print(self.shape.pushButton_ResetAll.width())
+
+    def Apply_Round(self):
+        print("round clicked")
+        self.pushButton_GoBack.show()
+        self.shape.pushButton_Round.setStyleSheet('background-color:black;color:white;')
+        self.shape.pushButton_ResetAll.setStyleSheet('background-color:white;')
+        self.shape.pushButton_Oblong.setStyleSheet('background-color:white;')
+        self.shape.pushButton_Square.setStyleSheet('background-color:white;')
+        self.stk_w2.setCurrentWidget(self.color)
+
+    def Apply_Oblong(self):
+        print("oblong clicked")
+        self.pushButton_GoBack.show()
+        self.shape.pushButton_Oblong.setStyleSheet('background-color:black;color:white;')
+        self.shape.pushButton_ResetAll.setStyleSheet('background-color:white;')
+        self.shape.pushButton_Round.setStyleSheet('background-color:white;')
+        self.shape.pushButton_Square.setStyleSheet('background-color:white;')
+        self.stk_w2.setCurrentWidget(self.color)
+
+    def Apply_Square(self):
+        print("oblong clicked")
+        self.pushButton_GoBack.show()
+        self.shape.pushButton_Square.setStyleSheet('background-color:black;color:white;')
+        self.shape.pushButton_ResetAll.setStyleSheet('background-color:white;')
+        self.shape.pushButton_Round.setStyleSheet('background-color:white;')
+        self.shape.pushButton_Oblong.setStyleSheet('background-color:white;')
+        self.stk_w2.setCurrentWidget(self.color)
+
+    def Apply_ResetColor(self):
+        print("color reset clicked")
+        #print(self.color.pushButton_ResetColor.height())
+        #print(self.color.pushButton_ResetColor.width())
+        self.color.pushButton_ResetColor.setStyleSheet('background-color:black;color:white;')
+        self.color.pushButton_Pink.setStyleSheet('background-color:white;')
+        self.color.pushButton_Orange.setStyleSheet('background-color:white;')
+        self.slider.hide()
+        self.label_slider.hide()
+
+    def Apply_Pink(self):
+        print("pink clicked")
+        self.color.pushButton_Pink.setStyleSheet('background-color:black;color:white;')
+        self.color.pushButton_ResetColor.setStyleSheet('background-color:white;')
+        self.color.pushButton_Orange.setStyleSheet('background-color:white;')
+        self.slider.setValue(50)  # 투명도 바 초기값으로 셋팅
+        self.slider.show()
+        self.label_slider.show()
+
+    def Apply_Orange(self):
+        print("Orange clicked")
+        self.color.pushButton_Orange.setStyleSheet('background-color:black;color:white;')
+        self.color.pushButton_ResetColor.setStyleSheet('background-color:white;')
+        self.color.pushButton_Pink.setStyleSheet('background-color:white;')
+        self.slider.setValue(50)  # 투명도 바 초기값으로 셋팅
+        self.slider.show()
+        self.label_slider.show()
+
+    def changeValue(self):
+        size = str(self.slider.value())
+        self.label_slider.setText(size + "%")
+
+    def backClicked(self):
+        print("back clicked")
+        self.slider.hide()
+        self.label_slider.hide()
+        self.pushButton_GoBack.hide()
+        self.stk_w2.setCurrentWidget(self.shape)

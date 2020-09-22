@@ -14,6 +14,8 @@ from PyQt5.QtGui import *
 #  red_pix = QtGui.QPixmap(red_img2)
 #  self.label2.setPixmap(QtGui.QPixmap(red_pix))
 
+
+## <메모> 컬러-색상 갯수가 다를 시 - widget size change할 수 있어야 함.(알아보기)
 class Shape(QWidget):
     def __init__(self):
         super().__init__()
@@ -21,7 +23,7 @@ class Shape(QWidget):
         self.pushButton_ResetAll = QtWidgets.QPushButton(self)
         font = QtGui.QFont()
         font.setPointSize(14)
-        self.pushButton_ResetAll.setMinimumSize(164, 150)
+        self.pushButton_ResetAll.setMinimumSize(172, 150)
         self.pushButton_ResetAll.setText("all reset")
         self.pushButton_ResetAll.setFont(font)
         self.pushButton_ResetAll.setStyleSheet('background-color:white;')
@@ -30,7 +32,7 @@ class Shape(QWidget):
         self.pushButton_Arch = QtWidgets.QPushButton(self)
         font = QtGui.QFont()
         font.setPointSize(14)
-        self.pushButton_Arch.setMinimumSize(164, 150)
+        self.pushButton_Arch.setMinimumSize(172, 150)
         self.pushButton_Arch.setText("arch")
         self.pushButton_Arch.setFont(font)
         self.pushButton_Arch.setStyleSheet('background-color:white;')
@@ -39,7 +41,7 @@ class Shape(QWidget):
         self.pushButton_Straight = QtWidgets.QPushButton(self)
         font = QtGui.QFont()
         font.setPointSize(14)
-        self.pushButton_Straight.setMinimumSize(164, 150)
+        self.pushButton_Straight.setMinimumSize(172, 150)
         self.pushButton_Straight.setText("straight")
         self.pushButton_Straight.setFont(font)
         self.pushButton_Straight.setStyleSheet('background-color:white;')
@@ -63,7 +65,8 @@ class Color(QWidget):
         self.pushButton_ResetColor = QtWidgets.QPushButton(self)
         font = QtGui.QFont()
         font.setPointSize(14)
-        self.pushButton_ResetColor.setMinimumSize(164, 150)
+        self.pushButton_ResetColor.setMinimumSize(172, 150)
+        self.pushButton_ResetColor.size
         self.pushButton_ResetColor.setText("color reset")
         self.pushButton_ResetColor.setFont(font)
         self.pushButton_ResetColor.setStyleSheet('background-color:white;')
@@ -72,7 +75,7 @@ class Color(QWidget):
         self.pushButton_Black = QtWidgets.QPushButton(self)
         font = QtGui.QFont()
         font.setPointSize(14)
-        self.pushButton_Black.setMinimumSize(164, 150)
+        self.pushButton_Black.setMinimumSize(172, 150)
         self.pushButton_Black.setText("black")
         self.pushButton_Black.setFont(font)
         self.pushButton_Black.setStyleSheet('background-color:white;')
@@ -81,7 +84,7 @@ class Color(QWidget):
         self.pushButton_Brown = QtWidgets.QPushButton(self)
         font = QtGui.QFont()
         font.setPointSize(14)
-        self.pushButton_Brown.setMinimumSize(164, 150)
+        self.pushButton_Brown.setMinimumSize(172, 150)
         self.pushButton_Brown.setText("brown")
         self.pushButton_Brown.setFont(font)
         self.pushButton_Brown.setStyleSheet('background-color:white;')
@@ -199,7 +202,7 @@ class Select_face_Eyebrow(QWidget):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
         self.scrollArea.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
-        self.scrollArea.setStyleSheet('background-color: transparent; border: 0px;') # 테두리없앳당!!!!!! #background-color: transparent;
+        self.scrollArea.setStyleSheet('background-color: transparent; border: 0px;') # 테두리없앳da.
 
         self.stk_w2 = QStackedWidget(self)
         self.shape = Shape()
@@ -223,6 +226,8 @@ class Select_face_Eyebrow(QWidget):
         self.shape.pushButton_ResetAll.setStyleSheet('background-color:black;color:white;')
         self.shape.pushButton_Arch.setStyleSheet('background-color:white;')
         self.shape.pushButton_Straight.setStyleSheet('background-color:white;')
+        print(self.shape.pushButton_Arch.height())
+        print(self.shape.pushButton_Arch.width())
     def Apply_Arch(self):
         print("arch clicked")
         self.pushButton_GoBack.show()
@@ -262,20 +267,6 @@ class Select_face_Eyebrow(QWidget):
         self.slider.show()
         self.label_slider.show()
 
-    def Apply_FirstOption(self): ## 원상복구버튼
-        self.slider.hide()
-        self.label_slider.hide() # 투명도 바 숨기기
-        print("first option clicked")
-    def Apply_TwoOption(self):
-        self.slider.setValue(50) # 투명도 바 초기값으로 셋팅
-        self.slider.show()  # 투명도 바 나타내기
-        self.label_slider.show()
-        print("two option clicked")
-    def Apply_ThirdOption(self):
-        self.slider.setValue(50) # 투명도 바 초기값으로 셋팅
-        self.slider.show()  # 투명도 바 나타내기
-        self.label_slider.show()
-        print("third option clicked")
 
     def changeValue(self):
         size = str(self.slider.value())
@@ -287,6 +278,12 @@ class Select_face_Eyebrow(QWidget):
         self.label_slider.hide()
         self.pushButton_GoBack.hide()
         self.stk_w2.setCurrentWidget(self.shape)
+
+'''
+        self.label_slider.hide() # 투명도 바 숨기기
+        self.slider.setValue(50) # 투명도 바 초기값으로 셋팅
+        self.slider.show()  # 투명도 바 나타내기
+'''
 
 
 
