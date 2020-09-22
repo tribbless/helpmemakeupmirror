@@ -61,7 +61,8 @@ from frame_blusher import Frame_Blusher
 from frame_lip import Frame_Lip
 
 from RealFace_ARFace_compare import RealFace_ARFace_Compare
-
+from subwindow_menuShortcut import SubWindow_MenuShortcut
+from subwindow_weather import SubWindow_Weather
 ##### python -m PyQt5.uic.pyuic -x ex_02.ui -o ex_02.py
 ## 헬미로고는 베이스메이크업 로고 기준으로 함.!!!!!
 
@@ -233,22 +234,91 @@ class MAIN_StackedWidget(QWidget):
         self.label_DateTime.hide()
 
         ## 온도
+        self.label_Temperature = QtWidgets.QLabel(self)
+        self.label_Temperature.setGeometry(QtCore.QRect(408, 5, 40, 40))
+        self.label_Temperature.setObjectName("label_Temperature")
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.label_Temperature.setFont(font)
+        self.label_Temperature.setText("24°")
+        self.label_Temperature.setAlignment(Qt.AlignCenter)
+        self.label_Temperature.hide()
 
         ## 날씨 아이콘
+        self.label_WeatherIcon = QtWidgets.QLabel(self)
+        self.label_WeatherIcon.setGeometry(QtCore.QRect(448, 5, 40, 40))
+        self.label_WeatherIcon.setObjectName("label_WeatherIcon")
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.label_WeatherIcon.setFont(font)
+        self.label_WeatherIcon.setText("맑음")
+        self.label_WeatherIcon.setAlignment(Qt.AlignCenter)
+        self.label_WeatherIcon.hide()
 
         ## 날씨 버튼
+        self.pushButton_Weather = QtWidgets.QPushButton(self)
+        self.pushButton_Weather.setGeometry(QtCore.QRect(408, 5, 80, 40))
+        self.pushButton_Weather.setObjectName("pushButton_Weather")
+        self.pushButton_Weather.setStyleSheet("border-style: dashed; border-width: 1px; border-color: red;")
+        self.pushButton_Weather.clicked.connect(self.goToWeather_Window)
+        self.pushButton_Weather.hide()
 
-        ## 메뉴 버튼 background
-
-        ## 메뉴 버튼
 
 
+        ## 메뉴 바로가기 버튼
+        self.pushButton_MenuShortcut = QtWidgets.QPushButton(self)
+        self.pushButton_MenuShortcut.setGeometry(QtCore.QRect(501, 5, 46, 40))
+        self.pushButton_MenuShortcut.setObjectName("pushButton_MenuShortcut")
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        font.setBold(True)
+        self.pushButton_MenuShortcut.setFont(font)
+        self.pushButton_MenuShortcut.setText("메뉴")
+        self.pushButton_MenuShortcut.setStyleSheet("background-color: blue;")
+        self.pushButton_MenuShortcut.clicked.connect(self.goToMenuShortcut_Window)
+        self.pushButton_MenuShortcut.hide()
 
+    ## 서브 윈도우 화면 나타나기
+    def goToWeather_Window(self):
+        print("날씨 윈도우화면")
+        weather = SubWindow_Weather()
+        r = weather.showModal()
+        if r:
+            print("--이 메시지는 안나옴--")
+        else:
+            print("close")
+    def goToMenuShortcut_Window(self):
+        print("메뉴 바로가기 윈도우화면")
+        menuShortcut = SubWindow_MenuShortcut()
+        r = menuShortcut.showModal()
+        if r:
+            print("메뉴 바로가기 클릭성공")
+            if(menuShortcut.btn==1):
+                self.goToHome()
+            elif(menuShortcut.btn==2):
+                self.goToMainMenu()
+            elif (menuShortcut.btn == 3):
+                self.goToBaseMakeupVideo()
+            elif (menuShortcut.btn == 4):
+                self.goToBareFaceCapture()
+            elif (menuShortcut.btn == 5):
+                self.goToMakeupFaceCapture()
+            elif (menuShortcut.btn == 6):
+                self.goToSubMenu()
+            else:
+                sys.exit()
+
+        else:
+            print("close")
 
     ## 화면전환 NEXT & PREVIOUS
     def goToMainMenu(self):
         self.label_background_TitleBar.show()
         self.label_DateTime.show()
+        self.label_Temperature.show()
+        self.label_WeatherIcon.show()
+        self.pushButton_Weather.show()
+        self.pushButton_MenuShortcut.show()
         self.stk_w.setCurrentWidget(self.main_menu)
     def goToBareFaceCapture(self):
         self.stk_w.setCurrentWidget(self.bareFace_capture)
@@ -287,8 +357,6 @@ class MAIN_StackedWidget(QWidget):
 
     def goToLipARorTHEMA(self):
         if (self.sub_menu.btn == "select_face"):
-            #self.select_face_eyebrow.slider.hide()  # 투명도 바 숨기기
-            #self.select_face_eyebrow.label_slider.hide()
             self.stk_w.setCurrentWidget(self.select_face_lip)
         else:
             self.stk_w.setCurrentWidget(self.select_thema)
@@ -310,6 +378,10 @@ class MAIN_StackedWidget(QWidget):
     def goToHome(self):
         self.label_background_TitleBar.hide()
         self.label_DateTime.hide()
+        self.label_Temperature.hide()
+        self.label_WeatherIcon.hide()
+        self.pushButton_Weather.hide()
+        self.pushButton_MenuShortcut.hide()
         self.stk_w.setCurrentWidget(self.home)
 
 
