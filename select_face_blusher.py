@@ -60,6 +60,8 @@ class Color(QWidget):
     def __init__(self):
         super().__init__()
 
+
+
         self.pushButton_ResetColor = QtWidgets.QPushButton(self)
         font = QtGui.QFont()
         font.setPointSize(14)
@@ -98,6 +100,7 @@ class Color(QWidget):
         layout.addWidget(self.pushButton_Pink)
         layout.setSpacing(10)
         layout.addWidget(self.pushButton_Orange)
+
 
         self.setLayout(layout)
 
@@ -205,34 +208,15 @@ class Select_face_Blusher(QWidget):
         self.scrollArea.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
         self.scrollArea.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.scrollArea.setStyleSheet('background-color: transparent; border: 0px;')
-        '''
-        widget = QWidget(self.scrollArea)
-        widget_laytout = QHBoxLayout(widget)
 
         self.stk_w2 = QStackedWidget(self)
         self.shape = Shape()
         self.color = Color()
         self.stk_w2.addWidget(self.shape)
         self.stk_w2.addWidget(self.color)
-        #self.scrollArea.setWidget(self.stk_w2)
 
-        widget_laytout.addWidget(self.stk_w2)
-        widget_laytout.setContentsMargins(0, 0, 0, 0)
-        self.setLayout(widget_laytout)
-
-        widget.setLayout(widget_laytout)
-        self.scrollArea.setWidget(widget)
-        '''
-        self.stk_w2 = QStackedWidget(self)
-        self.shape = Shape()
-        self.color = Color()
-        self.stk_w2.addWidget(self.shape)
-        self.stk_w2.addWidget(self.color)
         self.scrollArea.setWidget(self.stk_w2)
 
-
-        #print(self.color.pushButton_ResetColor.height())
-        #print(self.color.pushButton_ResetColor.width())
 
         ## 모양 버튼 클릭
         self.shape.pushButton_ResetAll.clicked.connect(self.Apply_ResetAll)
@@ -251,6 +235,12 @@ class Select_face_Blusher(QWidget):
         self.shape.pushButton_Round.setStyleSheet('background-color:white;')
         self.shape.pushButton_Oblong.setStyleSheet('background-color:white;')
         self.shape.pushButton_Square.setStyleSheet('background-color:white;')
+        #print(self.shape.height())
+        #print(self.shape.width())
+        #print(self.color.height())
+        #print(self.color.width())
+        #print(self.stk_w2.height()) #150
+        #print(self.stk_w2.width()) #718
         #print(self.shape.pushButton_ResetAll.height())
         #print(self.shape.pushButton_ResetAll.width())
 
@@ -261,7 +251,7 @@ class Select_face_Blusher(QWidget):
         self.shape.pushButton_ResetAll.setStyleSheet('background-color:white;')
         self.shape.pushButton_Oblong.setStyleSheet('background-color:white;')
         self.shape.pushButton_Square.setStyleSheet('background-color:white;')
-        self.stk_w2.setCurrentWidget(self.color)
+        self.goToColor()
 
     def Apply_Oblong(self):
         print("oblong clicked")
@@ -270,7 +260,7 @@ class Select_face_Blusher(QWidget):
         self.shape.pushButton_ResetAll.setStyleSheet('background-color:white;')
         self.shape.pushButton_Round.setStyleSheet('background-color:white;')
         self.shape.pushButton_Square.setStyleSheet('background-color:white;')
-        self.stk_w2.setCurrentWidget(self.color)
+        self.goToColor()
 
     def Apply_Square(self):
         print("oblong clicked")
@@ -279,7 +269,7 @@ class Select_face_Blusher(QWidget):
         self.shape.pushButton_ResetAll.setStyleSheet('background-color:white;')
         self.shape.pushButton_Round.setStyleSheet('background-color:white;')
         self.shape.pushButton_Oblong.setStyleSheet('background-color:white;')
-        self.stk_w2.setCurrentWidget(self.color)
+        self.goToColor()
 
     def Apply_ResetColor(self):
         print("color reset clicked")
@@ -318,4 +308,14 @@ class Select_face_Blusher(QWidget):
         self.slider.hide()
         self.label_slider.hide()
         self.pushButton_GoBack.hide()
+        self.stk_w2.setMaximumWidth(718)
         self.stk_w2.setCurrentWidget(self.shape)
+
+    def goToColor(self):
+        self.stk_w2.setMaximumWidth(536)
+        self.stk_w2.setCurrentWidget(self.color)
+
+
+
+
+

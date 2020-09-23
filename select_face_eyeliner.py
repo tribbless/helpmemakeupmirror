@@ -220,7 +220,7 @@ class Select_face_Eyeliner(QWidget):
         self.shape.pushButton_Middle.setStyleSheet('background-color:black;color:white;')
         self.shape.pushButton_ResetAll.setStyleSheet('background-color:white;')
         self.shape.pushButton_Up.setStyleSheet('background-color:white;')
-        self.stk_w2.setCurrentWidget(self.color)
+        self.goToColor()
 
     def Apply_Up(self):
         print("up clicked")
@@ -228,7 +228,7 @@ class Select_face_Eyeliner(QWidget):
         self.shape.pushButton_Up.setStyleSheet('background-color:black;color:white;')
         self.shape.pushButton_ResetAll.setStyleSheet('background-color:white;')
         self.shape.pushButton_Middle.setStyleSheet('background-color:white;')
-        self.stk_w2.setCurrentWidget(self.color)
+        self.goToColor()
 
     def Apply_ResetColor(self):
         print("color reset clicked")
@@ -267,4 +267,6 @@ class Select_face_Eyeliner(QWidget):
         self.pushButton_GoBack.hide()
         self.stk_w2.setCurrentWidget(self.shape)
 
+    def goToColor(self):
+        self.stk_w2.setCurrentWidget(self.color)
 

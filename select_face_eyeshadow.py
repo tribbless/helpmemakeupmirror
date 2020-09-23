@@ -226,8 +226,8 @@ class Select_face_Eyeshadow(QWidget):
         self.shape.pushButton_Middle.setStyleSheet('background-color:white;')
         self.shape.pushButton_Large.setStyleSheet('background-color:white;')
         self.shape.pushButton_Small.setStyleSheet('background-color:white;')
-        print(self.shape.pushButton_ResetAll.height())
-        print(self.shape.pushButton_ResetAll.width())
+        #print(self.shape.pushButton_ResetAll.height())
+        #print(self.shape.pushButton_ResetAll.width())
     def Apply_Middle(self):
         print("middle clicked")
         self.pushButton_GoBack.show()
@@ -235,7 +235,7 @@ class Select_face_Eyeshadow(QWidget):
         self.shape.pushButton_ResetAll.setStyleSheet('background-color:white;')
         self.shape.pushButton_Large.setStyleSheet('background-color:white;')
         self.shape.pushButton_Small.setStyleSheet('background-color:white;')
-        self.stk_w2.setCurrentWidget(self.color)
+        self.goToColor()
     def Apply_Large(self):
         print("large clicked")
         self.pushButton_GoBack.show()
@@ -243,7 +243,7 @@ class Select_face_Eyeshadow(QWidget):
         self.shape.pushButton_ResetAll.setStyleSheet('background-color:white;')
         self.shape.pushButton_Middle.setStyleSheet('background-color:white;')
         self.shape.pushButton_Small.setStyleSheet('background-color:white;')
-        self.stk_w2.setCurrentWidget(self.color)
+        self.goToColor()
     def Apply_Small(self):
         print("small clicked")
         self.pushButton_GoBack.show()
@@ -251,7 +251,7 @@ class Select_face_Eyeshadow(QWidget):
         self.shape.pushButton_ResetAll.setStyleSheet('background-color:white;')
         self.shape.pushButton_Middle.setStyleSheet('background-color:white;')
         self.shape.pushButton_Large.setStyleSheet('background-color:white;')
-        self.stk_w2.setCurrentWidget(self.color)
+        self.goToColor()
 
     def Apply_ResetColor(self):
         print("color reset clicked")
@@ -287,6 +287,11 @@ class Select_face_Eyeshadow(QWidget):
         self.slider.hide()
         self.label_slider.hide()
         self.pushButton_GoBack.hide()
+        self.stk_w2.setMaximumWidth(718)
         self.stk_w2.setCurrentWidget(self.shape)
+
+    def goToColor(self):
+        self.stk_w2.setMaximumWidth(536)
+        self.stk_w2.setCurrentWidget(self.color)
 
 

@@ -30,6 +30,8 @@
 홈버튼(홈버튼)과 공유버튼이 있다.
 '''
 import sys
+import requests
+from weather import weatherInfo
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import *
@@ -72,9 +74,12 @@ class MAIN_StackedWidget(QWidget):
         QWidget.__init__(self, flags=Qt.Widget)
         self.stk_w = QStackedWidget(self)
         self.setupUi()
-        timer1 = QtCore.QTimer(self, interval=1000, timeout=self.showDateTime) ## 1000이 1초
+        timer1 = QtCore.QTimer(self, interval=1000, timeout=self.showDateTime) ## 1000이 1초 / 60000 1분
         timer1.start()
         self.showDateTime()
+        timer2 = QtCore.QTimer(self, interval=300000, timeout=self.showWeather) ## 5분
+        timer2.start()
+        self.showWeather()
 
     def showDateTime(self):
         date = QtCore.QDate.currentDate()
@@ -88,6 +93,20 @@ class MAIN_StackedWidget(QWidget):
         else:
             textTime=textTime+" PM"
         self.label_DateTime.setText(textDate+"\n"+textTime)
+
+    def showWeather(self):
+        today_temp, url_icon = weatherInfo.weather()
+        # 온도
+        self.label_Temperature.setText(today_temp+"°")
+        # 날씨 아이콘
+        contents = requests.get(url_icon).content
+        file = QtCore.QTemporaryFile(self.label_WeatherIcon)
+        if file.open():
+            file.write(contents)
+            file.flush()
+            self.label_WeatherIcon.setStyleSheet("""
+                                          border-image: url(%s);""" % file.fileName())
+
 
     def setupUi(self):
         self.setWindowTitle("Help Me MakUp Mirror")
@@ -158,7 +177,6 @@ class MAIN_StackedWidget(QWidget):
 
 
         self.setLayout(widget_laytout)
-
 
 
         ## 화면전환 NEXT
@@ -240,7 +258,7 @@ class MAIN_StackedWidget(QWidget):
         font = QtGui.QFont()
         font.setPointSize(11)
         self.label_Temperature.setFont(font)
-        self.label_Temperature.setText("24°")
+        self.label_Temperature.setText("")
         self.label_Temperature.setAlignment(Qt.AlignCenter)
         self.label_Temperature.hide()
 
@@ -248,11 +266,6 @@ class MAIN_StackedWidget(QWidget):
         self.label_WeatherIcon = QtWidgets.QLabel(self)
         self.label_WeatherIcon.setGeometry(QtCore.QRect(448, 5, 40, 40))
         self.label_WeatherIcon.setObjectName("label_WeatherIcon")
-        font = QtGui.QFont()
-        font.setPointSize(11)
-        self.label_WeatherIcon.setFont(font)
-        self.label_WeatherIcon.setText("맑음")
-        self.label_WeatherIcon.setAlignment(Qt.AlignCenter)
         self.label_WeatherIcon.hide()
 
         ## 날씨 버튼

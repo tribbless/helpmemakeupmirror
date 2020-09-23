@@ -14,8 +14,6 @@ from PyQt5.QtGui import *
 #  red_pix = QtGui.QPixmap(red_img2)
 #  self.label2.setPixmap(QtGui.QPixmap(red_pix))
 
-
-## <메모> 컬러-색상 갯수가 다를 시 - widget size change할 수 있어야 함.(알아보기)
 class Shape(QWidget):
     def __init__(self):
         super().__init__()
@@ -226,22 +224,26 @@ class Select_face_Eyebrow(QWidget):
         self.shape.pushButton_ResetAll.setStyleSheet('background-color:black;color:white;')
         self.shape.pushButton_Arch.setStyleSheet('background-color:white;')
         self.shape.pushButton_Straight.setStyleSheet('background-color:white;')
-        print(self.shape.pushButton_Arch.height())
-        print(self.shape.pushButton_Arch.width())
+        #print(self.shape.height())
+        #print(self.shape.width())
+        #print(self.color.height())
+        #print(self.color.width())
+        #print(self.stk_w2.height())#153
+        #print(self.stk_w2.width())#536
     def Apply_Arch(self):
         print("arch clicked")
         self.pushButton_GoBack.show()
         self.shape.pushButton_Arch.setStyleSheet('background-color:black;color:white;')
         self.shape.pushButton_ResetAll.setStyleSheet('background-color:white;')
         self.shape.pushButton_Straight.setStyleSheet('background-color:white;')
-        self.stk_w2.setCurrentWidget(self.color)
+        self.goToColor()
     def Apply_Straight(self):
         print("straight clicked")
         self.pushButton_GoBack.show()
         self.shape.pushButton_Straight.setStyleSheet('background-color:black;color:white;')
         self.shape.pushButton_ResetAll.setStyleSheet('background-color:white;')
         self.shape.pushButton_Arch.setStyleSheet('background-color:white;')
-        self.stk_w2.setCurrentWidget(self.color)
+        self.goToColor()
 
     def Apply_ResetColor(self):
         print("color reset clicked")
@@ -278,6 +280,9 @@ class Select_face_Eyebrow(QWidget):
         self.label_slider.hide()
         self.pushButton_GoBack.hide()
         self.stk_w2.setCurrentWidget(self.shape)
+
+    def goToColor(self):
+        self.stk_w2.setCurrentWidget(self.color)
 
 '''
         self.label_slider.hide() # 투명도 바 숨기기
