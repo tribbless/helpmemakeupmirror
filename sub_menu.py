@@ -33,7 +33,8 @@ class Sub_Menu(QWidget):
 
         # 이동 버튼 (previous)
         self.pushButton_GoMakeupFaceCapture = QtWidgets.QPushButton(self)
-        self.pushButton_GoMakeupFaceCapture.setGeometry(QtCore.QRect(15, 5, 40, 40))
+        self.pushButton_GoMakeupFaceCapture.setGeometry(QtCore.QRect(15, 12, 25, 25))
+        self.pushButton_GoMakeupFaceCapture.setStyleSheet("border-image: url(image/btn_back.png);")
         self.pushButton_GoMakeupFaceCapture.setObjectName("pushButton_GoMakeupFaceCapture")
         font = QtGui.QFont()
         font.setPointSize(14)

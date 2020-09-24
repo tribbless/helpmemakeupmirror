@@ -69,14 +69,15 @@ class RealFace_ARFace_Compare(QWidget):
 
         # 이동 버튼 (previous)
         self.pushButton_GoLipFrame = QtWidgets.QPushButton(self)
-        self.pushButton_GoLipFrame.setGeometry(QtCore.QRect(15, 5, 40, 40))
+        self.pushButton_GoLipFrame.setGeometry(QtCore.QRect(15, 12, 25, 25))
+        self.pushButton_GoLipFrame.setStyleSheet("border-image: url(image/btn_back.png);")
         self.pushButton_GoLipFrame.setObjectName("pushButton_GoLipFrame")
         font = QtGui.QFont()
         font.setPointSize(14)
         font.setBold(True)
         self.pushButton_GoLipFrame.setFont(font)
-        self.pushButton_GoLipFrame.setText("<")
-        self.pushButton_GoLipFrame.setStyleSheet('background-color:blue;')
+        #self.pushButton_GoLipFrame.setText("<")
+
 
         # 하단 로고
         self.label_HelpMe_Logo = QtWidgets.QLabel(self)

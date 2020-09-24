@@ -61,14 +61,15 @@ class Base_Makeup_Video(QWidget):
 
         # 이동 버튼 (previous)
         self.pushButton_GoMainMenu = QtWidgets.QPushButton(self)
-        self.pushButton_GoMainMenu.setGeometry(QtCore.QRect(15, 5, 40, 40))
+        self.pushButton_GoMainMenu.setGeometry(QtCore.QRect(15, 12, 25, 25))
+        self.pushButton_GoMainMenu.setStyleSheet("border-image: url(image/btn_back.png);")
         self.pushButton_GoMainMenu.setObjectName("pushButton_GoMainMenu")
         font = QtGui.QFont()
         font.setPointSize(14)
         font.setBold(True)
         self.pushButton_GoMainMenu.setFont(font)
-        self.pushButton_GoMainMenu.setText("<")
-        self.pushButton_GoMainMenu.setStyleSheet('background-color:blue;')
+       # self.pushButton_GoMainMenu.setText("<")
+
 
         # 하단 로고
         self.label_HelpMe_Logo = QtWidgets.QLabel(self)

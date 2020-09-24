@@ -280,14 +280,14 @@ class MAIN_StackedWidget(QWidget):
 
         ## 메뉴 바로가기 버튼
         self.pushButton_MenuShortcut = QtWidgets.QPushButton(self)
-        self.pushButton_MenuShortcut.setGeometry(QtCore.QRect(501, 5, 46, 40))
+        self.pushButton_MenuShortcut.setGeometry(QtCore.QRect(527, 14, 30, 25))
         self.pushButton_MenuShortcut.setObjectName("pushButton_MenuShortcut")
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
         self.pushButton_MenuShortcut.setFont(font)
-        self.pushButton_MenuShortcut.setText("메뉴")
-        self.pushButton_MenuShortcut.setStyleSheet("background-color: blue;")
+        #self.pushButton_MenuShortcut.setText("메뉴")
+        self.pushButton_MenuShortcut.setStyleSheet("border-image: url(image/btn_menu.png);")
         self.pushButton_MenuShortcut.clicked.connect(self.goToMenuShortcut_Window)
         self.pushButton_MenuShortcut.hide()
 
