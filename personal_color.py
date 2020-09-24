@@ -38,14 +38,14 @@ class Personal_Color(QWidget):
 
         # 이동 버튼 (previous)
         self.pushButton_GoBareFaceCapture = QtWidgets.QPushButton(self)
-        self.pushButton_GoBareFaceCapture.setGeometry(QtCore.QRect(15, 5, 40, 40))
+        self.pushButton_GoBareFaceCapture.setGeometry(QtCore.QRect(15, 12, 25, 25))
+        self.pushButton_GoBareFaceCapture.setStyleSheet("border-image: url(image/btn_back.png);")
         self.pushButton_GoBareFaceCapture.setObjectName("pushButton_GoBareFaceCapture")
         font = QtGui.QFont()
         font.setPointSize(14)
         font.setBold(True)
         self.pushButton_GoBareFaceCapture.setFont(font)
-        self.pushButton_GoBareFaceCapture.setText("<")
-        self.pushButton_GoBareFaceCapture.setStyleSheet('background-color:blue;')
+        #self.pushButton_GoBareFaceCapture.setText("<")
 
         # 하단 로고
         self.label_HelpMe_Logo = QtWidgets.QLabel(self)

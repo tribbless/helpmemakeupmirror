@@ -50,12 +50,13 @@ class Main_Menu(QWidget):
 
         # 이동 버튼 (previous)
         self.pushButton_GoHome = QtWidgets.QPushButton(self)
-        self.pushButton_GoHome.setGeometry(QtCore.QRect(15, 5, 40, 40))
+        self.pushButton_GoHome.setGeometry(QtCore.QRect(15, 12, 25, 25))
+        self.pushButton_GoHome.setStyleSheet("border-image: url(image/btn_back.png);")
         self.pushButton_GoHome.setObjectName("pushButton_GoHome")
         font = QtGui.QFont()
         font.setPointSize(14)
         font.setBold(True)
         self.pushButton_GoHome.setFont(font)
-        self.pushButton_GoHome.setText("<")
-        self.pushButton_GoHome.setStyleSheet('background-color:blue;')
+        #self.pushButton_GoHome.setText("<")
+
 
