@@ -200,9 +200,10 @@ class Select_face_Eyebrow(QWidget):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
         self.scrollArea.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
-        self.scrollArea.setStyleSheet('background-color: transparent; border: 0px;') # 테두리없앳da.
+        self.scrollArea.setStyleSheet("QScrollArea {background-color: transparent; border: 0px;}") # 테두리없앳da.
 
         self.stk_w2 = QStackedWidget(self)
+        self.stk_w2.setStyleSheet("background-color:transparent; border: 0px")
         self.shape = Shape()
         self.color = Color()
         self.stk_w2.addWidget(self.shape)
@@ -224,6 +225,7 @@ class Select_face_Eyebrow(QWidget):
         self.shape.pushButton_ResetAll.setStyleSheet('background-color:black;color:white;')
         self.shape.pushButton_Arch.setStyleSheet('background-color:white;')
         self.shape.pushButton_Straight.setStyleSheet('background-color:white;')
+
         #print(self.shape.height())
         #print(self.shape.width())
         #print(self.color.height())

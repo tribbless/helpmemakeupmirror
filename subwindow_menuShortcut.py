@@ -10,12 +10,33 @@ class SubWindow_MenuShortcut(QDialog): #QDialog
         self.initUI()
 
     def initUI(self):
-        self.setWindowTitle('MENU')
+        #self.setWindowTitle('MENU')
         self.resize(340,280)
-        #self.setStyleSheet('background-color:white;')
+        self.setStyleSheet('background-color:white;')
+        self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
 
         layout = QVBoxLayout()
+        layout.setContentsMargins(0,0,0,0)
 
+        ## 상단 타이틀 바
+        self.label_titlebar = QtWidgets.QLabel(self)
+        self.label_titlebar.setObjectName("label_titlebar")
+        self.label_titlebar.setMinimumHeight(50)
+        self.label_titlebar.setStyleSheet('background-color:#B5A4E7')
+
+
+        self.pushButton_Close = QtWidgets.QPushButton(self)
+        self.pushButton_Close.setGeometry(QtCore.QRect(290, 0, 50, 50))
+        self.pushButton_Close.setObjectName("pushButton_Close")
+        font = QtGui.QFont()
+        font.setPointSize(25)
+        font.setBold(True)
+        self.pushButton_Close.setFont(font)
+        self.pushButton_Close.setText("×")
+        self.pushButton_Close.setStyleSheet('background-color:#B5A4E7; color:white;')
+        self.pushButton_Close.clicked.connect(self.CloseClieked)
+
+        ## 메뉴모음
         self.pushButton_GoHome = QtWidgets.QPushButton(self)
         self.pushButton_GoHome.setObjectName("pushButton_GoHome")
         self.pushButton_GoHome.setMinimumHeight(120)
@@ -75,11 +96,18 @@ class SubWindow_MenuShortcut(QDialog): #QDialog
         self.pushButton_GoExit = QtWidgets.QPushButton(self)
         self.pushButton_GoExit.setObjectName("pushButton_GoExit")
         self.pushButton_GoExit.setMinimumHeight(40)
+        self.pushButton_GoExit.setMaximumWidth(40)
         font = QtGui.QFont()
         font.setPointSize(11)
         self.pushButton_GoExit.setFont(font)
         self.pushButton_GoExit.setText("EXIT")
         self.pushButton_GoExit.clicked.connect(self.ExitClieked)
+
+
+        ## 레이아웃 배치
+        titlebar = QHBoxLayout()
+        titlebar.setContentsMargins(0,0,0,0)
+        titlebar.addWidget(self.label_titlebar)
 
         hbox1 = QHBoxLayout()
         hbox1.addWidget(self.pushButton_GoHome)
@@ -91,6 +119,7 @@ class SubWindow_MenuShortcut(QDialog): #QDialog
         hbox2.addWidget(self.pushButton_GoCapture)
         hbox2.addWidget(self.pushButton_GoSelect)
 
+        layout.addLayout(titlebar)
         layout.addLayout(hbox1)
         layout.addLayout(hbox2)
         layout.addWidget(self.pushButton_GoExit,alignment=Qt.AlignRight)
@@ -100,6 +129,9 @@ class SubWindow_MenuShortcut(QDialog): #QDialog
 
     def showModal(self): #새 Modal 창이 열렸을 경우 기존에 있던 창을 사용하지 못하는 방식입니다.
         return super().exec_()
+
+    def CloseClieked(self):
+        self.reject()
 
     def HomeClieked(self):
         print("home clicked")

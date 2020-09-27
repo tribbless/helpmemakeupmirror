@@ -3,11 +3,11 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 
+
 class Main_Menu(QWidget):
 
     def __init__(self):
         super(Main_Menu, self).__init__()
-
 
         self.label_title = QtWidgets.QLabel(self)
         self.label_title.setGeometry(QtCore.QRect(100, 112, 362, 50))
@@ -34,19 +34,16 @@ class Main_Menu(QWidget):
                                                       'border-top-left-radius : 127px; border-top-right-radius:127px')
         self.pushButton_GoPersonalColor.setObjectName("pushButton_GoPersonalColor")
 
-
         self.pushButton_GoBaseMakeupVideo = QtWidgets.QPushButton(self)
         self.pushButton_GoBaseMakeupVideo.setGeometry(QtCore.QRect(113, 344, 334, 90))
         self.pushButton_GoBaseMakeupVideo.setStyleSheet('background-color: transparent;')
         self.pushButton_GoBaseMakeupVideo.setObjectName("pushButton_GoBaseMakeupVideo")
-
 
         self.pushButton_GoColorMakeup = QtWidgets.QPushButton(self)
         self.pushButton_GoColorMakeup.setGeometry(QtCore.QRect(115, 435, 330, 125))
         self.pushButton_GoColorMakeup.setStyleSheet('background-color: transparent;'
                                                     'border-bottom-left-radius : 125px; border-bottom-right-radius : 125px')
         self.pushButton_GoColorMakeup.setObjectName("pushButton_GoColorMakeup")
-
 
         # 이동 버튼 (previous)
         self.pushButton_GoHome = QtWidgets.QPushButton(self)
@@ -58,4 +55,3 @@ class Main_Menu(QWidget):
         self.pushButton_GoHome.setFont(font)
         self.pushButton_GoHome.setText("<")
         self.pushButton_GoHome.setStyleSheet('background-color:blue;')
-

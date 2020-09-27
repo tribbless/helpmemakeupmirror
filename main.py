@@ -110,11 +110,23 @@ class MAIN_StackedWidget(QWidget):
 
     def setupUi(self):
         self.setWindowTitle("Help Me MakUp Mirror")
-        self.resize(562, 794)
+        #self.resize(562, 794)
+        #self.setStyleSheet("background:transparent")
+        #self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+        #self.setWindowFlags(Qt.WindowTitleHint | Qt.WindowMinimizeButtonHint)
+        #self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
+
+        #self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)
+
+        #self.setWindowFlags(QtCore.Qt.WindowStaysOnTopHint)
+        #self.setWindowFlags(QtCore.Qt.FramelessWindowHint | QtCore.Qt.WindowStaysOnTopHint)
+
+        #self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
+        #self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+        #self.setStyleSheet("background-color:transparent;")
         ## 나중에 jetson nano 화면을 회전해야함.
         ## 나중에 버튼위치 및 크기를 2배씩 곱해야함
-        #self.resize(1122, 1587) # 원본 미러 크기
-
+        self.resize(1124, 1588) # 원본 미러 크기
 
 
         widget_laytout = QHBoxLayout()
@@ -238,6 +250,7 @@ class MAIN_StackedWidget(QWidget):
         self.label_background_TitleBar.setStyleSheet("border-image: url(image/background.png);")
         self.label_background_TitleBar.lower()
         self.label_background_TitleBar.hide()
+        #self.label_background_TitleBar.setWindowOpacity(1.0)
 
 
         ## 시간/날짜

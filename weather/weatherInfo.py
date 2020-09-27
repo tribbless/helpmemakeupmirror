@@ -40,8 +40,8 @@ def weather_rain():
     # 3시간 단위 8개의 날짜
     date_str = []
     date = str(now.year) + make_date(now.month) + make_date(now.day)
-    for i in [x for x in range(now.hour, 22) if x % 3 == 0]:
-        date_str.append(date + make_date(i+1))
+    for i in [x for x in range(now.hour + 1, 22) if x % 3 == 0]:
+        date_str.append(date + make_date(i))
 
     tomorrow_date = str(tomorrow.year) + make_date(tomorrow.month) + make_date(tomorrow.day)
     if len(date_str) < 8:
@@ -58,7 +58,10 @@ def weather_rain():
     for i in range(len(date_str)):
         location = a.find(date_str[i])
         location = a.find('value', location)
-        rain_str.append(a[location + 7] + a[location + 8])
+        if a[location + 8] != "<":
+            rain_str.append(a[location + 7] + a[location + 8])
+        else:
+            rain_str.append(a[location + 7])
 
     return date_str, rain_str
 
