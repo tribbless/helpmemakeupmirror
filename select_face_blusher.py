@@ -198,7 +198,7 @@ class Select_face_Blusher(QWidget):
         self.label_slider.setFont(font)
         self.label_slider.setAlignment(Qt.AlignCenter)
         self.label_slider.setText("0%")
-        self.label_slider.setStyleSheet('color:white;')
+        self.label_slider.setStyleSheet('color:black;')
         self.label_slider.hide()
 
         ##
@@ -207,7 +207,33 @@ class Select_face_Blusher(QWidget):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
         self.scrollArea.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
-        self.scrollArea.setStyleSheet('background-color: transparent; border: 0px;')
+        self.scrollArea.setStyleSheet(
+            """  
+            QScrollBar:horizontal {
+                border: 0px solid grey;
+                background: #FFFFFF;
+                height: 15px;
+                margin: 0px 20px 0 20px;
+            }
+            QScrollBar::handle:horizontal {
+                background: #B5A4E7;
+                min-width: 20px;
+            }
+            QScrollBar::add-line:horizontal {
+                border: 0px solid grey;
+                background: #B5A4E7;
+                width: 20px;
+                subcontrol-position: right;
+                subcontrol-origin: margin;
+            }
+            QScrollBar::sub-line:horizontal {
+                border: 0px solid grey;
+                background: #B5A4E7;
+                width: 20px;
+                subcontrol-position: left;
+                subcontrol-origin: margin;
+            }
+            """)
 
         self.stk_w2 = QStackedWidget(self)
         self.shape = Shape()
