@@ -23,8 +23,6 @@ class Sub_Menu(QWidget):
                                                    'border-top-left-radius :142px; border-top-right-radius:142px')
         self.pushButton_GoSelectFace.setObjectName("pushButton_GoSelectFace")
 
-
-
         self.pushButton_GoSelectThema = QtWidgets.QPushButton(self)
         self.pushButton_GoSelectThema.setGeometry(QtCore.QRect(126, 390, 311, 142))
         self.pushButton_GoSelectThema.setStyleSheet('background-color: transparent;'
