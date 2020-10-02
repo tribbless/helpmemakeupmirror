@@ -189,7 +189,33 @@ class Select_face_Eyeliner(QWidget):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
         self.scrollArea.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
-        self.scrollArea.setStyleSheet('background-color: transparent; border: 0px;')  # 테두리없앳당!!!!!! #background-color: transparent;
+        self.scrollArea.setStyleSheet(
+            """  
+            QScrollBar:horizontal {
+                border: 0px solid grey;
+                background: #FFFFFF;
+                height: 15px;
+                margin: 0px 20px 0 20px;
+            }
+            QScrollBar::handle:horizontal {
+                background: #B5A4E7;
+                min-width: 20px;
+            }
+            QScrollBar::add-line:horizontal {
+                border: 0px solid grey;
+                background: #B5A4E7;
+                width: 20px;
+                subcontrol-position: right;
+                subcontrol-origin: margin;
+            }
+            QScrollBar::sub-line:horizontal {
+                border: 0px solid grey;
+                background: #B5A4E7;
+                width: 20px;
+                subcontrol-position: left;
+                subcontrol-origin: margin;
+            }
+            """)  # 테두리없앳당!!!!!! #background-color: transparent;
 
         self.stk_w2 = QStackedWidget(self)
         self.shape = Shape()

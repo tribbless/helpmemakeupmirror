@@ -59,14 +59,14 @@ class MakeupFace_Capture(QWidget):
 
         # 이동 버튼 (previous)
         self.pushButton_GoMainMENUorVideo = QtWidgets.QPushButton(self)
-        self.pushButton_GoMainMENUorVideo.setGeometry(QtCore.QRect(15, 5, 40, 40))
+        self.pushButton_GoMainMENUorVideo.setGeometry(QtCore.QRect(15, 12, 25, 25))
+        self.pushButton_GoMainMENUorVideo.setStyleSheet("border-image: url(image/btn_back.png);")
         self.pushButton_GoMainMENUorVideo.setObjectName("pushButton_GoMainMENUorVideo")
         font = QtGui.QFont()
         font.setPointSize(14)
         font.setBold(True)
         self.pushButton_GoMainMENUorVideo.setFont(font)
-        self.pushButton_GoMainMENUorVideo.setText("<")
-        self.pushButton_GoMainMENUorVideo.setStyleSheet('background-color:blue;')
+        #self.pushButton_GoMainMENUorVideo.setText("<")
 
         # 하단 로고
         self.label_HelpMe_Logo = QtWidgets.QLabel(self)
