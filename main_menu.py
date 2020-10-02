@@ -47,16 +47,23 @@ class Main_Menu(QWidget):
                                                     'border-bottom-left-radius : 125px; border-bottom-right-radius : 125px')
         self.pushButton_GoColorMakeup.setObjectName("pushButton_GoColorMakeup")
 
+        ## 이동 버튼 background
+        self.label_background_prev = QtWidgets.QLabel(self)
+        self.label_background_prev.setGeometry(QtCore.QRect(7, 5, 31, 40))
+        self.label_background_prev.setObjectName("label_background_prev")
+        self.label_background_prev.setStyleSheet("background-color: rgba(255, 255, 255, 0.24);"
+                                                 "border-radius: 10px;")
 
         # 이동 버튼 (previous)
         self.pushButton_GoHome = QtWidgets.QPushButton(self)
-        self.pushButton_GoHome.setGeometry(QtCore.QRect(15, 12, 25, 25))
+        self.pushButton_GoHome.setGeometry(QtCore.QRect(10, 12, 25, 25))
         self.pushButton_GoHome.setStyleSheet("border-image: url(image/btn_back.png);")
         self.pushButton_GoHome.setObjectName("pushButton_GoHome")
         font = QtGui.QFont()
         font.setPointSize(14)
         font.setBold(True)
         self.pushButton_GoHome.setFont(font)
+        #self.pushButton_GoHome.raise_()
         #self.pushButton_GoHome.setText("<")
 
 

@@ -30,7 +30,6 @@
 홈버튼(홈버튼)과 공유버튼이 있다.
 '''
 import sys
-import requests
 from weather import weatherInfo
 
 from PyQt5 import QtCore, QtGui, QtWidgets
@@ -95,25 +94,21 @@ class MAIN_StackedWidget(QWidget):
         self.label_DateTime.setText(textDate+"\n"+textTime)
 
     def showWeather(self):
-        today_temp, url_icon = weatherInfo.weather()
+        today_temp, icon_url = weatherInfo.weather()
         # 온도
-        self.label_Temperature.setText(today_temp+"°")
-        # 날씨 아이콘
-        contents = requests.get(url_icon).content
-        file = QtCore.QTemporaryFile(self.label_WeatherIcon)
-        if file.open():
-            file.write(contents)
-            file.flush()
-            self.label_WeatherIcon.setStyleSheet("""
-                                          border-image: url(%s);""" % file.fileName())
-
+        self.label_Temperature.setText(today_temp+"℃") #°
+        self.label_WeatherIcon.setStyleSheet("border-image: url(" + icon_url[0] + ")")
 
     def setupUi(self):
         self.setWindowTitle("Help Me MakUp Mirror")
         self.resize(562, 794)
+        #self.resize(1124, 1588)
+        #self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
+        #self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+        #self.setStyleSheet("background-color:transparent;")
+
         ## 나중에 jetson nano 화면을 회전해야함.
         ## 나중에 버튼위치 및 크기를 2배씩 곱해야함
-        #self.resize(1122, 1587) # 원본 미러 크기
 
 
 
@@ -251,12 +246,19 @@ class MAIN_StackedWidget(QWidget):
         self.label_DateTime.setAlignment(Qt.AlignCenter)
         self.label_DateTime.hide()
 
+        ## 날씨 background
+        self.label_background_Weather = QtWidgets.QLabel(self)
+        self.label_background_Weather.setGeometry(QtCore.QRect(408, 5, 85, 40))
+        self.label_background_Weather.setObjectName("label_background_Weather")
+        self.label_background_Weather.setStyleSheet("background-color: rgba(255, 255, 255, 0.24);"
+                                                    "border-radius: 10px;")
+
         ## 온도
         self.label_Temperature = QtWidgets.QLabel(self)
-        self.label_Temperature.setGeometry(QtCore.QRect(408, 5, 40, 40))
+        self.label_Temperature.setGeometry(QtCore.QRect(455, 20, 35, 25))
         self.label_Temperature.setObjectName("label_Temperature")
         font = QtGui.QFont()
-        font.setPointSize(11)
+        font.setPointSize(10)
         self.label_Temperature.setFont(font)
         self.label_Temperature.setText("")
         self.label_Temperature.setAlignment(Qt.AlignCenter)
@@ -264,23 +266,29 @@ class MAIN_StackedWidget(QWidget):
 
         ## 날씨 아이콘
         self.label_WeatherIcon = QtWidgets.QLabel(self)
-        self.label_WeatherIcon.setGeometry(QtCore.QRect(448, 5, 40, 40))
+        self.label_WeatherIcon.setGeometry(QtCore.QRect(408, 0, 50, 50))
         self.label_WeatherIcon.setObjectName("label_WeatherIcon")
         self.label_WeatherIcon.hide()
 
         ## 날씨 버튼
         self.pushButton_Weather = QtWidgets.QPushButton(self)
-        self.pushButton_Weather.setGeometry(QtCore.QRect(408, 5, 80, 40))
+        self.pushButton_Weather.setGeometry(QtCore.QRect(408, 5, 85, 40))
         self.pushButton_Weather.setObjectName("pushButton_Weather")
-        self.pushButton_Weather.setStyleSheet("border-style: dashed; border-width: 1px; border-color: red;")
+        self.pushButton_Weather.setStyleSheet("background-color: transparent;")
+        #self.pushButton_Weather.setStyleSheet("border-style: dashed; border-width: 1px; border-color: red;")
         self.pushButton_Weather.clicked.connect(self.goToWeather_Window)
         self.pushButton_Weather.hide()
 
-
+        ## 메뉴 바로가기 버튼 background
+        self.label_background_MenuShortcut = QtWidgets.QLabel(self)
+        self.label_background_MenuShortcut.setGeometry(QtCore.QRect(512, 5, 45, 40))
+        self.label_background_MenuShortcut.setObjectName("label_background_MenuShortcut")
+        self.label_background_MenuShortcut.setStyleSheet("background-color: rgba(255, 255, 255, 0.24);"
+                                                         "border-radius: 10px;")
 
         ## 메뉴 바로가기 버튼
         self.pushButton_MenuShortcut = QtWidgets.QPushButton(self)
-        self.pushButton_MenuShortcut.setGeometry(QtCore.QRect(527, 14, 30, 25))
+        self.pushButton_MenuShortcut.setGeometry(QtCore.QRect(522, 12, 25, 25)) #527, 14, 30, 25/562/557+5/562-25=537-15=522
         self.pushButton_MenuShortcut.setObjectName("pushButton_MenuShortcut")
         font = QtGui.QFont()
         font.setPointSize(11)
@@ -327,6 +335,8 @@ class MAIN_StackedWidget(QWidget):
     ## 화면전환 NEXT & PREVIOUS
     def goToMainMenu(self):
         self.label_background_TitleBar.show()
+        self.label_background_Weather.show()
+        self.label_background_MenuShortcut.show()
         self.label_DateTime.show()
         self.label_Temperature.show()
         self.label_WeatherIcon.show()
@@ -390,6 +400,8 @@ class MAIN_StackedWidget(QWidget):
 
     def goToHome(self):
         self.label_background_TitleBar.hide()
+        self.label_background_Weather.hide()
+        self.label_background_MenuShortcut.hide()
         self.label_DateTime.hide()
         self.label_Temperature.hide()
         self.label_WeatherIcon.hide()
