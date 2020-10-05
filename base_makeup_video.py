@@ -59,27 +59,23 @@ class Base_Makeup_Video(QWidget):
         self.pushButton_GoColorMakeup.setStyleSheet('background-color:transparent;')
         self.pushButton_GoColorMakeup.setObjectName("pushButton_GoColorMakeup")
 
+        ## 이동 버튼 background
+        self.label_background_prev = QtWidgets.QLabel(self)
+        self.label_background_prev.setGeometry(QtCore.QRect(7, 5, 31, 40))
+        self.label_background_prev.setObjectName("label_background_prev")
+        self.label_background_prev.setStyleSheet("background-color: rgba(255, 255, 255, 0.24);"
+                                                 "border-radius: 10px;")
+
         # 이동 버튼 (previous)
         self.pushButton_GoMainMenu = QtWidgets.QPushButton(self)
-        self.pushButton_GoMainMenu.setGeometry(QtCore.QRect(15, 12, 25, 25))
+        self.pushButton_GoMainMenu.setGeometry(QtCore.QRect(10, 12, 25, 25))
         self.pushButton_GoMainMenu.setStyleSheet("border-image: url(image/btn_back.png);")
         self.pushButton_GoMainMenu.setObjectName("pushButton_GoMainMenu")
-        font = QtGui.QFont()
-        font.setPointSize(14)
-        font.setBold(True)
-        self.pushButton_GoMainMenu.setFont(font)
-       # self.pushButton_GoMainMenu.setText("<")
-
 
         # 하단 로고
         self.label_HelpMe_Logo = QtWidgets.QLabel(self)
         self.label_HelpMe_Logo.setGeometry(QtCore.QRect(0, 754, 562, 40))
         self.label_HelpMe_Logo.setObjectName("label_HelpMe_Logo")
-        font = QtGui.QFont()
-        font.setPointSize(15)
-        self.label_HelpMe_Logo.setFont(font)
-        self.label_HelpMe_Logo.setAlignment(Qt.AlignCenter)
-        #self.label_HelpMe_Logo.setText("헬미 로고")
         self.label_HelpMe_Logo.setStyleSheet("border-image: url(image/logo_text.png);")
 
 

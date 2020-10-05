@@ -159,7 +159,7 @@ class Select_face_Eyeliner(QWidget):
         self.slider = QSlider(Qt.Horizontal, self)
         self.slider.setGeometry(QtCore.QRect(105, 537, 352, 30))  # 73, 537, 332, 30
         self.slider.setMinimum(0)
-        self.slider.setMaximum(100)
+        self.slider.setMaximum(10)
         self.slider.valueChanged.connect(self.changeValue)
         self.slider.setStyleSheet(
             'QSlider::groove:horizontal { border-radius: 1px; height: 5px;margin: 0px;background-color: rgb(52, 59, 72);}'
@@ -190,7 +190,11 @@ class Select_face_Eyeliner(QWidget):
         self.scrollArea.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
         self.scrollArea.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.scrollArea.setStyleSheet(
-            """  
+            """
+            QScrollArea {
+                background: transparent;
+                border: 0px;
+            } 
             QScrollBar:horizontal {
                 border: 0px solid grey;
                 background: #FFFFFF;
@@ -215,9 +219,11 @@ class Select_face_Eyeliner(QWidget):
                 subcontrol-position: left;
                 subcontrol-origin: margin;
             }
-            """)  # 테두리없앳당!!!!!! #background-color: transparent;
+            """
+        )
 
         self.stk_w2 = QStackedWidget(self)
+        self.stk_w2.setStyleSheet("background-color: transparent; border: 0px;")
         self.shape = Shape()
         self.color = Color()
         self.stk_w2.addWidget(self.shape)
@@ -283,7 +289,7 @@ class Select_face_Eyeliner(QWidget):
         self.label_slider.show()
 
     def changeValue(self):
-        size = str(self.slider.value())
+        size = str((self.slider.value())*10)
         self.label_slider.setText(size + "%")
 
     def backClicked(self):

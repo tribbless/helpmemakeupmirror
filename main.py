@@ -66,8 +66,6 @@ from RealFace_ARFace_compare import RealFace_ARFace_Compare
 from subwindow_menuShortcut import SubWindow_MenuShortcut
 from subwindow_weather import SubWindow_Weather
 ##### python -m PyQt5.uic.pyuic -x ex_02.ui -o ex_02.py
-## 헬미로고는 베이스메이크업 로고 기준으로 함.!!!!!
-
 
 class MAIN_StackedWidget(QWidget):
     def __init__(self):
@@ -80,6 +78,8 @@ class MAIN_StackedWidget(QWidget):
         timer2 = QtCore.QTimer(self, interval=300000, timeout=self.showWeather) ## 5분
         timer2.start()
         self.showWeather()
+        self.menuShortcut = SubWindow_MenuShortcut()
+        self.weather = SubWindow_Weather()
 
     def showDateTime(self):
         date = QtCore.QDate.currentDate()
@@ -95,30 +95,23 @@ class MAIN_StackedWidget(QWidget):
         self.label_DateTime.setText(textDate+"\n"+textTime)
 
     def showWeather(self):
-        today_temp, url_icon = weatherInfo.weather()
-        # 온도
-        self.label_Temperature.setText(today_temp+"°")
-        # 날씨 아이콘
-        contents = requests.get(url_icon).content
-        file = QtCore.QTemporaryFile(self.label_WeatherIcon)
-        if file.open():
-            file.write(contents)
-            file.flush()
-            self.label_WeatherIcon.setStyleSheet("""
-                                          border-image: url(%s);""" % file.fileName())
+        today_temp, icon_url = weatherInfo.weather()
+        # 온도/날씨
+        self.label_Temperature.setText(today_temp + "℃")  # °
+        self.label_WeatherIcon.setStyleSheet("border-image: url(" + icon_url[0] + ")")
 
 
     def setupUi(self):
         self.setWindowTitle("Help Me MakUp Mirror")
         self.resize(562, 794)
+        #self.resize(1124, 1588)
+        #self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
+        #self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+        #self.setStyleSheet("background-color:transparent;")
         ## 나중에 jetson nano 화면을 회전해야함.
         ## 나중에 버튼위치 및 크기를 2배씩 곱해야함
-        #self.resize(1122, 1587) # 원본 미러 크기
-
-
 
         widget_laytout = QHBoxLayout()
-
 
         self.home = Home()
         self.main_menu = Main_Menu()
@@ -144,8 +137,6 @@ class MAIN_StackedWidget(QWidget):
         self.frame_lip = Frame_Lip()
 
         self.Real_AR_Face_compare = RealFace_ARFace_Compare()
-
-
 
         self.stk_w.addWidget(self.home)
         self.stk_w.addWidget(self.main_menu)
@@ -251,12 +242,19 @@ class MAIN_StackedWidget(QWidget):
         self.label_DateTime.setAlignment(Qt.AlignCenter)
         self.label_DateTime.hide()
 
+        ## 날씨 background
+        self.label_background_Weather = QtWidgets.QLabel(self)
+        self.label_background_Weather.setGeometry(QtCore.QRect(408, 5, 85, 40))
+        self.label_background_Weather.setObjectName("label_background_Weather")
+        self.label_background_Weather.setStyleSheet("background-color: rgba(255, 255, 255, 0.24);"
+                                                    "border-radius: 10px;")
+
         ## 온도
         self.label_Temperature = QtWidgets.QLabel(self)
-        self.label_Temperature.setGeometry(QtCore.QRect(408, 5, 40, 40))
+        self.label_Temperature.setGeometry(QtCore.QRect(455, 20, 35, 25))
         self.label_Temperature.setObjectName("label_Temperature")
         font = QtGui.QFont()
-        font.setPointSize(11)
+        font.setPointSize(10)
         self.label_Temperature.setFont(font)
         self.label_Temperature.setText("")
         self.label_Temperature.setAlignment(Qt.AlignCenter)
@@ -264,29 +262,29 @@ class MAIN_StackedWidget(QWidget):
 
         ## 날씨 아이콘
         self.label_WeatherIcon = QtWidgets.QLabel(self)
-        self.label_WeatherIcon.setGeometry(QtCore.QRect(448, 5, 40, 40))
+        self.label_WeatherIcon.setGeometry(QtCore.QRect(408, 0, 50, 50))
         self.label_WeatherIcon.setObjectName("label_WeatherIcon")
         self.label_WeatherIcon.hide()
 
         ## 날씨 버튼
         self.pushButton_Weather = QtWidgets.QPushButton(self)
-        self.pushButton_Weather.setGeometry(QtCore.QRect(408, 5, 80, 40))
+        self.pushButton_Weather.setGeometry(QtCore.QRect(408, 5, 85, 40))
         self.pushButton_Weather.setObjectName("pushButton_Weather")
-        self.pushButton_Weather.setStyleSheet("border-style: dashed; border-width: 1px; border-color: red;")
+        self.pushButton_Weather.setStyleSheet("background-color: transparent;")
         self.pushButton_Weather.clicked.connect(self.goToWeather_Window)
         self.pushButton_Weather.hide()
 
-
+        ## 메뉴 바로가기 버튼 background
+        self.label_background_MenuShortcut = QtWidgets.QLabel(self)
+        self.label_background_MenuShortcut.setGeometry(QtCore.QRect(512, 5, 45, 40))
+        self.label_background_MenuShortcut.setObjectName("label_background_MenuShortcut")
+        self.label_background_MenuShortcut.setStyleSheet("background-color: rgba(255, 255, 255, 0.24);"
+                                                         "border-radius: 10px;")
 
         ## 메뉴 바로가기 버튼
         self.pushButton_MenuShortcut = QtWidgets.QPushButton(self)
-        self.pushButton_MenuShortcut.setGeometry(QtCore.QRect(527, 14, 30, 25))
+        self.pushButton_MenuShortcut.setGeometry(QtCore.QRect(522, 12, 25, 25)) #527, 14, 30, 25/562/557+5/562-25=537-15=522
         self.pushButton_MenuShortcut.setObjectName("pushButton_MenuShortcut")
-        font = QtGui.QFont()
-        font.setPointSize(11)
-        font.setBold(True)
-        self.pushButton_MenuShortcut.setFont(font)
-        #self.pushButton_MenuShortcut.setText("메뉴")
         self.pushButton_MenuShortcut.setStyleSheet("border-image: url(image/btn_menu.png);")
         self.pushButton_MenuShortcut.clicked.connect(self.goToMenuShortcut_Window)
         self.pushButton_MenuShortcut.hide()
@@ -294,29 +292,29 @@ class MAIN_StackedWidget(QWidget):
     ## 서브 윈도우 화면 나타나기
     def goToWeather_Window(self):
         print("날씨 윈도우화면")
-        weather = SubWindow_Weather()
-        r = weather.showModal()
+        #weather = SubWindow_Weather()
+        r = self.weather.showModal()
         if r:
             print("--이 메시지는 안나옴--")
         else:
             print("close")
     def goToMenuShortcut_Window(self):
         print("메뉴 바로가기 윈도우화면")
-        menuShortcut = SubWindow_MenuShortcut()
-        r = menuShortcut.showModal()
+        #menuShortcut = SubWindow_MenuShortcut()
+        r = self.menuShortcut.showModal()
         if r:
             print("메뉴 바로가기 클릭성공")
-            if(menuShortcut.btn==1):
+            if(self.menuShortcut.btn==1):
                 self.goToHome()
-            elif(menuShortcut.btn==2):
+            elif(self.menuShortcut.btn==2):
                 self.goToMainMenu()
-            elif (menuShortcut.btn == 3):
+            elif (self.menuShortcut.btn == 3):
                 self.goToBaseMakeupVideo()
-            elif (menuShortcut.btn == 4):
+            elif (self.menuShortcut.btn == 4):
                 self.goToBareFaceCapture()
-            elif (menuShortcut.btn == 5):
+            elif (self.menuShortcut.btn == 5):
                 self.goToMakeupFaceCapture()
-            elif (menuShortcut.btn == 6):
+            elif (self.menuShortcut.btn == 6):
                 self.goToSubMenu()
             else:
                 sys.exit()
@@ -327,6 +325,8 @@ class MAIN_StackedWidget(QWidget):
     ## 화면전환 NEXT & PREVIOUS
     def goToMainMenu(self):
         self.label_background_TitleBar.show()
+        self.label_background_Weather.show()
+        self.label_background_MenuShortcut.show()
         self.label_DateTime.show()
         self.label_Temperature.show()
         self.label_WeatherIcon.show()
@@ -390,6 +390,8 @@ class MAIN_StackedWidget(QWidget):
 
     def goToHome(self):
         self.label_background_TitleBar.hide()
+        self.label_background_Weather.hide()
+        self.label_background_MenuShortcut.hide()
         self.label_DateTime.hide()
         self.label_Temperature.hide()
         self.label_WeatherIcon.hide()
