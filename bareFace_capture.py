@@ -57,17 +57,18 @@ class BareFace_Capture(QWidget):
         self.pushButton_GoPersonalColor.setStyleSheet('background-color: transparent;')
         self.pushButton_GoPersonalColor.setObjectName("pushButton_GoPersonalColor")
 
+        ## 이동 버튼 background
+        self.label_background_prev = QtWidgets.QLabel(self)
+        self.label_background_prev.setGeometry(QtCore.QRect(7, 5, 31, 40))
+        self.label_background_prev.setObjectName("label_background_prev")
+        self.label_background_prev.setStyleSheet("background-color: rgba(255, 255, 255, 0.24);"
+                                                 "border-radius: 10px;")
+
         # 이동 버튼 (previous)
         self.pushButton_GoMainMenu = QtWidgets.QPushButton(self)
-        self.pushButton_GoMainMenu.setGeometry(QtCore.QRect(15, 12, 25, 25))
+        self.pushButton_GoMainMenu.setGeometry(QtCore.QRect(10, 12, 25, 25))
         self.pushButton_GoMainMenu.setStyleSheet("border-image: url(image/btn_back.png);")
         self.pushButton_GoMainMenu.setObjectName("pushButton_GoMainMenu")
-        font = QtGui.QFont()
-        font.setPointSize(14)
-        font.setBold(True)
-        self.pushButton_GoMainMenu.setFont(font)
-        #self.pushButton_GoMainMenu.setText("<")
-
 
         # 하단 로고
         self.label_HelpMe_Logo = QtWidgets.QLabel(self)

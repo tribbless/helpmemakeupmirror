@@ -2,12 +2,11 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
-## <메모> 536 X 768 / 13 X 13
+## <메모> 13 X 13
 class Home(QWidget):
 
     def __init__(self):
         super(Home, self).__init__()
-
 
         self.label_title = QtWidgets.QLabel(self)
         self.label_title.setGeometry(QtCore.QRect(110, 102, 342, 50))
@@ -17,8 +16,6 @@ class Home(QWidget):
         self.label_title.setFont(font)
         self.label_title.setAlignment(Qt.AlignCenter)
         self.label_title.setText("HELP ME MAKE UP MIRROR")
-
-
 
         ## go to main button
         self.pushButton_GoMainMenu = QtWidgets.QPushButton(self)

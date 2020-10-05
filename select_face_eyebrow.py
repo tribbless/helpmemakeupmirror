@@ -21,7 +21,7 @@ class Shape(QWidget):
         self.pushButton_ResetAll = QtWidgets.QPushButton(self)
         font = QtGui.QFont()
         font.setPointSize(14)
-        self.pushButton_ResetAll.setMinimumSize(172, 150)
+        self.pushButton_ResetAll.setMinimumSize(172, 157)
         self.pushButton_ResetAll.setText("all reset")
         self.pushButton_ResetAll.setFont(font)
         self.pushButton_ResetAll.setStyleSheet('background-color:white;')
@@ -30,7 +30,7 @@ class Shape(QWidget):
         self.pushButton_Arch = QtWidgets.QPushButton(self)
         font = QtGui.QFont()
         font.setPointSize(14)
-        self.pushButton_Arch.setMinimumSize(172, 150)
+        self.pushButton_Arch.setMinimumSize(172, 157)
         self.pushButton_Arch.setText("arch")
         self.pushButton_Arch.setFont(font)
         self.pushButton_Arch.setStyleSheet('background-color:white;')
@@ -39,7 +39,7 @@ class Shape(QWidget):
         self.pushButton_Straight = QtWidgets.QPushButton(self)
         font = QtGui.QFont()
         font.setPointSize(14)
-        self.pushButton_Straight.setMinimumSize(172, 150)
+        self.pushButton_Straight.setMinimumSize(172, 157)
         self.pushButton_Straight.setText("straight")
         self.pushButton_Straight.setFont(font)
         self.pushButton_Straight.setStyleSheet('background-color:white;')
@@ -47,7 +47,7 @@ class Shape(QWidget):
 
 
         layout = QHBoxLayout()
-        layout.setContentsMargins(0,0,0,0)
+        layout.setContentsMargins(0, 0, 0, 0)
         layout.addWidget(self.pushButton_ResetAll)
         layout.setSpacing(10)
         layout.addWidget(self.pushButton_Arch)
@@ -63,7 +63,7 @@ class Color(QWidget):
         self.pushButton_ResetColor = QtWidgets.QPushButton(self)
         font = QtGui.QFont()
         font.setPointSize(14)
-        self.pushButton_ResetColor.setMinimumSize(172, 150)
+        self.pushButton_ResetColor.setMinimumSize(172, 157)
         self.pushButton_ResetColor.size
         self.pushButton_ResetColor.setText("color reset")
         self.pushButton_ResetColor.setFont(font)
@@ -73,7 +73,7 @@ class Color(QWidget):
         self.pushButton_Black = QtWidgets.QPushButton(self)
         font = QtGui.QFont()
         font.setPointSize(14)
-        self.pushButton_Black.setMinimumSize(172, 150)
+        self.pushButton_Black.setMinimumSize(172, 157)
         self.pushButton_Black.setText("black")
         self.pushButton_Black.setFont(font)
         self.pushButton_Black.setStyleSheet('background-color:white;')
@@ -82,7 +82,7 @@ class Color(QWidget):
         self.pushButton_Brown = QtWidgets.QPushButton(self)
         font = QtGui.QFont()
         font.setPointSize(14)
-        self.pushButton_Brown.setMinimumSize(172, 150)
+        self.pushButton_Brown.setMinimumSize(172, 157)
         self.pushButton_Brown.setText("brown")
         self.pushButton_Brown.setFont(font)
         self.pushButton_Brown.setStyleSheet('background-color:white;')
@@ -170,7 +170,7 @@ class Select_face_Eyebrow(QWidget):
         self.slider = QSlider(Qt.Horizontal, self)
         self.slider.setGeometry(QtCore.QRect(105, 537, 352, 30)) #73, 537, 332, 30
         self.slider.setMinimum(0)
-        self.slider.setMaximum(100)
+        self.slider.setMaximum(10)
         self.slider.valueChanged.connect(self.changeValue)
         self.slider.setStyleSheet('QSlider::groove:horizontal { border-radius: 1px; height: 5px;margin: 0px;background-color: rgb(52, 59, 72);}'
                                   'QSlider::groove:horizontal:hover {background-color: rgb(55, 62, 76);}'
@@ -196,12 +196,16 @@ class Select_face_Eyebrow(QWidget):
 
         ##
         self.scrollArea = QScrollArea(self)
-        self.scrollArea.setGeometry(13,580,536,174)
+        self.scrollArea.setGeometry(13, 580, 536, 174)
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
         self.scrollArea.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.scrollArea.setStyleSheet(
-            """  
+            """
+            QScrollArea {
+                background: transparent;
+                border: 0px;
+            } 
             QScrollBar:horizontal {
                 border: 0px solid grey;
                 background: #FFFFFF;
@@ -226,9 +230,11 @@ class Select_face_Eyebrow(QWidget):
                 subcontrol-position: left;
                 subcontrol-origin: margin;
             }
-            """) # 테두리없앳da.
+            """
+        )
 
         self.stk_w2 = QStackedWidget(self)
+        self.stk_w2.setStyleSheet("background-color: transparent; border: 0px;")
         self.shape = Shape()
         self.color = Color()
         self.stk_w2.addWidget(self.shape)
@@ -250,12 +256,6 @@ class Select_face_Eyebrow(QWidget):
         self.shape.pushButton_ResetAll.setStyleSheet('background-color:black;color:white;')
         self.shape.pushButton_Arch.setStyleSheet('background-color:white;')
         self.shape.pushButton_Straight.setStyleSheet('background-color:white;')
-        #print(self.shape.height())
-        #print(self.shape.width())
-        #print(self.color.height())
-        #print(self.color.width())
-        #print(self.stk_w2.height())#153
-        #print(self.stk_w2.width())#536
     def Apply_Arch(self):
         print("arch clicked")
         self.pushButton_GoBack.show()
@@ -283,7 +283,7 @@ class Select_face_Eyebrow(QWidget):
         self.color.pushButton_Black.setStyleSheet('background-color:black;color:white;')
         self.color.pushButton_ResetColor.setStyleSheet('background-color:white;')
         self.color.pushButton_Brown.setStyleSheet('background-color:white;')
-        self.slider.setValue(50)  # 투명도 바 초기값으로 셋팅
+        self.slider.setValue(5)  # 투명도 바 초기값으로 셋팅
         self.slider.show()
         self.label_slider.show()
     def Apply_Brown(self):
@@ -291,13 +291,13 @@ class Select_face_Eyebrow(QWidget):
         self.color.pushButton_Brown.setStyleSheet('background-color:black;color:white;')
         self.color.pushButton_ResetColor.setStyleSheet('background-color:white;')
         self.color.pushButton_Black.setStyleSheet('background-color:white;')
-        self.slider.setValue(50)  # 투명도 바 초기값으로 셋팅
+        self.slider.setValue(5)  # 투명도 바 초기값으로 셋팅
         self.slider.show()
         self.label_slider.show()
 
 
     def changeValue(self):
-        size = str(self.slider.value())
+        size = str((self.slider.value())*10)
         self.label_slider.setText(size+"%")
 
     def backClicked(self):

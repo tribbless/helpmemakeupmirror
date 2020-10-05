@@ -29,17 +29,18 @@ class Sub_Menu(QWidget):
                                                     'border-bottom-left-radius:142px; border-bottom-right-radius:142px')
         self.pushButton_GoSelectThema.setObjectName("pushButton_GoSelectThema")
 
+        ## 이동 버튼 background
+        self.label_background_prev = QtWidgets.QLabel(self)
+        self.label_background_prev.setGeometry(QtCore.QRect(7, 5, 31, 40))
+        self.label_background_prev.setObjectName("label_background_prev")
+        self.label_background_prev.setStyleSheet("background-color: rgba(255, 255, 255, 0.24);"
+                                                 "border-radius: 10px;")
+
         # 이동 버튼 (previous)
         self.pushButton_GoMakeupFaceCapture = QtWidgets.QPushButton(self)
-        self.pushButton_GoMakeupFaceCapture.setGeometry(QtCore.QRect(15, 12, 25, 25))
+        self.pushButton_GoMakeupFaceCapture.setGeometry(QtCore.QRect(10, 12, 25, 25))
         self.pushButton_GoMakeupFaceCapture.setStyleSheet("border-image: url(image/btn_back.png);")
         self.pushButton_GoMakeupFaceCapture.setObjectName("pushButton_GoMakeupFaceCapture")
-        font = QtGui.QFont()
-        font.setPointSize(14)
-        font.setBold(True)
-        self.pushButton_GoMakeupFaceCapture.setFont(font)
-        self.pushButton_GoMakeupFaceCapture.setText("<")
-        self.pushButton_GoMakeupFaceCapture.setStyleSheet('background-color:blue;')
 
         # 하단 로고
         self.label_HelpMe_Logo = QtWidgets.QLabel(self)

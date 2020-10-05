@@ -36,16 +36,18 @@ class Personal_Color(QWidget):
         self.pushButton_GoMainMenu.setStyleSheet('background-color:transparent;')
         self.pushButton_GoMainMenu.setObjectName("pushButton_GoMainMenu")
 
+        ## 이동 버튼 background
+        self.label_background_prev = QtWidgets.QLabel(self)
+        self.label_background_prev.setGeometry(QtCore.QRect(7, 5, 31, 40))
+        self.label_background_prev.setObjectName("label_background_prev")
+        self.label_background_prev.setStyleSheet("background-color: rgba(255, 255, 255, 0.24);"
+                                                 "border-radius: 10px;")
+
         # 이동 버튼 (previous)
         self.pushButton_GoBareFaceCapture = QtWidgets.QPushButton(self)
-        self.pushButton_GoBareFaceCapture.setGeometry(QtCore.QRect(15, 12, 25, 25))
+        self.pushButton_GoBareFaceCapture.setGeometry(QtCore.QRect(10, 12, 25, 25))
         self.pushButton_GoBareFaceCapture.setStyleSheet("border-image: url(image/btn_back.png);")
         self.pushButton_GoBareFaceCapture.setObjectName("pushButton_GoBareFaceCapture")
-        font = QtGui.QFont()
-        font.setPointSize(14)
-        font.setBold(True)
-        self.pushButton_GoBareFaceCapture.setFont(font)
-        #self.pushButton_GoBareFaceCapture.setText("<")
 
         # 하단 로고
         self.label_HelpMe_Logo = QtWidgets.QLabel(self)

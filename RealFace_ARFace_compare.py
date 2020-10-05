@@ -67,17 +67,18 @@ class RealFace_ARFace_Compare(QWidget):
         self.pushButton_Share.setObjectName("pushButton_Share")
         self.pushButton_Share.clicked.connect(self.ShareImage)
 
+        ## 이동 버튼 background
+        self.label_background_prev = QtWidgets.QLabel(self)
+        self.label_background_prev.setGeometry(QtCore.QRect(7, 5, 31, 40))
+        self.label_background_prev.setObjectName("label_background_prev")
+        self.label_background_prev.setStyleSheet("background-color: rgba(255, 255, 255, 0.24);"
+                                                 "border-radius: 10px;")
+
         # 이동 버튼 (previous)
         self.pushButton_GoLipFrame = QtWidgets.QPushButton(self)
-        self.pushButton_GoLipFrame.setGeometry(QtCore.QRect(15, 12, 25, 25))
+        self.pushButton_GoLipFrame.setGeometry(QtCore.QRect(10, 12, 25, 25))
         self.pushButton_GoLipFrame.setStyleSheet("border-image: url(image/btn_back.png);")
         self.pushButton_GoLipFrame.setObjectName("pushButton_GoLipFrame")
-        font = QtGui.QFont()
-        font.setPointSize(14)
-        font.setBold(True)
-        self.pushButton_GoLipFrame.setFont(font)
-        #self.pushButton_GoLipFrame.setText("<")
-
 
         # 하단 로고
         self.label_HelpMe_Logo = QtWidgets.QLabel(self)
