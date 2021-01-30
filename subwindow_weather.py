@@ -43,7 +43,7 @@ class SubWindow_Weather(QDialog): #QDialog
         self.label_TempSeven.setText(temp_str[6] + "℃")
         self.label_TempEight.setText(temp_str[7] + "℃")
         # 날씨
-        self.label_WeatherIconOne.setStyleSheet("border-image: url(" + icon_url[0] + "); background-color: #EEEEEE")
+        self.label_WeatherIconOne.setStyleSheet("border-image: url(" + icon_url[0] + "); background-color: #EEEEEE;")
         self.label_WeatherIconTwo.setStyleSheet("border-image: url(" + icon_url[1] + "); background-color: #EEEEEE")
         self.label_WeatherIconThree.setStyleSheet("border-image: url(" + icon_url[2] + "); background-color: #EEEEEE")
         self.label_WeatherIconFour.setStyleSheet("border-image: url(" + icon_url[3] + "); background-color: #EEEEEE")
@@ -55,7 +55,6 @@ class SubWindow_Weather(QDialog): #QDialog
     def initUI(self):
         # self.setWindowTitle('WEATHER')
         self.resize(760, 350)
-        # self.resize(380, 175)
         self.setStyleSheet('background-color:white;')
         self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
 
@@ -67,14 +66,12 @@ class SubWindow_Weather(QDialog): #QDialog
         self.label_titlebar.setObjectName("label_titlebar")
         self.label_titlebar.setMaximumHeight(90)
         self.label_titlebar.setMinimumHeight(90)
-        # self.label_titlebar.setMaximumHeight(45)
-        # self.label_titlebar.setMinimumHeight(45)
         self.label_titlebar.setStyleSheet('background-color:#B5A4E7')
 
         self.label_title = QtWidgets.QLabel(self)
         self.label_title.setGeometry(QtCore.QRect(40, 0, 180, 90))
         font = QtGui.QFont()
-        font.setPointSize(20)
+        font.setPointSize(25)
         font.setBold(True)
         self.label_title.setFont(font)
         self.label_title.setText("WEATHER")
@@ -83,7 +80,7 @@ class SubWindow_Weather(QDialog): #QDialog
         self.label_subtitle = QtWidgets.QLabel(self)
         self.label_subtitle.setGeometry(QtCore.QRect(220, 10, 300, 80))
         font = QtGui.QFont()
-        font.setPointSize(11)
+        font.setPointSize(15)
         font.setBold(True)
         self.label_subtitle.setFont(font)
         self.label_subtitle.setText("온도 - 날씨 - 시간 - 강수확률 순")
@@ -91,7 +88,6 @@ class SubWindow_Weather(QDialog): #QDialog
 
         self.pushButton_Close = QtWidgets.QPushButton(self)
         self.pushButton_Close.setGeometry(QtCore.QRect(670, 0, 90, 90))
-        # self.pushButton_Close.setGeometry(QtCore.QRect(0, 0, 45, 45))
         self.pushButton_Close.setObjectName("pushButton_Close")
         font = QtGui.QFont()
         font.setPointSize(50)
@@ -103,7 +99,7 @@ class SubWindow_Weather(QDialog): #QDialog
 
         # 온도(Temperature)
         font_T = QtGui.QFont()
-        font_T.setPointSize(15)
+        font_T.setPointSize(18)
         font_T.setFamily("Segoe MDL2 Assets")
 
         self.label_TempOne = QtWidgets.QLabel(self)
@@ -141,10 +137,8 @@ class SubWindow_Weather(QDialog): #QDialog
 
         # 날씨 아이콘
         self.label_WeatherIconOne = QtWidgets.QLabel(self)
-        self.label_WeatherIconOne.setMinimumSize(80, 80)  # 80, 80
+        self.label_WeatherIconOne.setMinimumSize(80, 80)
         self.label_WeatherIconOne.setStyleSheet('background-color:#EEEEEE')
-        #iconOne = "image/btn_triangle.png"
-        #self.label_WeatherIconOne.setStyleSheet("border-image: url("+iconOne+"); background-color: #EEEEEE")
 
         self.label_WeatherIconTwo = QtWidgets.QLabel(self)
         self.label_WeatherIconTwo.setMinimumSize(80, 80)
@@ -184,9 +178,8 @@ class SubWindow_Weather(QDialog): #QDialog
         self.label_TimeOne.setFont(font_T2)
         self.label_TimeOne.setAlignment(Qt.AlignCenter)
         self.label_TimeOne.setMinimumSize(70, 45)
-        # self.label_TimeOne.setMaximumSize(70,45)
+        # self.label_TimeOne.setMaximumSize(70, 45)
         self.label_TimeOne.setStyleSheet('background-color:black; color:white; border-radius:20px;')
-        # self.label_TimeOne.setStyleSheet('background-color:black; color:white; border-radius:10px;')
 
         self.label_TimeTwo = QtWidgets.QLabel(self)
         self.label_TimeTwo.setFont(font_T2)
@@ -232,7 +225,7 @@ class SubWindow_Weather(QDialog): #QDialog
 
         # 강수 확률
         font_R = QtGui.QFont()
-        font_R.setPointSize(12)
+        font_R.setPointSize(14)
         font_R.setFamily("Segoe MDL2 Assets")
 
         self.label_RainOne = QtWidgets.QLabel(self)
