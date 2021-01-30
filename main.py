@@ -1,5 +1,3 @@
-##  순서
-
 '''
 0. 홈 [home.py]
 1. 메인메뉴 [main_menu.py]
@@ -12,7 +10,7 @@
  2-2)베이스 메이크업 [base_makeup_video.py] ~ 메이크업 캡쳐
  2-3)메이크업 캡쳐 [makeupFace_capture.py] ~ 서브메뉴
 
-3. 퍼스널 컬러 [personal_color.py] ~ 쌩얼 캡쳐
+3. 퍼스널 컬러 [personalColor.py] ~ 쌩얼 캡쳐
 
 4. 서브 메뉴
  -> SELECT BY FACE
@@ -29,8 +27,10 @@
 7. 비교화면 [RealFace_ARFace_compare.py] ~ 홈
 홈버튼(홈버튼)과 공유버튼이 있다.
 '''
-import sys
-import requests
+import sys, os
+
+import cv2
+
 from weather import weatherInfo
 
 from PyQt5 import QtCore, QtGui, QtWidgets
@@ -65,7 +65,9 @@ from frame_lip import Frame_Lip
 from RealFace_ARFace_compare import RealFace_ARFace_Compare
 from subwindow_menuShortcut import SubWindow_MenuShortcut
 from subwindow_weather import SubWindow_Weather
+
 ##### python -m PyQt5.uic.pyuic -x ex_02.ui -o ex_02.py
+##### "border-style: dashed; border-width: 3px; border-color: red;
 
 class MAIN_StackedWidget(QWidget):
     def __init__(self):
@@ -102,14 +104,16 @@ class MAIN_StackedWidget(QWidget):
 
 
     def setupUi(self):
-        self.setWindowTitle("Help Me MakUp Mirror")
-        self.resize(562, 794)
-        #self.resize(1124, 1588)
+        self.setWindowTitle("Help Me MakeUp Mirror")
+        #self.resize(562, 794)
+        #self.move(0, -200)
+        self.resize(1024, 1256)
+        #self.center()
         #self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
         #self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         #self.setStyleSheet("background-color:transparent;")
         ## 나중에 jetson nano 화면을 회전해야함.
-        ## 나중에 버튼위치 및 크기를 2배씩 곱해야함
+
 
         widget_laytout = QHBoxLayout()
 
@@ -137,6 +141,7 @@ class MAIN_StackedWidget(QWidget):
         self.frame_lip = Frame_Lip()
 
         self.Real_AR_Face_compare = RealFace_ARFace_Compare()
+
 
         self.stk_w.addWidget(self.home)
         self.stk_w.addWidget(self.main_menu)
@@ -205,12 +210,12 @@ class MAIN_StackedWidget(QWidget):
         self.makeupFace_capture.pushButton_GoMainMENUorVideo.clicked.connect(self.goToMainMENUorVideo)
         self.sub_menu.pushButton_GoMakeupFaceCapture.clicked.connect(self.goToMakeupFaceCapture_Later)
 
-        self.select_thema.pushButton_GoSubMenu.clicked.connect(self.goToSubMenu)
-        self.select_face_eyebrow.pushButton_GoSubMenu.clicked.connect(self.goToSubMenu)
-        self.select_face_eyeshadow.pushButton_GoEyebrowAR.clicked.connect(self.goToEyebrowAR)
-        self.select_face_eyeliner.pushButton_GoEyeshadowAR.clicked.connect(self.goToEyeshadowAR)
-        self.select_face_blusher.pushButton_GoEyelinerAR.clicked.connect(self.goToEyelinerAR)
-        self.select_face_lip.pushButton_GoBlusherAR.clicked.connect(self.goToBlusherAR)
+        self.select_thema.pushButton_GoSubMenu.clicked.connect(self.goToSubMenu_Later)
+        self.select_face_eyebrow.pushButton_GoSubMenu.clicked.connect(self.goToSubMenu_Later)
+        self.select_face_eyeshadow.pushButton_GoEyebrowAR.clicked.connect(self.goToEyebrowARLater)
+        self.select_face_eyeliner.pushButton_GoEyeshadowAR.clicked.connect(self.goToEyeshadowARLater)
+        self.select_face_blusher.pushButton_GoEyelinerAR.clicked.connect(self.goToEyelinerARLater)
+        self.select_face_lip.pushButton_GoBlusherAR.clicked.connect(self.goToBlusherARLater)
 
         self.frame_eyebrow.pushButton_GoARorThema.clicked.connect(self.goToLipARorTHEMA)
         self.frame_eyeshadow.pushButton_GoEyebrowFrame.clicked.connect(self.goToEyebrowFrame)
@@ -221,10 +226,18 @@ class MAIN_StackedWidget(QWidget):
         self.Real_AR_Face_compare.pushButton_GoHome.clicked.connect(self.goToHome)
         self.Real_AR_Face_compare.pushButton_GoLipFrame.clicked.connect(self.goToLipFrame)
 
+
         '''고정값'''
+        ## 나는 뒷배경~~
+        self.label_back_background = QtWidgets.QLabel(self)
+        self.label_back_background.setGeometry(QtCore.QRect(0, 90, 1024, 1094))
+        self.label_back_background.setStyleSheet("background-color: black;")
+        self.label_back_background.lower()
+        self.label_back_background.hide()
+
         ## 상단 타이틀바 background
         self.label_background_TitleBar = QtWidgets.QLabel(self)
-        self.label_background_TitleBar.setGeometry(QtCore.QRect(0, 0, 562, 50))
+        self.label_background_TitleBar.setGeometry(QtCore.QRect(0, 0, 1024, 92))
         self.label_background_TitleBar.setObjectName("label_background_TitleBar")
         self.label_background_TitleBar.setStyleSheet("border-image: url(image/background.png);")
         self.label_background_TitleBar.lower()
@@ -233,28 +246,21 @@ class MAIN_StackedWidget(QWidget):
 
         ## 시간/날짜
         self.label_DateTime = QtWidgets.QLabel(self)
-        self.label_DateTime.setGeometry(QtCore.QRect(285, 0, 110, 50))
+        self.label_DateTime.setGeometry(QtCore.QRect(513, 0, 198, 92))
         self.label_DateTime.setObjectName("label_DateTime")
         font = QtGui.QFont()
-        font.setPointSize(11)
+        font.setPointSize(20) # 11
         self.label_DateTime.setFont(font)
         self.label_DateTime.setText("")
         self.label_DateTime.setAlignment(Qt.AlignCenter)
         self.label_DateTime.hide()
 
-        ## 날씨 background
-        self.label_background_Weather = QtWidgets.QLabel(self)
-        self.label_background_Weather.setGeometry(QtCore.QRect(408, 5, 85, 40))
-        self.label_background_Weather.setObjectName("label_background_Weather")
-        self.label_background_Weather.setStyleSheet("background-color: rgba(255, 255, 255, 0.24);"
-                                                    "border-radius: 10px;")
-
         ## 온도
         self.label_Temperature = QtWidgets.QLabel(self)
-        self.label_Temperature.setGeometry(QtCore.QRect(455, 20, 35, 25))
+        self.label_Temperature.setGeometry(QtCore.QRect(819, 36, 63, 45))
         self.label_Temperature.setObjectName("label_Temperature")
         font = QtGui.QFont()
-        font.setPointSize(10)
+        font.setPointSize(21) #10
         self.label_Temperature.setFont(font)
         self.label_Temperature.setText("")
         self.label_Temperature.setAlignment(Qt.AlignCenter)
@@ -262,37 +268,48 @@ class MAIN_StackedWidget(QWidget):
 
         ## 날씨 아이콘
         self.label_WeatherIcon = QtWidgets.QLabel(self)
-        self.label_WeatherIcon.setGeometry(QtCore.QRect(408, 0, 50, 50))
+        self.label_WeatherIcon.setGeometry(QtCore.QRect(734, 0, 90, 90))
         self.label_WeatherIcon.setObjectName("label_WeatherIcon")
         self.label_WeatherIcon.hide()
 
         ## 날씨 버튼
         self.pushButton_Weather = QtWidgets.QPushButton(self)
-        self.pushButton_Weather.setGeometry(QtCore.QRect(408, 5, 85, 40))
+        self.pushButton_Weather.setGeometry(QtCore.QRect(734, 9, 153, 72))
         self.pushButton_Weather.setObjectName("pushButton_Weather")
-        self.pushButton_Weather.setStyleSheet("background-color: transparent;")
+        self.pushButton_Weather.setStyleSheet("background-color: rgba(255, 255, 255, 0.24);"
+                                              "border-radius: 10px;")
         self.pushButton_Weather.clicked.connect(self.goToWeather_Window)
         self.pushButton_Weather.hide()
 
         ## 메뉴 바로가기 버튼 background
         self.label_background_MenuShortcut = QtWidgets.QLabel(self)
-        self.label_background_MenuShortcut.setGeometry(QtCore.QRect(512, 5, 45, 40))
+        self.label_background_MenuShortcut.setGeometry(QtCore.QRect(938, 22, 45, 45))
         self.label_background_MenuShortcut.setObjectName("label_background_MenuShortcut")
-        self.label_background_MenuShortcut.setStyleSheet("background-color: rgba(255, 255, 255, 0.24);"
-                                                         "border-radius: 10px;")
+        self.label_background_MenuShortcut.setStyleSheet("border-image: url(image/btn_menu.png);")
+        self.label_background_MenuShortcut.hide()
 
         ## 메뉴 바로가기 버튼
         self.pushButton_MenuShortcut = QtWidgets.QPushButton(self)
-        self.pushButton_MenuShortcut.setGeometry(QtCore.QRect(522, 12, 25, 25)) #527, 14, 30, 25/562/557+5/562-25=537-15=522
+        self.pushButton_MenuShortcut.setGeometry(QtCore.QRect(920, 9, 81, 72))
         self.pushButton_MenuShortcut.setObjectName("pushButton_MenuShortcut")
-        self.pushButton_MenuShortcut.setStyleSheet("border-image: url(image/btn_menu.png);")
+        self.pushButton_MenuShortcut.setStyleSheet("background-color: rgba(255, 255, 255, 0.24);"
+                                                   "border-radius: 10px;")
         self.pushButton_MenuShortcut.clicked.connect(self.goToMenuShortcut_Window)
         self.pushButton_MenuShortcut.hide()
+
+        ## Shutdown 버튼
+        self.Real_AR_Face_compare.pushButton_Shutdown.clicked.connect(self.ShutDown)
+
+        ##
+        self.Real_AR_Face_compare.pushButton_Share.clicked.connect(self.goToSubMenu_Later)
+
+        ## 카메라 오픈
+        self.cpt = cv2.VideoCapture(0) ## in window
+        #self.cpt = cv2.VideoCapture("/dev/video1") ## in jetson nano
 
     ## 서브 윈도우 화면 나타나기
     def goToWeather_Window(self):
         print("날씨 윈도우화면")
-        #weather = SubWindow_Weather()
         r = self.weather.showModal()
         if r:
             print("--이 메시지는 안나옴--")
@@ -300,10 +317,19 @@ class MAIN_StackedWidget(QWidget):
             print("close")
     def goToMenuShortcut_Window(self):
         print("메뉴 바로가기 윈도우화면")
-        #menuShortcut = SubWindow_MenuShortcut()
         r = self.menuShortcut.showModal()
         if r:
             print("메뉴 바로가기 클릭성공")
+            # camera stop
+            if self.menuShortcut.btn != 4:
+                self.bareFace_capture.flag = False
+            if self.menuShortcut.btn != 5:
+                self.makeupFace_capture.flag = False
+            self.frame_eyebrow.flag = False
+            self.frame_eyeshadow.flag = False
+            self.frame_eyeliner.flag = False
+            self.frame_blusher.flag = False
+            self.frame_lip.flag = False
             if(self.menuShortcut.btn==1):
                 self.goToHome()
             elif(self.menuShortcut.btn==2):
@@ -317,56 +343,171 @@ class MAIN_StackedWidget(QWidget):
             elif (self.menuShortcut.btn == 6):
                 self.goToSubMenu()
             else:
-                sys.exit()
-
+                self.ShutDown()
         else:
             print("close")
 
     ## 화면전환 NEXT & PREVIOUS
     def goToMainMenu(self):
+        self.label_back_background.show()
         self.label_background_TitleBar.show()
-        self.label_background_Weather.show()
-        self.label_background_MenuShortcut.show()
         self.label_DateTime.show()
         self.label_Temperature.show()
         self.label_WeatherIcon.show()
         self.pushButton_Weather.show()
+        self.label_background_MenuShortcut.show()
         self.pushButton_MenuShortcut.show()
         self.stk_w.setCurrentWidget(self.main_menu)
     def goToBareFaceCapture(self):
+        #print(self.width())
+        #print(self.height())
+        self.bareFace_capture.action = False
+        self.bareFace_capture.label_manual.setText("베이스 메이크업 전 촬영입니다.\n화면을 캡쳐하세요.")
+        self.bareFace_capture.cpt = self.cpt
+        self.bareFace_capture.start()
         self.stk_w.setCurrentWidget(self.bareFace_capture)
     def goToBaseMakeupVideo(self):
         self.main_menu.btn = "video"
         self.stk_w.setCurrentWidget(self.base_makeup_video)
     def goToMakeupFaceCapture(self):
         self.main_menu.btn = "MakeupFaceCapture"
+        self.makeupFace_capture.action = False
+        self.makeupFace_capture.label_manual.setText("베이스 메이크업 후 촬영입니다.\n화면을 캡쳐하세요.")
+        self.makeupFace_capture.cpt = self.cpt
+        self.makeupFace_capture.start()
         self.stk_w.setCurrentWidget(self.makeupFace_capture)
     def goToMakeupFaceCapture_Later(self):
+        self.makeupFace_capture.action = False
+        self.makeupFace_capture.label_manual.setText("베이스 메이크업 후 촬영입니다.\n화면을 캡쳐하세요.")
+        self.makeupFace_capture.cpt = self.cpt
+        self.makeupFace_capture.start()
         self.stk_w.setCurrentWidget(self.makeupFace_capture)
+
     def goToPersonalColor(self):
-        self.stk_w.setCurrentWidget(self.personal_color)
+        self.bareFace_capture.personal_analysis()
+        self.showPersonalColor()
+    def showPersonalColor(self):
+        self.timer3 = QTimer()
+        self.timer3.timeout.connect(self.realPersonalColor)
+        self.timer3.setSingleShot(True)
+        self.timer3.start(100)  # 0.1초후 실행됨.
+    def realPersonalColor(self):
+        self.bareFace_capture.personalFace()
+        check = self.bareFace_capture.action
+        check2 = self.bareFace_capture.result
+        print(check, check2)
+        if check == True:
+            tone = self.bareFace_capture.tone
+            print(tone)
+            self.personal_color.label_tone.setText("< " + tone + " >")
+            result = self.changePixmap(self.bareFace_capture.bareFace)
+            self.personal_color.label_face.setPixmap(QtGui.QPixmap(result).scaled(664, 498, Qt.KeepAspectRatio))
+            self.personal_color.big_color_show(tone)
+            self.personal_color.small_color_show(tone)
+        if check2 == True:
+            self.stk_w.setCurrentWidget(self.personal_color)
+
     def goToMainMENUorVideo(self):
         print(self.main_menu.btn)
         if (self.main_menu.btn == "video"):
             self.stk_w.setCurrentWidget(self.base_makeup_video)
         else:
             self.stk_w.setCurrentWidget(self.main_menu)
+
     def goToSubMenu(self):
+        self.makeupFace_capture.landmark_make()
+        self.showSubMenu()
+
+    def showSubMenu(self):
+        self.timer4 = QTimer()
+        self.timer4.timeout.connect(self.realSubMenu)
+        self.timer4.setSingleShot(True)
+        self.timer4.start(100)  # 0.1초후 실행됨.
+
+    def realSubMenu(self):
+        self.makeupFace_capture.Save_captureFace()
+        if self.makeupFace_capture.result == True:
+            self.stk_w.setCurrentWidget(self.sub_menu)
+        self.makeupFace_capture.label_manual.setText("베이스 메이크업 후 촬영입니다.\n화면을 캡쳐하세요.")
+
+
+    def goToSubMenu_Later(self):
+        self.makeupFace_capture.label_manual.setText("베이스 메이크업 후 촬영입니다.\n화면을 캡쳐하세요.")
         self.stk_w.setCurrentWidget(self.sub_menu)
+
     def goToThema(self):
         self.sub_menu.btn = "select_thema" # Frame에서 back버튼 시 활용
+        check = self.makeupFace_capture.action
+        check2 = self.bareFace_capture.action
+        if check == True:
+            self.select_thema.makeupFace = self.makeupFace_capture.makeupFace
+            self.select_thema.resultFace = self.select_thema.makeupFace
+            self.select_thema.landmark = self.makeupFace_capture.landmark
+            result = self.changePixmap(self.select_thema.makeupFace)
+            self.select_thema.label_face.setPixmap(QtGui.QPixmap(result).scaled(672, 504, Qt.KeepAspectRatio))
+            self.select_thema.action = True
+        if check2 == True:
+            print(self.bareFace_capture.tone)
+            self.select_thema.tone = self.bareFace_capture.tone
         self.stk_w.setCurrentWidget(self.select_thema)
+
     def goToEyebrowAR(self):
         self.sub_menu.btn = "select_face" # Frame에서 back버튼 시 활용
+        check = self.makeupFace_capture.action
+        if check == True:
+            self.select_face_eyebrow.makeupFace = self.makeupFace_capture.makeupFace
+            self.select_face_eyebrow.resultFace = self.select_face_eyebrow.makeupFace
+            self.select_face_eyebrow.landmark = self.makeupFace_capture.landmark
+            result = self.changePixmap(self.select_face_eyebrow.makeupFace)
+            self.select_face_eyebrow.label_face.setPixmap(QtGui.QPixmap(result).scaled(672, 504, Qt.KeepAspectRatio))
+            self.select_face_eyebrow.action = True
         self.stk_w.setCurrentWidget(self.select_face_eyebrow)
     def goToEyeshadowAR(self):
+        check = self.makeupFace_capture.action
+        if check == True:
+            self.select_face_eyeshadow.makeupFace = self.select_face_eyebrow.resultFace
+            self.select_face_eyeshadow.resultFace = self.select_face_eyeshadow.makeupFace
+            result = self.changePixmap(self.select_face_eyebrow.resultFace)
+            self.select_face_eyeshadow.label_face.setPixmap(QtGui.QPixmap(result).scaled(672, 504, Qt.KeepAspectRatio))
+            self.select_face_eyeshadow.action = True
         self.stk_w.setCurrentWidget(self.select_face_eyeshadow)
     def goToEyelinerAR(self):
+        check = self.makeupFace_capture.action
+        if check == True:
+            self.select_face_eyeliner.makeupFace = self.select_face_eyeshadow.resultFace
+            self.select_face_eyeliner.resultFace = self.select_face_eyeliner.makeupFace
+            self.select_face_eyeliner.landmark = self.makeupFace_capture.landmark
+            result = self.changePixmap(self.select_face_eyeshadow.resultFace)
+            self.select_face_eyeliner.label_face.setPixmap(QtGui.QPixmap(result).scaled(672, 504, Qt.KeepAspectRatio))
+            self.select_face_eyeliner.action = True
         self.stk_w.setCurrentWidget(self.select_face_eyeliner)
     def goToBlusherAR(self):
+        check = self.makeupFace_capture.action
+        if check == True:
+            self.select_face_blusher.makeupFace = self.select_face_eyeliner.resultFace
+            self.select_face_blusher.resultFace = self.select_face_blusher.makeupFace
+            result = self.changePixmap(self.select_face_eyeliner.resultFace)
+            self.select_face_blusher.label_face.setPixmap(QtGui.QPixmap(result).scaled(672, 504, Qt.KeepAspectRatio))
+            self.select_face_blusher.action = True
         self.stk_w.setCurrentWidget(self.select_face_blusher)
     def goToLipAR(self):
+        check = self.makeupFace_capture.action
+        if check == True:
+            self.select_face_lip.makeupFace = self.select_face_blusher.resultFace
+            self.select_face_lip.resultFace = self.select_face_lip.makeupFace
+            result = self.changePixmap(self.select_face_blusher.resultFace)
+            self.select_face_lip.label_face.setPixmap(QtGui.QPixmap(result).scaled(672, 504, Qt.KeepAspectRatio))
+            self.select_face_lip.action = True
         self.stk_w.setCurrentWidget(self.select_face_lip)
+
+    def goToEyebrowARLater(self):
+        self.stk_w.setCurrentWidget(self.select_face_eyebrow)
+    def goToEyeshadowARLater(self):
+        self.stk_w.setCurrentWidget(self.select_face_eyeshadow)
+    def goToEyelinerARLater(self):
+        self.stk_w.setCurrentWidget(self.select_face_eyeliner)
+    def goToBlusherARLater(self):
+        self.stk_w.setCurrentWidget(self.select_face_blusher)
 
     def goToLipARorTHEMA(self):
         if (self.sub_menu.btn == "select_face"):
@@ -375,30 +516,236 @@ class MAIN_StackedWidget(QWidget):
             self.stk_w.setCurrentWidget(self.select_thema)
 
     def goToEyebrowFrame(self):
+        check = self.makeupFace_capture.action
+        if (self.sub_menu.btn == "select_face"):
+            if check == True:
+                result = self.changePixmap(self.select_face_lip.resultFace)
+                self.frame_eyebrow.label_faceAR.setPixmap(QtGui.QPixmap(result).scaled(324, 243, Qt.KeepAspectRatio))
+                isKind = self.select_face_eyebrow.isKind
+                isColor = self.select_face_eyebrow.isColor
+                if isKind & isColor == True:
+                    kind = self.select_face_eyebrow.kind
+                    print(kind)
+                    self.frame_eyebrow.isDetect = False
+                    self.frame_eyebrow.face_kind = "0"
+                    self.frame_eyebrow.kind = kind
+                    self.frame_eyebrow.cpt = self.cpt
+                    self.frame_eyebrow.start()
+                else:
+                    self.frame_eyebrow.label_background_Manual.setText("you didn't choice")
+                    self.frame_eyebrow.resetPix()
+
+        else:
+            if check == True:
+                result = self.changePixmap(self.select_thema.resultFace)
+                self.frame_eyebrow.label_faceAR.setPixmap(QtGui.QPixmap(result).scaled(324, 243, Qt.KeepAspectRatio))
+                isChoice = self.select_thema.isChoice
+                isDetect = self.select_thema.isDetect
+                print("한마디로 맞춤형 버튼 눌렀니? "+str(isDetect))
+                if isChoice == True:
+                    if isDetect == True:
+                        print("맞춤형 버튼 눌렀단다.")
+                        self.frame_eyebrow.isDetect = True
+                        self.frame_eyebrow.face_kind = self.select_thema.kindBlusher
+                    else:
+                        print("안눌렀단다.")
+                        self.frame_eyebrow.isDetect = False
+                        self.frame_eyebrow.face_kind = "0"
+                    kind = self.select_thema.kindBrow
+                    print(kind)
+                    self.frame_eyebrow.kind = kind
+                    self.frame_eyebrow.cpt = self.cpt
+                    self.frame_eyebrow.start()
+                else:
+                    self.frame_eyebrow.label_background_Manual.setText("you didn't choice")
+                    self.frame_eyebrow.resetPix()
         self.stk_w.setCurrentWidget(self.frame_eyebrow)
     def goToEyeshadowFrame(self):
+        check = self.makeupFace_capture.action
+        if (self.sub_menu.btn == "select_face"):
+            if check == True:
+                result = self.changePixmap(self.select_face_lip.resultFace)
+                self.frame_eyeshadow.label_faceAR.setPixmap(QtGui.QPixmap(result).scaled(324, 243, Qt.KeepAspectRatio))
+                isKind = self.select_face_eyeshadow.isKind
+                isColor = self.select_face_eyeshadow.isColor
+                if isKind & isColor == True:
+                    kind = self.select_face_eyeshadow.kind
+                    print(kind)
+                    self.frame_eyeshadow.kind = kind
+                    self.frame_eyeshadow.cpt = self.cpt
+                    self.frame_eyeshadow.start()
+                else:
+                    self.frame_eyeshadow.label_background_Manual.setText("you didn't choice")
+                    self.frame_eyeshadow.resetPix()
+        else:
+            if check == True:
+                result = self.changePixmap(self.select_thema.resultFace)
+                self.frame_eyeshadow.label_faceAR.setPixmap(QtGui.QPixmap(result).scaled(324, 243, Qt.KeepAspectRatio))
+                isChoice = self.select_thema.isChoice
+                if isChoice == True:
+                    kind = self.select_thema.kindShadow
+                    print(kind)
+                    self.frame_eyeshadow.kind = kind
+                    self.frame_eyeshadow.cpt = self.cpt
+                    self.frame_eyeshadow.start()
+                else:
+                    self.frame_eyeshadow.label_background_Manual.setText("you didn't choice")
+                    self.frame_eyeshadow.resetPix()
         self.stk_w.setCurrentWidget(self.frame_eyeshadow)
     def goToEyelinerFrame(self):
+        check = self.makeupFace_capture.action
+        if (self.sub_menu.btn == "select_face"):
+            if check == True:
+                result = self.changePixmap(self.select_face_lip.resultFace)
+                self.frame_eyeliner.label_faceAR.setPixmap(QtGui.QPixmap(result).scaled(324, 243, Qt.KeepAspectRatio))
+                isKind = self.select_face_eyeliner.isKind
+                isColor = self.select_face_eyeliner.isColor
+                if isKind & isColor == True:
+                    kind = self.select_face_eyeliner.kind
+                    print(kind)
+                    self.frame_eyeliner.kind = kind
+                    self.frame_eyeliner.cpt = self.cpt
+                    self.frame_eyeliner.start()
+                else:
+                    self.frame_eyeliner.label_background_Manual.setText("you didn't choice")
+                    self.frame_eyeliner.resetPix()
+        else:
+            if check == True:
+                result = self.changePixmap(self.select_thema.resultFace)
+                self.frame_eyeliner.label_faceAR.setPixmap(QtGui.QPixmap(result).scaled(324, 243, Qt.KeepAspectRatio))
+                isChoice = self.select_thema.isChoice
+                if isChoice == True:
+                    kind = self.select_thema.kindLiner
+                    print(kind)
+                    self.frame_eyeliner.kind = kind
+                    self.frame_eyeliner.cpt = self.cpt
+                    self.frame_eyeliner.start()
+                else:
+                    self.frame_eyeliner.label_background_Manual.setText("you didn't choice")
+                    self.frame_eyeliner.resetPix()
         self.stk_w.setCurrentWidget(self.frame_eyeliner)
     def goToBlusherFrame(self):
+        check = self.makeupFace_capture.action
+        if (self.sub_menu.btn == "select_face"):
+            if check == True:
+                result = self.changePixmap(self.select_face_lip.resultFace)
+                self.frame_blusher.label_faceAR.setPixmap(QtGui.QPixmap(result).scaled(324, 243, Qt.KeepAspectRatio))
+                isKind = self.select_face_blusher.isKind
+                isColor = self.select_face_blusher.isColor
+                if isKind & isColor == True:
+                    kind = self.select_face_blusher.kind
+                    print(kind)
+                    self.frame_blusher.kind = kind
+                    self.frame_blusher.cpt = self.cpt
+                    self.frame_blusher.start()
+                else:
+                    self.frame_blusher.label_background_Manual.setText("you didn't choice")
+                    self.frame_blusher.resetPix()
+        else:
+            if check == True:
+                result = self.changePixmap(self.select_thema.resultFace)
+                self.frame_blusher.label_faceAR.setPixmap(QtGui.QPixmap(result).scaled(324, 243, Qt.KeepAspectRatio))
+                isChoice = self.select_thema.isChoice
+                if isChoice == True:
+                    kind = self.select_thema.kindBlusher
+                    print(kind)
+                    self.frame_blusher.kind = kind
+                    self.frame_blusher.cpt = self.cpt
+                    self.frame_blusher.start()
+                else:
+                    self.frame_blusher.label_background_Manual.setText("you didn't choice")
+                    self.frame_blusher.resetPix()
         self.stk_w.setCurrentWidget(self.frame_blusher)
     def goToLipFrame(self):
+        self.frame_lip.cpt = self.cpt
+        self.frame_lip.start()
+        check = self.makeupFace_capture.action
+        if (self.sub_menu.btn == "select_face"):
+            if check == True:
+                result = self.changePixmap(self.select_face_lip.resultFace)
+                self.frame_lip.label_faceAR.setPixmap(QtGui.QPixmap(result).scaled(324, 243, Qt.KeepAspectRatio))
+                isColor = self.select_face_lip.isColor
+                if isColor == True:
+                    self.frame_lip.label_background_Manual.setText("AR사진에 lip color로 립을 칠해주세요.")
+                else:
+                    self.frame_lip.label_background_Manual.setText("you didn't choice")
+        else:
+            if check == True:
+                result = self.changePixmap(self.select_thema.resultFace)
+                self.frame_lip.label_faceAR.setPixmap(QtGui.QPixmap(result).scaled(324, 243, Qt.KeepAspectRatio))
+                isChoice = self.select_thema.isChoice
+                if isChoice == True:
+                    self.frame_lip.label_background_Manual.setText("AR사진에 lip color로 립을 칠해주세요.")
+                else:
+                    self.frame_blusher.label_background_Manual.setText("you didn't choice")
         self.stk_w.setCurrentWidget(self.frame_lip)
 
     def goToCompare(self):
+        check = self.makeupFace_capture.action
+        if (self.sub_menu.btn == "select_face"):
+            if check == True:
+                result = self.changePixmap(self.select_face_lip.resultFace)
+                self.Real_AR_Face_compare.label_faceAR.setPixmap(QtGui.QPixmap(result).scaled(448, 336, Qt.KeepAspectRatio))
+        else:
+            if check == True:
+                result = self.changePixmap(self.select_thema.resultFace)
+                self.Real_AR_Face_compare.label_faceAR.setPixmap(QtGui.QPixmap(result).scaled(448, 336, Qt.KeepAspectRatio))
         self.stk_w.setCurrentWidget(self.Real_AR_Face_compare)
 
     def goToHome(self):
+        self.resetALL()
+        self.label_back_background.hide()
         self.label_background_TitleBar.hide()
-        self.label_background_Weather.hide()
-        self.label_background_MenuShortcut.hide()
         self.label_DateTime.hide()
         self.label_Temperature.hide()
         self.label_WeatherIcon.hide()
         self.pushButton_Weather.hide()
+        self.label_background_MenuShortcut.hide()
         self.pushButton_MenuShortcut.hide()
         self.stk_w.setCurrentWidget(self.home)
 
+    def changePixmap(self, result):
+        result = QtGui.QImage(result, result.shape[1], result.shape[0], result.shape[1] * 3, QtGui.QImage.Format_RGB888).rgbSwapped()
+        result2 = QtGui.QPixmap(result)
+        return result2
+
+    def closeEvent(self, event):
+        print("헬미를 종료합니다.")
+        check = os.path.isfile('capture.jpg')
+        check2 = os.path.isfile('capture2.jpg')
+        if check == True:
+            os.remove('capture.jpg')
+        if check2 == True:
+            os.remove('capture2.jpg')
+        self.cpt.release()
+
+    def ShutDown(self):
+        print("헬미를 종료합니다.")
+        check = os.path.isfile('capture.jpg')
+        check2 = os.path.isfile('capture2.jpg')
+        if check == True:
+            os.remove('capture.jpg')
+        if check2 == True:
+            os.remove('capture2.jpg')
+        self.cpt.release()
+        sys.exit()
+
+    def resetALL(self):
+        self.bareFace_capture.reset()
+        self.makeupFace_capture.reset()
+        self.personal_color.reset()
+        self.select_thema.reset()
+        self.select_face_eyebrow.reset()
+        self.select_face_eyeshadow.reset()
+        self.select_face_eyeliner.reset()
+        self.select_face_blusher.reset()
+        self.select_face_lip.reset()
+        self.frame_eyebrow.reset()
+        self.frame_eyeshadow.reset()
+        self.frame_eyeliner.reset()
+        self.frame_blusher.reset()
+        self.frame_lip.reset()
+        self.Real_AR_Face_compare.reset()
 
 
 
@@ -407,4 +754,3 @@ if __name__ == "__main__":
     form = MAIN_StackedWidget()
     form.show()
     exit(app.exec_())
-

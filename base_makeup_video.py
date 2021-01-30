@@ -10,22 +10,23 @@ class Base_Makeup_Video(QWidget):
 
         # 베이스 메이크업 동영상
         self.label_video = QtWidgets.QLabel(self)
-        self.label_video.setGeometry(QtCore.QRect(90, 177, 382, 370))
+        self.label_video.setGeometry(QtCore.QRect(112, 295, 800, 450))
         self.label_video.setObjectName("label_video")
-        font = QtGui.QFont()
-        font.setPointSize(20)
-        self.label_video.setFont(font)
-        self.label_video.setAlignment(Qt.AlignCenter)
-        self.label_video.setStyleSheet("color:white; background-color:#4B4B4B;")
-        self.label_video.setText("Video")
+        self.label_video.setStyleSheet("border-image: url(image/youtube_video.png);")
 
+        self.label_background_white = QtWidgets.QLabel(self)
+        self.label_background_white.setGeometry(QtCore.QRect(340, 820, 344, 140))
+        self.label_background_white.setObjectName("label_background_white")
+        self.label_background_white.setStyleSheet("background-color: white;"
+                                                  "border-radius: 30px;")
+        self.label_background_white.lower()
 
         # 이동 버튼 background image
         self.label_background_GoColorMakeup = QtWidgets.QLabel(self)
-        self.label_background_GoColorMakeup.setGeometry(QtCore.QRect(161, 599, 240, 65))
+        self.label_background_GoColorMakeup.setGeometry(QtCore.QRect(350, 830, 324, 120))
         self.label_background_GoColorMakeup.setObjectName("label_background_GoColorMakeup")
         font = QtGui.QFont()
-        font.setPointSize(18)
+        font.setPointSize(35)
         self.label_background_GoColorMakeup.setFont(font)
         self.label_background_GoColorMakeup.setAlignment(Qt.AlignCenter)
         self.label_background_GoColorMakeup.setText("COLOR MAKE UP")
@@ -46,35 +47,35 @@ class Base_Makeup_Video(QWidget):
                                       "font-family: Segoe MDL2 Assets;\n"
                                       "font-style: normal;\n"
                                       "font-weight: 700;\n"
-                                      "font-size: 20px;\n"
+                                      "font-size: 30px;\n"
                                       "line-height: 22px;\n"
                                       "\n"
                                       "color: #FFFFFF;\n"
-                                      "border: 1px solid #FFFFFF;")
+                                      "border-radius: 20px;")
 
 
         # 이동 버튼(->캡쳐화면으로)
         self.pushButton_GoColorMakeup = QtWidgets.QPushButton(self)
-        self.pushButton_GoColorMakeup.setGeometry(QtCore.QRect(161, 599, 240, 65))
-        self.pushButton_GoColorMakeup.setStyleSheet('background-color:transparent;')
+        self.pushButton_GoColorMakeup.setGeometry(QtCore.QRect(260, 830, 504, 169))
+        self.pushButton_GoColorMakeup.setStyleSheet('background-color:transparent; border: 0px;')
         self.pushButton_GoColorMakeup.setObjectName("pushButton_GoColorMakeup")
 
-        ## 이동 버튼 background
+        # 이동 버튼 image
         self.label_background_prev = QtWidgets.QLabel(self)
-        self.label_background_prev.setGeometry(QtCore.QRect(7, 5, 31, 40))
+        self.label_background_prev.setGeometry(QtCore.QRect(25, 22, 45, 45))
         self.label_background_prev.setObjectName("label_background_prev")
-        self.label_background_prev.setStyleSheet("background-color: rgba(255, 255, 255, 0.24);"
-                                                 "border-radius: 10px;")
+        self.label_background_prev.setStyleSheet("border-image: url(image/btn_back.png);")
 
-        # 이동 버튼 (previous)
+        ## 이동 버튼 (previous)
         self.pushButton_GoMainMenu = QtWidgets.QPushButton(self)
-        self.pushButton_GoMainMenu.setGeometry(QtCore.QRect(10, 12, 25, 25))
-        self.pushButton_GoMainMenu.setStyleSheet("border-image: url(image/btn_back.png);")
+        self.pushButton_GoMainMenu.setGeometry(QtCore.QRect(23, 9, 55, 72))
+        self.pushButton_GoMainMenu.setStyleSheet("background-color: rgba(255, 255, 255, 0.24);"
+                                                 "border-radius: 10px;")
         self.pushButton_GoMainMenu.setObjectName("pushButton_GoMainMenu")
 
         # 하단 로고
         self.label_HelpMe_Logo = QtWidgets.QLabel(self)
-        self.label_HelpMe_Logo.setGeometry(QtCore.QRect(0, 754, 562, 40))
+        self.label_HelpMe_Logo.setGeometry(QtCore.QRect(0, 1184, 1024, 72))
         self.label_HelpMe_Logo.setObjectName("label_HelpMe_Logo")
         self.label_HelpMe_Logo.setStyleSheet("border-image: url(image/logo_text.png);")
 

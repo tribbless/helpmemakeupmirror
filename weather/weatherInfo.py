@@ -134,17 +134,17 @@ def make_url(weather_icon):
 
 # --------------- 함수 사용방법 ------------------------------------
 # today_temp : 현재기온 , weather_icon : 현재 날씨 번호
-today_temp, weather_icon = weather()
-print(today_temp)
-print(weather_icon)
+#today_temp, weather_icon = weather()
+#print(today_temp)
+#print(weather_icon)
 # date_str : 강수량 확인할 8개의 날짜(list) , rain_str : 날짜에 따른 강수량 (list)
 # date_str[0] 이란 날짜의 강수량은 rain_str[0] % 이다.
-date_str, rain_str, icon_str, temp_str = weather_rain()
-print(date_str)
-print(rain_str)
-print(icon_str)
-print(temp_str)
-print("==============================================")
+#date_str, rain_str, icon_str, temp_str = weather_rain()
+#print(date_str)
+#print(rain_str)
+#print(icon_str)
+#print(temp_str)
+#print("==============================================")
 """
 1. 해 : 낮
 2. 맑음 : 밤

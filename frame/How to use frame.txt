@@ -1,0 +1,81 @@
+Eyebrow 클래스
+선언 방법
+eye = Eyebrow("Arch")  # 아치형
+eye = Eyebrow("Straight")  #스트레이트형
+
+EyeShadow 클래스
+선언 방법
+eye = EyeShadow("Middle") 혹은 eye = EyeShadow()  # middle 기본
+eye = EyeShadow("Large")   # 넓은 영역
+eye = EyeShadow("Small")   # 좁은 영역
+
+EyeLiner 클래스
+선언 방법
+eye = EyeLiner("Up")    # 높게 그림 (고양이상)
+eye = EyeLiner("Middle")   # 기본 (강아지상)
+
+Blusher 클래스
+선언방법
+eye = Blusher("Round")
+eye = Blusher("Oblong")
+eye = Blusher("Square")
+
+프레임 만들기 (공통) - EyeShadow, Eyebrow(Straight), EyeLiner, Blusher
+image = eye.frame(image, shape, color) 
+# image = 사진, shape = 얼굴인식 결과 68개의 점이 저장된 np배열
+# color = (255,255,255) 이런식으로 프레임 색깔 지정
+# eye.frame(image, shape)으로 사용시 color은 기본 (51,255,204)으로 지정됨
+# 리턴값으로 사진(image)에 프레임 입혀져서 사진(image) 리턴한다.
+# 기본색상을 바꾸고 싶으면 class Eyebrow 또는 EyeShadow 등등의 frame함수의 매개변수 color=()값을 변경할 것
+
+단, 아치형 프레임을 만들시 Eyebrow(Arch)
+image = eye.frame(image, shape, True, color)    # 아이섀도우를 위한 텍스트 파일 만든다. 프레임 출력 X
+image = eye.frame(image, shape, False, color)   # 아애섀도우를 위한 텍스트 파일 만들지 않음 순수 프레임 출력
+
+쓰이는 함수들
+Eyebrow("Arch").frame() -> ArchFrame() : setTemp(), SetArchTop(), draw_frame(), DeleteErrorArray(), makeTxtFile()
+# makeTxtFile() 함수 실행하면 아이섀도우 가상화장과 프레임에 쓰일 shadowArray.txt 파일이 만들어진다.
+Eyebrow("Straight").frame() -> StraightFrame() : setTemp(), draw_frame()
+
+EyeShadow("middle").frame() -> shadow() : "shadowArray.txt"파일을 사용함, setShadowFrame(), draw_frame()
+# EyeShadow("large").frame(), EyeShadow("small")또한 EyeShadow("middle").frame()과 동일
+# 아이섀도우 프레임을 만들기 위해서는 아치형 프레임을 만들어 shadowArray.txt파일을 미리 생성해야 한다.
+
+EyeLiner("Middle").frame() , EyeLiner("Up").frame() 공통 -> Liner() : SetLinerTemp(), draw_frame()
+
+Blusher("Round").frame() -> RoundBlusher() : setTemp(), DrawBlusher(), makeTxtFile(), draw_frame()
+Blusher("Oblong").frame() -> OblongBlusher() : setTemp(), DrawBlusher(), makeTxtFile(), draw_frame()
+Blusher("Square").frame() -> SquareBlusher() : makeTxtFile(), draw_new()
+#블러셔는 프레임을 만들고 동시에 가상화장을 위한 파일도 만든다. "Blusher.txt"
+
+
+
+==============================================================
+
+
+
+image_frame_insert(image, shape, name, color=(51, 255, 204))
+-----------------사용 방법 ----------------
+# image = 사진 , shape = 얼굴인식 후 64개의 점이 들어있는 배열, name = 불러올 프레임 이름
+# color은 프레임 색깔로 기본 (51,255,204)
+#################### name 예시 ######################
+Eyebrow_Arch
+Eyebrow_Straight
+
+EyeShadow_Middle
+EyeShadow_Large
+EyeShadow_Small
+
+EyeLiner_Up
+EyeLiner_Middle
+
+Blusher_Round
+Blusher_Oblong
+Blusher_Square
+#####################
+예시 ) 프레임 사진에 씌워서 그 사진값 리턴해준다.
+output = image_frame_insert(image, shape, "EyeLiner_Up")
+
+output = image_frame_insert(image, shape, "EyeLiner_Up", (122,22,44))   ---> 프레임 색상이 (122,22,44)로 바뀐다.
+
+
