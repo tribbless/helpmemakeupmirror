@@ -30,7 +30,8 @@ https://youtu.be/v81LYKVmSwQ
 - Python (all SW)
 - Figma(client, UI, Prototype 제작)
 - Github/Gitlab (버전관리)
-
+- PyQt5(GUI 라이브러리)
+- Jetson Nano(HW 디바이스)
 
 ## 구성도
 ![image](https://user-images.githubusercontent.com/48430781/113004607-b14eca80-91ae-11eb-89e2-25dfbc6955ff.png)
