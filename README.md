@@ -1,7 +1,9 @@
 #  메이크업의 Hell에서 너를 구원할게, 헬미 (Help Me Makeup Mirror) 
 
-- Virtual Makeup Smart Mirror of kibwa project
-
+- Virtual Makeup Smart Mirror of kibwa project 
+- 2020 이브와공모전 대상(과학기술정보통신부장관상) 수상작
+- https://www.hanium.or.kr/portal/project/awardList.do# 
+-![공모전수상페이지](https://user-images.githubusercontent.com/48430781/113113916-c460a980-9245-11eb-91c7-40432c40b645.PNG)
 
 ○ 화장을 처음 하는 사람들을 위한 튜토리얼을 제공해주는 스마트 메이크업 거울
 > 사용자의 얼굴을 인식한 후 거울 속에 가상메이크업 투영, 얼굴 부위 영역(눈썹, 아이라인 영역 등)에 점선으로 프레임을 보여주어 따라 하기 쉬운 메이크업 튜토리얼을 제공함으로써 입문자들의 진입 장벽을 허물 수 있게 도와준다.
@@ -29,9 +31,11 @@ https://youtu.be/v81LYKVmSwQ
 ## 사용한 기술 스택
 - Python (all SW)
 - Figma(client, UI, Prototype 제작)
-- Github/Gitlab (버전관리)
 - PyQt5(GUI 라이브러리)
 - Jetson Nano(HW 디바이스)
+- opencv, dlib, numpy, scipy (AR 라이브러리)
+- CNN (얼굴형 판단 딥러닝 알고리즘) 
+- Github/Gitlab (버전관리)
 
 ## 구성도
 ![image](https://user-images.githubusercontent.com/48430781/113004607-b14eca80-91ae-11eb-89e2-25dfbc6955ff.png)
