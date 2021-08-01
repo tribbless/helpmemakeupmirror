@@ -297,7 +297,7 @@ class Select_face_Eyebrow(QWidget):
         self.color.pushButton_Brown.clicked.connect(self.Apply_Brown)
 
     def Apply_ResetAll(self):
-        print("all reset clicked")
+        print("[select_face_eyebrow.py] all reset clicked")
         if self.action == True:
             self.isKind = False
             self.changePixmap(self.makeupFace)
@@ -308,7 +308,7 @@ class Select_face_Eyebrow(QWidget):
         if self.action == True:
             self.isKind = True
             self.kind = "arch"
-        print("arch clicked")
+        print("[select_face_eyebrow.py] arch clicked")
         self.pushButton_GoBack.show()
         self.shape.BTN_Select(1)
         self.goToColor()
@@ -317,7 +317,7 @@ class Select_face_Eyebrow(QWidget):
         if self.action == True:
             self.isKind = True
             self.kind = "straight"
-        print("straight clicked")
+        print("[select_face_eyebrow.py] straight clicked")
         self.pushButton_GoBack.show()
         self.shape.BTN_Select(2)
         self.goToColor()
@@ -325,14 +325,14 @@ class Select_face_Eyebrow(QWidget):
     def Apply_ResetColor(self):
         if self.action == True:
             self.isColor = False
-        print("color reset clicked")
+        print("[select_face_eyebrow.py] color reset clicked")
         self.color.BTN_Select(0)
         self.slider.hide()
         self.label_slider.hide()
 
     def Apply_Black(self):
         self.change = "False"
-        print("balck clicked")
+        print("[select_face_eyebrow.py] balck clicked")
 
         if self.action == True:
             self.isColor = True
@@ -351,7 +351,7 @@ class Select_face_Eyebrow(QWidget):
 
     def Apply_Brown(self):
         self.change = "False"
-        print("brown clicked")
+        print("[select_face_eyebrow.py] brown clicked")
         if self.action == True:
             self.isColor = True
             face = self.makeupFace.copy()
@@ -375,7 +375,7 @@ class Select_face_Eyebrow(QWidget):
         self.change = "True"
 
     def backClicked(self):
-        print("back clicked")
+        print("[select_face_eyebrow.py] back clicked")
         self.slider.hide()
         self.label_slider.hide()
         self.pushButton_GoBack.hide()

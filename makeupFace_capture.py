@@ -93,14 +93,14 @@ class MakeupFace_Capture(QWidget):
 
     def start(self):
         self.flag = True
-        print("camera start")
+        print("[makeupFace_capture.py] camera start")
         self.timer = QTimer()
         self.timer = QTimer(self, interval=1000 / 24, timeout=self.nextFrameSlot)  # # 타이머가 끝날때마다 nextFrameSlot실행됨.
         self.timer.start()  # 1000이 1초 : 초당 24프레임으로 영상을 전송하겠다.
 
     def nextFrameSlot(self):
         if self.flag == False:
-            print("makeupFace Capture camera stop")
+            print("[makeupFace_capture.py] makeupFace Capture camera stop")
             self.stop()
         ret_val, cam = self.cpt.read()
         cam = cv2.flip(cam, 1)  # 0이 상하반전 / 1이 좌우반전
@@ -111,7 +111,7 @@ class MakeupFace_Capture(QWidget):
         self.label_face.setPixmap(QtGui.QPixmap(pix.scaled(700, 525, Qt.KeepAspectRatio)))
 
     def captureFace(self):
-        print("얼굴 캡쳐하기")
+        print("[makeupFace_capture.py] 얼굴 캡쳐하기")
         self.flag = False
         self.action = True
         cv2.imwrite('capture2.jpg', self.makeupFace)
@@ -124,33 +124,33 @@ class MakeupFace_Capture(QWidget):
         self.flag = False
         if self.action == True:
             face = self.makeupFace.copy()
-            print("--txt파일 생성 및 landmark(shape) make--")
-            print("shape start")
+            print("[makeupFace_capture.py] --txt파일 생성 및 landmark(shape) make--")
+            print("[makeupFace_capture.py] shape start")
             self.shape, self.result = fr.image_to_shape(face) # landmark
-            print(self.result)
+            print(f"[makeupFace_capture.py] 얼굴 인식 성공? {self.result}")
             if self.result == False:
-                print("얼굴인식 실패")
+                print("[makeupFace_capture.py] 얼굴인식 실패")
                 self.label_manual.setText("얼굴 인식에 실패했습니다.\n화면을 다시 캡쳐해주세요.")
                 self.action = False
                 self.start()
                 return
-            print("shape end")
+            print("[makeupFace_capture.py] shape end")
             self.landmark = self.shape
-            print("eyeshadow start")
+            print("[makeupFace_capture.py] eyeshadow start")
             result = fr.EyeBrow("Arch").frame(face, self.shape, True, flag=1) # eyeshadow
             fr.shadowCheck()
-            print("eyeshadow end")
-            print("lip start")
+            print("[makeupFace_capture.py] eyeshadow end")
+            print("[makeupFace_capture.py] lip start")
             fr.make_lips_txt(self.shape) # lip
-            print("lip end")
-            print("blusher start")
+            print("[makeupFace_capture.py] lip end")
+            print("[makeupFace_capture.py] blusher start")
             result = fr.Blusher("Round").frame(face, self.shape, flag=1) # blusher
             result = fr.Blusher("Oblong").frame(face, self.shape, flag=1)
             result = fr.Blusher("Square").frame(face, self.shape, flag=1)
-            print("--blusher end--")
+            print("[makeupFace_capture.py] --blusher end--")
 
         else:
-            print("캡쳐하지 않았습니다.")
+            print("[makeupFace_capture.py] 캡쳐하지 않았습니다.")
 
     def reset(self):
         self.label_face.clear()

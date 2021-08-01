@@ -15,6 +15,25 @@ class SubWindow_Weather(QDialog): #QDialog
 
     def showWeather(self):
         date_str, rain_str, icon_url, temp_str = weatherInfo.weather_rain()
+
+        '''
+        ### 임의로 날씨 데이터 입력 start
+        date_str = ["00", "01", "02", "03", "04", "05", "06", "07"]
+        rain_str = ["70", "70", "80", "90", "80", "70", "60", "60"]
+        icon_url = ["image/ic_small/ic_weather_rain.png", "image/ic_small/ic_weather_rain.png", "image/ic_small/ic_weather_rain.png", "image/ic_small/ic_weather_rain.png",
+                    "image/ic_small/ic_weather_rain.png", "image/ic_small/ic_weather_rain.png", "image/ic_small/ic_weather_rain.png", "image/ic_small/ic_weather_rain.png"]
+        temp_str = ["25", "25", "24", "24", "25", "24", "25", "26"]
+        self.label_TimeOne.setText(date_str[0])
+        self.label_TimeTwo.setText(date_str[1])
+        self.label_TimeThree.setText(date_str[2])
+        self.label_TimeFour.setText(date_str[3])
+        self.label_TimeFive.setText(date_str[4])
+        self.label_TimeSix.setText(date_str[5])
+        self.label_TimeSeven.setText(date_str[6])
+        self.label_TimeEight.setText(date_str[7])
+        ### 임의로 날씨 데이터 입력 end
+        '''
+
         # 시간
         self.label_TimeOne.setText(date_str[0][-2:])
         self.label_TimeTwo.setText(date_str[1][-2:])
@@ -24,6 +43,7 @@ class SubWindow_Weather(QDialog): #QDialog
         self.label_TimeSix.setText(date_str[5][-2:])
         self.label_TimeSeven.setText(date_str[6][-2:])
         self.label_TimeEight.setText(date_str[7][-2:])
+
         # 강수 확률
         self.label_RainOne.setText(rain_str[0] + "%")
         self.label_RainTwo.setText(rain_str[1] + "%")

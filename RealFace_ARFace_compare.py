@@ -104,9 +104,9 @@ class RealFace_ARFace_Compare(QWidget):
         self.label_HelpMe_Logo.setStyleSheet("border-image: url(image/logo_text.png);")
 
     def ShareImage(self):
-        print("이미지 공유하기")
+        print("[RealFace_ARFace_compare.py] 이미지 공유하기")
 
     def reset(self):
-        print("compare resetALL")
+        print("[RealFace_ARFace_compare.py] compare resetALL")
         self.label_faceAR.clear()
         self.label_faceAR.setText("you didn't capture")

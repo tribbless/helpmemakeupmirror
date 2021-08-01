@@ -807,31 +807,31 @@ def image_to_landmark(face):
 def shadowCheck():
     j = 0
     file_shadow = np.loadtxt('frame/shadowArray2.txt')
-    for i in range(0, len(file_shadow)):
-        print(file_shadow[i])
+    #for i in range(0, len(file_shadow)):
+    #    print(file_shadow[i])
     if (file_shadow[9][0] >= file_shadow[4][0]):
         file_shadow[9][0] = file_shadow[9][0] - 5
 
     for i in range(len(file_shadow) - 18, 1, -1):
-        print(len(file_shadow) - 18, 0)
+        #print(len(file_shadow) - 18, 0)
         while (file_shadow[i][0] <= file_shadow[i - 1][0]):
             file_shadow[i - 1][0] -= 1
 
     for i in range(len(file_shadow) - 12, len(file_shadow) - 17, -1):
-        print(len(file_shadow) - 12, len(file_shadow) - 17)
+        #print(len(file_shadow) - 12, len(file_shadow) - 17)
         while (file_shadow[i][0] <= file_shadow[i - 1][0]):
             file_shadow[i - 1][0] -= 1
 
     for i in range(len(file_shadow) - 7, len(file_shadow) - 11, -1):
-        print(len(file_shadow) - 7, len(file_shadow) - 12)
+        #print(len(file_shadow) - 7, len(file_shadow) - 12)
         while (file_shadow[i][0] <= file_shadow[i - 1][0]):
             file_shadow[i - 1][0] -= 1
 
     for i in range(len(file_shadow) - 1, len(file_shadow) - 6, -1):
-        print(len(file_shadow) - 1, len(file_shadow) - 7)
+        #print(len(file_shadow) - 1, len(file_shadow) - 7)
         while (file_shadow[i][0] <= file_shadow[i - 1][0]):
             file_shadow[i - 1][0] -= 1
-    # print(file_shadow)
+    #print(file_shadow)
     np.savetxt('frame/shadowArray2.txt', file_shadow, fmt='%d')
 
 def draw_draw(frame, image):

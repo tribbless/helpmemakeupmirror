@@ -285,7 +285,7 @@ class Select_face_Lip(QWidget):
         self.pushButton_ColorSix.setStyleSheet("background-color:" + set[6] + ";")
 
     def Apply_ResetColor(self):
-        print("color reset clicked")
+        print("[select_face_lip.py] color reset clicked")
         if self.action == True:
             self.isColor = False
             self.changePixmap(self.makeupFace)
@@ -296,7 +296,7 @@ class Select_face_Lip(QWidget):
 
     def Apply_ColorOne(self):
         self.change = "False"
-        print("ColorOne clicked")
+        print("[select_face_lip.py] ColorOne clicked")
         self.R = 200
         self.G = 6
         self.B = 6
@@ -309,7 +309,7 @@ class Select_face_Lip(QWidget):
 
     def Apply_ColorTwo(self):
         self.change = "False"
-        print("ColorTwo clicked")
+        print("[select_face_lip.py] ColorTwo clicked")
         self.R = 227
         self.G = 67
         self.B = 62
@@ -322,7 +322,7 @@ class Select_face_Lip(QWidget):
 
     def Apply_ColorThree(self):
         self.change = "False"
-        print("ColorThree clicked")
+        print("[select_face_lip.py] ColorThree clicked")
         self.R = 249
         self.G = 107
         self.B = 125
@@ -335,7 +335,7 @@ class Select_face_Lip(QWidget):
 
     def Apply_ColorFour(self):
         self.change = "False"
-        print("ColorFour clicked")
+        print("[select_face_lip.py] ColorFour clicked")
         self.R = 167
         self.G = 57
         self.B = 46
@@ -348,7 +348,7 @@ class Select_face_Lip(QWidget):
 
     def Apply_ColorFive(self):
         self.change = "False"
-        print("ColorFive clicked")
+        print("[select_face_lip.py] ColorFive clicked")
         self.R = 125
         self.G = 19
         self.B = 15
@@ -361,7 +361,7 @@ class Select_face_Lip(QWidget):
 
     def Apply_ColorSix(self):
         self.change = "False"
-        print("ColorSix clicked")
+        print("[select_face_lip.py] ColorSix clicked")
         self.R = 94
         self.G = 1
         self.B = 2
@@ -394,7 +394,7 @@ class Select_face_Lip(QWidget):
         self.label_face.setPixmap(QtGui.QPixmap(result2).scaled(672, 504, Qt.KeepAspectRatio))
 
     def reset(self):
-        print("lip resetALL")
+        print("[select_face_lip.py] lip resetALL")
         self.label_face.clear()
         self.label_face.setText("you didn't capture")
         self.action = False # 앞에 화면에서 캡쳐했는지 check

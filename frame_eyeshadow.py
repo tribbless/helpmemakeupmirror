@@ -106,7 +106,7 @@ class Frame_Eyeshadow(QWidget):
 
     def start(self):
         self.flag = True
-        print("camera start")
+        print("[frame_eyeshadow.py] camera start")
         if self.kind =="middle_shadow":
             self.kindName = "EyeShadow_Middle"
             self.label_background_Manual.setText("프레임 영역에 아이쉐도우를 발라주세요.")
@@ -116,14 +116,14 @@ class Frame_Eyeshadow(QWidget):
         elif self.kind =="small_shadow":
             self.kindName = "EyeShadow_Small"
             self.label_background_Manual.setText("프레임 영역에 아이쉐도우를 발라주세요.")
-        print(self.kindName)
+        print(f"[frame_eyeshadow.py] 아이쉐도우 종류 : {self.kindName}")
         self.timer = QTimer()
         self.timer = QTimer(self, interval=1000 / 24, timeout=self.nextFrameSlot)  # # 타이머가 끝날때마다 nextFrameSlot실행됨.
         self.timer.start()  # 1000이 1초 : 초당 24프레임으로 영상을 전송하겠다.
 
     def nextFrameSlot(self):
         if self.flag == False:
-            print("camera stop")
+            print("[frame_eyeshadow.py] camera stop")
             self.stop()
         ret_val, image = self.cpt.read()
         #image = imutils.resize(image, width=708)
@@ -156,7 +156,7 @@ class Frame_Eyeshadow(QWidget):
         self.label_face.clear()
 
     def reset(self):
-        print("frame shadow resetALL")
+        print("[frame_eyeshadow.py] frame shadow resetALL")
         self.shape_flag = False
         self.resetPix()
         self.label_faceAR.clear()

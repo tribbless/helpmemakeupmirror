@@ -116,36 +116,36 @@ class SubWindow_MenuShortcut(QDialog):  # QDialog
         self.reject()
 
     def HomeClieked(self):
-        print("home clicked")
+        print("[subwindow_menuShortcut.py] home clicked")
         self.btn = 1
         self.accept()
 
     def MenuClieked(self):
-        print("main menu clicked")
+        print("[subwindow_menuShortcut.py] main menu clicked")
         self.btn = 2
         self.accept()
 
     def BaseMakeupClieked(self):
-        print("base makeup video clicked")
+        print("[subwindow_menuShortcut.py] base makeup video clicked")
         self.btn = 3
         self.accept()
 
     def PersonalColorClieked(self):
-        print("personal color clicked")
+        print("[subwindow_menuShortcut.py] personal color clicked")
         self.btn = 4
         self.accept()
 
     def CaptureClieked(self):
-        print("color makeup clicked")
+        print("[subwindow_menuShortcut.py] color makeup clicked")
         self.btn = 5
         self.accept()
 
     def SelectClieked(self):
-        print("sub menu clicked")
+        print("[subwindow_menuShortcut.py] sub menu clicked")
         self.btn = 6
         self.accept()
 
     def ExitClieked(self):
-        print("exit clicked")
+        print("[subwindow_menuShortcut.py] exit clicked")
         self.btn = 0
         self.accept()

@@ -106,7 +106,7 @@ class Frame_Blusher(QWidget):
 
     def start(self):
         self.flag = True
-        print("camera start")
+        print("[frame_blusher.py] camera start")
         if self.kind == "round":
             self.kindName = "Blusher_Round"
             self.label_background_Manual.setText("프레임 영역에 맞춰 볼 중앙 바깥부터 관자놀이까지\n사선 모양으로 블러셔를 발라주세요.")
@@ -116,14 +116,14 @@ class Frame_Blusher(QWidget):
         elif self.kind == "square":
             self.kindName = "Blusher_Square"
             self.label_background_Manual.setText("프레임 영역에 맞춰 볼 앞쪽부터 귀 쪽까지\n사선 반대 방향으로 블러셔를 넓게 펴서 발라주세요.")
-        print(self.kindName)
+        print(f"[frame_blusher.py] 블러셔 종류 : {self.kindName}")
         self.timer = QTimer()
         self.timer = QTimer(self, interval=1000 / 24, timeout=self.nextFrameSlot)  # # 타이머가 끝날때마다 nextFrameSlot실행됨.
         self.timer.start()  # 1000이 1초 : 초당 24프레임으로 영상을 전송하겠다.
 
     def nextFrameSlot(self):
         if self.flag == False:
-            print("camera stop")
+            print("[frame_blusher.py] camera stop")
             self.stop()
         ret_val, image = self.cpt.read()
         # image = imutils.resize(image, width=708)
@@ -156,7 +156,7 @@ class Frame_Blusher(QWidget):
         self.label_face.clear()
 
     def reset(self):
-        print("frame blusher resetALL")
+        print("[frame_blusher.py] frame blusher resetALL")
         self.shape_flag = False
         self.resetPix()
         self.label_faceAR.clear()

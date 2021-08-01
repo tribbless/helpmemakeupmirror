@@ -106,21 +106,21 @@ class Frame_Eyeliner(QWidget):
 
     def start(self):
         self.flag = True
-        print("camera start")
+        print("[frame_eyeliner.py] camera start")
         if self.kind == "Middle":
             self.kindName = "EyeLiner_Middle"
             self.label_background_Manual.setText("프레임 영역에 맞춰 아이라인을 그려주세요.")
         elif self.kind == "Up":
             self.kindName = "EyeLiner_Up"
             self.label_background_Manual.setText("프레임 영역에 맞춰 아이라인을 위로 그려주세요.")
-        print(self.kindName)
+        print(f"[frame_eyeliner.py] 아이라이너 종류 : {self.kindName}")
         self.timer = QTimer()
         self.timer = QTimer(self, interval=1000 / 24, timeout=self.nextFrameSlot)  # # 타이머가 끝날때마다 nextFrameSlot실행됨.
         self.timer.start()  # 1000이 1초 : 초당 24프레임으로 영상을 전송하겠다.
 
     def nextFrameSlot(self):
         if self.flag == False:
-            print("camera stop")
+            print("[frame_eyeliner.py] camera stop")
             self.stop()
         ret_val, image = self.cpt.read()
         # image = imutils.resize(image, width=1200)
@@ -153,7 +153,7 @@ class Frame_Eyeliner(QWidget):
         self.label_face.clear()
 
     def reset(self):
-        print("frame liner resetALL")
+        print("[frame_eyeliner.py] frame liner resetALL")
         self.shape_flag = False
         self.resetPix()
         self.label_faceAR.clear()

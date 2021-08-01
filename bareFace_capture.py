@@ -95,14 +95,14 @@ class BareFace_Capture(QWidget):
 
     def start(self):
         self.flag = True
-        print("camera start")
+        print("[bareFace_capture.py] camera start")
         self.timer = QTimer()
         self.timer = QTimer(self, interval=1000 / 24, timeout=self.nextFrameSlot) # # 타이머가 끝날때마다 nextFrameSlot실행됨.
         self.timer.start()  # 1000이 1초 : 초당 24프레임으로 영상을 전송하겠다.
 
     def nextFrameSlot(self):
         if self.flag == False:
-            print("camera stop")
+            print("[bareFace_capture.py] camera stop")
             self.stop()
         ret_val, cam = self.cpt.read()
         cam = cv2.cvtColor(cam, cv2.COLOR_BGR2RGB)  # 첨에 영상정보가 BGR이므로 RGB으로 바꿈ㅇㅇ 색상정보 위치바꾸기
@@ -113,7 +113,7 @@ class BareFace_Capture(QWidget):
         self.label_face.setPixmap(QtGui.QPixmap(pix.scaled(700, 525, Qt.KeepAspectRatio)))
 
     def captureFace(self):
-        print("얼굴 캡쳐하기")
+        print("[bareFace_capture.py] 얼굴 캡쳐하기")
         self.flag = False
         self.action = True
         self.bareFace = cv2.cvtColor(self.bareFace, cv2.COLOR_BGR2RGB)
@@ -123,17 +123,17 @@ class BareFace_Capture(QWidget):
         self.label_manual.setText("퍼스널 컬러 진단 중 입니다.")
 
     def personalFace(self):
-        print("stop")
+        print("[bareFace_capture.py] stop")
         self.flag = False
         self.result = True
 
         #check =os.path.isfile('capture.jpg')
         if self.action == True:
-            print("퍼스널 컬러 진단 시작")
+            print("[bareFace_capture.py] 퍼스널 컬러 진단 시작")
             tone = personal_color_start.main('capture.jpg')
-            print(tone)
+            print(f"[bareFace_capture.py] 퍼스널 컬러 진단 결과 : {tone}")
             if tone == False:
-                print("얼굴 인식 실패하셨습니다.")
+                print("[bareFace_capture.py] 얼굴 인식 실패하셨습니다.")
                 self.label_manual.setText("얼굴 인식에 실패했습니다.\n화면을 다시 캡쳐해주세요.")
                 self.action = False
                 self.result = False
@@ -142,7 +142,7 @@ class BareFace_Capture(QWidget):
             self.tone = tone
             self.bareFace = cv2.cvtColor(self.bareFace, cv2.COLOR_RGB2BGR)
         else:
-            print("캡쳐하지 않았습니다.")
+            print("[bareFace_capture.py] 캡쳐하지 않았습니다.")
 
     def reset(self):
         self.label_face.clear()
