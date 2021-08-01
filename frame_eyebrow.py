@@ -110,25 +110,25 @@ class Frame_Eyebrow(QWidget):
 
     def start(self):
         self.flag = True
-        print("camera start")
+        print("[frame_eyebrow.py] camera start")
         if self.kind =="arch":
             self.kindName = "Eyebrow_Arch"
             self.label_background_Manual.setText("아치형으로 눈썹을 그려주세요.")
         elif self.kind =="straight":
             self.kindName = "Eyebrow_Straight"
             self.label_background_Manual.setText("일자로 눈썹을 그려주세요.")
-        print(self.face_kind)
+        print(f"[frame_eyebrow.py] face_kind : {self.face_kind}")
         if self.face_kind!= "0":
-            print("얼굴형에 맞춘 눈썹입니다. : ", self.face_kind) ## 무슨 멘트써야하지..흐음.....
-        print(self.kindName)
-        print(self.isDetect)
+            print("[frame_eyebrow.py] 얼굴형에 맞춘 눈썹입니다. : ", self.face_kind)
+        print(f"[frame_eyebrow.py] 눈썹 종류 : {self.kindName}")
+        print(f"[frame_eyebrow.py] 얼굴형 분석 유무 : {self.isDetect}")
         self.timer = QTimer()
         self.timer = QTimer(self, interval=1000 / 24, timeout=self.nextFrameSlot)  # # 타이머가 끝날때마다 nextFrameSlot실행됨.
         self.timer.start()  # 1000이 1초 : 초당 24프레임으로 영상을 전송하겠다.
 
     def nextFrameSlot(self):
         if self.flag == False:
-            print("camera stop")
+            print("[frame_eyebrow.py] camera stop")
             self.stop()
         ret_val, image = self.cpt.read()
         #image = imutils.resize(image, width=708)
@@ -161,7 +161,7 @@ class Frame_Eyebrow(QWidget):
         self.label_face.clear()
 
     def reset(self):
-        print("frame brow resetALL")
+        print("[frame_eyebrow.py] frame brow resetALL")
         self.isDetect = False
         self.shape_flag = False
         self.face_kind = "0"

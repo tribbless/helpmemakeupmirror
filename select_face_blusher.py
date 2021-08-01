@@ -394,7 +394,7 @@ class Select_face_Blusher(QWidget):
         self.color.pushButton_ColorEight.clicked.connect(self.Apply_ColorEight)
 
     def Apply_ResetAll(self):
-        print("all reset clicked")
+        print("[select_face_blusher.py] all reset clicked")
         if self.action == True:
             self.isKind = False
             self.changePixmap(self.makeupFace)
@@ -403,7 +403,7 @@ class Select_face_Blusher(QWidget):
 
 
     def Apply_Round(self):
-        print("round clicked")
+        print("[select_face_blusher.py] round clicked")
         if self.action == True:
             self.isKind = True
             self.kind = "round"
@@ -412,7 +412,7 @@ class Select_face_Blusher(QWidget):
         self.goToColor()
 
     def Apply_Oblong(self):
-        print("oblong clicked")
+        print("[select_face_blusher.py] oblong clicked")
         if self.action == True:
             self.isKind = True
             self.kind = "oblong"
@@ -421,7 +421,7 @@ class Select_face_Blusher(QWidget):
         self.goToColor()
 
     def Apply_Square(self):
-        print("square clicked")
+        print("[select_face_blusher.py] square clicked")
         if self.action == True:
             self.isKind = True
             self.kind = "square"
@@ -430,7 +430,7 @@ class Select_face_Blusher(QWidget):
         self.goToColor()
 
     def Apply_ResetColor(self):
-        print("color reset clicked")
+        print("[select_face_blusher.py] color reset clicked")
         if self.action == True:
             self.isColor = False
         # print(self.color.pushButton_ResetColor.height())
@@ -441,7 +441,7 @@ class Select_face_Blusher(QWidget):
 
     def Apply_ColorOne(self):
         self.change = "False"
-        print("ColorOne clicked")
+        print("[select_face_blusher.py] ColorOne clicked")
         self.colorName = "179, 181, 251"
         self.color.BTN_Select(1)
         self.slider.setValue(3)  # 투명도 바 초기값으로 셋팅
@@ -452,7 +452,7 @@ class Select_face_Blusher(QWidget):
 
     def Apply_ColorTwo(self):
         self.change = "False"
-        print("ColorTwo clicked")
+        print("[select_face_blusher.py] ColorTwo clicked")
         self.colorName = "155, 174, 249"
         self.color.BTN_Select(2)
         self.slider.setValue(3)  # 투명도 바 초기값으로 셋팅
@@ -463,7 +463,7 @@ class Select_face_Blusher(QWidget):
 
     def Apply_ColorThree(self):
         self.change = "False"
-        print("ColorThree clicked")
+        print("[select_face_blusher.py] ColorThree clicked")
         self.colorName = "164, 172, 229"
         self.color.BTN_Select(3)
         self.slider.setValue(3)  # 투명도 바 초기값으로 셋팅
@@ -474,7 +474,7 @@ class Select_face_Blusher(QWidget):
 
     def Apply_ColorFour(self):
         self.change = "False"
-        print("ColorFour clicked")
+        print("[select_face_blusher.py] ColorFour clicked")
         self.colorName = "122, 157, 243"
         self.color.BTN_Select(4)
         self.slider.setValue(3)  # 투명도 바 초기값으로 셋팅
@@ -485,7 +485,7 @@ class Select_face_Blusher(QWidget):
 
     def Apply_ColorFive(self):
         self.change = "False"
-        print("ColorFive clicked")
+        print("[select_face_blusher.py] ColorFive clicked")
         self.colorName = "93, 109, 232"
         self.color.BTN_Select(5)
         self.slider.setValue(3)  # 투명도 바 초기값으로 셋팅
@@ -496,7 +496,7 @@ class Select_face_Blusher(QWidget):
 
     def Apply_ColorSix(self):
         self.change = "False"
-        print("ColorSix clicked")
+        print("[select_face_blusher.py] ColorSix clicked")
         self.colorName = "64, 104, 246"
         self.color.BTN_Select(6)
         self.slider.setValue(3)  # 투명도 바 초기값으로 셋팅
@@ -507,7 +507,7 @@ class Select_face_Blusher(QWidget):
 
     def Apply_ColorSeven(self):
         self.change = "False"
-        print("ColorSeven clicked")
+        print("[select_face_blusher.py] ColorSeven clicked")
         self.colorName = "105, 89, 240"
         self.color.BTN_Select(7)
         self.slider.setValue(3)  # 투명도 바 초기값으로 셋팅
@@ -518,7 +518,7 @@ class Select_face_Blusher(QWidget):
 
     def Apply_ColorEight(self):
         self.change = "False"
-        print("ColorEight clicked")
+        print("[select_face_blusher.py] ColorEight clicked")
         self.colorName = "87, 64, 225"
         self.color.BTN_Select(8)
         self.slider.setValue(3)  # 투명도 바 초기값으로 셋팅
@@ -540,7 +540,7 @@ class Select_face_Blusher(QWidget):
         self.change = "True"
 
     def backClicked(self):
-        print("back clicked")
+        print("[select_face_blusher.py] back clicked")
         self.slider.hide()
         self.label_slider.hide()
         self.pushButton_GoBack.hide()
@@ -558,7 +558,7 @@ class Select_face_Blusher(QWidget):
         self.label_face.setPixmap(QtGui.QPixmap(result2).scaled(672, 504, Qt.KeepAspectRatio))
 
     def reset(self):
-        print("blusher resetALL")
+        print("[select_face_blusher.py] blusher resetALL")
         self.label_face.clear()
         self.label_face.setText("you didn't capture")
         self.action = False # 앞에 화면에서 캡쳐했는지 check

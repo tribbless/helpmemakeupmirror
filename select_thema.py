@@ -139,23 +139,23 @@ class Select_Thema(QWidget):
 
     def face_shape_detect(self):
         isDetect = True
-        print("얼굴형 진단 시작")
+        print("[select_thema.py] 얼굴형 진단 시작")
         start_time = time.time()
-        #face_shape = face_shape_detect.main('capture2.jpg')
-        face_shape = client_test.client_main('capture2.jpg')
+        #face_shape = face_shape_detect.main('capture2.jpg') # face_shape_detect self 동작
+        face_shape = client_test.client_main('capture2.jpg') # face_shape_detect server에서 동작
+        #face_shape = "oblong" # test 용
         end_time = time.time()
-        print("Working Time: {} sec".format(end_time-start_time))
-        print("얼굴형은? " + face_shape)
+        print(f"[select_thema.py] Working Time: {end_time-start_time} sec")
+        print("[select_thema.py] 얼굴형은? " + face_shape)
         face_shape2 = face_shape.capitalize()
-        #face_shape = "oblong"
-        #face_shape2 = "Oblong"
-        print(self.tone)
+
         ## 얼굴형에 따른 눈썹 모양
         if face_shape == "oblong":
             brow_shape = "straight"
         else:
             brow_shape = "arch"
-        print(brow_shape)
+        print(f"[select_thema.py] 눈썹형은? {brow_shape}")
+        print(f"[select_thema.py] 퍼스널컬러 진단 했음? {self.tone}")
         '''
         봄웜톤(spring) : SPRING WARM
         가을웜톤(fall) : FALL WARM
@@ -163,7 +163,6 @@ class Select_Thema(QWidget):
         겨울쿨톤(winter) : WINTER COOL
         '''
         if self.tone != "False":
-            print()
             if self.tone == "SPRING WARM":
                 self.Apply_SpringThema(face_shape, brow_shape, isDetect)
             elif self.tone == "SUMMER COOL":
@@ -177,21 +176,20 @@ class Select_Thema(QWidget):
         self.label_text.setText("얼굴형은 " + face_shape2 + "입니다.")
 
     def Apply_UserThema(self):
-        print("user click")
+        print("[select_thema.py] user click")
         if self.action == True:
             self.label_text.setText("얼굴형 분석 중 입니다.")
             self.showTime()
         else:
-            print("you didn't capture.")
+            print("[select_thema.py] you didn't capture.")
 
     def Apply_SpringThema(self, blusher_shape="round", brow_shape="arch", isDetect=False):
         self.label_text.setText("SPRING")
-        print("spring click")
+        print("[select_thema.py] spring click")
         #print(blusher_shape)
         if self.action == True:
             self.isChoice = True
 
-            print(blusher_shape)
             brow = self.Start_eyebrowVM(brow_shape, "brown", 0.3)
             shadow = self.Start_eyeshadowVM("small_shadow", 104, 61, 27, 0.3, brow)
             liner = self.Start_eyelinerVM("Middle", (49, 62, 106), 0.6, shadow)
@@ -199,13 +197,13 @@ class Select_Thema(QWidget):
             lip = self.Start_lipVM(227, 67, 62, 0.3, blusher)
             self.resultFace = lip
             self.changePixmap(self.resultFace)
-            self.sendKind("arch", "small_shadow", "Middle", blusher_shape, isDetect)
+            self.sendKind(brow_shape, "small_shadow", "Middle", blusher_shape, isDetect)
         else:
-            print("you didn't capture.")
+            print("[select_thema.py] you didn't capture.")
 
     def Apply_SummerThema(self, blusher_shape="round", brow_shape="straight", isDetect=False):
         self.label_text.setText("SUMMER")
-        print("summer click")
+        print("[select_thema.py] summer click")
         if self.action == True:
             self.isChoice = True
 
@@ -216,13 +214,13 @@ class Select_Thema(QWidget):
             lip = self.Start_lipVM(237, 70, 150, 0.3, blusher)
             self.resultFace = lip
             self.changePixmap(self.resultFace)
-            self.sendKind("straight", "small_shadow", "Middle", blusher_shape, isDetect)
+            self.sendKind(brow_shape, "small_shadow", "Middle", blusher_shape, isDetect)
         else:
-            print("you didn't capture.")
+            print("[select_thema.py] you didn't capture.")
 
     def Apply_FallThema(self, blusher_shape="round", brow_shape="arch", isDetect=False):
         self.label_text.setText("FALL")
-        print("fall click")
+        print("[select_thema.py] fall click")
         if self.action == True:
             self.isChoice = True
 
@@ -233,13 +231,13 @@ class Select_Thema(QWidget):
             lip = self.Start_lipVM(186, 57, 61, 0.3, blusher)
             self.resultFace = lip
             self.changePixmap(self.resultFace)
-            self.sendKind("arch", "small_shadow", "Middle", blusher_shape, isDetect)
+            self.sendKind(brow_shape, "small_shadow", "Middle", blusher_shape, isDetect)
         else:
-            print("you didn't capture.")
+            print("[select_thema.py] you didn't capture.")
 
     def Apply_WinterThema(self, blusher_shape="round", brow_shape="straight", isDetect=False):
         self.label_text.setText("WINTER")
-        print("winter click")
+        print("[select_thema.py] winter click")
         if self.action == True:
             self.isChoice = True
 
@@ -250,13 +248,13 @@ class Select_Thema(QWidget):
             lip = self.Start_lipVM(198, 36, 129, 0.3, blusher)
             self.resultFace = lip
             self.changePixmap(self.resultFace)
-            self.sendKind("straight", "small_shadow", "Middle", blusher_shape, isDetect)
+            self.sendKind(brow_shape, "small_shadow", "Middle", blusher_shape, isDetect)
         else:
-            print("you didn't capture.")
+            print("[select_thema.py] you didn't capture.")
 
     def Apply_PartyThema(self, isDetect=False):
         self.label_text.setText("PARTY")
-        print("party click")
+        print("[select_thema.py] party click")
         if self.action == True:
             self.isChoice = True
 
@@ -269,11 +267,11 @@ class Select_Thema(QWidget):
             self.changePixmap(self.resultFace)
             self.sendKind("straight", "small_shadow", "Up", "round", isDetect)
         else:
-            print("you didn't capture.")
+            print("[select_thema.py] you didn't capture.")
 
     def Apply_DateThema(self, isDetect=False):
         self.label_text.setText("DATE")
-        print("date click")
+        print("[select_thema.py] date click")
         if self.action == True:
             self.isChoice = True
 
@@ -286,14 +284,14 @@ class Select_Thema(QWidget):
             self.changePixmap(self.resultFace)
             self.sendKind("arch", "small_shadow", "Middle", "round", isDetect)
         else:
-            print("you didn't capture.")
+            print("[select_thema.py] you didn't capture.")
 
     def Apply_OfficeThema(self, blusher_shape="round", brow_shape="arch", isDetect=False):
-        self.label_text.setText("OFFICE")
-        print("office click")
+        if isDetect == False:
+            self.label_text.setText("OFFICE")
+            print("[select_thema.py] office click")
         if self.action == True:
             self.isChoice = True
-
             brow = self.Start_eyebrowVM(brow_shape, "brown", 0.3)
             shadow = self.Start_eyeshadowVM("small_shadow", 237, 190, 162, 0.3, brow)
             liner = self.Start_eyelinerVM("Middle", (34, 42, 70), 0.6, shadow)
@@ -301,13 +299,13 @@ class Select_Thema(QWidget):
             lip = self.Start_lipVM(235, 86, 95, 0.3, blusher)
             self.resultFace = lip
             self.changePixmap(self.resultFace)
-            self.sendKind("arch", "small_shadow", "Middle", blusher_shape, isDetect)
+            self.sendKind(brow_shape, "small_shadow", "Middle", blusher_shape, isDetect)
         else:
-            print("you didn't capture.")
+            print("[select_thema.py] you didn't capture.")
 
     ## 가상 화장 (rgb: 새도우 그대로/아이라이너 반대/블러셔반대/립그대로
     def Start_eyebrowVM(self, kind, color, alpha):
-        print("start eyebrowVM")
+        print("[select_thema.py] start eyebrowVM")
         face = self.makeupFace.copy()
         brow = eyebrowVM.Eyebrow(kind, color)
         image = brow.eyebrow_Apply(self.landmark, face)
@@ -315,7 +313,7 @@ class Select_Thema(QWidget):
         return result
 
     def Start_eyeshadowVM(self, kind, R, G, B, alpha, face):
-        print("start eyeshadowVM")
+        print("[select_thema.py] start eyeshadowVM")
         path = 'frame/shadowArray2.txt'
         e = eyeshadowVM.eyeshadow_class(B, G, R, kind, face, path)
         e.eyeshadow_makeup()
@@ -324,7 +322,7 @@ class Select_Thema(QWidget):
         return result
 
     def Start_eyelinerVM(self, kind, color, alpha, face):
-        print("start eyelinerVM")
+        print("[select_thema.py] start eyelinerVM")
         shadow = face.copy()
         liner = eyelinerVM.Eyeliner(kind, color, shadow)
         image = liner.eyeliner_Apply(self.landmark)
@@ -332,14 +330,14 @@ class Select_Thema(QWidget):
         return result
 
     def Start_blusherVM(self, kind, color, alpha, face):
-        print("start blusherVM")
+        print("[select_thema.py] start blusherVM")
         file_path = "frame/" + kind + "Blusher2.txt"
         m = blusherVM.makeup(face, file_path)
         result = m.apply_makeup_all(color, alpha)
         return result
 
     def Start_lipVM(self, R, G, B, alpha, face):
-        print("start lipVM")
+        print("[select_thema.py] start lipVM")
         file_path = 'frame/lipsArray.txt'
         l = lipVM.lipstick_class(B, G, R, face, file_path)
         l.lipstick_makeup()
@@ -349,7 +347,7 @@ class Select_Thema(QWidget):
 
     def changePixmap(self, result):
         result = QtGui.QImage(result, result.shape[1], result.shape[0], result.shape[1] * 3,
-                              QtGui.QImage.Format_RGB888).rgbSwapped()
+                            QtGui.QImage.Format_RGB888).rgbSwapped()
         result2 = QtGui.QPixmap(result)
         self.label_face.setPixmap(QtGui.QPixmap(result2).scaled(672, 504, Qt.KeepAspectRatio))
 
@@ -359,7 +357,7 @@ class Select_Thema(QWidget):
         self.kindLiner = liner
         self.kindBlusher = blusher
         self.isDetect = isDetect
-        print(isDetect)
+        print(f"[select_thema.py] 얼굴형 detect? {isDetect}")
 
     def reset(self):
         self.label_face.clear()
@@ -369,4 +367,3 @@ class Select_Thema(QWidget):
         self.isChoice = False
         self.isDetect = False
         self.tone = "False"
-

@@ -96,14 +96,14 @@ class Frame_Lip(QWidget):
 
     def start(self):
         self.flag = True
-        print("camera start")
+        print("[frame_lip.py] camera start")
         self.timer = QTimer()
         self.timer = QTimer(self, interval=1000 / 24, timeout=self.nextFrameSlot) # # 타이머가 끝날때마다 nextFrameSlot실행됨.
         self.timer.start()  # 1000이 1초 : 초당 24프레임으로 영상을 전송하겠다.
 
     def nextFrameSlot(self):
         if self.flag == False:
-            print("camera stop")
+            print("[frame_lip.py] camera stop")
             self.stop()
         ret_val, cam = self.cpt.read()
         cam = cv2.cvtColor(cam, cv2.COLOR_BGR2RGB)  # 첨에 영상정보가 BGR이므로 RGB으로 바꿈ㅇㅇ 색상정보 위치바꾸기
@@ -113,7 +113,7 @@ class Frame_Lip(QWidget):
         self.label_face.setPixmap(QtGui.QPixmap(pix.scaled(616, 462, Qt.KeepAspectRatio)))
 
     def reset(self):
-        print("frame lip resetALL")
+        print("[frame_lip.py] frame lip resetALL")
         self.label_face.clear()
         self.label_faceAR.clear()
         self.label_faceAR.setText("you didn't capture")

@@ -402,7 +402,7 @@ class Select_face_Eyeshadow(QWidget):
         self.color.pushButton_ColorNine.clicked.connect(self.Apply_ColorNine)
 
     def Apply_ResetAll(self):
-        print("all reset clicked")
+        print("[select_face_eyeshadow.py] all reset clicked")
         if self.action == True:
             self.isKind = False
             self.changePixmap(self.makeupFace)
@@ -412,7 +412,7 @@ class Select_face_Eyeshadow(QWidget):
         # print(self.shape.pushButton_ResetAll.width())
 
     def Apply_Small(self):
-        print("small clicked")
+        print("[select_face_eyeshadow.py] small clicked")
         if self.action == True:
             self.isKind = True
             self.kind = "small_shadow"
@@ -421,7 +421,7 @@ class Select_face_Eyeshadow(QWidget):
         self.goToColor()
 
     def Apply_Middle(self):
-        print("middle clicked")
+        print("[select_face_eyeshadow.py] middle clicked")
         if self.action == True:
             self.isKind = True
             self.kind = "middle_shadow"
@@ -430,7 +430,7 @@ class Select_face_Eyeshadow(QWidget):
         self.goToColor()
 
     def Apply_Large(self):
-        print("large clicked")
+        print("[select_face_eyeshadow.py] large clicked")
         if self.action == True:
             self.isKind = True
             self.kind = "large_shadow"
@@ -442,7 +442,7 @@ class Select_face_Eyeshadow(QWidget):
     def Apply_ResetColor(self):
         if self.action == True:
             self.isColor = False
-        print("color reset clicked")
+        print("[select_face_eyeshadow.py] color reset clicked")
         # print(self.color.pushButton_ResetColor.height())
         # print(self.color.pushButton_ResetColor.width())
         self.color.BTN_Select(0)
@@ -451,7 +451,7 @@ class Select_face_Eyeshadow(QWidget):
 
     def Apply_ColorOne(self):
         self.change = "False"
-        print("ColorOne clicked")
+        print("[select_face_eyeshadow.py] ColorOne clicked")
         self.R = 247
         self.G = 157
         self.B = 155
@@ -464,7 +464,7 @@ class Select_face_Eyeshadow(QWidget):
 
     def Apply_ColorTwo(self):
         self.change = "False"
-        print("ColorTwo clicked")
+        print("[select_face_eyeshadow.py] ColorTwo clicked")
         self.R = 225
         self.G = 157
         self.B = 167
@@ -477,7 +477,7 @@ class Select_face_Eyeshadow(QWidget):
 
     def Apply_ColorThree(self):
         self.change = "False"
-        print("ColorThree clicked")
+        print("[select_face_eyeshadow.py] ColorThree clicked")
         self.R = 198
         self.G = 113
         self.B = 120
@@ -490,7 +490,7 @@ class Select_face_Eyeshadow(QWidget):
 
     def Apply_ColorFour(self):
         self.change = "False"
-        print("ColorFour clicked")
+        print("[select_face_eyeshadow.py] ColorFour clicked")
         self.R = 220
         self.G = 118
         self.B = 113
@@ -503,7 +503,7 @@ class Select_face_Eyeshadow(QWidget):
 
     def Apply_ColorFive(self):
         self.change = "False"
-        print("ColorFive clicked")
+        print("[select_face_eyeshadow.py] ColorFive clicked")
         self.R = 187
         self.G = 90
         self.B = 88
@@ -516,7 +516,7 @@ class Select_face_Eyeshadow(QWidget):
 
     def Apply_ColorSix(self):
         self.change = "False"
-        print("ColorSix clicked")
+        print("[select_face_eyeshadow.py] ColorSix clicked")
         self.R = 203
         self.G = 154
         self.B = 122
@@ -529,7 +529,7 @@ class Select_face_Eyeshadow(QWidget):
 
     def Apply_ColorSeven(self):
         self.change = "False"
-        print("ColorSeven clicked")
+        print("[select_face_eyeshadow.py] ColorSeven clicked")
         self.R = 182
         self.G = 134
         self.B = 88
@@ -542,7 +542,7 @@ class Select_face_Eyeshadow(QWidget):
 
     def Apply_ColorEight(self):
         self.change = "False"
-        print("ColorEight clicked")
+        print("[select_face_eyeshadow.py] ColorEight clicked")
         #print(self.stk_w2.width())
         self.R = 148
         self.G = 97
@@ -556,7 +556,7 @@ class Select_face_Eyeshadow(QWidget):
 
     def Apply_ColorNine(self):
         self.change = "False"
-        print("ColorNine clicked")
+        print("[select_face_eyeshadow.py] ColorNine clicked")
         #print(self.stk_w2.width())
         self.R = 104
         self.G = 61
@@ -584,7 +584,7 @@ class Select_face_Eyeshadow(QWidget):
         self.change = "True"
 
     def backClicked(self):
-        print("back clicked")
+        print("[select_face_eyeshadow.py] back clicked")
         self.slider.hide()
         self.label_slider.hide()
         self.pushButton_GoBack.hide()

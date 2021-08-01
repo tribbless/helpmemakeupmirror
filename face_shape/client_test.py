@@ -5,7 +5,7 @@ import numpy
 def client_main(image_path):
 
     # 서버의 주소입니다. hostname 또는 ip address를 사용할 수 있습니다.
-    HOST = '192.168.219.101'
+    HOST = '192.168.219.108'
     # 서버에서 지정해 놓은 포트 번호입니다.
     PORT = 9999
 

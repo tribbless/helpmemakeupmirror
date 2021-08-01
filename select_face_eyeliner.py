@@ -308,7 +308,7 @@ class Select_face_Eyeliner(QWidget):
         self.color.pushButton_Brown.clicked.connect(self.Apply_Brown)
 
     def Apply_ResetAll(self):
-        print("all reset clicked")
+        print("[select_face_eyeliner.py] all reset clicked")
         if self.action == True:
             self.isKind = False
             self.changePixmap(self.makeupFace)
@@ -316,7 +316,7 @@ class Select_face_Eyeliner(QWidget):
         self.shape.BTN_Select(0)
 
     def Apply_Middle(self):
-        print("middle clicked")
+        print("[select_face_eyeliner.py] middle clicked")
         if self.action == True:
             self.isKind = True
             self.kind="Middle"
@@ -325,7 +325,7 @@ class Select_face_Eyeliner(QWidget):
         self.goToColor()
 
     def Apply_Up(self):
-        print("up clicked")
+        print("[select_face_eyeliner.py] up clicked")
         if self.action == True:
             self.isKind = True
             self.kind="Up"
@@ -334,7 +334,7 @@ class Select_face_Eyeliner(QWidget):
         self.goToColor()
 
     def Apply_ResetColor(self):
-        print("color reset clicked")
+        print("[select_face_eyeliner.py] color reset clicked")
         if self.action == True:
             self.isColor = False
         self.color.BTN_Select(0)
@@ -343,7 +343,7 @@ class Select_face_Eyeliner(QWidget):
 
     def Apply_Black(self):
         self.change = "False"
-        print("black clicked")
+        print("[select_face_eyeliner.py] black clicked")
         if self.action == True:
             self.isColor = True
             face = self.makeupFace.copy()
@@ -359,7 +359,7 @@ class Select_face_Eyeliner(QWidget):
 
     def Apply_DarkBrown(self):
         self.change = "False"
-        print("dark brown clicked")
+        print("[select_face_eyeliner.py] dark brown clicked")
         if self.action == True:
             self.isColor = True
             face = self.makeupFace.copy()
@@ -375,7 +375,7 @@ class Select_face_Eyeliner(QWidget):
 
     def Apply_Brown(self):
         self.change = "False"
-        print("brown clicked")
+        print("[select_face_eyeliner.py] brown clicked")
         if self.action == True:
             self.isColor = True
             face = self.makeupFace.copy()
@@ -400,7 +400,7 @@ class Select_face_Eyeliner(QWidget):
         self.change = "True"
 
     def backClicked(self):
-        print("back clicked")
+        print("[select_face_eyeliner.py] back clicked")
         self.slider.hide()
         self.label_slider.hide()
         self.pushButton_GoBack.hide()

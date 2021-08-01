@@ -304,22 +304,22 @@ class MAIN_StackedWidget(QWidget):
         self.Real_AR_Face_compare.pushButton_Share.clicked.connect(self.goToSubMenu_Later)
 
         ## 카메라 오픈
-        self.cpt = cv2.VideoCapture(0) ## in window
-        #self.cpt = cv2.VideoCapture("/dev/video1") ## in jetson nano
+        #self.cpt = cv2.VideoCapture(0) ## in window
+        self.cpt = cv2.VideoCapture("/dev/video0") ## in jetson nano
 
     ## 서브 윈도우 화면 나타나기
     def goToWeather_Window(self):
-        print("날씨 윈도우화면")
+        print("[main.py] 날씨 윈도우화면")
         r = self.weather.showModal()
         if r:
-            print("--이 메시지는 안나옴--")
+            print("[main.py] --이 메시지는 안나옴--")
         else:
-            print("close")
+            print("[main.py] close")
     def goToMenuShortcut_Window(self):
-        print("메뉴 바로가기 윈도우화면")
+        print("[main.py] 메뉴 바로가기 윈도우화면")
         r = self.menuShortcut.showModal()
         if r:
-            print("메뉴 바로가기 클릭성공")
+            print("[main.py] 메뉴 바로가기 클릭성공")
             # camera stop
             if self.menuShortcut.btn != 4:
                 self.bareFace_capture.flag = False
@@ -345,7 +345,7 @@ class MAIN_StackedWidget(QWidget):
             else:
                 self.ShutDown()
         else:
-            print("close")
+            print("[main.py] close")
 
     ## 화면전환 NEXT & PREVIOUS
     def goToMainMenu(self):
@@ -395,7 +395,7 @@ class MAIN_StackedWidget(QWidget):
         self.bareFace_capture.personalFace()
         check = self.bareFace_capture.action
         check2 = self.bareFace_capture.result
-        print(check, check2)
+        print(f"[main.py] check? {check}, check2? {check2}")
         if check == True:
             tone = self.bareFace_capture.tone
             print(tone)
@@ -408,7 +408,7 @@ class MAIN_StackedWidget(QWidget):
             self.stk_w.setCurrentWidget(self.personal_color)
 
     def goToMainMENUorVideo(self):
-        print(self.main_menu.btn)
+        print(f"[main.py] {self.main_menu.btn}")
         if (self.main_menu.btn == "video"):
             self.stk_w.setCurrentWidget(self.base_makeup_video)
         else:
@@ -447,7 +447,7 @@ class MAIN_StackedWidget(QWidget):
             self.select_thema.label_face.setPixmap(QtGui.QPixmap(result).scaled(672, 504, Qt.KeepAspectRatio))
             self.select_thema.action = True
         if check2 == True:
-            print(self.bareFace_capture.tone)
+            print(f"[main.py] 퍼스널 컬러 진단 결과 : {self.bareFace_capture.tone}")
             self.select_thema.tone = self.bareFace_capture.tone
         self.stk_w.setCurrentWidget(self.select_thema)
 
@@ -525,7 +525,7 @@ class MAIN_StackedWidget(QWidget):
                 isColor = self.select_face_eyebrow.isColor
                 if isKind & isColor == True:
                     kind = self.select_face_eyebrow.kind
-                    print(kind)
+                    print(f"[main.py] 아이브로우 종류 : {kind}")
                     self.frame_eyebrow.isDetect = False
                     self.frame_eyebrow.face_kind = "0"
                     self.frame_eyebrow.kind = kind
@@ -541,18 +541,18 @@ class MAIN_StackedWidget(QWidget):
                 self.frame_eyebrow.label_faceAR.setPixmap(QtGui.QPixmap(result).scaled(324, 243, Qt.KeepAspectRatio))
                 isChoice = self.select_thema.isChoice
                 isDetect = self.select_thema.isDetect
-                print("한마디로 맞춤형 버튼 눌렀니? "+str(isDetect))
+                print("[main.py] 한마디로 맞춤형 버튼 눌렀니? "+str(isDetect))
                 if isChoice == True:
                     if isDetect == True:
-                        print("맞춤형 버튼 눌렀단다.")
+                        print("[main.py] 맞춤형 버튼 눌렀단다.")
                         self.frame_eyebrow.isDetect = True
                         self.frame_eyebrow.face_kind = self.select_thema.kindBlusher
                     else:
-                        print("안눌렀단다.")
+                        print("[main.py] 안눌렀단다.")
                         self.frame_eyebrow.isDetect = False
                         self.frame_eyebrow.face_kind = "0"
                     kind = self.select_thema.kindBrow
-                    print(kind)
+                    print(f"[main.py] 아이브로우 종류 : {kind}")
                     self.frame_eyebrow.kind = kind
                     self.frame_eyebrow.cpt = self.cpt
                     self.frame_eyebrow.start()
@@ -570,7 +570,7 @@ class MAIN_StackedWidget(QWidget):
                 isColor = self.select_face_eyeshadow.isColor
                 if isKind & isColor == True:
                     kind = self.select_face_eyeshadow.kind
-                    print(kind)
+                    print(f"[main.py] 아이쉐도우 종류 : {kind}")
                     self.frame_eyeshadow.kind = kind
                     self.frame_eyeshadow.cpt = self.cpt
                     self.frame_eyeshadow.start()
@@ -584,7 +584,7 @@ class MAIN_StackedWidget(QWidget):
                 isChoice = self.select_thema.isChoice
                 if isChoice == True:
                     kind = self.select_thema.kindShadow
-                    print(kind)
+                    print(f"[main.py] 아이쉐도우 종류 : {kind}")
                     self.frame_eyeshadow.kind = kind
                     self.frame_eyeshadow.cpt = self.cpt
                     self.frame_eyeshadow.start()
@@ -602,7 +602,7 @@ class MAIN_StackedWidget(QWidget):
                 isColor = self.select_face_eyeliner.isColor
                 if isKind & isColor == True:
                     kind = self.select_face_eyeliner.kind
-                    print(kind)
+                    print(f"[main.py] 아이라이너 종류 : {kind}")
                     self.frame_eyeliner.kind = kind
                     self.frame_eyeliner.cpt = self.cpt
                     self.frame_eyeliner.start()
@@ -616,7 +616,7 @@ class MAIN_StackedWidget(QWidget):
                 isChoice = self.select_thema.isChoice
                 if isChoice == True:
                     kind = self.select_thema.kindLiner
-                    print(kind)
+                    print(f"[main.py] 아이라이너 종류 : {kind}")
                     self.frame_eyeliner.kind = kind
                     self.frame_eyeliner.cpt = self.cpt
                     self.frame_eyeliner.start()
@@ -634,7 +634,7 @@ class MAIN_StackedWidget(QWidget):
                 isColor = self.select_face_blusher.isColor
                 if isKind & isColor == True:
                     kind = self.select_face_blusher.kind
-                    print(kind)
+                    print(f"[main.py] 블러셔 종류 : {kind}")
                     self.frame_blusher.kind = kind
                     self.frame_blusher.cpt = self.cpt
                     self.frame_blusher.start()
@@ -648,7 +648,7 @@ class MAIN_StackedWidget(QWidget):
                 isChoice = self.select_thema.isChoice
                 if isChoice == True:
                     kind = self.select_thema.kindBlusher
-                    print(kind)
+                    print(f"[main.py] 블러셔 종류 : {kind}")
                     self.frame_blusher.kind = kind
                     self.frame_blusher.cpt = self.cpt
                     self.frame_blusher.start()
@@ -710,7 +710,7 @@ class MAIN_StackedWidget(QWidget):
         return result2
 
     def closeEvent(self, event):
-        print("헬미를 종료합니다.")
+        print("[main.py] 헬미를 종료합니다.")
         check = os.path.isfile('capture.jpg')
         check2 = os.path.isfile('capture2.jpg')
         if check == True:
@@ -720,7 +720,7 @@ class MAIN_StackedWidget(QWidget):
         self.cpt.release()
 
     def ShutDown(self):
-        print("헬미를 종료합니다.")
+        print("[main.py] 헬미를 종료합니다.")
         check = os.path.isfile('capture.jpg')
         check2 = os.path.isfile('capture2.jpg')
         if check == True:
